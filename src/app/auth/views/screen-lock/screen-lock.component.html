@@ -1,0 +1,32 @@
+﻿<div class="screen-form">
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="lock-screen">
+                <div class="box-ls">
+                    <div>
+                        <img src="{{currentUser.avatar}}" *ngIf="currentUser.id && currentUser.avatar" class="img-rounded rounted-image" />
+                    </div>
+                    <div class="user-info mt-2">
+                       <span class="user-name"> <h4>{{currentUser.firstName}} {{currentUser.lastName}}</h4></span>
+                        <span>{{currentUser.email}}</span>
+                        <form class="form-login login-box" name="loginForm" role="form" (ngSubmit)="f.form.valid && unlock(user,f)" #f="ngForm" novalidate>
+                            <div class="input-group" >
+                                <input autocomplete="false" type="password" placeholder="{{'auth.view.screenLock' | translate}}" class="form-control password" name="password" [(ngModel)]="user.password" #password="ngModel" required>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-red lock-button-icon" type="submit">
+                                        <i class="fa fa-chevron-right"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            <div class="input-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                                <span class="error text-small block" *ngIf="f.submitted && !password.valid">{{"login.error.password" | translate}}</span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+             </div>
+            </div>
+        </div>
+</div>
+</div>

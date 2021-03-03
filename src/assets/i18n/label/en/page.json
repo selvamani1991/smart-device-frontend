@@ -1,0 +1,134 @@
+{
+  "title": {
+    "login": "Login",
+    "register": "Register",
+    "registered": "Registered",
+    "confirmed": "Confirmed",
+    "not-confirmed": "Not Confirmed",
+    "forgot-password": "Forgot Password",
+    "forgot-password-confirmation": "Forgot Password Confirmation",
+    "reset-password": "Reset Password",
+    "password-reset": "Password Reset",
+    "screen-lock": "Screen Lock"
+  },
+  "action": {
+    "create": "Create",
+    "delete": "Delete",
+    "edit": "Edit",
+    "disable": "Disable",
+    "enable": "Enable",
+    "change_password": "Change Password",
+    "setting": "Settings",
+    "back": "Back",
+    "update": "Update",
+    "lock": "Lock",
+    "unlock": "Unlock",
+    "assign": "Assign",
+    "show": "Show",
+    "add": "Add",
+    "user": "Staff",
+    "building": "Building",
+    "cancel": "Cancel",
+    "asset": "Asset",
+    "breakDown": "Asset Break Down",
+    "submit":"Submit",
+    "city": "City",
+    "admin": "Admin",
+    "activity": "Activities"
+  },
+  "list": {
+    "showing": "Showing",
+    "entries_page": "entries per page",
+    "action": "Action",
+    "notAvailable": "Data is not available",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "deleted": "Deleted",
+    "core": "Core",
+    "status": "Status",
+    "lock": "Locked",
+    "unlock": "Unlocked",
+    "crud": "Crud",
+    "previous": "Previous",
+    "next": "Next",
+    "profile": "Profile",
+    "logout": "Logout",
+    "lockScreen": "Lock Screen",
+    "changePassword": "Change Password",
+    "subscription": "Subscription",
+    "searchDate": "Search Date",
+    "noRecords": "No Records Found"
+  },
+  "home":{
+    "pageTitle": "Home",
+    "pageDesc": "Home Page"
+  },
+  "dashboard":{
+    "pageTitle": "Dashboard",
+    "pageDesc": "Right path to Life & after death"
+  },
+  "about-us":{
+    "pageTitle": "About Us",
+    "pageDesc": "Right path to Life & after death"
+  },
+  "contact-us":{
+    "pageTitle": "Contact Us",
+    "pageDesc": "Right path to Life & after death"
+  },
+  "private-policy":{
+    "pageTitle": "Private Policy",
+    "pageDesc": "Right path to Life & after death"
+  },
+  "terms-conditions":{
+    "pageTitle": "Terms and Conditions",
+    "pageDesc": "Right path to Life & after death"
+  },
+  "page-not-found-404-error":{
+    "pageTitle": "Page Not Found",
+    "pageDesc": "Right path to Life & after death"
+  },
+  "calender":{
+    "pageTitle": "Calender",
+    "pageDesc": "Monthly Calender"
+  },
+  "login":{
+    "pageTitle": "Login",
+    "pageDesc": "Use your credentials to access."
+  },
+  "register":{
+    "pageTitle": "Register",
+    "pageDesc": "Your details such that we can know you."
+  },
+  "forgot-password":{
+    "pageTitle": "Forgot Password",
+    "pageDesc": "Reset your password by your email address."
+  },
+  "registered":{
+    "pageTitle": "Registered Successfully",
+    "pageDesc": "Your account is created and email is send."
+  },
+  "confirmed":{
+    "pageTitle": "Confirmed Successfully",
+    "pageDesc": "Your account has been confirmed."
+  },
+  "not-confirmed":{
+    "pageTitle": "Account not confirmed yet",
+    "pageDesc": "Your account has been confirmed."
+  },
+  "password-confirmed":{
+    "pageTitle": "Forgot Password Email Confirmation",
+    "pageDesc": "Your account has been confirmed."
+  },
+  "password-reset":{
+    "pageTitle": "Password Reset",
+    "pageDesc": "Your account has been confirmed."
+  },
+  "reset-password":{
+    "pageTitle": "Reset Password",
+    "pageDesc": "Change your password"
+  },
+  "form":{
+    "verified": "Verified !",
+    "no-validation": "No such validation available for this field."
+  }
+}

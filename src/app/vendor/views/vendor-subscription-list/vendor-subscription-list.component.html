@@ -1,0 +1,49 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{client.vendorNickName?client.vendorNickName:('clientDashboard.form.vendor' | translate )}} Subscription List</h3>
+            <list-header (pageSizeChanged)="changePageSize($event)" (search)="searchVendorSubscription($event)" (addNewEvent)="addVendorSubscription($event)"></list-header>
+            <div class="table-responsive">
+                <div *ngIf="vendorSubscriptions.length>0">
+                    <table class="table table-striped table-hover padding-top-20">
+                        <thead>
+                        <tr>
+                            <th>{{'vendor.subscriptionList.logo' | translate}}</th>
+                            <th>{{ 'vendor.subscriptionList.name' | translate }}</th>
+                            <th>{{ 'vendor.subscriptionList.description' | translate }}</th>
+                            <th>{{ 'vendor.subscriptionList.startDate' | translate }}</th>
+                            <th>{{ 'vendor.subscriptionList.endDate' | translate }}</th>
+                            <th>{{ 'vendor.subscriptionList.duration' | translate }}</th>
+                            <th>{{ 'vendor.subscriptionList.status' | translate }}</th>
+                            <th>{{ 'vendor.subscriptionList.action' | translate }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let vendorSubscription of vendorSubscriptions">
+                            <td class="userSize"><img src="{{vendorSubscription.subscription.logo}}" *ngIf="vendorSubscription.subscription.id && vendorSubscription.subscription.logo" class="list-logo"> <i class="fa fa-calendar" *ngIf="vendorSubscription.subscription.id && !vendorSubscription.subscription.logo"></i></td>
+                            <td>{{vendorSubscription.subscription.name}}</td>
+                            <td>{{vendorSubscription.subscription.description}}</td>
+                            <td>{{vendorSubscription.startDate}}</td>
+                            <td>{{vendorSubscription.endDate}}</td>
+                            <td>{{vendorSubscription.subscription.duration}}</td>
+                            <td>
+                                <button class="btn btn-success btn-xs" (click)="changeStatus(vendorSubscription,false)" *ngIf="vendorSubscription.active">{{ 'vendor.list.enabled' | translate }}</button>
+                                <button class="btn btn-danger btn-xs" (click)="changeStatus(vendorSubscription,true)" *ngIf="!vendorSubscription.active">{{ 'vendor.list.disabled' | translate }}</button>
+                            </td>
+                            <td>
+                                <i class="fa fa-pencil color-muted m-r-5 cursor-position" (click)="edit(vendorSubscription);"></i>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="vendorSubscriptions.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                </div>
+            </div>
+            <div *ngIf="vendorSubscriptions.length==0">
+                <div class="dataSpace text-center"><b>{{ 'vendor.subscriptionList.noData' | translate }}</b></div>
+            </div>
+        </div>
+    </div>
+</admin-root>
+<vendor-subscription-modal [vendorSubscription]="vendorSubscription" [client]="client" (submitEvent)="reloadVendorSubscription($event)"></vendor-subscription-modal>

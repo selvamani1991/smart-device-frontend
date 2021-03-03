@@ -1,0 +1,72 @@
+    <div class="row">
+        <div class="col-lg-3 col-sm-6">
+            <div class="card gradient-1 card-top">
+                <div class="card-body cursor" (click)="companyList(company);">
+                    <div class="total-card">
+                        <h6 class="card-title text-white card-new-title">Total {{ client && client.companyNickName?client.companyNickName:('clientDashboard.form.company' | translate )}}</h6>
+                        <div class="d-inline-block">
+                            <h4 class="text-white">{{  dashboardDetail.companyCount }}</h4>
+                        </div>
+                    </div>
+                    <div class="image-card-size">
+                        <span class="float-right display-5 opacity-5"><i class="fa fa-building icon1"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <div class="card gradient-2 card-top">
+                <div class="card-body cursor" (click)="distributorList(distributor);">
+                    <div class="total-card">
+                        <h6 class="card-title text-white card-new-title">Total {{client.distributorNickName?client.distributorNickName:('clientDashboard.form.distributor' | translate )}}</h6>
+                        <div class="d-inline-block">
+                            <h4 class="text-white">{{  dashboardDetail.distributorCount }}</h4>
+                        </div>
+                    </div>
+                    <div class="image-card-size">
+                        <span class="float-right display-5 opacity-5"> <img alt=""  src="assets/images/distributor.png" width="50" height="50" class="icon1"> </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <div class="card gradient-3 card-top">
+                <div class="card-body cursor" (click)="assignedCompanyProduct(vendorProduct);" >
+                    <div class="total-card">
+                        <h6 class="card-title text-white card-new-title">{{ client && client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}} Assigned</h6>
+                        <div class="d-inline-block">
+                            <div class="row pro-sales">
+                                <div class="sold-product">{{  dashboardDetail.assignedVendorProductCount }}</div> <span class="total-product">/</span>
+                                <div class="total-product">{{ dashboardDetail.assignedVendorProductCount + dashboardDetail.newVendorProductCount }} </div>
+                            </div>
+                            <div class="row pro-sales">
+                                <div class="text-sold">{{ 'vendorDashboard.form.sold' | translate }}</div> <span class="text-product-sales">/</span>
+                                <div class="text-total">{{ 'vendorDashboard.form.total' | translate }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-card-size">
+                        <span class="float-right display-5 opacity-5"><img alt="" src="assets/images/talkio_icons/product.svg" width="50" height="50" class="icon1"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <div class="card gradient-4 card-top">
+                <div class="card-body cursor" (click)="allVendorProduct(vendorProduct);">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <h6 class="card-title text-white card-new-title">{{ client && client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}} Health</h6>
+                        </div>
+                        <div class="col-lg-4">
+                            <span class="float-right display-5 opacity-5"><i class="fa fa-cubes icon1" style="margin:0px;"></i></span>
+                        </div>
+                    </div>
+                    <h4 class="card-title text-white mt-3 new-customer-title client-card-title  card-new-title">{{ 'vendorDashboard.form.active' | translate }} <span class="product-active-status">{{productStatus.activeCount}}</span> </h4>
+                    <h4 class="card-title text-white client-card-title  card-new-title">{{ 'vendorDashboard.form.inActive' | translate }} <span class="product-inactive-status">{{productStatus.inActiveCount}}</span> </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+

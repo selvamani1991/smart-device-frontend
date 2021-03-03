@@ -1,0 +1,56 @@
+{
+  "list": {
+    "pageLink": "Role Management",
+    "pageTitle": "Welcome to Role Management",
+    "pageDesc": "Listing all roles",
+    "notAvailable": "Data is not available",
+    "name": "Name",
+    "description": "Description"
+  },
+  "create": {
+    "formTitle": "Role creation form",
+    "formDesc": "Role creation form",
+    "pageLink": "Create Role",
+    "pageTitle": "Create a Role",
+    "pageDesc": "creating a new Role"
+  },
+  "edit": {
+    "formTitle": "Role Update form",
+    "formDesc": "Role update form",
+    "pageLink": "Edit Role",
+    "pageTitle": "Edit a Role",
+    "pageDesc": "editing a existing Role"
+  },
+  "assign": {
+    "formTitle": "Role Assign form",
+    "formDesc": "Role Assign form",
+    "pageLink": "Assign Role",
+    "pageTitle": "Assign feature for Role",
+    "pageDesc": "Assign feature for a existing Role",
+    "feature": "Feature",
+    "create": "Create",
+    "list": "List/View",
+    "update": "Update",
+    "delete": "Delete",
+    "execute": "Execute",
+    "permission": "Permission",
+    "crud": "Crud",
+    "notAvailable": "Feature not available for this category"
+  },
+  "form": {
+    "name": "Name",
+    "description": "Description",
+    "verified": "Verified !",
+    "roleDetails": "Role Details",
+    "roleAssignment": "Role Feature Assignment"
+  },
+  "error": {
+    "name": "Please enter name.",
+    "duplicate": "Role is already Exist.",
+    "description": "Please enter description."
+  },
+  "placeholder": {
+    "name": "Enter role name",
+    "description": "Enter role description"
+  }
+}

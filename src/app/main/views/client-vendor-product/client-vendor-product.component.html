@@ -1,0 +1,31 @@
+<div class="card card-widget" id="dashboard">
+    <div class="card-header">
+        <h3>{{client && client.vendorNickName?client.vendorNickName:('clientDashboard.form.vendor' | translate )}} Revenue</h3>
+    </div>
+    <div class="card-body clientBody">
+        <div class="row" *ngIf="currentUser.userType=='clientAdmin'">
+
+            <div class="col-lg-6">
+                <div class="clientDropdown " >
+                    <span class="clip-select">
+                        <select id="selectZoneVendor" name="zone" class="select2">
+                            <option value="0">Select Zone</option>
+                                <option *ngFor="let zone of zones" [value]="zone.alias">{{zone.name}}</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="clientDropdown float-right">
+                    <span class="clip-select">
+                        <select id="selectZoneVendorProduct" name="vendor" class="select2">
+                            <option value="0">Select Vendor</option>
+                                <option *ngFor="let vendor of vendors" [value]="vendor.alias">{{vendor.name}}</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="bar-one" id="vendorZoneBar"></div>
+    </div>
+</div>

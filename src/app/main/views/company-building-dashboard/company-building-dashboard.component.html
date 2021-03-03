@@ -1,0 +1,24 @@
+
+<CompanyCardBuilding [dashboardDetail]="dashboardDetail" [client]="client" *ngIf="client.id"></CompanyCardBuilding>
+<div class="row">
+    <div class="col-lg-6 col-sm-6">
+        <CompanyTopBuilding [client]="client" *ngIf="client.id"></CompanyTopBuilding>
+    </div>
+
+    <div class="col-lg-6 col-sm-6">
+        <CompanyBuildingAll [companyBuilding]="companyBuilding" [dashboardDetail]="dashboardDetail" [client]="client" *ngIf="client.id"></CompanyBuildingAll>
+    </div>
+</div>
+
+
+<div class="row">
+
+    <div class="col-lg-6" *ngIf="productTypes.length>0" >
+        <HealthReport   [productTypes]="productTypes" [client]="client" *ngIf="client.id"></HealthReport>
+    </div>
+
+    <div class="col-lg-6" *ngIf="productTypes.length>0">
+        <VendorMachineSale [productTypes]="productTypes" [client]="client" *ngIf="client.id"></VendorMachineSale>
+    </div>
+
+</div>

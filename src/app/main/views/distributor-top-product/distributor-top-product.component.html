@@ -1,0 +1,31 @@
+<div class="card" id="dashboard">
+    <div class="card-header top-header-size">
+        <h5 class="talkio_whitecolor">Top
+            {{client.productTypeNickName?client.productTypeNickName:('clientDashboard.form.productType' | translate )}}</h5>
+    </div>
+    <div class="card-body clientBody">
+        <div class="active-member">
+            <div class="table-responsive scroll-table">
+                <table class="table table-xs mb-0" id="talkio_table">
+                    <thead class="talkio_themecolor">
+                    <tr>
+                        <th>Name</th>
+                        <th>Device ID</th>
+                        <th>IMEI ID</th>
+                        <th>{{client.productTypeNickName}} ID</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let topDistributorProduct of topDistributorProducts">
+                        <td>{{topDistributorProduct.product.name}}</td>
+                        <td>{{topDistributorProduct.product.deviceId}}</td>
+                        <td>{{topDistributorProduct.product.imieId}}</td>
+                        <td>{{topDistributorProduct.product.productType.id}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<!-- start: BREADCRUMB -->
+<div class="row page-titles mx-0">
+    <div class="col p-md-0">
+        <ul class="breadcrumb ng-isolate-scope">
+            <li class="breadcrumb-item active">
+                <a [routerLink]="[MAIN_CONSTANTS.URL.DASHBOARD]">
+                    <i class="fa fa-home margin-right-5 text-large text-dark"></i>
+                    Home
+                </a>
+            </li>
+            <li class="ng-binding ng-scope breadcrumb-item" *ngFor="let step of steps; let i = index" [attr.data-index]="i">
+                <a [routerLink]="[step.state]" *ngIf="i < steps.length-1">{{step.title | translate}}</a>
+                <span *ngIf="i == steps.length-1">{{step.title | translate}}</span>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- end: BREADCRUMB -->

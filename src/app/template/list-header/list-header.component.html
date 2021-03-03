@@ -1,0 +1,21 @@
+<div class="button-wrapper">
+    <div class="page-size-select pull-left pageEntry">
+        <span >{{ 'page.list.showing' | translate }} </span>
+        <select class="select2 search-header" id="list-header" [(ngModel)]="pageSizeSelect" (change)="changePageSize(pageSizeSelect)">
+            <option *ngFor="let pageSizeValue of pageSizeList" value="{{pageSizeValue}}" [selected]="pageSizeValue == pageSizeSelect">{{pageSizeValue}}</option>
+        </select>
+        <span> {{'page.list.entries_page' | translate}}</span>
+    </div>
+    <div class="input-group mb-3 searchSection">
+        <input type="text" class="form-control"  placeholder="Search.." name="query" [(ngModel)]="query" (ngModelChange)="valueChange($event)" style="width:60%;height:32px;">
+        <span class="input-group-append"><span class="input-group-text"><i class="fa fa-search"></i></span>
+        </span>
+    </div>
+
+
+    <div class="data pull-right"style="width:8%;">
+        <button class="btn btn-default button-create pull-right"(click)="addNew();">
+            <i class="fa fa-plus" aria-hidden="true"></i> {{ 'page.action.create' | translate }}
+        </button>
+    </div>
+</div>

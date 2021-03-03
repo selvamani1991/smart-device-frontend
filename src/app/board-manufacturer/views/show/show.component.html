@@ -1,0 +1,179 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" name="boardManufacturerForm" [formGroup]="boardManufacturerForm" #f="ngForm">
+        <div  id="projects">
+        <div class="card" >
+            <div class="card-body">
+                <h4 class="card-title">{{ 'boardManufacturer.form.details' | translate }}</h4>
+                <div class="form-row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <form-control-label [text]="'boardManufacturer.form.name'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="name" formControlName="name" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'boardManufacturer.form.description'" [required]="true"></form-control-label>
+                            <div class="note-editor">
+                                <textarea placeholder="{{boardManufacturer.description}}" class="form-control" name="description" readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4 show-icon-top">
+                        <div class="delete-image cursor-pointer" style="cursor:pointer;" *ngIf="boardManufacturer.id && boardManufacturer.logo"><i class="fa fa-close color-danger cross-size cursor-pointer" data-toggle="tooltip" title="Delete" (click)="markDeleted(boardManufacturer);"></i></div>
+                        <div class="company-image-size" *ngIf="boardManufacturer.id && boardManufacturer.logo"><img src="{{boardManufacturer.logo}}"  class="upload-image"/></div>
+                        <div class="company-image-size" *ngIf="!boardManufacturer.logo"><i class="fa fa-microchip show-icon mt-3" ></i></div>
+                        <div class="row mt-3 mx-3">
+                            <div class="choose_file">
+                                <button type="button" class="btn btn-default upload-button">{{'boardManufacturer.form.chooseImage' | translate}}</button>
+                                <input name="file" type="file" class="form-control" accept="image/*"  (change)="onFileChange($event)"/>
+                            </div>
+                            <div class="file-detail" *ngIf="files && boardManufacturer.id && boardManufacturer.logo">{{files.name}}</div>
+                            <div class="file-detail"><span *ngIf="files && boardManufacturer.id && boardManufacturer.logo">{{ files.size/1024 | number:'1.0-0'}} </span> KB</div>
+                        </div>
+                        <div class="has-error error" *ngIf="formatError">{{'boardManufacturer.error.invalidPattern' | translate}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body" [formGroup]="addressForm" >
+                <h3 class="card-title">{{'boardManufacturer.form.addressDetails' | translate}}</h3>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'boardManufacturer.form.houseNumber'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'boardManufacturer.placeholder.houseNumber' | translate }}" class="form-control" name="houseNumber" formControlName="houseNumber" readonly/>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'boardManufacturer.form.street'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'boardManufacturer.placeholder.street' | translate }}" class="form-control" name="street" formControlName="street" readonly/>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'boardManufacturer.form.landMark'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'boardManufacturer.placeholder.landMark' | translate }}" class="form-control" name="landMark" formControlName="landMark" readonly/>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <div class="">
+                            <form-control-label [text]="'boardManufacturer.form.city'" [required]="true"></form-control-label>
+                            <input type="text" placeholder="{{ 'boardManufacturer.placeholder.city' | translate }}" class="form-control"  autocomplete="off" name="city" formControlName="city" (keyup)="searchCity($event)" readonly/>
+                            <ul class="city-list" id="citySelect">
+                                <li *ngFor="let city of cities" [value]="city.id" (click)="setCity(city)">
+                                    {{city.name}}, {{city.region?city.region.name:''}}, {{city.country?city.country.name:''}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <div class="">
+                            <form-control-label [text]="'boardManufacturer.form.region'" [required]="true"></form-control-label>
+                            <input type="text" placeholder="{{ 'boardManufacturer.placeholder.region' | translate }}" class="form-control" name="region" formControlName="region" readonly/>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="">
+                            <form-control-label [text]="'boardManufacturer.form.country'" [required]="true"></form-control-label>
+                            <input type="text" placeholder="{{ 'boardManufacturer.placeholder.country' | translate }}" class="form-control" name="country" formControlName="country" readonly/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'boardManufacturer.form.zipCode'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'boardManufacturer.placeholder.zipCode' | translate }}" class="form-control" name="zipCode" formControlName="zipCode" readonly/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body" [formGroup]="cAddressForm">
+                <h3 class="card-title">{{'boardManufacturer.form.corporateAddress' | translate}}</h3>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'boardManufacturer.form.houseNumber'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'boardManufacturer.placeholder.houseNumber' | translate }}" class="form-control" name="houseNumber" formControlName="houseNumber" readonly/>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'boardManufacturer.form.street'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'boardManufacturer.placeholder.street' | translate }}" class="form-control" name="street" formControlName="street" readonly/>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'boardManufacturer.form.landMark'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'boardManufacturer.placeholder.landMark' | translate }}" class="form-control" name="landMark" formControlName="landMark" readonly/>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <div class="">
+                            <form-control-label [text]="'boardManufacturer.form.city'" [required]="true"></form-control-label>
+                            <input type="text" placeholder="{{ 'boardManufacturer.placeholder.city' | translate }}" autocomplete="off" class="form-control" name="city" formControlName="city" (keyup)="searchCorporateCity($event)" readonly/>
+                            <ul class="city-list" id="corporateCitySelect">
+                                <li *ngFor="let city of cities"  (click)="setCorporateCity(city)">
+                                    {{city.name}}, {{city.region?city.region.name:''}}, {{city.country?city.country.name:''}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="">
+                            <form-control-label [text]="'boardManufacturer.form.region'" [required]="true"></form-control-label>
+                            <input type="text" placeholder="{{ 'boardManufacturer.placeholder.region' | translate }}" class="form-control" name="region" formControlName="region" readonly/>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="">
+                            <form-control-label [text]="'boardManufacturer.form.country'" [required]="true"></form-control-label>
+                            <input type="text" placeholder="{{ 'boardManufacturer.placeholder.country' | translate }}" class="form-control" name="country" formControlName="country" readonly/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'boardManufacturer.form.zipCode'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'boardManufacturer.placeholder.zipCode' | translate }}" class="form-control" name="zipCode" formControlName="zipCode" readonly/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body" [formGroup]="adminForm">
+                <h3 class="card-title">{{'boardManufacturer.form.contact' | translate}}</h3>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <form-control-label [text]="'boardManufacturer.form.firstName'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'boardManufacturer.placeholder.firstName' | translate }}" class="form-control" name="firstName" formControlName="firstName" readonly/>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <form-control-label [text]="'boardManufacturer.form.lastName'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'boardManufacturer.placeholder.lastName' | translate }}" class="form-control" name="lastName" formControlName="lastName" readonly/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="">
+                            <form-control-label [text]="'boardManufacturer.form.email'" [required]="true"></form-control-label>
+                            <input type="text" placeholder="{{ 'boardManufacturer.placeholder.email' | translate }}" class="form-control" name="email" formControlName="email" readonly/>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <form-control-label [text]="'boardManufacturer.form.designation'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'boardManufacturer.placeholder.designation' | translate }}" class="form-control" name="designation" formControlName="designation" readonly/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="">
+                            <form-control-label [text]="'boardManufacturer.form.phoneNo'" [required]="true"></form-control-label>
+                            <input type="text" placeholder="{{ 'boardManufacturer.placeholder.phoneNo' | translate }}" class="form-control" name="phoneNo" formControlName="phoneNo" readonly/>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <form-control-label [text]="'boardManufacturer.form.landLineNo'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'boardManufacturer.placeholder.landLineNo' | translate }}" class="form-control" name="landLineNo" formControlName="landLineNo" readonly/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </form>
+</admin-root>

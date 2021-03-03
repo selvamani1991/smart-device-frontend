@@ -1,0 +1,62 @@
+<div class="card" id="dashboard">
+    <div class="card-header">
+        <h3>{{client && client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}} Sales</h3>
+    </div>
+
+        <div class="card-body clientBody">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="clientDropdown">
+                    <span class="clip-select">
+                        <select id="selectProductTypeProductSale" name="productType" class="select2">
+                            <option value="0">Select Product Type</option>
+                                <option *ngFor="let productType of productTypes" [value]="productType.alias">{{productType && productType.name}}</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-6" *ngIf="currentUser.userType=='clientAdmin'">
+                <div class="clientDropdown  float-right" >
+                    <span class="clip-select">
+                        <select id="selectZoneProductSale" name="zone" class="select2">
+                            <option value="0">Select Zone</option>
+                                <option *ngFor="let zone of zones" [value]="zone.alias">{{zone.name}}</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="card-body pb-0 d-flex justify-content-between clientBody">
+        <div>
+            <p>{{'vendorDashboard.form.totalEarning' | translate}}</p>
+            <h3 class="m-0">{{monthlyRevenue.totalRevenue}}</h3>
+        </div>
+    </div>
+    <div class="chart-wrapper canvas-height">
+        <canvas id="chart_widget_2"></canvas>
+    </div>
+    <div class="card-body">
+        <div class="d-flex justify-content-between">
+            <div class="w-100 mr-2">
+                <h6>Production Revenue</h6>
+                <div class="progress" style="height: 6px">
+                    <div class="progress-bar bg-danger"></div>
+                </div>
+            </div>
+            <div class="ml-2 w-100">
+                <h6>Sales Revenue</h6>
+                <div class="progress" style="height: 6px">
+                    <div class="progress-bar bg-primary"></div>
+                </div>
+            </div>
+            <div class="ml-2 w-100">
+                <h6>Subscription Revenue</h6>
+                <div class="progress" style="height: 6px">
+                    <div class="progress-bar bg-primary"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

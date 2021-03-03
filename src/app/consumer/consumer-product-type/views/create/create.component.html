@@ -1,0 +1,98 @@
+﻿<admin-root id="projects">
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" [formGroup]="consumerProductTypeForm" #f="ngForm" (ngSubmit)="f.form.valid && createConsumerProductType(f)" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">{{'consumerProductType.form.details' | translate}}</h3>
+                <div class="row">
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !consumerProductTypeForm.get('name').valid, 'has-success': f.submitted && consumerProductTypeForm.get('name').valid}">
+                        <form-control-label [text]="'consumerProductType.form.name'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control input-default" placeholder="{{ 'consumerProductType.placeholder.name' | translate }}" class="form-control" name="name" formControlName="name">
+                        <form-validate [form]="f" [fieldName]="'name'" [field]="consumerProductTypeForm.get('name')" [messages]="CONSUMER_PRODUCT_TYPE_VALIDATOR"></form-validate>
+                    </div>
+
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !consumerProductTypeForm.get('description').valid, 'has-success': f.submitted && consumerProductTypeForm.get('description').valid}">
+                        <form-control-label [text]="'consumerProductType.form.description'" [required]="true"></form-control-label>
+                        <div class="note-editor">
+                            <textarea id="form-field-22" class="form-control" placeholder="Enter Consumer Product Type Description" name="description" formControlName="description"></textarea>
+                        </div>
+                        <form-validate [form]="f" [fieldName]="'description'" [field]="consumerProductTypeForm.get('description')" [messages]="CONSUMER_PRODUCT_TYPE_VALIDATOR"></form-validate>
+                    </div>
+
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !consumerProductTypeForm.get('productInstruction').valid, 'has-success': f.submitted && consumerProductTypeForm.get('productInstruction').valid}">
+                        <form-control-label [text]="'consumerProductType.form.productInstruction'" [required]="true"></form-control-label>
+                        <div class="note-editor">
+                            <textarea id="form-field-23" class="form-control" placeholder="Enter Consumer Product Type Instruction" name="productInstruction" formControlName="productInstruction"></textarea>
+                        </div>
+                        <form-validate [form]="f" [fieldName]="'productInstruction'" [field]="consumerProductTypeForm.get('productInstruction')" [messages]="CONSUMER_PRODUCT_TYPE_VALIDATOR"></form-validate>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{ 'consumerProductType.form.attributes' | translate }}</h4>
+                <div class="comp-detail" *ngFor="let attributeForm of consumerProductTypeForm.get('attributes').controls; let i=index" [formGroup]="attributeForm" #af="ngForm">
+
+                    <div class="row">
+
+                        <div class="form-group col-md-2 attribute-cpt-width" [ngClass]="{ 'has-error': f.submitted && !attributeForm.get('name').valid, 'has-success': f.submitted && attributeForm.get('name').valid}">
+                            <form-control-label [text]="'consumerProductType.form.attributeName'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control input-default" placeholder="{{ 'consumerProductType.placeholder.attributeName' | translate }}" class="form-control" name="name" formControlName="name">
+                            <form-validate [form]="f" [fieldName]="'name'" [field]="attributeForm.get('name')" [messages]="ATTRIBUTE_VALIDATOR"></form-validate>
+                        </div>
+
+                        <div class="form-group col-md-2 attribute-cpt-width" [ngClass]="{ 'has-error': f.submitted && !attributeForm.get('code').valid, 'has-success': f.submitted && attributeForm.get('code').valid}">
+                            <form-control-label [text]="'consumerProductType.form.code'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control input-default" placeholder="{{ 'consumerProductType.placeholder.code' | translate }}" class="form-control" name="code" formControlName="code">
+                            <form-validate [form]="f" [fieldName]="'code'" [field]="attributeForm.get('code')" [messages]="ATTRIBUTE_VALIDATOR"></form-validate>
+                        </div>
+
+                        <div class="form-group col-md-2 attribute-cpt-width" [ngClass]="{ 'has-error': f.submitted && !attributeForm.get('valueType').valid, 'has-success': f.submitted && attributeForm.get('valueType').valid}">
+                            <form-control-label [text]="'consumerProductType.form.attributeType'" [required]="true"></form-control-label>
+                            <span class="clip-select">
+                                <select  name="valueType" id="selectValueType{{i}}"  class="select2" formControlName="valueType">
+                                    <option value="0">Select {{ 'consumerProductType.form.attributeType' | translate }}</option>
+                                    <option *ngFor="let valueType1 of valueTypes" [value]="valueType1.id">{{valueType1.name}}</option>
+                                </select>
+                                <form-validate [form]="f" [fieldName]="'valueType'" [field]="attributeForm.get('valueType')" [messages]="ATTRIBUTE_VALIDATOR"></form-validate>
+                            </span>
+                        </div>
+
+                        <div class="form-group col-md-2 attribute-cpt-width" [ngClass]="{ 'has-error': f.submitted && !attributeForm.get('valueMin').valid, 'has-success': f.submitted && attributeForm.get('valueMin').valid}">
+                            <form-control-label [text]="'consumerProductType.form.attributeMinValue'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control input-default" placeholder="{{ 'consumerProductType.placeholder.attributeMinValue' | translate }}" class="form-control" name="valueMin" formControlName="valueMin">
+                            <form-validate [form]="f" [fieldName]="'valueMin'" [field]="attributeForm.get('valueMin')" [messages]="ATTRIBUTE_VALIDATOR"></form-validate>
+                        </div>
+
+                        <div class="form-group col-md-2 attribute-cpt-width" [ngClass]="{ 'has-error': f.submitted && !attributeForm.get('valueMax').valid, 'has-success': f.submitted && attributeForm.get('valueMax').valid}">
+                            <form-control-label [text]="'consumerProductType.form.attributeMaxValue'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control input-default" placeholder="{{ 'consumerProductType.placeholder.attributeMaxValue' | translate }}" class="form-control" name="valueMax" formControlName="valueMax">
+                            <form-validate [form]="f" [fieldName]="'valueMax'" [field]="attributeForm.get('valueMax')" [messages]="ATTRIBUTE_VALIDATOR"></form-validate>
+                        </div>
+
+                        <div class="form-group col-md-2 attribute-cpt-width" [ngClass]="{ 'has-error': f.submitted && !attributeForm.get('valueDefault').valid, 'has-success': f.submitted && attributeForm.get('valueDefault').valid}">
+                            <form-control-label [text]="'consumerProductType.form.defaultValue'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control input-default" placeholder="{{ 'consumerProductType.placeholder.defaultValue' | translate }}" class="form-control" name="valueDefault" formControlName="valueDefault">
+                            <form-validate [form]="f" [fieldName]="'valueDefault'" [field]="attributeForm.get('valueDefault')" [messages]="ATTRIBUTE_VALIDATOR"></form-validate>
+                        </div>
+
+                        <div class="button-cpt-detail">
+                            <div class="button-icon col-md-1"><i class="fa fa-plus-circle plus-icon" aria-hidden="true" (click)="addAttribute(consumerProductTypeForm);"></i></div>
+                            <div class="button-icon col-md-1"><i class="fa fa-minus-circle minus-icon" aria-hidden="true" (click)="removeAttribute(i);"></i></div>
+                        </div>
+
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">{{'consumerProductType.form.save' | translate}}</button>
+                <button type="button" (click)="list(consumerProductType);" class="btn mb-1 btn-outline-danger pull-right">{{'consumerProductType.form.cancel' | translate}}</button>
+            </div>
+        </div>
+    </form>
+</admin-root>

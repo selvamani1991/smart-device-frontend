@@ -1,0 +1,35 @@
+{
+  "list": {
+    "consumer": "Consumer List Details",
+    "pageLink": " Consumer List",
+    "notAvailable": "Data is not available",
+    "pageTitle": "list",
+    "consumerDevice": "Consumer Device List",
+    "pageDesc": "Listing all Consumer",
+    "state": "State",
+    "firstName": "First Name",
+    "email": "Email",
+    "active": "Active",
+    "status": "Status",
+    "disabled": "Disabled",
+    "enabled": "Enabled",
+    "noData": "Data is not available",
+    "logo": "Logo",
+    "phoneNumber": "Contact Number",
+    "username": "Username",
+    "action": "Action",
+    "productCount": "Device Count"
+  },
+
+  "form": {
+    "all": "All",
+    "description": "Description"
+  },
+
+
+  "placeholder": {
+    "name": " Enter Subscription Name",
+    "description": "Enter Description"
+  }
+
+}

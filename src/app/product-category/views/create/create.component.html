@@ -1,0 +1,38 @@
+﻿<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" [formGroup]="productCategoryForm" #f="ngForm" (ngSubmit)="f.form.valid && createProductCategory(f)" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+        <div class="card" id="projects">
+            <div class="card-body">
+                <h3 class="card-title">{{'productCategory.form.details' | translate}}</h3>
+                <div class="row">
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !productCategoryForm.get('name').valid, 'has-success': f.submitted && productCategoryForm.get('name').valid}">
+                        <form-control-label [text]="'productCategory.form.name'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control input-default" placeholder="{{ 'productCategory.placeholder.name' | translate }}" class="form-control" name="name" formControlName="name">
+                        <form-validate [form]="f" [fieldName]="'name'" [field]="productCategoryForm.get('name')" [messages]="PRODUCT_CATEGORY_VALIDATOR"></form-validate>
+                    </div>
+
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !productCategoryForm.get('description').valid, 'has-success': f.submitted && productCategoryForm.get('description').valid}">
+                        <form-control-label [text]="'productCategory.form.description'" [required]="false"></form-control-label>
+                        <div class="note-editor">
+                            <textarea id="form-field-22" class="form-control" placeholder="Enter Description" name="description" formControlName="description"></textarea>
+                        </div>
+                        <form-validate [form]="f" [fieldName]="'description'" [field]="productCategoryForm.get('description')" [messages]="PRODUCT_CATEGORY_VALIDATOR"></form-validate>
+                    </div>
+                    <div class="row col-md-12">
+                        <div class="form-check mb-3 col-md-2 consumer-product-checkbox">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" name="consumerProductSupported" formControlName="consumerProductSupported"  >{{ 'productCategory.form.consumerProduct' | translate }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">{{'productCategory.form.save' | translate}}</button>
+                <button type="button" (click)="list(productCategory);" class="btn mb-1 btn-outline-danger pull-right">{{'productCategory.form.cancel' | translate}}</button>
+            </div>
+        </div>
+    </form>
+</admin-root>

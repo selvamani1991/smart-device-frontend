@@ -1,0 +1,30 @@
+<div class="card" id="dashboard">
+    <div class="card-header">
+        <h3>{{ 'vendorDashboard.form.topVendor' | translate }}</h3>
+    </div>
+    <div class="card-body clientBody">
+        <div class="active-member">
+            <div class="table-responsive scroll-table">
+                <table class="table table-xs mb-0">
+                    <thead>
+                    <tr>
+                        <th>{{ 'clientDashboard.form.vendorName' | translate }}</th>
+                        <th>{{ 'clientDashboard.form.email' | translate }}</th>
+                        <th>{{ 'clientDashboard.form.contact' | translate }}</th>
+                        <th width="22%">{{ 'clientDashboard.form.machineCount' | translate }}</th>
+                    </tr>
+                    </thead>
+
+                    <tbody  *ngFor="let topVendor of topVendors">
+                    <tr *ngIf="currentUser.ownerId==topVendor.zoneId">
+                        <td>{{topVendor.name}}</td>
+                        <td>{{topVendor.admin.email}}</td>
+                        <td>{{topVendor.admin.phoneNo}}</td>
+                        <td>{{topVendor.productCount}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

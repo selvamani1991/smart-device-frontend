@@ -1,0 +1,25 @@
+<div class="card" id="dashboard">
+    <div class="card-header">
+        <h3>{{'company.form.topProductType' | translate}}</h3>
+    </div>
+    <div class="card-body clientBody">
+        <div class="active-member">
+            <div class="table-responsive scroll-table">
+                <table class="table table-xs mb-0">
+                    <thead>
+                        <tr>
+                            <th>{{'companyDashboard.form.name' | translate}}</th>
+
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let topCompanyBuildingProductType of topCompanyBuildingProductTypes">
+                        <tr>
+                            <td>{{topCompanyBuildingProductType.name}}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

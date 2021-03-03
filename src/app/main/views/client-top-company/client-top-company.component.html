@@ -1,0 +1,44 @@
+<div class="card" id="dashboard">
+    <div class="card-header top-header-size">
+        <h5 class="talkio_whitecolor">Top {{ client && client.companyNickName?client.companyNickName:('clientDashboard.form.company' |
+            translate )}}</h5>
+    </div>
+    <div class="card-body clientBody">
+        <div class="row">
+            <div class="col-lg-6"></div>
+            <div class="col-lg-6" >
+                <div class="clientDropdown float-right">
+                    <span class="clip-select">
+                        <select id="clientTopCompanies_select" name="zone" class="select2">
+                            <option value="0">Select Zone</option>
+                                <option *ngFor="let zone of zones" [value]="zone.alias">{{zone.name}}</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="active-member">
+            <div class="table-responsive scroll-table">
+                <table class="table table-xs mb-0" id="talkio_table">
+                    <thead class="talkio_themecolor">
+                    <tr>
+                        <th>{{ 'clientDashboard.form.companyName' | translate }}</th>
+                        <th>{{ 'clientDashboard.form.email' | translate }}</th>
+                        <th>{{ 'clientDashboard.form.contact' | translate }}</th>
+                        <th width="22%">{{ 'clientDashboard.form.machineCount' | translate }}</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr *ngFor="let topCompany of topCompanies">
+                        <td>{{topCompany.name}}</td>
+                        <td>{{topCompany.admin.email}}</td>
+                        <td>{{topCompany.admin.phoneNo}}</td>
+                        <td>{{topCompany.productCount}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

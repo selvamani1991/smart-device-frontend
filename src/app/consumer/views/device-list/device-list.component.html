@@ -1,0 +1,46 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{'consumerSubscription.list.consumerDeviceDetails' | translate}}</h3>
+
+            <product-list-header (pageSizeChanged)="changePageSize($event)" (search)="searchConsumerDeviceList($event)" (addNewEvent)="addConsumerDevice($event)"></product-list-header>
+
+            <div class="table-responsive">
+                <div *ngIf="consumerDevices.length>0">
+                    <table class="table table-striped table-hover padding-top-20">
+                        <thead>
+                        <tr>
+                            <th>{{ 'consumerSubscription.list.logo' | translate }}</th>
+                            <th>{{ 'consumerSubscription.list.name' | translate }}</th>
+                            <th>{{ 'consumerSubscription.list.connectionType' | translate }}</th>
+                            <th>{{ 'consumerSubscription.list.deviceId' | translate }}</th>
+                            <th width="15%"><b>{{ 'product.form.action' | translate }}</b></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let consumerDevice of consumerDevices">
+                            <td class="userSize"><img src="{{consumerDevice.avatar}}" *ngIf="consumerDevice.id && consumerDevice.avatar" class="list-logo"> <i class="fa fa-user" *ngIf="consumerDevice.id && !consumerDevice.avatar"></i></td>
+                            <td>{{consumerDevice.name}}</td>
+                            <td>{{consumerDevice.connectionType}}</td>
+                            <td>{{consumerDevice.deviceId}}</td>
+                            <td>
+                                <i class="fa fa-bar-chart color-muted m-r-5 show-machine cursor-position" data-toggle="tooltip" title="TelemetryData" (click)="showTelemetry(consumerDevice);"></i>
+                                <i class="fa fa-exclamation-triangle color-muted m-r-5 show-machine cursor-position" data-toggle="tooltip" title="ErrorData" (click)="showErrorData(consumerDevice);"></i>
+                                <i class="fa fa-database color-muted m-r-5 show-machine cursor-position" data-toggle="tooltip" title="ReportData" (click)="showProductData(consumerDevice);"></i>
+                                <!--<i class="fa fa-database color-muted m-r-5 show-machine cursor-position" data-toggle="tooltip" title="Ticket" (click)="showTicket(consumerDevice);"></i>-->
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="consumerDevices.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                </div>
+            </div>
+            <div *ngIf="consumerDevices.length==0">
+                <div class="dataSpace text-center">
+                    <b>{{ 'consumer.list.noData' | translate }}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</admin-root>

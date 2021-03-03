@@ -1,0 +1,47 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card"  id="client">
+        <div class="card-body">
+            <h3 class="card-title">{{ 'client.clientProduct.clientProduct' | translate }}</h3>
+            <list-header (pageSizeChanged)="changePageSize($event)" (search)="searchClient($event)" (addNewEvent)="addClient($event)"></list-header>
+            <div class="table-responsive">
+                <div *ngIf="clientProducts.length>0">
+                    <table class="table table-striped table-hover padding-top-20">
+                        <thead>
+                        <tr>
+                            <th width="10%">{{ 'client.clientProduct.name' | translate }}</th>
+                            <th>{{ 'client.clientProduct.description' | translate }}</th>
+                            <th>{{ 'client.clientProduct.dispatchedDate' | translate }}</th>
+                            <th>{{ 'client.clientProduct.acceptedDate' | translate }}</th>
+                            <th width="10%">{{ 'client.clientProduct.action' | translate }}</th>
+                        </tr>
+                        </thead>
+                        <tbody *ngFor="let clientProduct of clientProducts">
+                        <tr>
+                            <td>{{clientProduct.product.name}}</td>
+                            <td>{{clientProduct.product.description}}</td>
+                            <td>{{clientProduct.dispatchedDate}}</td>
+                            <td>{{clientProduct.acceptedDate}}</td>
+                            <td>
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">{{ 'client.clientProduct.dispatch' | translate }}</button>
+                                <div class="dropdown-menu assign-dropdown" x-placement="bottom-start">
+                                    <a class="dropdown-item" data-toggle="modal" (click)="dispatchProduct(clientProduct)" data-target="#vendorProductModal">{{ 'client.clientProduct.assignVendor' | translate }}</a>
+                                    <a class="dropdown-item" data-toggle="modal" (click)="dispatchProduct(clientProduct)" data-target="#companyProductModal">{{ 'client.clientProduct.assignCompany' | translate }}</a>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="clientProducts.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                </div>
+            </div>
+            <div *ngIf="clientProducts.length==0">
+                <div class="dataSpace text-center">
+                    <b>{{ 'client.list.noData' | translate }}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+    <company-assign-modal [product]="selectedProduct" (submitEvent)="reloadRoles($event)"></company-assign-modal>
+    <vendor-assign-modal [product]="selectedProduct" (submitEvent)="reloadRoles($event)"></vendor-assign-modal>
+</admin-root>

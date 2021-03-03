@@ -1,0 +1,48 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{'firmware.form.title' | translate}}</h4>
+                <list-header (pageSizeChanged)="changePageSize($event)" (search)="searchFirmware($event)" (addNewEvent)="addFirmware($event)" *ngIf="productType.active"></list-header>
+                <product-list-header (pageSizeChanged)="changePageSize($event)" (search)="searchFirmware($event)" *ngIf="!productType.active"></product-list-header>
+                <div class="table-responsive">
+                   <div  *ngIf="medias.length>0">
+                    <table class="table table-striped table-hover padding-top-20">
+                            <thead>
+                            <tr>
+                                <th width="20%">{{'firmware.form.logo' | translate}}</th>
+                                <th>{{ 'firmware.form.name' | translate }}</th>
+                                <th>{{ 'firmware.form.description' | translate }}</th>
+                                <th>{{ 'firmware.form.action' | translate }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let media of medias">
+                                <td class="extension-size">
+                                    <a href="{{media.path}}">
+                                        <span class="firmware-icon"> <img alt="BIN" src="/assets/images/bin.png" *ngIf="media.id && media.extension=='bin'" width="60" height="55" style="margin-left:-6px;"></span>
+                                        <span class="firmware-icon"> <img alt="HEX" src="/assets/images/hex_file.png" *ngIf="media.id && media.extension=='hex'" width="60" height="55" style="margin-left:-6px;"></span>
+                                        <span class="firmware-icon"> <img alt="MOT" src="/assets/images/mot_file.png" *ngIf="media.id && media.extension=='mot'" width="60" height="55" style="margin-left:-6px;"></span>
+                                    </a>
+                                </td>
+                                <td>{{media.name}}</td>
+                                <td>{{media.description}}</td>
+                                <td>
+                                    <i class="fa fa-eye color-muted m-r-5 cursor-position" data-toggle="tooltip" title="Show" (click)="show(media);"></i>
+                                    <i class="fa fa-close color-danger show-machine cursor-position" data-toggle="tooltip" title="Delete" (click)="markDeleted(media);"></i>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="medias.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                    </div>
+                </div>
+                <div *ngIf="medias.length==0">
+                    <div class="dataSpace text-center">
+                        <b>{{ 'firmware.list.notAvailable' | translate }}</b>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+</admin-root>

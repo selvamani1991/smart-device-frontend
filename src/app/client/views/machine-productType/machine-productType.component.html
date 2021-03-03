@@ -1,0 +1,56 @@
+<admin-root >
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card" id="client">
+        <div class="card-body">
+            <h3 class="card-title">Machine {{client.productTypeNickName?client.productTypeNickName:('clientDashboard.form.productType' | translate )}}</h3>
+            <product-list-header (pageSizeChanged)="changePageSize($event)" (search)="searchMachineProductType($event)" (addNewEvent)="addClient($event)"></product-list-header>
+            <div class="table-responsive">
+                <div *ngIf="machineProductTypes.length>0">
+                    <table class="table table-striped table-hover padding-top-20">
+                        <thead>
+                            <tr>
+                                <th>{{ 'client.machineProductType.logo' | translate }}</th>
+                                <th>{{client.productTypeNickName?client.productTypeNickName:('clientDashboard.form.productType' | translate )}}</th>
+                                <th>{{ 'client.boardProductType.orderId' | translate }}</th>
+                                <th>{{ 'client.machineProductType.modelNo' | translate }}</th>
+                                <th>{{ 'client.machineProductType.dispatched' | translate }}/{{ 'client.machineProductType.totalOrder' | translate }}</th>
+                                <th>{{ 'client.machineProductType.assignedDate' | translate }}</th>
+                                <th>{{ 'client.machineProductType.machineComplete' | translate }}</th>
+                                <th>{{ 'client.machineProductType.status' | translate }}</th>
+                                <th width="10%">{{ 'client.machineProductType.action' | translate }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let machineProductType of machineProductTypes">
+                                <td>
+                                    <div class="image-top-detail" *ngIf="machineProductType.productType.id && machineProductType.productType.logo">
+                                        <img src="{{machineProductType.productType.logo}}"  class="list-logo">
+                                    </div>
+                                    <div class="top-default-image-list" *ngIf="machineProductType.productType.id && !machineProductType.productType.logo">
+                                        <i class="fa fa-cube user-icon-image lineSpace2 show-machine"></i>
+                                    </div>
+                                </td>
+                                <td>{{machineProductType.productType.name}}</td>
+                                <td>{{machineProductType.orderId}}</td>
+                                <td>{{machineProductType.productType.modelNo}}</td>
+                                <td class="px-5">{{machineProductType.completeCount}}/{{machineProductType.productCount}}</td>
+                                <td>{{machineProductType.assignedDate}}</td>
+                                <td class="px-5">{{machineProductType.machineCreatedCount}}</td>
+                                <td>{{machineProductType.status}}</td>
+                                <td><i class="fa fa-eye color-muted m-r-5 cursor-style" (click)="show(machineProductType);"></i>
+                                    <img alt="Machine" src="/assets/images/machine.svg" class="show-machine cursor-position icons-sizes show-type" data-toggle="tooltip" title="Machine" (click)="showMachine(machineProductType);">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="machineProductTypes.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                </div>
+            </div>
+            <div *ngIf="machineProductTypes.length==0">
+                <div class="dataSpace text-center">
+                    <b>{{ 'client.list.noData' | translate }}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</admin-root>

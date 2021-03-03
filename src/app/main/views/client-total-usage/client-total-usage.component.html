@@ -1,0 +1,80 @@
+<div class="card" id="dashboard">
+    <div class="card-header top-header-size">
+        <h5 class="talkio_whitecolor" >Over All {{client &&
+            client.productNickName?client.productNickName:('clientDashboard.form.product' |
+            translate )}} Usage</h5>
+    </div>
+    <div class="card-body clientBody" [hidden]="productTypes.length==0">
+        <div class="row" >
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="client-total-usage">
+                        <span class="clip-select">
+                            <select id="selectProductTypeUsage" name="productType" class="select2">
+                                <!--<option value="">Select {{ client.productTypeNickName }}</option>-->
+                                    <option *ngFor="let productType of productTypes" [value]="productType.alias">{{productType && productType.name}}</option>
+                            </select>
+                        </span>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-sm-6" *ngIf="currentUser.userType=='clientAdmin'">
+                <div class="client-total-usage">
+                    <span class="clip-select">
+                        <select id="selectZoneUsage1" name="zone" class="select2">
+                            <option value="0">Select Zone</option>
+                                <option *ngFor="let zone of zones" [value]="zone.alias">{{zone.name}}</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-sm-6" *ngIf="currentUser.userType=='clientAdmin'">
+                <div class="client-total-usage" >
+                    <span class="clip-select">
+                        <select id="selectCompanyUsage" name="company" class="select2">
+                                <option value="0">Select {{client.companyNickName?client.companyNickName:('clientDashboard.form.company' | translate )}}</option>
+                                <option *ngFor="let company of zoneCompanies" [value]="company.alias">{{company.name}}</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="input-group client-total-usage">
+                    <input type="text" placeholder="{{ 'client.placeholder.selectStartDate' | translate }}"  autocomplete="off" id="startDateUsage" class="calendar-dashboard">
+                    <span class="input-group-append calendar-box-dashboard" >
+                        <span class="input-group-text">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="input-group client-total-usage">
+                    <input type="text" placeholder="{{ 'client.placeholder.selectEndDate' | translate }}"  autocomplete="off" id="endDateUsage" class="calendar-dashboard">
+                    <span class="input-group-append calendar-box-dashboard" >
+                        <span class="input-group-text">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="client-total-usage">
+                        <span class="clip-select">
+                            <select id="selectComponentUsage" name="component" class="select2" multiple>
+                                <option   *ngFor="let componentObj of components" [value]="componentObj.id">{{componentObj.name}}</option>
+                            </select>
+                        </span>
+                </div>
+            </div>
+        </div>
+        <div class="bar-one" id="total-usage-data-bar"></div>
+    </div>
+    <div class="foot-product-type" [hidden]="productTypes.length>0">
+        No  Product Type Found  !!!
+    </div>
+</div>

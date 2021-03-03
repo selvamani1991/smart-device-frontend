@@ -1,0 +1,53 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{'subscription.form.title' | translate}}</h4>
+                <list-header (pageSizeChanged)="changePageSize($event)" (search)="searchSubscription($event)"></list-header>
+                <div class="table-responsive">
+
+                   <div  *ngIf="subscriptions.length>0">
+                    <table class="table table-striped table-hover padding-top-20">
+                            <thead>
+                            <tr>
+                                <th>{{'subscription.form.logo' | translate}}</th>
+                                <th>{{ 'subscription.form.name' | translate }}</th>
+                                <th>{{ 'subscription.form.description' | translate }}</th>
+                                <th>{{ 'subscription.form.price' | translate }}</th>
+                                <th>{{ 'subscription.form.duration' | translate }}</th>
+                                <th>{{ 'subscription.form.status' | translate }}</th>
+                                <th width="10%">{{ 'subscription.form.action' | translate }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let subscription of subscriptions">
+                                <td class="userSize"><img src="{{subscription.logo}}" *ngIf="subscription.id && subscription.logo" class="list-logo"> <i class="fa fa-calendar" *ngIf="subscription.id && !subscription.logo"></i></td>
+                                <td>{{subscription.name}}</td>
+                                <td>{{subscription.description}}</td>
+                                <td>{{subscription.price}}</td>
+                                <td>{{subscription.duration}}</td>
+                                <td>
+                                    <button class="btn btn-success btn-xs" (click)="changeStatus(subscription,false)" *ngIf="subscription.active">{{ 'subscription.list.enabled' | translate }}</button>
+                                    <button class="btn btn-danger btn-xs" (click)="changeStatus(subscription,true)" *ngIf="!subscription.active">{{ 'subscription.list.disabled' | translate }}</button>
+                                </td>
+                                <td>
+                                    <i class="fa fa-pencil color-muted m-r-5 cursor-position" (click)="edit(subscription);"></i>
+                                    <i class="fa fa-eye color-muted m-r-5 showSpace" (click)="show(subscription);"></i>
+                                    <i class="fa fa-close color-danger cursor-position" (click)="markDeleted(subscription);"></i>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="subscriptions.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                    </div>
+                </div>
+                <div *ngIf="subscriptions.length==0">
+                    <div class="dataSpace text-center">
+                        <b>{{ 'subscription.list.notAvailable' | translate }}</b>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+</admin-root>

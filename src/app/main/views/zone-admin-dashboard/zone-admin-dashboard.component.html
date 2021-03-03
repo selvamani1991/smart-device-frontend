@@ -1,0 +1,37 @@
+
+<ZoneCardDashboard [client]="client" [dashboardDetail]="dashboardDetail"></ZoneCardDashboard>
+<div class="row">
+    <div class="col-lg-6 col-sm-6">
+        <ZoneTopCompany></ZoneTopCompany>
+    </div>
+    <div class="col-lg-6 col-sm-6">
+        <ZoneTopVendor></ZoneTopVendor>
+    </div>
+
+    <div class="col-lg-12">
+        <ClientTotalProductInstalled [client]="client"[companies]="companies"></ClientTotalProductInstalled>
+    </div>
+
+    <div class="col-lg-12" >
+        <ClientTotalHealth [client]="client" [productTypes]="productTypes" [companies]="companies"></ClientTotalHealth>
+    </div>
+
+    <div class="col-lg-12" >
+        <ClientTotalRevenue [client]="client" [companies]="companies"></ClientTotalRevenue>
+    </div>
+
+    <!--<div class="col-lg-12">
+        <ClientTotalUsage [client]="client" [companies]="companies"></ClientTotalUsage>
+    </div>
+
+    <div class="col-lg-12" >
+        <ClientTotalErrorData [client]="client" [companies]="companies"></ClientTotalErrorData>
+    </div>
+-->
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <ClientStoreLocation></ClientStoreLocation>
+    </div>
+</div>
+

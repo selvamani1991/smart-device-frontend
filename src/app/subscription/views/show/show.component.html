@@ -1,0 +1,83 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" name="subscriptionForm" [formGroup]="subscriptionForm">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{ 'subscription.form.details' | translate }}</h4>
+                <div class="form-row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <form-control-label [text]="'subscription.form.name'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="name" formControlName="name" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'subscription.form.description'" [required]="true"></form-control-label>
+                            <div class="note-editor">
+                                <textarea placeholder="{{subscription.description}}" class="form-control" name="description" readonly></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <form-control-label [text]="'subscription.form.productCategory'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="productCategory" formControlName="productCategory" readonly/>
+                        </div>
+
+                        <div class="form-group">
+                            <form-control-label [text]="'subscription.form.costPerMachine'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="costPerMachine" formControlName="costPerMachine" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'subscription.form.price'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="price" formControlName="price" readonly/>
+                        </div>
+
+                        <div class="form-group">
+                            <form-control-label [text]="'subscription.form.currency'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="currency" formControlName="currency" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'subscription.form.machineTypeCount'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="machineTypeCount" formControlName="machineTypeCount" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'subscription.form.machineCount'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="machineCount" formControlName="machineCount" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'subscription.form.maxUsages'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="maxUsages" formControlName="maxUsages" readonly/>
+                        </div>
+
+                        <div class="form-group" *ngIf="subscription.salesApplicable">
+                            <form-control-label [text]="'subscription.form.salesPercentage'" [required]="false"></form-control-label>
+                            <input type="text" class="form-control" name="salesPercentage" formControlName="salesPercentage" readonly/>
+                        </div>
+
+                        <div class="form-group">
+                            <form-control-label [text]="'subscription.form.duration'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="duration" formControlName="duration" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'subscription.form.elapsedPeriod'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="elapsedPeriod" formControlName="elapsedPeriod" readonly/>
+                        </div>
+                    </div>
+                    <div class="col-md-4 show-icon-top">
+                        <div class="delete-image" style="cursor:pointer;" *ngIf="subscription.id && subscription.logo"><i class="fa fa-close color-danger cross-size" data-toggle="tooltip" title="Delete" (click)="markDeleted(subscription);"></i></div>
+                        <div class="company-image-size" *ngIf="subscription.id && subscription.logo"><img src="{{subscription.logo}}"  class="upload-image"/></div>
+                        <div class="company-image-size" *ngIf="!subscription.logo"><i class="fa fa-calendar show-icon" ></i></div>
+                        <div class="row mt-3 ml-3">
+                            <div class="choose_file">
+                                <button type="button" class="btn btn-default upload-button">{{'product.form.chooseImage' | translate}}</button>
+                                <input name="file" type="file" class="form-control" accept="image/*" (change)="onFileChange($event)"/>
+                            </div>
+                            <div class="file-detail" *ngIf="files && subscription.id && subscription.logo">{{files.name}}</div>
+                            <div class="file-detail"><span *ngIf="files && subscription.id && subscription.logo">{{ files.size/1024 | number:'1.0-0'}} </span> KB</div>
+                        </div>
+                        <div class="has-error error" *ngIf="formatError">{{'subscription.error.invalidPattern' | translate}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</admin-root>

@@ -1,0 +1,81 @@
+{
+  "list": {
+    "pageLink": "User Management",
+    "pageTitle": "Welcome to User Management",
+    "pageDesc": "Listing all users",
+    "notAvailable": "Data is not available",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "user_name": "User Name",
+    "phoneNo": "PhoneNo",
+    "gender": "Gender",
+    "email": "Email",
+    "active": "Active",
+    "status": "Status"
+  },
+  "create": {
+    "formTitle": "User creation form",
+    "formDesc": "User creation form",
+    "pageLink": "Create User",
+    "pageTitle": "Create a User",
+    "pageDesc": "creating a new user"
+  },
+  "edit": {
+    "formTitle": "User Update form",
+    "formDesc": "User update form",
+    "pageLink": "Edit User",
+    "pageTitle": "Edit a User",
+    "pageDesc": "editing a existing user"
+  },
+  "changePassword": {
+    "formTitle": "User Password Change",
+    "formDesc": "User Password Change",
+    "pageLink": "Change Password",
+    "pageTitle": "Change Password",
+    "pageDesc": "Changing password for a user",
+    "legend": "Change Password"
+  },
+  "form": {
+    "userDetails": "User Details",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "username": "Username",
+    "phoneNo": "Phone No.",
+    "gender": "Gender",
+    "email": "Email",
+    "isActive": "Active",
+    "male": "Male",
+    "female": "Female",
+    "verified": "Verified !",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "available_to_user": "Available to use"
+  },
+  "error": {
+    "firstName": "Please enter first name.",
+    "firstNameMin": "Please enter first name at least 4 character.",
+    "lastName": "Please enter last name.",
+    "username": "Please enter username",
+    "phoneNo": "Please enter phone number.",
+    "email": "Please enter email.",
+    "emailPattern": "Email must be a valid email address",
+    "duplicateEmail": "Email already Exist.",
+    "duplicateUsername": "Username already Exist.",
+    "active": "Please select active.",
+    "confirmPassword": "Please confirm password.",
+    "sameConfirmPassword": "Please enter both same password",
+    "password": "Please enter password.",
+    "gender": "Gender is required",
+    "mrs": "Thank You, Mrs.",
+    "mr": "Thank You, Mr."
+  },
+  "placeholder": {
+    "firstName": "Enter your First name",
+    "lastName": "Enter your Last name",
+    "email": "Enter your Email",
+    "username": "Enter your Username",
+    "password": "Enter your Password",
+    "confirmPassword": "Confirm your Password",
+    "phoneNo": "Enter your Phone Number"
+  }
+}

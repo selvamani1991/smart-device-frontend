@@ -1,0 +1,83 @@
+﻿<div class="modal fade" id="companyBuildingModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="company">
+            <form class="form-horizontal" [formGroup]="companyBuildingProductForm" #f="ngForm" (ngSubmit)="clickCompanyBuilding(f)" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{ client.productNickName }} Detail</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <span class="userSize2"><i class="fa fa-user"></i></span>
+                        </div>
+                        <div class="col-md-8">
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <td><b>{{ client.productNickName }} Name</b></td>
+                                    <td>{{product?product.name:''}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{ 'distributor.form.deviceId' | translate }}</b></td>
+                                    <td> {{product?product.deviceId:''}}</td>
+                                </tr>
+                                <tr></tr>
+                                <tr></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !companyBuildingProductForm.get('companyBuilding').valid, 'has-success': f.submitted && companyBuildingProductForm.get('companyBuilding').valid}">
+                            <label class="control-label">{{ replaceText('report.form.companyBuilding' | translate) }}</label>
+                            <span class="clip-select">
+                                <select name="companyBuilding" id="company-building-select" class="select2" formControlName="companyBuilding">
+                                    <option value="0">Select {{ replaceText('report.form.companyBuilding' | translate) }}</option>
+                                    <option *ngFor="let companyBuilding of companyBuildings" [value]="companyBuilding.id">{{companyBuilding.name}}</option>
+                                </select>
+                                <form-validate [form]="f" [fieldName]="'companyBuilding'" [field]="companyBuildingProductForm.get('companyBuilding')" [messages]="COMPANY_VALIDATOR"></form-validate>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !companyBuildingProductForm.get('dispatchedDate').valid, 'has-success': f.submitted && companyBuildingProductForm.get('dispatchedDate').valid}">
+                            <form-control-label [text]="'company.form.dispatchedDate'" [required]="true"></form-control-label>
+                            <div class="input-group">
+                                <input type="text" placeholder="{{ 'company.placeholder.dispatchedDate' | translate }}" class="form-control" name="dispatchedDate" formControlName="dispatchedDate" autocomplete="off" id="companyProductDispatchedDate">
+                                <span class="input-group-append" >
+                                    <span class="input-group-text">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </span>
+                                </span>
+                            </div>
+                            <form-validate [form]="f" [fieldName]="'dispatchedDate'" [field]="companyBuildingProductForm.get('dispatchedDate')" [messages]="COMPANY_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !companyBuildingProductForm.get('section').valid, 'has-success': f.submitted && companyBuildingProductForm.get('section').valid}">
+                            <form-control-label [text]="'company.form.section'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control input-default" placeholder="{{ 'company.placeholder.section' | translate }}" class="form-control" productCount="section" formControlName="section">
+                            <form-validate [form]="f" [fieldName]="'section'" [field]="companyBuildingProductForm.get('section')" [messages]="COMPANY_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !companyBuildingProductForm.get('floor').valid, 'has-success': f.submitted && companyBuildingProductForm.get('floor').valid}">
+                            <form-control-label [text]="'company.form.floor'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control input-default" placeholder="{{ 'company.placeholder.floor' | translate }}" class="form-control" productCount="floor" formControlName="floor">
+                            <form-validate [form]="f" [fieldName]="'floor'" [field]="companyBuildingProductForm.get('floor')" [messages]="COMPANY_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">Submit</button>
+                            <button type="button" class="btn mb-1 btn-outline-danger pull-right" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

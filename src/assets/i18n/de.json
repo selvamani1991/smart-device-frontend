@@ -1,0 +1,634 @@
+{
+  "sweet": {
+    "alert": {
+      "created": " Created!",
+      "created_msg": "Your data successfully created!",
+      "updated": " Updated!",
+      "updated_msg": "Your data successfully updated!",
+      "deleted": " Deleted!",
+      "deleted_msg": "Your data has been deleted.",
+      "oops": "Oops!!!",
+      "error_msg": "Your action is unsuccessful, due to some server error.",
+      "sure": "Are you sure?",
+      "delete_confirm": "You will not be able to recover this data!",
+      "yes_delete": "Yes, delete it!",
+      "no_delete": "No, cancel please!",
+      "cancelled": "Cancelled",
+      "cancelled_msg": "Your data is safe :)",
+      "success": "success",
+      "error": "error",
+      "warning": "warning"
+    }
+  },
+  "header": {
+    "menu": {
+      "login": "Login",
+      "register": "Register",
+      "islam": "Islam",
+      "tauhid": "Tauhid",
+      "namaaz": "Salah",
+      "haj": "Hajj",
+      "roza": "Roza",
+      "jakaat": "Zakaat",
+      "hadish": "Hadish"
+    },
+    "salah": {
+      "HEADER": "Salah(Nammaz) and its timing",
+      "SUNRISE": "Sun Rise: ",
+      "SUNSET": "Sun Set: "
+    }
+  },
+  "footer": {
+    "copyright": {
+      "MAIN": "&copy; Copy Right Reserved",
+      "MESSAGE": "Power by: Indian Technologies Dreams Pvt Ltd"
+    },
+    "detail": {
+      "text": "Amaal-e-Momineen is a steps towards right path, support a person to build up spiritual soul (Taqwa) in light of Hadith and Quran.",
+      "address": "B-101 My Nest, Shikari Playa,Electronic City, Bangalore, India 560100"
+    },
+    "box": {
+      "headerlink": "Important Links",
+      "donate": "Donate Us",
+      "category": "Topic Categories",
+      "app": "Mobile App"
+    },
+    "links": {
+      "about-us": "About Us",
+      "contact-us": "Contact Us",
+      "policy": "Private Policy",
+      "terms": "Term and Conditions"
+    },
+    "category": {
+      "islam": "Islamic History",
+      "thauhid": "Praise of Allah",
+      "hajj": "Guidelines to Hajj",
+      "salah": "Salah (Namaaz)",
+      "roza": "Saum (Roza)",
+      "zakaat": "Help needy(Zakaath)",
+      "hadith": "A-Hadith & Sunnah"
+    }
+  },
+  "dashboard": {
+    "pageTitle": "Welcome to Amaal-e-Momineen",
+    "pageDesc": "Amaal in light of Quran , Hadith and Sunnah"
+  },
+  "layout": {
+    "header": {
+      "logo": "Ammal-e-Momineen",
+      "login": "Login"
+    },
+    "flag-style": "flag-icon-us"
+  },
+  "auth": {
+    "view": {
+      "welcomeMessage": "Welcome to Amaal-e-Momineen",
+      "loginUserPassword": "You need to provided username and password to access your system.",
+      "loginPasswordText": "Please enter your name and password to log in.",
+      "keepLogin": "Keep me signed in",
+      "forgotPassword": "I forgot my password",
+      "forgotText": "Enter your e-mail address below to reset your password.",
+      "learnTo": "<strong>Need help?</strong> Learn more about how to ",
+      "retrieveAccount": "retrieve an existing account.",
+      "passwordConfirmation": "Forgot Password Email Confirmation",
+      "forgotTitle": "Forget Password?",
+      "passwordConfirmationText": "Forgot password request processed successfully .Email has been sent with link to reset password on xxx.gmail.com please reset password . Link is valid for only 24 hours .",
+      "notHaveAccount": "Don't have an account yet?",
+      "createAccount": "Create an account",
+      "accountConfirmation": "You account is successfully confirmed . Please use your email address and password to login in account.",
+      "useAccount": "Start using your account.",
+      "logIn": "Log-in",
+      "registered": "Your account is successfully created. But you need to confirm your email address to activate account. An email is already sent to your registered email address . Please check your email and click on activation link to active account.",
+      "notAccountConfirmation": "You account is not available or already confirmed before. Please use your email address and password to login in account.",
+      "passwordChanged": "You account password is changed successfully . Please use your email address and password to login in account.",
+      "resetPassword": "You have initiated reset password. Reset Password link  is send to your registered mobile. Please click on link to change your password.",
+      "resetDetail": "Enter your password and confirm password to reset:",
+      "alreadyAccount": "Already have an account?",
+      "signup": "Sign Up",
+      "personalDetail": "Enter your personal details below, Your email address will be your username:",
+      "passwordDetails": "Enter your password details below:",
+      "agreeDetail": "I agree policy & agreement",
+      "submit": "Submit",
+      "social": "Or sign up with a social network",
+      "twitter": "Twitter",
+      "google": "Google",
+      "facebook": "Facebook",
+      "screenLock": "Password to unlock",
+      "accessDenied": "Access Denied. Please contact your administrator for permission."
+    }
+  },
+  "sidebar": {
+    "heading": {
+      "NAVIGATION": "Main Navigation",
+      "FEATURES": "Core Features",
+      "DOCUMENTATION": "Documentation"
+    },
+    "nav": {
+      "dashboard": "Dashboard",
+      "user": {
+        "main": "User Management",
+        "create": "Create User"
+      },
+      "permission": {
+        "main": "Permission Management"
+      },
+      "featureCategory": {
+        "main": "Feature Category Management",
+        "create": "Create Feature Category"
+      },
+      "feature": {
+        "main": "Feature Management",
+        "create": "Create Feature"
+      },
+      "role": {
+        "main": "Role Management",
+        "create": "Create Role"
+      },
+      "namaz": {
+        "main": "Namaz Management",
+        "create": "Create Namaz"
+      },
+      "namazType": {
+        "main": "Namaz Type Management",
+        "create": "Create Namaz Type"
+      }
+    }
+  },
+  "page": {
+    "title": {
+      "login": "Login",
+      "register": "Register",
+      "registered": "Registered",
+      "confirmed": "Confirmed",
+      "not-confirmed": "Not Confirmed",
+      "forgot-password": "Forgot Password",
+      "forgot-password-confirmation": "Forgot Password Confirmation",
+      "reset-password": "Reset Password",
+      "password-reset": "Password Reset",
+      "screen-lock": "Screen Lock"
+    },
+    "action": {
+      "create": "Create",
+      "delete": "Delete",
+      "edit": "Edit",
+      "disable": "Disable",
+      "enable": "Enable",
+      "change_password": "Change Password",
+      "setting": "Settings",
+      "back": "Back",
+      "update": "Update",
+      "lock": "Lock",
+      "unlock": "Unlock",
+      "assign": "Assign",
+      "show": "Show Detail",
+      "add": "Add"
+    },
+    "list": {
+      "showing": "Showing",
+      "entries_page": "entries per page",
+      "action": "Action",
+      "notAvailable": "Data is not available",
+      "enabled": "Enabled",
+      "disabled": "Disabled",
+      "deleted": "Deleted",
+      "core": "Core",
+      "status": "Status",
+      "lock": "Locked",
+      "unlock": "Unlocked",
+      "crud": "Crud"
+    },
+    "islam": {
+      "pageTitle": "Islam",
+      "pageDesc": "Right path to Life & after death"
+    },
+    "hadish": {
+      "pageTitle": "Al-Hadith",
+      "pageDesc": "Life of Prohet Mohammad &#65018; as lighting."
+    },
+    "tauhid": {
+      "pageTitle": "Tauhid Al-hamd",
+      "pageDesc": "Praise only to ALLAH"
+    },
+    "jakaat": {
+      "pageTitle": "Zakaat",
+      "pageDesc": "Help needy in the name of  ALLAH"
+    },
+    "haj": {
+      "pageTitle": "Haj",
+      "pageDesc": "A Sunnah of prophet Abrahim and praised by ALLAH"
+    },
+    "namaaz": {
+      "pageTitle": "Salah",
+      "pageDesc": "Way to communicate to ALLAH"
+    },
+    "roza": {
+      "pageTitle": "Saum",
+      "pageDesc": "Fasting in the name of ALLAH. Act of Momineen most liked by ALLAH "
+    },
+    "home": {
+      "pageTitle": "Home",
+      "pageDesc": "Right path to Life & after death"
+    },
+    "dashboard": {
+      "pageTitle": "Dashboard",
+      "pageDesc": "Right path to Life & after death"
+    },
+    "about-us": {
+      "pageTitle": "About Us",
+      "pageDesc": "Right path to Life & after death"
+    },
+    "contact-us": {
+      "pageTitle": "Contact Us",
+      "pageDesc": "Right path to Life & after death"
+    },
+    "private-policy": {
+      "pageTitle": "Private Policy",
+      "pageDesc": "Right path to Life & after death"
+    },
+    "terms-conditions": {
+      "pageTitle": "Terms and Conditions",
+      "pageDesc": "Right path to Life & after death"
+    },
+    "page-not-found-404-error": {
+      "pageTitle": "Page Not Found",
+      "pageDesc": "Right path to Life & after death"
+    },
+    "calender": {
+      "pageTitle": "Calender",
+      "pageDesc": "Monthly Calender"
+    },
+    "login": {
+      "pageTitle": "Login",
+      "pageDesc": "Use your credentials to access."
+    },
+    "register": {
+      "pageTitle": "Register",
+      "pageDesc": "Your details such that we can know you."
+    },
+    "forgot-password": {
+      "pageTitle": "Forgot Password",
+      "pageDesc": "Reset your password by your email address."
+    },
+    "registered": {
+      "pageTitle": "Registered Successfully",
+      "pageDesc": "Your account is created and email is send."
+    },
+    "confirmed": {
+      "pageTitle": "Confirmed Successfully",
+      "pageDesc": "Your account has been confirmed."
+    },
+    "not-confirmed": {
+      "pageTitle": "Account not confirmed yet",
+      "pageDesc": "Your account has been confirmed."
+    },
+    "password-confirmed": {
+      "pageTitle": "Forgot Password Email Confirmation",
+      "pageDesc": "Your account has been confirmed."
+    },
+    "password-reset": {
+      "pageTitle": "Password Reset",
+      "pageDesc": "Your account has been confirmed."
+    },
+    "reset-password": {
+      "pageTitle": "Reset Password",
+      "pageDesc": "Change your password"
+    },
+    "form": {
+      "verified": "Verified !",
+      "no-validation": "No such validation available for this field."
+    }
+  },
+  "common": {
+    "error": {
+      "1": "Some internal error occurred.",
+      "2": "Missing key to find entity.",
+      "3": "Invalid User credentials.",
+      "4": "User details not found.",
+      "5": "Unauthorized: Authentication key was either missing or invalid.",
+      "6": "Invalid password/login Id, password and login Id is case sensitive.",
+      "7": "Invalid email address. No such user found with matching email address.",
+      "8": "Invalid email address.",
+      "9": "Failed to reset password.",
+      "10": "Your authentication is expired , please login again.",
+      "11": "Unauthorized: User authentication failed!!",
+      "12": "Unauthorized to reset password!!",
+      "13": "Object can't be deleted!!",
+      "14": "Duplicate Object existing.",
+      "15": "Invalid Object Id/alias name is provided.",
+      "16": "Email address is already registered.",
+      "17": "User was already confirmed",
+      "18": "User is inactive or disabled, please contact admin.",
+      "19": "User token for reset password have been changed. Please try again.",
+      "20": "User token for reset password have been expired. Please try again.",
+      "21": "User token for confirmation have been expired. Please try again.",
+      "22": "Reference of object is available in another object , Hence we can not delete them."
+    }
+  },
+  "search": {
+    "PLACEHOLDER": "Enter search text here..."
+  },
+  "topbar": {
+    "messages": {
+      "MAIN": "Messages",
+      "HEADER": "Unread messages",
+      "SEEALL": "See All"
+    },
+    "activities": {
+      "MAIN": "Activities",
+      "HEADER": "You have new notifications",
+      "SEEALL": "See All"
+    },
+    "user": {
+      "PROFILE": "My Profile",
+      "CALENDAR": "My Calendar",
+      "MESSAGES": "My Messages",
+      "LOCKSCREEN": "Lock Screen",
+      "LOGOUT": "Log Out"
+    }
+  },
+  "login": {
+    "error": {
+      "username": "Please enter username.",
+      "password": "Please enter password."
+    }
+  },
+  "forgot": {
+    "error": {
+      "email": "Please enter email."
+    }
+  },
+  "register": {
+    "form": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "username": "Username",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password"
+    },
+    "placeholder": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "confirmPassword": "Confirm Password",
+      "password": "Password"
+    },
+    "error": {
+      "firstName": "Please enter first name.",
+      "lastName": "Please enter last name.",
+      "username": "Please enter username.",
+      "email": "Please enter email.",
+      "confirmPassword": "Please confirm password.",
+      "sameConfirmPassword": "Please enter both same password",
+      "password": "Please enter password.",
+      "mustAgree": "Please select agree checkbox .",
+      "emailUsed": "Email already used.",
+      "emailValid": "Invalid email address"
+    }
+  },
+  "user": {
+    "list": {
+      "pageLink": "User Management",
+      "pageTitle": "Welcome to User Management",
+      "pageDesc": "Listing all users",
+      "notAvailable": "Data is not available",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "user_name": "User Name",
+      "phoneNo": "PhoneNo",
+      "gender": "Gender",
+      "email": "Email",
+      "active": "Active",
+      "status": "Status"
+    },
+    "create": {
+      "formTitle": "User creation form",
+      "formDesc": "User creation form",
+      "pageLink": "Create User",
+      "pageTitle": "Create a User",
+      "pageDesc": "creating a new user"
+    },
+    "edit": {
+      "formTitle": "User Update form",
+      "formDesc": "User update form",
+      "pageLink": "Edit User",
+      "pageTitle": "Edit a User",
+      "pageDesc": "editing a existing user"
+    },
+    "changePassword": {
+      "formTitle": "User Password Change",
+      "formDesc": "User Password Change",
+      "pageLink": "Change Password",
+      "pageTitle": "Change Password",
+      "pageDesc": "Changing password for a user",
+      "legend": "Change Password"
+    },
+    "form": {
+      "userDetails": "User Details",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "username": "Username",
+      "phoneNo": "Phone No.",
+      "gender": "Gender",
+      "email": "Email",
+      "isActive": "Active",
+      "male": "Male",
+      "female": "Female",
+      "verified": "Verified !",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "available_to_user": "Available to use"
+    },
+    "error": {
+      "firstName": "Please enter first name.",
+      "firstNameMin": "Please enter first name at least 4 character.",
+      "lastName": "Please enter last name.",
+      "username": "Please enter username",
+      "phoneNo": "Please enter phone number.",
+      "email": "Please enter email.",
+      "emailPattern": "Email must be a valid email address",
+      "duplicateEmail": "Email already Exist.",
+      "duplicateUsername": "Username already Exist.",
+      "active": "Please select active.",
+      "confirmPassword": "Please confirm password.",
+      "sameConfirmPassword": "Please enter both same password",
+      "password": "Please enter password.",
+      "gender": "Gender is required",
+      "mrs": "Thank You, Mrs.",
+      "mr": "Thank You, Mr."
+    },
+    "placeholder": {
+      "firstName": "Enter your First name",
+      "lastName": "Enter your Last name",
+      "email": "Enter your Email",
+      "username": "Enter your Username",
+      "password": "Enter your Password",
+      "confirmPassword": "Confirm your Password",
+      "phoneNo": "Enter your Phone Number"
+    }
+  },
+  "feature": {
+    "list": {
+      "pageLink": "Feature Management",
+      "pageTitle": "Welcome to Feature Management",
+      "pageDesc": "Listing all Features",
+      "notAvailable": "Data is not available",
+      "name": "Name",
+      "description": "Description",
+      "category": "Category"
+    },
+    "create": {
+      "formTitle": "Feature creation form",
+      "formDesc": "Feature creation form",
+      "pageLink": "Create Feature",
+      "pageTitle": "Create a Feature",
+      "pageDesc": "creating a new Feature"
+    },
+    "edit": {
+      "formTitle": "Feature Update form",
+      "formDesc": "Feature update form",
+      "pageLink": "Edit Feature",
+      "pageTitle": "Edit a Feature",
+      "pageDesc": "editing a existing Feature"
+    },
+    "form": {
+      "featureDetails": "Feature Details",
+      "name": "Name",
+      "description": "Description",
+      "verified": "Verified !",
+      "category": "Feature Category",
+      "isActive": "Active",
+      "showInMenu": "Show in Menu",
+      "translation": "Translation Label",
+      "baseIcon": "Item Icon",
+      "state": "State",
+      "featureCategory": "Select Feature Category",
+      "fullCrud": "Supports Crud",
+      "isCrud": "Crud Support"
+    },
+    "error": {
+      "name": "Please enter name.",
+      "description": "Please enter description.",
+      "category": "Please select feature Category.",
+      "baseIcon": "Please enter icon.",
+      "translation": "Please enter translation label.",
+      "state": "Please enter state."
+    },
+    "placeholder": {
+      "name": "Enter Feature name",
+      "description": "Enter Feature description",
+      "icon": "Enter feature icon",
+      "translation": "Enter feature translation",
+      "state": "Enter feature state"
+    }
+  },
+  "featureCategory": {
+    "list": {
+      "pageLink": "Feature Category Management",
+      "pageTitle": "Welcome to Feature Category Management",
+      "pageDesc": "Listing all Feature Categories",
+      "notAvailable": "Data is not available",
+      "name": "Name",
+      "description": "Description"
+    },
+    "create": {
+      "formTitle": "Feature Category creation form",
+      "formDesc": "Feature Category creation form",
+      "pageLink": "Create Feature Category",
+      "pageTitle": "Create a Feature Category",
+      "pageDesc": "creating a new Feature Category"
+    },
+    "edit": {
+      "formTitle": "Feature Category Update form",
+      "formDesc": "Feature Category  form",
+      "pageLink": "Edit Feature Category",
+      "pageTitle": "Edit a Feature Category",
+      "pageDesc": "editing a existing Feature Category"
+    },
+    "form": {
+      "featureCategoryDetails": "Feature Category Details",
+      "name": "Name",
+      "description": "Description",
+      "verified": "Verified !",
+      "isActive": "Active",
+      "showInMenu": "Show in Menu",
+      "coreItem": "Core Item of System",
+      "isCore": "Core Item",
+      "deletableItem": "Deletable Item",
+      "deletable": "deletable",
+      "translation": "Translation Label",
+      "icon": "Item Icon",
+      "state": "State"
+    },
+    "error": {
+      "name": "Please enter name.",
+      "description": "Please enter description.",
+      "icon": "Please enter icon.",
+      "translation": "Please enter translation label.",
+      "state": "Please enter state."
+    },
+    "placeholder": {
+      "name": "Enter Feature Category name",
+      "description": "Enter Feature Category description",
+      "icon": "Enter feature category icon",
+      "translation": "Enter feature category translation",
+      "state": "Enter feature category state"
+    }
+  },
+  "role": {
+    "list": {
+      "pageLink": "Role Management",
+      "pageTitle": "Welcome to Role Management",
+      "pageDesc": "Listing all roles",
+      "notAvailable": "Data is not available",
+      "name": "Name",
+      "description": "Description"
+    },
+    "create": {
+      "formTitle": "Role creation form",
+      "formDesc": "Role creation form",
+      "pageLink": "Create Role",
+      "pageTitle": "Create a Role",
+      "pageDesc": "creating a new Role"
+    },
+    "edit": {
+      "formTitle": "Role Update form",
+      "formDesc": "Role update form",
+      "pageLink": "Edit Role",
+      "pageTitle": "Edit a Role",
+      "pageDesc": "editing a existing Role"
+    },
+    "assign": {
+      "formTitle": "Role Assign form",
+      "formDesc": "Role Assign form",
+      "pageLink": "Assign Role",
+      "pageTitle": "Assign feature for Role",
+      "pageDesc": "Assign feature for a existing Role",
+      "feature": "Feature",
+      "create": "Create",
+      "list": "List/View",
+      "update": "Update",
+      "delete": "Delete",
+      "execute": "Execute",
+      "permission": "Permission",
+      "crud": "Crud",
+      "notAvailable": "Feature not available for this category"
+    },
+    "form": {
+      "name": "Name",
+      "description": "Description",
+      "verified": "Verified !",
+      "roleDetails": "Role Details",
+      "roleAssignment": "Role Feature Assignment"
+    },
+    "error": {
+      "name": "Please enter name.",
+      "duplicate": "Role is already Exist.",
+      "description": "Please enter description."
+    },
+    "placeholder": {
+      "name": "Enter role name",
+      "description": "Enter role description"
+    }
+  }
+}

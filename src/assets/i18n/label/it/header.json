@@ -1,0 +1,18 @@
+{
+  "menu": {
+    "login": "Login",
+    "register": "Register",
+    "islam": "Islam",
+    "tauhid": "Tauhid",
+    "namaaz": "Salah",
+    "haj": "Hajj",
+    "roza": "Roza",
+    "jakaat": "Zakaat",
+    "hadish": "Hadish"
+  },
+  "salah":{
+    "HEADER": "Salah(Nammaz) and its timing",
+    "SUNRISE": "Sun Rise: ",
+    "SUNSET": "Sun Set: "
+  }
+}

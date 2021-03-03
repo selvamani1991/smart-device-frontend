@@ -1,0 +1,90 @@
+﻿<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" [formGroup]="zoneForm" #f="ngForm" (ngSubmit)="f.form.valid && createZone(f)" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">{{'zone.form.details' | translate}}</h3>
+                <div class="row">
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !zoneForm.get('name').valid, 'has-success': f.submitted && zoneForm.get('name').valid}">
+                        <form-control-label [text]="'zone.form.name'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control input-default" placeholder="{{ 'zone.placeholder.name' | translate }}" class="form-control" name="name" formControlName="name">
+                        <form-validate [form]="f" [fieldName]="'name'" [field]="zoneForm.get('name')" [messages]="ZONE_VALIDATOR"></form-validate>
+                    </div>
+
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !zoneForm.get('description').valid, 'has-success': f.submitted && zoneForm.get('description').valid}">
+                        <form-control-label [text]="'zone.form.description'" [required]="true"></form-control-label>
+                        <div class="note-editor">
+                            <textarea id="form-field-22" class="form-control" placeholder="Enter Zone description" name="description" formControlName="description"></textarea>
+                        </div>
+                        <form-validate [form]="f" [fieldName]="'description'" [field]="zoneForm.get('description')" [messages]="ZONE_VALIDATOR"></form-validate>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       <!-- <div class="card">
+            <div class="card-body" [formGroup]="adminForm">
+                <h3 class="card-title">{{'zone.form.contact' | translate}}</h3>
+                <div class="row">
+                    <div class="form-group col-md-6" [ngClass]="{ 'has-error': f.submitted && !adminForm.get('firstName').valid, 'has-success': f.submitted && adminForm.get('firstName').valid}">
+                        <form-control-label [text]="'zone.form.firstName'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'zone.placeholder.firstName' | translate }}" class="form-control" name="firstName" formControlName="firstName"/>
+                        <form-validate [form]="f" [fieldName]="'firstName'" [field]="adminForm.get('firstName')" [messages]="ADMIN_VALIDATOR"></form-validate>
+                    </div>
+                    <div class="form-group col-md-6" [ngClass]="{ 'has-error': f.submitted && !adminForm.get('lastName').valid, 'has-success': f.submitted && adminForm.get('lastName').valid}">
+                        <form-control-label [text]="'zone.form.lastName'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'zone.placeholder.lastName' | translate }}" class="form-control" name="lastName" formControlName="lastName"/>
+                        <form-validate [form]="f" [fieldName]="'lastName'" [field]="adminForm.get('lastName')" [messages]="ADMIN_VALIDATOR"></form-validate>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="" [ngClass]="{ 'has-error': f.submitted && !adminForm.get('email').valid, 'has-success': f.submitted && adminForm.get('email').valid}">
+                            <form-control-label [text]="'zone.form.email'" [required]="true"></form-control-label>
+                            <input type="text" placeholder="{{ 'zone.placeholder.email' | translate }}" class="form-control" name="email" formControlName="email"/>
+                            <form-validate [form]="f" [fieldName]="'email'" [field]="adminForm.get('email')" [messages]="ADMIN_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6" [ngClass]="{ 'has-error': f.submitted && !adminForm.get('designation').valid, 'has-success': f.submitted && adminForm.get('designation').valid}">
+                        <form-control-label [text]="'zone.form.designation'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'zone.placeholder.designation' | translate }}" class="form-control" name="designation" formControlName="designation"/>
+                        <form-validate [form]="f" [fieldName]="'designation'" [field]="adminForm.get('designation')" [messages]="ADMIN_VALIDATOR"></form-validate>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="" [ngClass]="{ 'has-error': f.submitted && !adminForm.get('phoneNo').valid, 'has-success': f.submitted && adminForm.get('phoneNo').valid}">
+                            <form-control-label [text]="'zone.form.phoneNo'" [required]="true"></form-control-label>
+                            <input type="number" placeholder="{{ 'zone.placeholder.phoneNo' | translate }}" class="form-control" name="phoneNo" formControlName="phoneNo"/>
+                            <form-validate [form]="f" [fieldName]="'phoneNo'" [field]="adminForm.get('phoneNo')" [messages]="ADMIN_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6" [ngClass]="{ 'has-error': f.submitted && !adminForm.get('landLineNo').valid, 'has-success': f.submitted && adminForm.get('landLineNo').valid}">
+                        <form-control-label [text]="'zone.form.landLineNo'" [required]="true"></form-control-label>
+                        <input type="number" placeholder="{{ 'zone.placeholder.landLineNo' | translate }}" class="form-control" name="landLineNo" formControlName="landLineNo"/>
+                        <form-validate [form]="f" [fieldName]="'landLineNo'" [field]="adminForm.get('landLineNo')" [messages]="ADMIN_VALIDATOR"></form-validate>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6" [ngClass]="{ 'has-error': f.submitted && !adminForm.get('password').valid, 'has-success': f.submitted && adminForm.get('password').valid}">
+                        <form-control-label [text]="'zone.form.password'" [required]="true"></form-control-label>
+                        <input type="password" placeholder="{{ 'zone.placeholder.password' | translate }}" class="form-control" name="password" formControlName="password"/>
+                        <form-validate [form]="f" [fieldName]="'password'" [field]="adminForm.get('password')" [messages]="ADMIN_VALIDATOR"></form-validate>
+                    </div>
+                    <div class="form-group col-md-6" [ngClass]="{ 'has-error': f.submitted && !adminForm.get('confirmPassword').valid, 'has-success': f.submitted && adminForm.get('confirmPassword').valid}">
+                        <form-control-label [text]="'zone.form.confirmPassword'" [required]="true"></form-control-label>
+                        <input type="password" placeholder="{{ 'zone.placeholder.confirmPassword' | translate }}" class="form-control" name="confirmPassword" formControlName="confirmPassword"/>
+                        <form-validate [form]="f" [fieldName]="'confirmPassword'" [field]="adminForm.get('confirmPassword')" [messages]="ADMIN_VALIDATOR"></form-validate>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">{{'zone.form.save' | translate}}</button>
+                <button type="button" (click)="list(zone);" class="btn mb-1 btn-outline-danger pull-right">{{'zone.form.cancel' | translate}}</button>
+            </div>
+        </div>
+    </form>
+</admin-root>

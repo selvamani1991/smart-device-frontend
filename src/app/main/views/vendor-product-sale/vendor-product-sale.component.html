@@ -1,0 +1,59 @@
+<div class="card" id="dashboard">
+    <div class="card-header vendorBody">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="zoneDropdown">
+                    <span class="clip-select">
+                        <select id="vendorProductSaleZone" name="zone" class="select2">
+                            <option value="0">{{ 'client.form.selectZone' | translate }}</option>
+                                <option *ngFor="let zone of zones" [value]="zone.id">{{zone.name}}</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="zoneDropdown">
+                    <span class="clip-select">
+                        <select id="vendorProductSaleProductType" name="productType" class="select2" >
+                            <option value="0">{{ 'client.form.selectProductType' | translate }}</option>
+                                <option *ngFor="let productType of productTypes" [value]="productType.id">{{productType.name}}</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body pb-0 d-flex justify-content-between">
+        <div>
+            <h3>Product Sales</h3>
+            <p>Total Earnings of the Month</p>
+            <h3 class="m-0">$ 12,555</h3>
+        </div>
+        <div>
+            <ul>
+                <li class="d-inline-block mr-3"><a class="text-dark" href="#">Day</a></li>
+                <li class="d-inline-block mr-3"><a class="text-dark" href="#">Week</a></li>
+                <li class="d-inline-block"><a class="text-dark" href="#">Month</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="chart-wrapper canvas-height">
+        <canvas id="chart_widget_2"></canvas>
+    </div>
+    <div class="card-body">
+        <div class="d-flex justify-content-between">
+            <div class="w-100 mr-2">
+                <h6>Product Type</h6>
+                <div class="progress" style="height: 6px">
+                    <div class="progress-bar bg-danger" style="width: 40%"></div>
+                </div>
+            </div>
+            <div class="ml-2 w-100">
+                <h6>Product</h6>
+                <div class="progress" style="height: 6px">
+                    <div class="progress-bar bg-primary" style="width: 80%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

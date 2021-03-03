@@ -1,0 +1,11 @@
+<!-- start: Form Control Label -->
+    <div *ngIf="form.submitted && field._parent.invalid && field.errors" class="error text-small block">
+      <div *ngIf="field.errors.required && message.required">{{ message.required | translate }} {{entity}} </div>
+      <div *ngIf="field.errors.minlength && message.minlength">{{ message.minlength | translate }}</div>
+      <div *ngIf="field.errors.pattern && message.pattern">{{ message.pattern | translate }}</div>
+      <div *ngIf="field.errors.duplicate && message.duplicate">{{ entity }} {{ message.duplicate | translate }}</div>
+      <div *ngIf="field.errors.match && message.match">{{ message.match | translate }}</div>
+      <div *ngIf="field.errors.email && message.email">{{ message.email | translate }}</div>
+    </div>
+    <form-verify-label [check]="form.submitted && field.valid"></form-verify-label>
+<!-- end: Form Control Label -->

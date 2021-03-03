@@ -1,0 +1,30 @@
+<div class="button-wrapper">
+    <div class="page-size-select">
+        <span >{{ 'page.list.showing' | translate }} </span>
+        <select class="list-select" [(ngModel)]="pageSizeSelect" (change)="changePageSize(pageSizeSelect)">
+            <option *ngFor="let pageSizeValue of pageSizeList" value="{{pageSizeValue}}" [selected]="pageSizeValue == pageSizeSelect">{{pageSizeValue}}</option>
+        </select>
+        <span> {{'page.list.entries_page' | translate}}</span>
+    </div>
+    <input type="text"  class="search-header-width" placeholder="Search.." name="query" [(ngModel)]="query" (ngModelChange)="valueChange($event)">
+    <button type="submit" class="header-search-btn"><i class="fa fa-search"></i></button>
+   <!-- <select class="list-select asset-report-select-width building-padding-left-report-header"  [(ngModel)]="selectedBuildingId" (ngModelChange)="selectBuilding($event)">
+        <option [ngValue]="null" disabled [selected]="true"> Please select one User </option>
+        <option *ngFor="let buildingObj of buildings" value={{buildingObj.id}} >
+           {{buildingObj.name}}
+        </option>
+    </select>-->
+
+    <select class="list-select asset-report-select-width building-padding-left-report-header"  [(ngModel)]="selectedBuildingId" (ngModelChange)="selectBuilding($event)">
+        <option [ngValue]="null" disabled [selected]="true"> Please select one Building </option>
+        <option *ngFor="let buildingObj of buildings" value={{buildingObj.id}} >
+            {{buildingObj.name}}
+        </option>
+    </select>
+
+    <select class="list-select asset-report-select-width pull-right" [(ngModel)]="selectedCompanyId" (ngModelChange)="selectCompany($event)">
+        <option *ngFor="let companyObj of companies" value={{companyObj.id}} >
+            {{companyObj.name}}
+        </option>
+    </select>
+</div>

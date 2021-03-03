@@ -1,0 +1,61 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">New {{client.companyBuildingNickName?client.companyBuildingNickName:('clientDashboard.form.companyBuilding' | translate )}} {{client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}}</h3>
+            <product-list-header (pageSizeChanged)="changePageSize($event)" (search)="searchNewCompanyBuildingProduct($event)"></product-list-header>
+            <div class="table-responsive">
+                <div *ngIf="companyBuildingProducts.length>0">
+                    <table class="table table-striped table-hover padding-top-20">
+                        <thead>
+                            <tr>
+                                <th>{{ 'companyBuilding.companyBuildingProduct.logo' | translate }}</th>
+                                <th>{{client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}} Name</th>
+                                <th>{{client.companyBuildingNickName?client.companyBuildingNickName:('clientDashboard.form.companyBuilding' | translate )}} Name</th>
+                                <th>{{ 'companyBuilding.companyBuildingProduct.floor' | translate }}</th>
+                                <th>{{ 'companyBuilding.companyBuildingProduct.section' | translate }}</th>
+                                <th>{{ 'companyBuilding.companyBuildingProduct.dispatchedDate' | translate }}</th>
+                                <th>{{ 'companyBuilding.companyBuildingProduct.status' | translate }}</th>
+                                <th width="30%">{{ 'companyBuilding.companyBuildingProduct.action' | translate }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let companyBuildingProduct of companyBuildingProducts">
+                                <td>
+                                    <div class="image-top-detail" *ngIf="companyBuildingProduct.product.id && companyBuildingProduct.product.logo">
+                                        <img src="{{companyBuildingProduct.product.logo}}"  class="list-logo-list">
+                                    </div>
+                                    <div class="top-default-image-list" *ngIf="companyBuildingProduct.product.id && !companyBuildingProduct.product.logo">
+                                        <i class="fa fa-cube user-icon-image lineSpace2 show-machine"></i>
+                                    </div>
+                                </td>
+                                <td>{{companyBuildingProduct.product.name}}</td>
+                                <td>{{companyBuildingProduct.companyBuilding.name}}</td>
+                                <td>{{companyBuildingProduct.floor}}</td>
+                                <td>{{companyBuildingProduct.section}}</td>
+                                <td>{{companyBuildingProduct.dispatchedDate}}</td>
+                                <td>{{companyBuildingProduct.status}}</td>
+                                <td width="20%">
+                                    <div class="bootstrap-modal">
+                                        <div class="float-left">
+                                            <button type="button" class="btn btn-primary" (click)="acceptProduct(companyBuildingProduct)" data-toggle="modal">{{ 'companyBuilding.form.accept' | translate }}</button>
+                                        </div>
+                                        <div class="px-3 float-left">
+                                            <button type="button" class="btn btn-danger" (click)="rejectProduct(companyBuildingProduct)" data-toggle="modal">{{ 'companyBuilding.form.reject' | translate }}</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="companyBuildingProducts.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                </div>
+            </div>
+            <div *ngIf="companyBuildingProducts.length==0">
+                <div class="dataSpace text-center">
+                    <b>{{ 'companyBuilding.form.displayed' | translate }}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</admin-root>

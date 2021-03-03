@@ -1,0 +1,40 @@
+{
+  "list": {
+    "name": "Name",
+    "pageLink": "Board Manufacturer List"
+  },
+
+  "error": {
+    "name": "Please enter board manufacturer name",
+    "duplicate": "Board manufacturer name already exist",
+    "duplicateEmail": "Email already exist",
+    "duplicatePhoneNo": "Phone number already exist",
+    "description": "Please enter description",
+    "designation": "Please enter designation",
+    "landLineNo": "Please enter landline number",
+    "phoneNo": "Please enter phone number",
+    "firstName": "Please enter first name",
+    "lastName": "Please enter last name",
+    "password": "Please enter password",
+    "confirmPassword": "Please enter confirm password",
+    "emailRequired": "Please enter email id",
+    "email": "Please enter valid email format ex : xyz@abc.com",
+    "pattern": "Please enter valid Zip code number",
+    "phoneNumberPattern": "Please enter valid phone number",
+    "landLineNumberPattern": "Please enter valid Land Line  number",
+    "firstNamePattern": "Please enter valid first name",
+    "lastNamePattern": "Please enter valid last name",
+    "namePattern": "Please enter valid name",
+    "manufacturer": "Please select manufacturer",
+    "minName": "Minimum length should be 3 characters",
+    "minDescription": "Minimum length should be 3 characters",
+    "minFirstName": "Minimum length should be 3 characters",
+    "minLastName": "Minimum length should be 3 characters",
+    "minEmailId": "Minimum length should be 3 characters",
+    "minPassword": "Minimum length should be 3 characters",
+    "minConfirmPassword": "Minimum length should be 3 characters",
+    "sameConfirmPassword": "Password and confirm password must match",
+    "dispatchDate": "Please select dispatch date"
+  }
+
+}

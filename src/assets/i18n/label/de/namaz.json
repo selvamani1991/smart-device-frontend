@@ -1,0 +1,82 @@
+{
+  "list": {
+    "pageLink": "Namaz Management",
+    "pageTitle": "Welcome to Namaz Management",
+    "pageDesc": "Listing all Namazs",
+    "notAvailable": "Data is not available",
+    "name": "Name",
+    "description": "Description",
+    "startPeriod": "Start Period",
+    "endPeriod": "End Period",
+    "bestEndPeriod": "Best End Period",
+    "totalRikats": "Total Rikats"
+  },
+  "create": {
+    "formTitle": "Namaz creation form",
+    "formDesc": "Namaz creation form",
+    "pageLink": "Create Namaz",
+    "pageTitle": "Create a Namaz",
+    "pageDesc": "creating a new Namaz"
+  },
+  "edit": {
+    "formTitle": "Namaz Update form",
+    "formDesc": "Namaz update form",
+    "pageLink": "Edit Namaz",
+    "pageTitle": "Edit a Namaz",
+    "pageDesc": "editing a existing Namaz"
+  },
+  "show": {
+    "formTitle": "Namaz & its Rikats",
+    "formDesc": "Namaz & its Rikats Detail",
+    "pageLink": "Show Namaz Details",
+    "pageTitle": "Showing Namaz Details",
+    "pageDesc": "Showing Namaz and its rikats details",
+    "rikats": "Enter Rikats",
+    "salams": "Enter Salams",
+    "name": "Namaz Name",
+    "namazType": "Namaz Type"
+
+  },
+  "form": {
+    "namazDetails": "Namaz Details",
+    "rikatDetails": "Rikats Details",
+    "name": "Name",
+    "description": "Description",
+    "startPeriod": "Start Period",
+    "endPeriod": "End Period",
+    "bestEndPeriod":"Best End Period",
+    "totalRikats":"Total Rikats",
+    "verified": "Verified !",
+    "isActive": "Active",
+    "showInMenu": "Show in Menu",
+    "translation": "Translation Label",
+    "baseIcon": "Item Icon",
+    "state": "State",
+    "featureCategory": "Select Feature Category",
+    "fullCrud": "Supports Crud",
+    "isCrud": "Crud Support",
+    "details": "{{ namaz.name }}({{namaz.totalRikats}} rikats) Best in between ({{ namaz.startPeriod }} and  {{ namaz.bestEndPeriod }}) and time expired at {{namaz.endPeriod}}"
+  },
+  "error": {
+    "name": "Please enter name.",
+    "description": "Please enter description.",
+    "startPeriod": "Please enter Start Period",
+    "endPeriod": "Please enter End Period",
+    "bestEndPeriod": "Please enter Best End Period",
+    "totalRikats": "Please Enter Total Rikats",
+    "baseIcon": "Please enter icon.",
+    "translation": "Please enter translation label.",
+    "state": "Please enter state."
+  },
+  "placeholder": {
+    "name": "Enter Namaz name",
+    "description": "Enter Namaz description",
+    "startPeriod": "Enter Start Period",
+    "endPeriod": "Enter End Period",
+    "bestEndPeriod": "Enter Best End Period",
+    "totalRikats": "Enter Total Rikats",
+    "icon": "Enter feature icon",
+    "translation": "Enter feature translation",
+    "state": "Enter feature state"
+  }
+}

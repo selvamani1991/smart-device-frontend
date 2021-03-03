@@ -1,0 +1,104 @@
+﻿<div class="modal" id="vendorAssignModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="board">
+            <form class="form-horizontal" [formGroup]="vendorProductForm" #f="ngForm" (ngSubmit)="validateForm(f) && f.form.valid && submitVendor(f)" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{ client.productNickName }} Detail</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <span class="userSize2"><i class="fa fa-user"></i></span>
+                        </div>
+                        <div class="col-md-8">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td><b>{{ client.productNickName}} Name </b></td>
+                                        <td>{{product.name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="paid"><b>{{ 'client.clientProduct.deviceId' | translate }}</b></td>
+                                        <td class="paid"> {{product.deviceId}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !vendorProductForm.get('vendor').valid, 'has-success': f.submitted && vendorProductForm.get('vendor').valid}">
+                            <label class="control-label">{{ replaceText('report.form.vendor' | translate) }}</label>
+                            <span class="clip-select">
+                                <select  name="vendor" id="vendor-select" class="select2"  formControlName="vendor">
+                                    <option value="0">Select {{ replaceText('report.form.vendor' | translate) }}</option>
+                                    <option *ngFor="let vendor of vendors" [value]="vendor.id">{{vendor.name}}</option>
+                                </select>
+                                <form-validate [form]="f" [fieldName]="'vendor'" [field]="vendorProductForm.get('vendor')" [messages]="CLIENT_VALIDATOR"></form-validate>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !vendorProductForm.get('dispatchedDate').valid, 'has-success': f.submitted && vendorProductForm.get('dispatchedDate').valid}">
+                            <form-control-label [text]="'client.form.dispatchedDate'" [required]="true"></form-control-label>
+                            <div class="input-group">
+                                <input type="text" placeholder="{{ 'client.placeholder.dispatchedDate' | translate }}" class="form-control" name="dispatchedDate" formControlName="dispatchedDate" autocomplete="off" id="vendorProductDispatchedDate">
+                                <span class="input-group-append" >
+                                    <span class="input-group-text">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </span>
+                                </span>
+                            </div>
+                            <form-validate [form]="f" [fieldName]="'dispatchedDate'" [field]="vendorProductForm.get('dispatchedDate')" [messages]="CLIENT_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !vendorProductForm.get('price').valid, 'has-success': f.submitted && vendorProductForm.get('price').valid}">
+                            <form-control-label [text]="'client.form.price'" [required]="true"></form-control-label>
+                            <input type="number" class="form-control input-default" placeholder="{{ 'client.placeholder.price' | translate }}" class="form-control" productCount="price" formControlName="price">
+                            <form-validate [form]="f" [fieldName]="'price'" [field]="vendorProductForm.get('price')" [messages]="CLIENT_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="radio clip-radio radio-primary">
+                                <input type="radio" id="wd-existing-invoice" name="isNewInvoice" value="existingInvoice" formControlName="isNewInvoice" (change)="selectExistingInvoice('existingInvoice')" required>
+                                <span class="invoiceDetail"> <label for="wd-existing-invoice">{{ 'client.form.existingInvoice' | translate }}</label> </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="radio clip-radio radio-primary">
+                                <input type="radio" id="wd-new-invoice" name="isNewInvoice" value="newInvoice" formControlName="isNewInvoice" (change)="selectExistingInvoice('newInvoice')" required>
+                                <span class="invoiceDetail"> <label for="wd-new-invoice">{{ 'client.form.newInvoice' | translate }}</label> </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" [hidden]="!showDropdown">
+                        <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !vendorProductForm.get('invoiceId').valid, 'has-success': f.submitted && vendorProductForm.get('invoiceId').valid}">
+                            <form-control-label [text]="'client.form.invoice'" [required]="true"></form-control-label>
+                            <span class="clip-select">
+                                <select  name="invoiceId" id="invoiceSelectVendor" class="select2"  formControlName="invoiceId">
+                                    <option value="0">{{ 'client.form.selectInvoice' | translate }}</option>
+                                    <option *ngFor="let invoiceItem of invoices" [value]="invoiceItem.id">{{invoiceItem.invoiceId}}</option>
+                                </select>
+                                <form-validate [form]="f" [fieldName]="'invoiceId'" [field]="vendorProductForm.get('invoiceId')" [messages]="CLIENT_VALIDATOR"></form-validate>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">{{ 'client.clientProduct.submit' | translate }}</button>
+                            <button type="button" class="btn mb-1 btn-outline-danger pull-right" data-dismiss="modal">{{ 'client.clientProduct.cancel' | translate }}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{'featureCategory.form.add' | translate}}</h3>
+            <form class="form-horizontal" [formGroup]="featureCategoryForm" #f="ngForm" (ngSubmit)="f.form.valid && createFeatureCategory(f)" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+                <div class="row">
+                    <div class="col-md-12 form-group" [ngClass]="{ 'has-error': f.submitted && !featureCategoryForm.get('name').valid, 'has-success': f.submitted && featureCategoryForm.get('name').valid}">
+                        <form-control-label [text]="'featureCategory.form.name'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'featureCategory.placeholder.name' | translate }}" class="form-control" name="name" formControlName="name">
+                        <form-validate [fieldName]="'name'" [form]="f" [field]="featureCategoryForm.get('name')" [messages]="FEATURE_CATEGORY_VALIDATOR"></form-validate>
+
+                    </div>
+                    <div class="col-md-12 form-group" [ngClass]="{ 'has-error': f.submitted && !featureCategoryForm.get('icon').valid, 'has-success': f.submitted && featureCategoryForm.get('icon').valid}">
+                        <form-control-label [text]="'featureCategory.form.icon'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'featureCategory.placeholder.icon' | translate }}" class="form-control" name="icon" formControlName="icon" required minlength="2"/>
+                        <form-validate [fieldName]="'icon'" [form]="f" [field]="featureCategoryForm.get('icon')" [messages]="FEATURE_CATEGORY_VALIDATOR"></form-validate>
+
+                    </div>
+                    <div class="col-md-12 form-group" [ngClass]="{ 'has-error': f.submitted && !featureCategoryForm.get('translation').valid, 'has-success': f.submitted && featureCategoryForm.get('translation').valid}">
+                        <form-control-label [text]="'featureCategory.form.translation'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'featureCategory.placeholder.translation' | translate }}" class="form-control" name="translation" formControlName="translation" required minlength="2"/>
+                        <form-validate [fieldName]="'translation'" [form]="f" [field]="featureCategoryForm.get('translation')" [messages]="FEATURE_CATEGORY_VALIDATOR"></form-validate>
+
+                    </div>
+                    <div class="col-md-12 form-group" [ngClass]="{ 'has-error': f.submitted && !featureCategoryForm.get('state').valid, 'has-success': f.submitted && featureCategoryForm.get('state').valid}">
+                        <form-control-label [text]="'featureCategory.form.state'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'featureCategory.placeholder.state' | translate }}" class="form-control" name="state" formControlName="state" required minlength="2"/>
+                        <form-validate [fieldName]="'state'" [form]="f" [field]="featureCategoryForm.get('state')" [messages]="FEATURE_CATEGORY_VALIDATOR"></form-validate>
+
+                    </div>
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !featureCategoryForm.get('description').valid, 'has-success': f.submitted && featureCategoryForm.get('description').valid}">
+                        <form-control-label [text]="'featureCategory.form.description'" [required]="false"></form-control-label>
+                        <div class="note-editor">
+                            <textarea id="form-field-22" class="form-control" placeholder="Enter featureCategory description" name="description" formControlName="description"></textarea>
+                        </div>
+                        <form-validate [fieldName]="'description'" [form]="f"  [field]="featureCategoryForm.get('description')" [messages]="FEATURE_CATEGORY_VALIDATOR"></form-validate>
+                    </div>
+                   <!-- <div class="form-group col-md-12">
+                        <label class="control-label"> {{ 'featureCategory.form.showInMenu' | translate }} <span class="symbol"></span> </label>
+                        <div class="checkbox clip-check check-primary">
+                            <input type="checkbox" id="active_checkbox" value="" name="active">
+                            <label for="active_checkbox">{{ 'featureCategory.form.active' | translate }}</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="control-label"> {{ 'featureCategory.form.isCore' | translate }} <span class="symbol"></span> </label>
+                        <div class="checkbox clip-check check-primary">
+                            <input type="checkbox" id="isCrud_checkbox" value="" name="crud">
+                            <label for="isCrud_checkbox">{{ 'featureCategory.form.isCore' | translate }}</label>
+                        </div>
+                    </div>-->
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">{{'featureCategory.form.save' | translate}}</button>
+                        <button type="button" (click)="list(featureCategory);" class="btn mb-1 btn-outline-danger pull-right">{{'featureCategory.form.cancel' | translate}}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Add New Teacher Area End Here -->
+</admin-root>

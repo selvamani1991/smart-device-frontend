@@ -1,0 +1,36 @@
+{
+  "form": {
+    "featureDetails": "Feature Details",
+    "name": "Name",
+    "description": "Description",
+    "verified": "Verified !",
+    "category": "Feature Category",
+    "active": "Active",
+    "showInMenu": "Show in Menu",
+    "translation": "Translation Label",
+    "baseIcon": "Item Icon",
+    "state": "State",
+    "featureCategory": "Select Feature Category",
+    "fullCrud": "Supports Crud",
+    "isCrud": "Crud Support"
+  },
+  "error": {
+    "name": "Please Enter Name.",
+    "description": "Please Enter Description.",
+    "category": "Please Select Feature Category.",
+    "baseIcon": "Please Enter Icon.",
+    "translation": "Please Enter translation label.",
+    "state": "Please Enter State.",
+    "namePattern": "Please Enter a valid name.",
+    "duplicate": "Feature Name Already Exist",
+    "descriptionMin": "Minimum length should of 2 characters"
+
+  },
+  "placeholder": {
+    "name": "Enter Feature name",
+    "description": "Enter Feature description",
+    "icon": "Enter feature icon",
+    "translation": "Enter feature translation",
+    "state": "Enter feature state"
+  }
+}

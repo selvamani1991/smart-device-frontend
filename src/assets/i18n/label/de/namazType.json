@@ -1,0 +1,53 @@
+{
+  "list": {
+    "pageLink": "Namaz Type Management",
+    "pageTitle": "Welcome to Namaz Type Management",
+    "pageDesc": "Listing all Namaz Types",
+    "notAvailable": "Data is not available",
+    "name": "Name",
+    "description": "Description"
+  },
+  "create": {
+    "formTitle": "Namaz Type creation form",
+    "formDesc": "Namaz Type creation form",
+    "pageLink": "Create Namaz Type",
+    "pageTitle": "Create a Namaz Type",
+    "pageDesc": "creating a new Namaz Type"
+  },
+  "edit": {
+    "formTitle": "Namaz Type Update form",
+    "formDesc": "Namaz Type update form",
+    "pageLink": "Edit Namaz Type",
+    "pageTitle": "Edit a Namaz Type",
+    "pageDesc": "editing a existing Namaz Type"
+  },
+  "form": {
+    "namazTypeDetails": "Namaz Type Details",
+    "name": "Name",
+    "description": "Description",
+    "verified": "Verified !",
+    "isActive": "Active",
+    "showInMenu": "Show in Menu",
+    "translation": "Translation Label",
+    "baseIcon": "Item Icon",
+    "state": "State",
+    "featureCategory": "Select Feature Category",
+    "fullCrud": "Supports Crud",
+    "isCrud": "Crud Support"
+  },
+  "error": {
+    "name": "Please enter name.",
+    "description": "Please enter description.",
+    "alias": "Please enter alias.",
+    "baseIcon": "Please enter icon.",
+    "translation": "Please enter translation label.",
+    "state": "Please enter state."
+  },
+  "placeholder": {
+    "name": "Enter Namaz Type name",
+    "description": "Enter Namaz Type description",
+    "icon": "Enter feature icon",
+    "translation": "Enter feature translation",
+    "state": "Enter feature state"
+  }
+}

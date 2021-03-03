@@ -1,0 +1,99 @@
+{
+  "list": {
+    "name": "Name",
+    "pageLink": " Consumer Ticket List",
+    "notAvailable": "Data is not available",
+    "pageTitle": "list",
+    "pageDesc": "Listing all Consumer Ticket",
+    "Consumer Ticket": "Consumer Ticket",
+    "active": "Active",
+    "status": "Status",
+    "disabled": "Disabled",
+    "enabled": "Enabled",
+    "noData": "Data is not available",
+    "consumerTicketNewProduct": "Consumer Ticket new product list",
+    "consumerTicketProductList": "Consumer Ticket product list",
+    "closed": "Closed",
+    "open": "Open"
+
+  },
+  "create": {
+    "formTitle": "Consumer Ticket creation form",
+    "formDesc": "Consumer Ticket creation form",
+    "pageLink": "Create",
+    "pageTitle": "Create",
+    "pageDesc": "creating a new Consumer Ticket"
+  },
+  "edit": {
+    "formTitle": " Consumer Ticket Update form",
+    "formDesc": "Consumer Ticket update form",
+    "pageLink": "Edit ",
+    "pageTitle": "Edit a Consumer Ticket",
+    "pageDesc": "Editing a Existing Consumer Ticket"
+  },
+
+  "show": {
+    "formTitle": "Consumer Ticket Show",
+    "formDesc": "Consumer Ticket Show form",
+    "pageLink": "Show",
+    "pageTitle": "Show a Consumer Ticket",
+    "pageDesc": "Showing a Existing  Consumer Ticket"
+  },
+
+  "form": {
+    "all": "All",
+    "subject": "Error Detail",
+    "description": "Description",
+    "entryDate": "Entry Date",
+    "add": "Add Consumer Ticket",
+    "details": "Consumer Ticket Details",
+    "name": "Consumer Ticket Name",
+    "status": "Status",
+    "id": "Id",
+    "clientName": "Client Name",
+    "modelNo": "Model No",
+    "logo": "Logo",
+    "productCount": "No Of Machines",
+    "action": "Action",
+    "consumerTicketId": "Consumer TicketId",
+    "consumerTicketName": "Consumer Ticket Name",
+    "verified": "Verified",
+    "title": "Consumer Ticket Management",
+    "data": "No Data Displayed In Table",
+    "save": "Save",
+    "cancel": "Cancel",
+    "consumerTicket": "Consumer Ticket",
+    "issueType": "Issue Type",
+    "ticketId": "Consumer Ticket",
+    "product": "Product",
+    "solution": "Solution",
+    "update": "Update",
+    "productType": "Product Type",
+    "ticketIdList": "Ticket ID"
+  },
+  "error": {
+    "name": "Please Enter Consumer Ticket Name",
+    "duplicate": "Consumer Ticket name already exist",
+    "description": "Please Enter description",
+    "state": "Please Enter State",
+    "namePattern": "Please Enter a valid name",
+    "ticketId": "Please Enter Consumer Ticket",
+    "product": "Please Enter Product",
+    "solution": "Please Enter Solution",
+    "subject": "Please Enter Error Detail",
+    "minSubject": "Minimum 2 characters required",
+    "minDescription": "Minimum 2 characters required",
+    "minSolution": "Minimum 2 characters required",
+    "issueType": "Please Select Issue Type"
+  },
+
+  "placeholder": {
+    "subject": "Enter Error Detail",
+    "description": "Enter Description",
+    "entryDate": "Enter Entry Date",
+    "ticketId": "Please Enter Consumer Ticket",
+    "product": "Please Enter Product",
+    "solution": "Please Enter Solution"
+  }
+
+}

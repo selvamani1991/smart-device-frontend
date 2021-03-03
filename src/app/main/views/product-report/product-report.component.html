@@ -1,0 +1,85 @@
+<div class="row">
+    <div class="col-lg-12 col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="active-member">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                <h3>Product Report</h3>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-4 mt-4 pull-right btn btn-primary"
+                                     (click)="changeView(false)"><i class="fa fa-table"
+                                                                    aria-hidden="true"></i></div>
+                                <div class="mb-4 mt-4 pull-right btn btn-primary"
+                                     (click)="changeView(true)"><i class="fa fa-pie-chart"
+                                                                   aria-hidden="true"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive" *ngIf="!showChart">
+                        <table class="table table-xs mb-0">
+                            <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Product Name</th>
+                                <th>Component 1</th>
+                                <th>Component 2</th>
+                                <th>Component 3</th>
+                                <th>Component 4</th>
+                                <th>Total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Sarah Smith</td>
+                                <td>2</td>
+                                <td>4</td>
+                                <td>4</td>
+                                <td>6</td>
+                                <td>15</td>
+
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Walter R.</td>
+                                <td>2</td>
+                                <td>7</td>
+                                <td>8</td>
+                                <td>9</td>
+                                <td>37</td>
+
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Andrew D.</td>
+                                <td>5</td>
+                                <td>6</td>
+                                <td>4</td>
+                                <td>6</td>
+                                <td>21</td>
+
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td> Doris R.</td>
+                                <td>1</td>
+                                <td>3</td>
+                                <td>6</td>
+                                <td>15</td>
+                                <td>25</td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div *ngIf="showChart">
+                        <canvas id="pieChart" width="500" height="250"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

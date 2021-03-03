@@ -1,0 +1,23 @@
+    <div class="card" id="dashboard">
+        <div class="card-header">
+            <h3>Installed {{client && client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}} Health Report</h3>
+        </div>
+        <div class="card-body clientBody">
+            <div class="row">
+                <div class="col-lg-6"></div>
+                <div class="col-lg-6">
+                    <div class="clientDropdown float-right">
+                    <span class="clip-select">
+                        <select id="consumerHealthReportSelect2" name="productType" class="select2">
+                            <option value="0">Select Product Type</option>
+                                <option *ngFor="let productType of productTypes" [value]="productType.alias">{{productType && productType.name}}</option>
+                        </select>
+                    </span>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <div class="new-graph-size" id="consumer_product_health"></div>
+            </div>
+        </div>
+        </div>

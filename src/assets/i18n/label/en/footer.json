@@ -1,0 +1,31 @@
+{
+  "copyright": {
+    "MAIN": "&copy; Copy Right Reserved",
+    "MESSAGE": "Power by: Indian Technologies Dreams Pvt Ltd"
+  },
+  "detail":{
+    "text": "Amaal-e-Momineen is a steps towards right path, support a person to build up spiritual soul (Taqwa) in light of Hadith and Quran.",
+    "address": "B-101 My Nest, Shikari Playa,Electronic City, Bangalore, India 560100"
+  },
+  "box":{
+    "headerlink":"Important Links",
+    "donate":"Donate Us",
+    "category": "Topic Categories",
+    "app": "Mobile App"
+  },
+  "links":{
+    "about-us":"About Us",
+    "contact-us": "Contact Us",
+    "policy": "Private Policy",
+    "terms": "Term and Conditions"
+  },
+  "category":{
+    "islam": "Islamic History",
+    "thauhid": "Praise of Allah",
+    "hajj":"Guidelines to Hajj",
+    "salah":"Salah (Namaaz)",
+    "roza":"Saum (Roza)",
+    "zakaat": "Help needy(Zakaath)",
+    "hadith": "A-Hadith & Sunnah"
+  }
+}

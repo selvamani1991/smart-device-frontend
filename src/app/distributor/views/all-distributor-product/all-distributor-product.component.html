@@ -1,0 +1,51 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">All {{client.distributorNickName?client.distributorNickName:('clientDashboard.form.distributor' | translate )}} {{client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}}</h3>
+            <product-list-header (pageSizeChanged)="changePageSize($event)" (search)="searchDistributorProduct($event)"></product-list-header>
+            <div class="table-responsive">
+                <div  *ngIf="distributorProducts.length>0">
+                    <table class="table table-striped table-hover padding-top-20">
+                        <thead>
+                        <tr>
+                            <th>{{ 'distributor.distributorProduct.logo' | translate }}</th>
+                            <th>{{client.distributorNickName?client.distributorNickName:('clientDashboard.form.distributor' | translate )}} Name</th>
+                            <th>{{client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}} Name</th>
+                            <th>{{ 'companyBuilding.companyBuildingProduct.machineId' | translate }}</th>
+                            <th>{{ 'distributor.distributorProduct.dispatchedDate' | translate }}</th>
+                            <th>{{ 'distributor.distributorProduct.acceptedDate' | translate }}</th>
+                            <th width="10%">{{ 'distributor.distributorProduct.status' | translate }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="amount3" *ngFor="let distributorProduct of distributorProducts" style="cursor:pointer;">
+                            <td>
+                                <div class="image-top-detail" *ngIf="distributorProduct.product.id && distributorProduct.product.logo">
+                                    <img src="{{distributorProduct.product.logo}}"  class="list-logo-list">
+                                </div>
+                                <div class="top-default-image-list" *ngIf="distributorProduct.product.id && !distributorProduct.product.logo">
+                                    <i class="fa fa-cube user-icon-image lineSpace2 show-machine"></i>
+                                </div>
+                            </td>
+                            <td>{{distributorProduct.distributor.name}}</td>
+                            <td>{{distributorProduct.product.name}}</td>
+                            <td>{{distributorProduct.product.machine.machineId}}</td>
+                            <td>{{distributorProduct.dispatchedDate}}</td>
+                            <td>{{distributorProduct.acceptedDate}}</td>
+                            <td>
+                                <button class="btn btn-success btn-xs button-gap"  *ngIf="distributorProduct.product.live">{{ 'product.list.on' | translate }}</button>
+                                <button class="btn btn-danger btn-xs button-gap"   *ngIf="!distributorProduct.product.live">{{ 'product.list.off' | translate }}</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="distributorProducts.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                </div>
+            </div>
+            <div *ngIf="distributorProducts.length==0">
+                <div class="dataSpace text-center"><b>{{ 'distributor.form.displayed' | translate }}</b></div>
+            </div>
+        </div>
+    </div>
+</admin-root>

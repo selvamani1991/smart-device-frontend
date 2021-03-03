@@ -1,0 +1,77 @@
+﻿<admin-root id="consumerProduct">
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal"  name="consumerProductForm" [formGroup]="consumerProductForm" #f="ngForm" (ngSubmit)="f.form.valid && updateConsumerProduct(f)" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ 'consumerProduct.form.detail' | translate }}</h4>
+                        <div class="row">
+                            <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !consumerProductForm.get('name').valid, 'has-success': f.submitted && consumerProductForm.get('name').valid}">
+                                <form-control-label [text]="'consumerProduct.form.name'" [required]="true"></form-control-label>
+                                <input type="text" class="form-control input-default" placeholder="{{ 'consumerProduct.placeholder.name' | translate }}" class="form-control" name="name" formControlName="name">
+                                <form-validate [form]="f" [fieldName]="'name'" [field]="consumerProductForm.get('name')" [messages]="CONSUMER_PRODUCT_VALIDATOR"></form-validate>
+                            </div>
+
+                            <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !consumerProductForm.get('description').valid, 'has-success': f.submitted && consumerProductForm.get('description').valid}">
+                                <form-control-label [text]="'consumerProduct.form.description'" [required]="true"></form-control-label>
+                                <div class="note-editor">
+                                    <textarea id="form-field-22" class="form-control" placeholder="Enter Consumer Product  description" name="description" formControlName="description"></textarea>
+                                </div>
+                                <form-validate [form]="f" [fieldName]="'description'" [field]="consumerProductForm.get('description')" [messages]="CONSUMER_PRODUCT_VALIDATOR"></form-validate>
+                            </div>
+                        </div>
+
+                        <!--<div class="row">
+                            <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !consumerProductForm.get('manufacturingDate').valid, 'has-success': f.submitted && consumerProductForm.get('manufacturingDate').valid}">
+                                <form-control-label [text]="'consumerProduct.form.manufacturingDate'" [required]="true"></form-control-label>
+                                <div class="input-group">
+                                    <input type="text" placeholder="{{ 'consumerProduct.placeholder.manufacturingDate' | translate }}" class="form-control" name="manufacturingDate" formControlName="manufacturingDate" autocomplete="off" id="manufacturingDate">
+                                    <span class="input-group-append" >
+                                    <span class="input-group-text">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </span>
+                                </span>
+                                </div>
+                                <form-validate [form]="f" [fieldName]="'manufacturingDate'" [field]="consumerProductForm.get('manufacturingDate')" [messages]="CONSUMER_PRODUCT_VALIDATOR"></form-validate>
+                            </div>
+                        </div>-->
+
+                        <div class="row">
+                            <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !consumerProductForm.get('deviceId').valid, 'has-success': f.submitted && consumerProductForm.get('deviceId').valid}">
+                                <form-control-label [text]="'consumerProduct.form.deviceId'" [required]="true"></form-control-label>
+                                <input type="text" class="form-control input-default" placeholder="{{ 'consumerProduct.placeholder.deviceId' | translate }}" class="form-control" name="deviceId" formControlName="deviceId">
+                                <form-validate [form]="f" [fieldName]="'deviceId'" [field]="consumerProductForm.get('deviceId')" [messages]="CONSUMER_PRODUCT_VALIDATOR"></form-validate>
+                            </div>
+
+                            <!--<div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !consumerProductForm.get('imieId').valid, 'has-success': f.submitted && consumerProductForm.get('imieId').valid}">
+                                <form-control-label [text]="'consumerProduct.form.imieId'" [required]="true"></form-control-label>
+                                <input type="number" class="form-control input-default" placeholder="{{ 'consumerProduct.placeholder.imie' | translate }}" class="form-control" name="imieId" formControlName="imieId">
+                                <form-validate [form]="f" [fieldName]="'imieId'" [field]="consumerProductForm.get('imieId')" [messages]="CONSUMER_PRODUCT_VALIDATOR"></form-validate>
+                            </div>
+
+                            <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !consumerProductForm.get('modelNo').valid, 'has-success': f.submitted && consumerProductForm.get('modelNo').valid}">
+                                <form-control-label [text]="'consumerProduct.form.modelNo'" [required]="true"></form-control-label>
+                                <input type="text" class="form-control input-default" placeholder="{{ 'consumerProduct.placeholder.modelNo' | translate }}" class="form-control" name="modelNo" formControlName="modelNo">
+                                <form-validate [form]="f" [fieldName]="'modelNo'" [field]="consumerProductForm.get('modelNo')" [messages]="CONSUMER_PRODUCT_VALIDATOR"></form-validate>
+                            </div>
+
+                            <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !consumerProductForm.get('lotNo').valid, 'has-success': f.submitted && consumerProductForm.get('lotNo').valid}">
+                                <form-control-label [text]="'consumerProduct.form.lotNo'" [required]="true"></form-control-label>
+                                <input type="text" class="form-control input-default" placeholder="{{ 'consumerProduct.placeholder.lotNo' | translate }}" class="form-control" name="lotNo" formControlName="lotNo">
+                                <form-validate [form]="f" [fieldName]="'lotNo'" [field]="consumerProductForm.get('lotNo')" [messages]="CONSUMER_PRODUCT_VALIDATOR"></form-validate>
+                            </div>-->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">{{'consumerProduct.form.save' | translate}}</button>
+                <button type="button" (click)="list(consumerProduct);" class="btn mb-1 btn-outline-danger pull-right">{{'consumerProduct.form.cancel' | translate}}</button>
+            </div>
+        </div>
+    </form>
+</admin-root>

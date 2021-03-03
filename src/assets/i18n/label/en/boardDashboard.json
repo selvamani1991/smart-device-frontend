@@ -1,0 +1,32 @@
+{
+  "form": {
+    "name": "Name",
+    "startDate": "Start on",
+    "status": "Status",
+    "revenue": "Revenue",
+    "product": "Product Sold",
+    "productCount": "4565",
+    "date": "Jan - March 2019",
+    "netProfit": "Net Profit",
+    "netProfitRate": "$ 8541",
+    "newCustomers": "New Customers",
+    "customerCount": "4565",
+    "customerStatus": "Customer Satisfaction",
+    "customerRate": "99%",
+    "boardManufacturer": "TOP BOARD MANUFACTURES",
+    "topProducts": "TOP PRODUCT TYPES",
+    "productType": "Product Type",
+    "productName": "Name",
+    "noOfRevenue": "No of Revenue",
+    "translation": "Transactions",
+    "board": "Board",
+    "boardProductType": "Board Product Type",
+    "phoneNo": "Phone",
+    "email": "Email Address"
+
+  },
+
+  "placeholder": {
+
+  }
+}

@@ -1,0 +1,40 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+        <div class="row" id="boardProductType">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Board {{client.productTypeNickName?client.productTypeNickName:('clientDashboard.form.productType' | translate )}}</h3>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <form-control-label [text]="'board.boardProductType.name'" [required]="false"></form-control-label>
+                                <div class="col-md-12">{{boardProductType.productType?boardProductType.productType.name:""}}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                               <form-control-label [text]="'board.boardProductType.description'" [required]="false"></form-control-label>
+                                <div class="col-md-12">{{boardProductType.productType?boardProductType.productType.description:""}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ 'client.boardProductType.apiKey' | translate }}</h4>
+                        <p class="text-muted"><code></code></p>
+                        <div id="accordion-one" class="accordion">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"><i class="fa" aria-hidden="true"></i> Api Key</h5>
+                                </div>
+                                <div id="collapseOne" class="collapse" data-parent="#accordion-one" style="">
+                                    <div class="card-body">{{ boardProductType.productType?boardProductType.productType.apiKey:""}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</admin-root>

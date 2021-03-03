@@ -1,0 +1,100 @@
+﻿<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" [formGroup]="boardForm" #f="ngForm" (ngSubmit)="validateForm(f) && f.form.valid && createProduct(f)" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+        <div class="card">
+            <div class="card-body" *ngIf="orderWizard">
+                <h4 class="card-title">Pre {{client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}} Details</h4>
+                <div *ngFor="let productForm of boardForm.get('products').controls; let i=index" [formGroup]="productForm" #af="ngForm">
+                    <div class="row">
+                        <div class="form-group col-md-3" [ngClass]="{ 'has-error': f.submitted && !productForm.get('machineId').valid, 'has-success': f.submitted && productForm.get('machineId').valid}">
+                            <form-control-label [text]="'product.form.machineId'" [required]="true"></form-control-label>
+                            <span class="clip-select">
+                                <select  name="machineId"  id="machineSelect{{i}}"  class="select2" formControlName="machineId" >
+                                    <option value="0">Select {{ 'product.form.machine' | translate }}</option>
+                                    <option *ngFor="let machine of machines" [value]="machine.machineId">{{machine.name}}({{machine.machineId}})</option>
+                                </select>
+                                <form-validate [form]="f" [fieldName]="'machineId'" [field]="productForm.get('machineId')" [messages]="PRODUCT_WIZARD_VALIDATOR"></form-validate>
+                            </span>
+                        </div>
+                        <div class="form-group col-md-3" [ngClass]="{ 'has-error': f.submitted && !productForm.get('boardId').valid, 'has-success': f.submitted && productForm.get('boardId').valid}">
+                            <form-control-label [text]="'product.form.boardId'" [required]="true"></form-control-label>
+                            <span class="clip-select">
+                                <select  name="boardId" id="boardSelect{{i}}" class="select2" formControlName="boardId">
+                                    <option value="0">Select {{ 'product.form.board' | translate }}</option>
+                                    <option *ngFor="let board of boards" [value]="board.boardId">{{board.name}}({{board.boardId}})</option>
+                                </select>
+                                <form-validate [form]="f" [fieldName]="'boardId'" [field]="productForm.get('boardId')" [messages]="PRODUCT_WIZARD_VALIDATOR"></form-validate>
+                            </span>
+                        </div>
+                        <div class="form-group col-md-2" [ngClass]="{ 'has-error': f.submitted && !productForm.get('deviceId').valid, 'has-success': f.submitted && productForm.get('deviceId').valid}">
+                            <form-control-label [text]="'product.form.deviceId'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control input-default" placeholder="{{ 'product.placeholder.deviceId' | translate }}" class="form-control" name="deviceId" formControlName="deviceId" readonly/>
+                            <form-validate [form]="f" [fieldName]="'deviceId'" [field]="productForm.get('deviceId')" [messages]="PRODUCT_WIZARD_VALIDATOR"></form-validate>
+                        </div>
+                        <div class="form-group col-md-2" [ngClass]="{ 'has-error': f.submitted && !productForm.get('imieId').valid, 'has-success': f.submitted && productForm.get('imieId').valid}">
+                            <form-control-label [text]="'product.form.imieId'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control input-default" placeholder="{{ 'product.placeholder.imieId' | translate }}" class="form-control" name="imieId" formControlName="imieId" readonly/>
+                            <form-validate [form]="f" [fieldName]="'imieId'" [field]="productForm.get('imieId')" [messages]="PRODUCT_WIZARD_VALIDATOR"></form-validate>
+                        </div>
+                        <div class="form-group col-md-2" [ngClass]="{ 'has-error': f.submitted && !productForm.get('price').valid, 'has-success': f.submitted && productForm.get('price').valid}">
+                            <form-control-label [text]="'product.form.price'" [required]="true"></form-control-label>
+                            <input type="number" class="form-control input-default" placeholder="{{ 'product.placeholder.price' | translate }}" class="form-control" name="price" formControlName="price">
+                            <form-validate [form]="f" [fieldName]="'price'" [field]="productForm.get('price')" [messages]="PRODUCT_WIZARD_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h4>Customer Details</h4>
+                <div class="row">
+                    <div class="col-md-12 form-group" [ngClass]="{ 'has-error': f.submitted && !boardForm.get('clientSubscription').valid, 'has-success': f.submitted && boardForm.get('clientSubscription').valid}">
+                        <form-control-label [text]="'product.form.clientSubscription'" [required]="true"></form-control-label>
+                        <span class="clip-select">
+                         <select  name="clientSubscription"  id="clientSubscriptionIDDetails"  class="select2" formControlName="clientSubscription">
+                             <option value="">{{ 'product.placeholder.selectSubscription' | translate }}</option>
+                             <option *ngFor="let clientSubscription of clientSubscriptions" [value]="clientSubscription.id">{{clientSubscription.subscription ? clientSubscription.subscription.name:''}}</option>
+                         </select>
+                         <form-validate [form]="f" [fieldName]="'clientSubscription'" [field]="boardForm.get('clientSubscription')" [messages]="PRODUCT_WIZARD_VALIDATOR"></form-validate>
+                     </span>
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" name="vendorSupported" value="" formControlName="vendorSupported" (change)="showVendorCompany();">{{client.vendorNickName?client.vendorNickName:('clientDashboard.form.vendor' | translate )}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-12 form-group showVendor" id="showVendor" [ngClass]="{ 'has-error': f.submitted && !boardForm.get('vendorId').valid, 'has-success': f.submitted && boardForm.get('vendorId').valid}" *ngIf="client.vendorNickName">
+                        <label class="control-label">{{ replaceText('report.form.vendor' | translate) }} <span class="symbol required">*</span></label>
+                        <span class="clip-select">
+                         <select  name="vendorId"  id="vendorsIDSelect2"  class="select2" formControlName="vendorId">
+                             <option value="">{{ replaceText('product.placeholder.vendor' | translate) }}</option>
+                             <option *ngFor="let vendor of vendors" [value]="vendor.alias">{{vendor.name}}</option>
+                         </select>
+                         <form-validate [form]="f" [fieldName]="'vendorId'" [field]="boardForm.get('vendorId')" [entity]="client.vendorNickName" [messages]="PRODUCT_WIZARD_VALIDATOR"></form-validate>
+
+                     </span>
+                    </div>
+                    <div class="col-md-12 form-group" id="showCompany" [ngClass]="{ 'has-error': f.submitted && !boardForm.get('companyId').valid, 'has-success': f.submitted && boardForm.get('companyId').valid}">
+                        <label class="control-label">{{ replaceText('report.form.company' | translate) }} <span class="symbol required">*</span></label>
+                        <span class="clip-select">
+                         <select  name="companyId"  id="companiesIDSelect2"  class="select2" formControlName="companyId">
+                             <option value="">{{ replaceText('product.placeholder.company' | translate) }}</option>
+                             <option *ngFor="let company of companies" [value]="company.alias">{{company.name}}</option>
+                         </select>
+                            <form-validate [form]="f" [fieldName]="'companyId'" [field]="boardForm.get('companyId')" [entity]="client.companyNickName" [messages]="PRODUCT_WIZARD_VALIDATOR"></form-validate>
+                     </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="!orderWizard.invoiceId">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">{{'product.form.dispatch' | translate}}</button>
+                <button type="button" (click)="list();" class="btn mb-1 btn-outline-danger pull-right">{{'productType.form.cancel' | translate}}</button>
+            </div>
+        </div>
+    </form>
+</admin-root>

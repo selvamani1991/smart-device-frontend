@@ -1,0 +1,98 @@
+﻿<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+
+    <div class="card ">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="row item-title-profile">
+                    <div class="col-lg-6"> <h3>{{ "login.form.about" | translate }}</h3></div>
+                    <div class="col-lg-6">
+                        <i class="fa fa-pencil color-muted cursor-position float-right" data-toggle="tooltip" title="Edit" (click)="edit(user);"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="delete-pic" style="cursor:pointer;" *ngIf="user.id && user.avatar"><i class="fa fa-close color-danger cross-size" data-toggle="tooltip" title="Delete" (click)="markDeleted(user);"></i></div>
+                    <div class="single-info-details">
+                            <span class="item-img userDetailSize">
+
+                                <img src="{{user.avatar}}" *ngIf="user.id && user.avatar" class="upload-current-user-image"/>
+                                <span class="current-user-icon"><i class="fa fa-user" *ngIf="!user.avatar"></i></span>
+                                <div class="row img-cursor">
+                                    <div class="choose_file">
+                                        <button type="button" class="btn btn-default upload-image-button">{{ "login.form.upload" | translate }}</button>
+                                        <input name="file" type="file" class="form-control" accept="image/*"  (change)="onFileChange($event)"/>
+                                    </div>
+                                    <div class="file-detail"  *ngIf="files && user.id && user.avatar">{{files.name}}</div>
+                                    <div class="file-detail" *ngIf="files && user.id && user.avatar">{{ files.size/1024 | number:'1.0-0'}} KB</div>
+                                </div>
+                                <h5 class="maximum-size">Minimum Image size 50*50</h5>
+                            </span>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class=" item-border item-content fontsize">
+                        <div class="row username">
+                            <div class="header-inline item-header">
+                                <h4 class="text-dark-medium font-medium">{{ user.firstName}} {{ user.lastName}}</h4>
+                            </div>
+                        </div>
+                        <div class="row username">
+
+                        </div>
+                        <div class="row detailGap">
+                            <div class="col-md-4">
+                                <b>{{ "login.form.username" | translate }}:</b>
+                            </div>
+                            <div class="col-md-8">
+                                {{ user.username }}
+                            </div>
+                        </div>
+
+                        <div class="row detailGap">
+                            <div class="col-md-4">
+                                <b>{{ "login.form.firstName" | translate }}:</b>
+                            </div>
+                            <div class="col-md-8">
+                                {{ user.firstName }}
+                            </div>
+                        </div>
+                        <div class="row detailGap">
+                            <div class="col-md-4">
+                                <b>{{ "login.form.lastName" | translate }}:</b>
+                            </div>
+                            <div class="col-md-8">
+                                {{ user.lastName }}
+                            </div>
+                        </div>
+                        <div class="row detailGap">
+                            <div class="col-md-4">
+                                <b>{{ "login.form.designation" | translate }}:</b>
+                            </div>
+                            <div class="col-md-8">
+                                {{ user.designation}}
+                            </div>
+                        </div>
+                        <div class="row detailGap">
+                            <div class="col-md-4">
+                                <b>{{ "login.form.email" | translate }}:</b>
+                            </div>
+                            <div class="col-md-8">
+                                {{ user.email}}
+                            </div>
+                        </div>
+                        <div class="row detailGap">
+                            <div class="col-md-4">
+                                <b>{{ "login.form.phoneNo" | translate }}:</b>
+                            </div>
+                            <div class="col-md-8">
+                                {{ user.phoneNo}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</admin-root>

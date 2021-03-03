@@ -1,0 +1,108 @@
+{
+  "list": {
+    "name": "Name",
+    "pageLink": " Consumer Product List",
+    "notAvailable": "Data is not available",
+    "pageTitle": "list",
+    "pageDesc": "Listing all  Consumer Product",
+    "state": "State",
+    "consumerProduct": "Consumer Product",
+    "active": "Active",
+    "status": "Status",
+    "disabled": "Disabled",
+    "enabled": "Enabled",
+    "noData": "Data is not available",
+    "logo": "Logo",
+    "deviceId": "Device ID",
+    "imieId": "IMEI ID",
+    "modelNo": "Model No.",
+    "description": "Description",
+    "manufacturingDate": "Manufacture Date"
+  },
+  "create": {
+    "formTitle": "Consumer Product creation form",
+    "formDesc": "Consumer Product creation form",
+    "pageLink": "Create ",
+    "pageTitle": "Create ",
+    "pageDesc": "creating a new Consumer Product"
+  },
+  "edit": {
+    "formTitle": " Consumer Product Update form",
+    "formDesc": "Consumer Product update form",
+    "pageLink": "Edit ",
+    "pageTitle": "Edit a Consumer Product ",
+    "pageDesc": "Editing a Existing Consumer Product"
+  },
+
+  "show": {
+    "formTitle": " Consumer Product Show",
+    "formDesc": " Consumer Product Show form",
+    "pageLink": "Show  ",
+    "pageTitle": "Show a Consumer Product",
+    "pageDesc": "Showing a Existing Consumer Product"
+  },
+
+  "form": {
+    "all": "All",
+    "add": "Add Consumer Product",
+    "details": "Consumer Product Details",
+    "name": "Consumer Product Name",
+    "description": "Description",
+    "status": "Status",
+    "id": "Id",
+    "chooseImage": "Choose Image",
+    "contact": "Contact Details",
+    "detail": "Consumer Product Details",
+    "logo": "Logo",
+    "action": "Action",
+    "consumerProductId": "Consumer Product ID",
+    "consumerProductName": "Consumer Product Name",
+    "consumerProductDescription": "Consumer Product Description",
+    "verified": "Verified",
+    "title": "Consumer Product Management",
+    "data": "Data is not available In Table",
+    "save": "Save",
+    "cancel": "Cancel",
+    "deviceId": "Device ID",
+    "imeiId": "IMEI ID",
+    "imieId": "IMEI ID",
+    "modelNo": "Model No",
+    "lotNo": "Lot no",
+    "manufacturingDate": "Manufacturing Date"
+
+  },
+  "error": {
+    "name": "Please enter consumer product name",
+    "duplicateEmail": "Email already exist",
+    "duplicatePhoneNo": "Phone number already Exist",
+    "duplicate": "Consumer product name already exist",
+    "description": "Please enter description",
+    "manufacturingDate": "Please select manufacturing date",
+    "minName": "Minimum 2 characters required",
+    "minDescription": "Minimum 3 characters required",
+    "minModelNo": "Minimum 2 characters required",
+    "invalidPattern": "Invalid file format ! (Only JPEG,JPG,PNG files are allowed)",
+    "nameDuplicate": "Name already exist",
+    "deviceIdDuplicate": "Device id already exist",
+    "imeiIdDuplicate": "Imei id already exist",
+    "lotNoDuplicate": "Lot number already exist",
+    "deviceId": "Please enter device id",
+    "imeiId": "Please enter imei id",
+    "lotNo": "Please enter lot no",
+    "modelNo": "Please enter model no",
+    "minDeviceId": "Minimum 2 characters required",
+    "minImeidId": "Minimum 2 characters required",
+    "minLotNo": "Minimum 2 characters required"
+  },
+  "placeholder": {
+    "name": " Enter Name",
+    "description": "Enter Description",
+    "deviceId": "Enter Device Id",
+    "imeiId": "Enter IMEI Id",
+    "modelNo": "Enter Model No.",
+    "imei": "Enter IMEI No.",
+    "lotNo": "Enter Lot No.",
+    "email": "Enter Email ",
+    "manufacturingDate": "Enter Manufacture date"
+  }
+}

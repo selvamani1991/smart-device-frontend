@@ -1,0 +1,240 @@
+{
+  "heading": {
+    "NAVIGATION": "Main Navigation",
+    "FEATURES": "Core Features",
+    "DOCUMENTATION": "Documentation"
+  },
+
+  "nav": {
+    "dashboard": {
+      "main": "Dashboard"
+    },
+
+    "user": {
+      "main": "User Management",
+      "create": "Create User",
+      "list": "User List"
+    },
+
+    "permission": {
+      "main": "Permission Management",
+      "featureCategory": "Feature Category List",
+      "role": "Role List"
+    },
+
+    "featureCategory": {
+      "main": "Feature Category Management",
+      "create": "Create Feature Category"
+    },
+
+    "feature": {
+      "main": "Feature Management",
+      "create": "Create Feature"
+    },
+
+    "role": {
+      "main": "Role Management",
+      "create": "Create Role"
+    },
+
+    "productCategory": {
+      "main": "Product Category",
+      "list": "Product Category List"
+    },
+  "consumerTicket": {
+    "main": "Consumer Ticket",
+    "list": "Consumer Ticket List"
+  },
+    "company": {
+      "main": "Company Management",
+      "list": "Company List",
+      "unassignedProductList": "Unassigned product ",
+      "assignedBuildingProduct": "Assigned building product ",
+      "newCompanyProduct": "New company Product ",
+      "allCompanyProduct": "All Company Product "
+    },
+
+    "building": {
+      "main": "Building Management",
+      "list": "Building List",
+      "CompanyBuildingProduct": "Assigned Product",
+      "unassignedProductList": "Product",
+      "NewCompanyBuildingProduct": "New Product",
+      "allCompanyBuildingProduct": "All Product "
+
+    },
+
+    "client": {
+      "main": "Client Management",
+      "list": "Client List",
+      "newProductTypeList": "New ProductType List"
+    },
+    "zone": {
+      "main": "Zone ",
+      "list": "Zone List"
+    },
+    "productSubscription": {
+      "main": "Product Subscription ",
+      "list": "Product Subscription List"
+    },
+    "boardManufacturer": {
+      "main": "Board Manufacturer",
+      "list": "Board Manufacturer List",
+      "newProductList": "New Product"
+    },
+    "boardProductType": {
+      "main": "Board ProductType",
+      "list": "Board ProductType",
+      "boardProductType": "Board ProductType"
+    },
+    "machineProductType": {
+      "main": "Machine ProductType",
+      "list": "Machine ProductType",
+      "machineProductType": "Machine ProductType"
+    },
+    "board": {
+      "main": "Board ",
+      "list": "Board  List",
+      "newProductList": "New Product"
+    },
+
+    "vendor": {
+      "main": "Vendor Management",
+      "list": "Vendor List",
+      "newVendorProductList": "New Vendor Product",
+      "unassignedProductList": "Unassigned Product",
+      "assignedDistributorProduct": "Assigned Distributor Product",
+      "assignedCompanyProduct": "Assigned Company Product",
+      "allVendorProduct": "All Vendor Product "
+
+    },
+
+    "distributor": {
+      "main": "Distributor Management",
+      "list": "Distributor List",
+      "newDistributorProduct": "New Distributor Product ",
+      "UnassignedDistributorProduct": "Unassigned  Product ",
+      "assignedDistributorProduct": "Assigned Company Product ",
+      "allDistributorProduct": "All Distributor Product "
+
+    },
+
+    "manufacturer": {
+      "main": "Machine Manufacturer Management",
+      "list": "Machine Manufacturer List"
+    },
+    "machine": {
+      "main": "Machine",
+      "list": "Machine List"
+    },
+
+    "city": {
+      "main": "City Management",
+      "list": "City List"
+    },
+
+    "product": {
+      "main": "Product Details",
+      "list": "Product List",
+      "ProductList": "Product List",
+      "new-product-list": "new list",
+      "newManufacturerProduct": "New Manufacturer Product",
+      "ManufacturerProduct": "All Manufacturer Product",
+      "newClientProduct": "New Client Product",
+      "AllClientProduct": "All Client Product",
+      "product": "Add Product",
+      "unassignedProductList": "Unassigned Products",
+      "assignedVendorProduct": "Assigned Vendor Products",
+      "assignedCompanyProduct": "Assigned Company Products",
+      "newProductList": "New Product"
+    },
+
+    "products": {
+      "main": "Products Management",
+      "list": "Products List"
+    },
+
+    "productType": {
+      "main": "ProductType",
+      "list": "ProductType List"
+    },
+
+    "productTypes": {
+      "main": "Product Types Management",
+      "list": "Product Types List"
+    },
+    "resources": {
+      "main": "Resources Management",
+      "media": "Media",
+      "fota": "Firmware",
+      "errorData": "Error Data",
+      "telemetric": "Telemetric Data",
+      "qrcode": "Qr Code "
+    },
+    "consumer": {
+      "main": "Consumer Management",
+      "list": "Product Types List",
+      "consumerList": "Consumer List"
+    },
+
+    "consumerProduct": {
+      "list": "Consumer Product",
+      "consumerProductList": "Consumer Product"
+    },
+
+    "consumerProductType": {
+      "list": "Consumer ProductType"
+    },
+
+    "report": {
+      "main": "Report Management",
+      "list": "Report",
+      "vendorReport": "Vendor Product Report",
+      "vendorDReport": "Distributor Product Report",
+      "buildingReport": "Building Product Report",
+      "companyReport": "Company Product Report",
+      "resources": "Resources Management",
+      "vendorError": "Vendor Product Health Report",
+      "companyError": "Company Product Health Report",
+      "vendorCompany": "Company Product Report"
+    },
+
+    "subscription": {
+      "list": "Subscription List",
+      "main": "Subscription Management",
+      "ConsumerSubscription": "Consumer Subscription",
+      "consumerSubscription": "Consumer"
+    },
+
+    "media": {
+      "list": "Media List",
+      "main": "Media Management"
+    },
+    "roomType": {
+      "list": "Room Type List",
+      "main": "Room Type Management"
+    },
+
+    "invoice": {
+      "list": "Invoice List",
+      "main": "Invoice Management"
+    },
+    "customer": {
+      "main": "Customer Management",
+      "company": "Company Management",
+      "vendor": "Vendor Management",
+      "zone": "Zone Management"
+
+    },
+    "productManagement": {
+      "productType": "ProductType Management",
+      "main": "Product Management",
+      "machine": "Machine Manufacturer Management",
+      "board": "Board Manufacturer Management",
+      "product": "Product Wizard",
+      "vendorProduct": "Vendor Product Details",
+      "companyProduct": "Company Product Details"
+    }
+
+  }
+}

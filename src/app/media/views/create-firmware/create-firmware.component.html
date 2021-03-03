@@ -1,0 +1,54 @@
+﻿<admin-root>
+  <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" name="firmwareForm" [formGroup]="firmwareForm" #f="ngForm" (ngSubmit)="validateForm() && f.form.valid && createFirmware()" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="active-member">
+                <div class="table-responsive">
+                  <div class="col-lg-12 col-sm-12">
+                    <h4>{{ 'media.form.fotaDetails' | translate }}</h4>
+                    <div class="row">
+                        <div class="col-md-8">
+                          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !firmwareForm.get('name').valid, 'has-success': f.submitted && firmwareForm.get('name').valid}">
+                              <form-control-label [text]="'media.list.name'" [required]="true"></form-control-label>
+                              <input type="text" class="form-control input-default" placeholder="{{ 'media.create.name' | translate }}" class="form-control" name="name" formControlName="name">
+                              <form-validate [form]="f" [fieldName]="'name'" [field]="firmwareForm.get('name')" [messages]="FIRMWARE_VALIDATOR"></form-validate>
+                          </div>
+                          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !firmwareForm.get('description').valid, 'has-success': f.submitted && firmwareForm.get('description').valid}">
+                              <form-control-label [text]="'media.form.description'" [required]="true"></form-control-label>
+                              <div class="note-editor">
+                                <textarea id="form-field-22" class="form-control" placeholder="Enter description" name="description" formControlName="description"></textarea>
+                              </div>
+                              <form-validate [form]="f" [fieldName]="'description'" [field]="firmwareForm.get('description')" [messages]="FIRMWARE_VALIDATOR"></form-validate>
+                          </div>
+                        </div>
+                        <div class="col-md-4 show-icon-top">
+                            <span><img alt="" src="assets/images/upload.svg" class="excel-icon"> </span>
+                            <div class="row">
+                                <div class="choose_file">
+                                    <button type="button" class="btn btn-default upload-button">Choose File</button>
+                                    <input name="file" type="file" class="form-control" accept=".bin,.hex,.mot" (change)="onFileChange($event)"/>
+                                    <form-validate [form]="f" [fieldName]="'file'" [field]="firmwareForm.get('file')" [messages]="FIRMWARE_VALIDATOR"></form-validate>
+                                </div>
+                                <div class="file-detail" *ngIf="files">{{files.name}}</div>
+                                <div class="file-detail" *ngIf="files">{{ files.size/1024 | number:'1.0-0'}} KB</div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">{{'media.form.save' | translate}}</button>
+          <button type="button" (click)="list();" class="btn mb-1 btn-outline-danger pull-right">{{'media.form.cancel' | translate}}</button>
+        </div>
+      </div>
+    </form>
+</admin-root>

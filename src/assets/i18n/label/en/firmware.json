@@ -1,0 +1,82 @@
+{
+  "list": {
+    "name": "Name",
+    "pageLink": " Firmware List",
+    "notAvailable": "Data is not available",
+    "pageTitle": "list",
+    "pageDesc": "Listing all  Firmware",
+    "state": "State",
+    "Firmware": "Firmware",
+    "zip": "Zip",
+    "active": "Active",
+    "status": "Status",
+    "disabled": "Disabled",
+    "enabled": "Enabled",
+    "noData": "Data is not available"
+  },
+  "create": {
+    "formTitle": "Firmware creation form",
+    "formDesc": "Firmware creation form",
+    "pageLink": "Create Firmware",
+    "pageTitle": "Create",
+    "pageDesc": "creating a new Firmware"
+  },
+  "edit": {
+    "formTitle": " Firmware Update form",
+    "formDesc": "Firmware update form",
+    "pageLink": "Edit Firmware",
+    "pageTitle": "Edit a Firmware",
+    "pageDesc": "Editing a Existing Firmware"
+  },
+
+  "show": {
+    "formTitle": " Firmware Show",
+    "formDesc": " Firmware Show form",
+    "pageLink": "Show Firmware",
+    "pageTitle": "Show a Firmware",
+    "pageDesc": "Showing a Existing  Firmware"
+  },
+  
+  "form": {
+    "all": "All",
+    "selectFirmwareType": "Select Firmware Type",
+    "firmwareType": "Firmware Type",
+    "Firmware": "Cities",
+    "add": "Add Firmware",
+    "details": "Firmware Details",
+    "name": "Name",
+    "description": "Description",
+    "status": "Status",
+    "id": "Id",
+    "logo": "Logo",
+    "action": "Action",
+    "FirmwareId": "Firmware ID",
+    "FirmwareName": "FirmwareName",
+    "FirmwareDescription": "FirmwareDescription",
+    "Assign": "Assign",
+    "Accept": "Accept",
+    "verified": "Verified",
+    "title": "Firmware Management",
+    "data": "Data is not available In Table",
+    "save": "Save",
+    "cancel": "Cancel",
+    "active": "Active"
+  },
+  "error": {
+    "name": "Please Enter Name",
+    "namePattern": "Please Enter Valid Name",
+    "price": "Please Enter Price",
+    "duplicate": "Firmware Already Exist",
+    "description": "Please Enter Description",
+    "firmwareType": "Please Select firmwareType",
+    "file": "Please Select file",
+    "minName": "Minimum length should be of 2 characters",
+    "minDescription": "Minimum length should be of 3 characters",
+    "invalidPattern": "Invalid File Format ! (Only JPEG,JPG,PNG files are allowed)"
+  },
+  "placeholder": {
+    "name": " Enter Firmware Name",
+    "description": "Enter Description"
+  }
+
+}

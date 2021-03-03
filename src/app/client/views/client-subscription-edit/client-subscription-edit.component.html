@@ -1,0 +1,64 @@
+﻿<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" name="clientSubscriptionForm" [formGroup]="clientSubscriptionForm" #f="ngForm" (ngSubmit)="f.form.valid && updateClientSubscription(f)" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+        <div class="card" id="projects">
+            <div class="card-body">
+                <h3 class="card-title">{{'client.form.details' | translate}}</h3>
+                <div class="row">
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !clientSubscriptionForm.get('subscription').valid, 'has-success': f.submitted && clientSubscriptionForm.get('subscription').valid}">
+                        <form-control-label [text]="'client.subscriptionList.subscription'" [required]="true"></form-control-label>
+                        <span class="clip-select">
+                            <select  name="subscription" id="subscriptionClientSelect" class="select2"  formControlName="subscription">
+                                <option value="">{{ 'client.subscriptionList.selectSubscription' | translate }}</option>
+                                <option *ngFor="let subscriptionItem of subscriptions" [value]="subscriptionItem.alias">{{subscriptionItem.name}}</option>
+                            </select>
+                            <form-validate [form]="f" [fieldName]="'subscription'" [field]="clientSubscriptionForm.get('subscription')" [messages]="CLIENT_SUBSCRIPTION_VALIDATOR"></form-validate>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !clientSubscriptionForm.get('startDate').valid, 'has-success': f.submitted && clientSubscriptionForm.get('startDate').valid}">
+                        <form-control-label [text]="'client.subscriptionList.startDate'" [required]="true"></form-control-label>
+                        <div class="input-group">
+                            <input type="text" placeholder="{{ 'client.placeholder.startDate' | translate }}" class="form-control" name="startDate" formControlName="startDate" autocomplete="off" id="clientSubscriptionStartDate">
+                            <span class="input-group-append" >
+                                <span class="input-group-text">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                </span>
+                            </span>
+                        </div>
+                        <form-validate [form]="f" [fieldName]="'startDate'" [field]="clientSubscriptionForm.get('startDate')" [messages]="CLIENT_SUBSCRIPTION_VALIDATOR"></form-validate>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !clientSubscriptionForm.get('endDate').valid, 'has-success': f.submitted && clientSubscriptionForm.get('endDate').valid}">
+                        <form-control-label [text]="'client.subscriptionList.endDate'" [required]="true"></form-control-label>
+                        <div class="input-group">
+                            <input type="text" placeholder="{{ 'client.placeholder.endDate' | translate }}" class="form-control" name="endDate" formControlName="endDate" autocomplete="off" id="clientSubscriptionEndDate">
+                            <span class="input-group-append" >
+                                <span class="input-group-text">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                </span>
+                            </span>
+                        </div>
+                        <form-validate [form]="f" [fieldName]="'endDate'" [field]="clientSubscriptionForm.get('endDate')" [messages]="CLIENT_SUBSCRIPTION_VALIDATOR"></form-validate>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group form-check mb-3 distributor-checkbox">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" name="active" formControlName="active" value="">Active
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="clientSubscription.active">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">{{'client.form.save' | translate}}</button>
+                <button type="button" (click)="list(client);" class="btn mb-1 btn-outline-danger pull-right">{{'client.form.cancel' | translate}}</button>
+            </div>
+        </div>
+    </form>
+</admin-root>

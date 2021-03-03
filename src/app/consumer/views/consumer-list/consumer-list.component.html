@@ -1,0 +1,48 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{'consumer.list.consumer' | translate}}</h3>
+            <product-list-header (pageSizeChanged)="changePageSize($event)" (search)="searchConsumerList($event)"></product-list-header>
+            <div class="table-responsive">
+                <div *ngIf="consumers.length>0">
+                    <table class="table table-striped table-hover padding-top-20">
+                        <thead>
+                        <tr>
+                            <th>{{ 'consumer.list.logo' | translate }}</th>
+                            <th>{{ 'consumer.list.firstName' | translate }}</th>
+                            <th>{{ 'consumer.list.email' | translate }}</th>
+                            <th>{{ 'consumer.list.username' | translate }}</th>
+                            <th>{{ 'consumer.list.phoneNumber' | translate }}</th>
+                            <!--<th>{{ 'consumer.list.productCount' | translate }}</th>-->
+                            <th>{{ 'consumer.list.action' | translate }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let consumer of consumers">
+                            <td class="userSize"><img src="{{consumer.avatar}}" *ngIf="consumer.id && consumer.avatar" class="list-logo"> <i class="fa fa-user" *ngIf="consumer.id && !consumer.avatar"></i></td>
+                            <td>{{consumer.firstName}}</td>
+                            <td>{{consumer.email}}</td>
+                            <td>{{consumer.username}}</td>
+                            <td>{{consumer.phoneNo}}</td>
+                           <!-- <td>{{consumer.productCount}}</td>-->
+                            <td>
+                               <img alt="Subscription" class="cursor-position" src="/assets/images/subscription_admin.png" data-toggle="tooltip"  title="Subscription" (click)="showConsumerSubscription(consumer);" width="16">
+                                <img alt="Device" class="cursor-position" src="/assets/images/device_icon.svg" data-toggle="tooltip"  title="Device" (click)="showConsumerDevice(consumer);" width="16">
+                                <!--<i class="fa fa-pinterest-p color-muted m-r-5 show-machine cursor-position" data-toggle="tooltip" title="Product" (click)="showConsumerDevice(consumer);"></i>-->
+                            </td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                    <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="consumers.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                </div>
+            </div>
+            <div *ngIf="consumers.length==0">
+                <div class="dataSpace text-center">
+                    <b>{{ 'consumer.list.noData' | translate }}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</admin-root>

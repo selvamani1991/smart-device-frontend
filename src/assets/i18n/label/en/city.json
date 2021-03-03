@@ -1,0 +1,101 @@
+{
+  "list": {
+    "name": "Name",
+    "pageLink": "City List",
+    "pageTitle": "City List",
+    "pageDesc": "Listing all City",
+    "state": "State",
+    "city": "City",
+    "zip": "Zip",
+    "active": "Active",
+    "status": "Status",
+    "enabled": "Enabled",
+    "disabled": "Disabled"
+  },
+  "create": {
+    "formTitle": "City creation form",
+    "formDesc": "City creation form",
+    "pageLink": "Create",
+    "pageTitle": "Create",
+    "pageDesc": "creating a new City"
+  },
+   "edit": {
+    "formTitle": "City Update form",
+    "formDesc": "City update form",
+    "pageLink": "Edit",
+    "pageTitle": "Edit",
+    "pageDesc": "editing a existing user"
+  },
+  "show": {
+    "formTitle": "City Show",
+    "formDesc": "City Show form",
+    "pageLink": "Show",
+    "pageTitle": "Show",
+    "pageDesc": "Showing a existing City"
+  },
+  "show-company-city": {
+    "formTitle": "Company City Show",
+    "formDesc": "Company City   form",
+    "pageLink": "Showing Company City ",
+    "pageTitle": "Showing a Company City ",
+    "pageDesc": "Showing a existing Company City"
+  },
+  "show-admin": {
+    "formTitle": "City Admin",
+    "formDesc": "City Admin",
+    "pageLink": "Assign City Admin",
+    "pageTitle": "Assigning City Admin",
+    "pageDesc": "Showing all existing Admin"
+  },
+  "form": {
+    "title": "City Management",
+    "all": "All",
+    "city": "City",
+    "state": "State Name",
+    "country": "Country Name",
+    "detail": "City Details",
+    "asset": "Assets",
+    "room": "Rooms",
+    "add": "Add City",
+    "cityDetails": "City Details",
+    "name": "City Name",
+    "description": "Description",
+    "cityId": "City Id",
+    "amcStartDate": "AMC Start Date",
+    "code": "City Code",
+    "status": "Status",
+    "action": "Action",
+    "logo": "Logo",
+    "save":"Save",
+    "cancel": "Cancel",
+    "data": "Data is not available"
+  },
+
+  "error": {
+    "name": "Please enter city name",
+    "namePattern": "Please enter a valid city name",
+    "statePattern": "Please enter a valid state name",
+    "countryPattern": "Please enter a valid country name",
+    "duplicate": "City name already Exist",
+    "duplicateEmail": "Email already Exist",
+    "description": "Please enter description",
+    "code": "Please enter City Code",
+    "city": "Please enter city",
+    "state": "Please enter state",
+    "country": "Please enter country",
+    "minName": "Minimum length should be 3 characters",
+    "minState": "Minimum length should be 3 characters",
+    "minCountry": "Minimum length should be 3 characters",
+    "invalidPattern": "Invalid File Format ! (Only JPEG,JPG,PNG files are allowed)"
+  },
+
+  "placeholder": {
+    "name": " Enter City Name",
+    "description": "Please Enter Description",
+    "code": "Please Enter City Code",
+    "city": "Enter City Name",
+    "state": "Enter State Name",
+    "country": "Enter Country Name",
+    "minName": "Please enter Name"
+  }
+}

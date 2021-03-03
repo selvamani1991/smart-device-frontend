@@ -1,0 +1,35 @@
+﻿<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">{{'role.form.details' | translate}}</h2>
+            <div class="row">
+                <div class="form-group col-md-2">
+                    <span class="icon1 "><i class="fa fa-user"></i></span>
+                </div>
+                <div class="form-group col-md-10 roleSpace">
+                    <div class="row margin">
+                        <div class="col-md-2">
+                            <b>Name:</b>
+                        </div>
+                        <div class="col-md-6">
+                            {{ role.name }}
+                        </div>
+                    </div>
+                    <div class="row margin">
+                        <div class="col-md-2">
+                            <b>Description:</b>
+                        </div>
+                        <div class="col-md-6">
+                            {{ role.description }}
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="form-group col-md-10 roleSpace" style="padding-top:30px; font-size:20px;">
+                     <b> Name:</b>{{role.name}}<br>
+                    <p><b>description:</b>{{role.description}}</p>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</admin-root>

@@ -1,0 +1,74 @@
+<div class="nav-header logo-color">
+   <div class="brand-logo">
+        <a [routerLink]="['/dashboard']" class="logo-size">
+            <div *ngIf="currentOwner && currentOwner.id && currentOwner.logo">
+                <img src="{{currentOwner.logo}}" class="currentOwner-logo-size">
+                <div class="currentOwner-logo">Powered By TALKIO</div>
+            </div>
+            <div *ngIf="currentOwner && !currentOwner.logo">
+                <b class="logo-abbr"><img src="/assets/images/logo.png" alt=""> </b>
+                <span class="logo-compact"><img src="/assets/images/subscription.png" alt="S"></span>
+                <span class="brand-title">
+                    <img class="talkio_logo" src="/assets/images/talk_io_logo.png"  width="130" alt="Smart Device">
+                </span>
+            </div>
+        </a>
+   </div>
+</div>
+
+<div class="header">
+    <div class="header-content clearfix">
+
+        <div class="nav-control">
+            <div class="hamburger">
+                <span class="toggle-icon"><i class="icon-menu"></i></span>
+            </div>
+        </div>
+        <div class="header-left">
+        </div>
+        <div class="header-right">
+            <ul class="clearfix top-profile">
+
+                <li  class="icons dropdown d-none d-md-flex">
+                    <language-switcher></language-switcher>
+                </li>
+
+                <li class="icons dropdown top-login-image">
+                   <div class="user-img c-pointer position-relative user-size-image"   data-toggle="dropdown">
+                       <div class="image-top-detail">
+                        <img src="{{user.avatar}}" *ngIf="user.id && user.avatar">
+                       </div>
+                        <div class="top-default-image" *ngIf="!user.avatar"><i class="fa fa-user user-icon-image-profile" ></i></div>
+                   </div>
+
+                    <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                        <div class="dropdown-content-body">
+                            <ul>
+                                <li>
+                                    <a [routerLink]="['/my-profile']"><i class="icon-user"></i> <span>{{ 'page.list.profile' | translate }}</span></a>
+                                </li>
+
+                                <li *ngIf="currentUser.userType!='SuperAdmin' && currentUser.userType!='companyBuildingAdmin' ">
+                                    <a class="cursor-style"  (click)="subscription();"><i class="fa fa-calendar"></i> <span>{{ 'page.list.subscription' | translate }}</span></a>
+                                    <hr class="my-2">
+                                </li>
+
+                                <li>
+                                    <a (click)="changePassword();"><i class="fa fa-lock icon-lock"></i> <span class="change-password">{{ 'page.list.changePassword' | translate }}</span></a>
+                                </li>
+
+                                <li>
+                                    <a [routerLink]="['/screen-lock']"><i class="icon-lock"></i> <span>{{ 'page.list.lockScreen' | translate }}</span></a>
+                                </li>
+
+                                <li>
+                                    <a (click)="logout()"><i class="icon-key"></i> <span class="logout-cursor">{{ 'page.list.logout' | translate }}</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

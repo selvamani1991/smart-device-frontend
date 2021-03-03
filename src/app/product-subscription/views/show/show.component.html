@@ -1,0 +1,70 @@
+<admin-root id="productSubscription">
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" name="productSubscriptionForm" [formGroup]="productSubscriptionForm" #f="ngForm">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">{{ 'productSubscription.show.productSubscriptionDetail' | translate }}</h3>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <form-control-label [text]="'productSubscription.form.name'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="name" formControlName="name" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'productSubscription.form.description'" [required]="true"></form-control-label>
+                            <div class="note-editor">
+                                <textarea  class="form-control" name="description" formControlName="description" readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-4 show-icon-top">
+                        <img src="{{productSubscription.logo}}" *ngIf="productSubscription.id && productSubscription.logo" class="upload-image"/>
+                        <span class="show-icon"><i class="fa fa-user-circle-o" *ngIf="!productSubscription.logo"></i></span>
+                        <div class="row">
+                            <div class="choose_file">
+                                <button type="button" class="btn btn-default upload-button">Choose Image</button>
+                                <input name="file" type="file" class="form-control" accept="image/*" (change)="onFileChange($event)"/>
+                            </div>
+                            <div class="file-detail" *ngIf="files && productSubscription.id && productSubscription.logo">{{files.name}}</div>
+                            <div class="file-detail"><span *ngIf="files && productSubscription.id && productSubscription.logo">{{ files.size/1024 | number:'1.0-0'}} </span> KB</div>
+                        </div>
+                        <div class="has-error error" *ngIf="formatError">{{'productSubscription.error.invalidPattern' | translate}}</div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <form-control-label [text]="'productSubscription.form.duration'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="duration" formControlName="duration" readonly/>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <form-control-label [text]="'productSubscription.form.price'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="price" formControlName="price" readonly/>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <form-control-label [text]="'productSubscription.form.machineTypeCount'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="machineTypeCount" formControlName="machineTypeCount" readonly/>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <form-control-label [text]="'productSubscription.form.machineCount'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="machineCount" formControlName="machineCount" readonly/>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <form-control-label [text]="'productSubscription.form.maxUsages'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="maxUsages" formControlName="maxUsages" readonly/>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <form-control-label [text]="'productSubscription.form.elapsedPeriod'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="elapsedPeriod" formControlName="elapsedPeriod" readonly/>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <form-control-label [text]="'productSubscription.form.salesPercentage'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="salesPercentage" formControlName="salesPercentage" readonly/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</admin-root>

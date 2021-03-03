@@ -1,0 +1,46 @@
+<admin-root id="consumerTicket">
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" name="consumerTicketForm" [formGroup]="consumerTicketForm">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{ 'consumerTicket.form.details' | translate }}</h4>
+                <div class="form-row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <form-control-label [text]="'consumerTicket.form.ticketIdList'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="ticketId" formControlName="ticketId" readonly/>
+                        </div>
+
+                        <div class="form-group">
+                            <form-control-label [text]="'consumerTicket.form.subject'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="subject" formControlName="subject" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'consumerTicket.form.description'" [required]="true"></form-control-label>
+                            <div class="note-editor">
+                                <textarea placeholder="{{consumerTicket.description}}" class="form-control" name="description" readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="col-md-4 show-icon-top">
+                            <div class="form-group">
+                                <div class="delete-image cursor-pointer" style="cursor:pointer;" *ngIf="consumerTicket.id && consumerTicket.logo"><i class="fa fa-close color-danger cross-size cursor-pointer" data-toggle="tooltip" title="Delete" (click)="markDeleted(consumerTicket);"></i></div>
+
+                                <img src="{{consumerTicket.logo}}" *ngIf="consumerTicket.id && consumerTicket.logo" class="upload-image"/>
+                                <span class="show-icon"><i class="fa fa-industry" *ngIf="!consumerTicket.logo"></i></span>
+                                <div class="row">
+                                    <div class="choose_file">
+                                        <button type="button" class="btn btn-default upload-button">Choose Image</button>
+                                        <input name="file" type="file" class="form-control" accept="image/*"  (change)="onFileChange($event)"/>
+                                    </div>
+                                    <div class="file-detail" *ngIf="files && consumerTicket.id && consumerTicket.logo">{{files.name}}</div>
+                                    <div class="file-detail"><span *ngIf="files && consumerTicket.id && consumerTicket.logo">{{ files.size/1024 | number:'1.0-0'}} </span> KB</div>
+                                </div>
+                                <div class="has-error error" *ngIf="formatError">{{'consumerTicket.error.invalidPattern' | translate}}</div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</admin-root>

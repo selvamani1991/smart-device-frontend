@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice</title>
+    <style>
+    .invoice {
+        position: relative;
+        margin-bottom: 12rem;
+        padding: 3rem;
+        background: #fff;
+        font-family: "Roboto", sans-serif;
+    }
+
+    .font-weight-bold {
+        font-weight: 700 !important;
+    }
+    .fontSpace {
+        font-size: 20px;
+    }
+
+    .pt-1 {
+        padding-top: 0.25rem !important;
+    }
+    .text-right {
+        text-align: right !important;
+    }
+    .text-center {
+        text-align: center !important;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        font-family: inherit;
+        font-weight: 500;
+        line-height: 1.2;
+        color: #222222;
+    }
+    .fontSpace {
+        font-size: 20px;
+    }
+    .tableSpace {
+        padding-left: 10px;
+        padding-right: 10px;
+        line-height: 30px;
+    }
+
+    .lineSpace {
+        padding-top: 20px;
+    }
+    .table-dark {
+        background-color: #838996;
+        color: #000;
+    }
+    .pull-right {
+        float: right;
+    }
+
+    .card {
+        margin-bottom: 30px;
+        border: 0px;
+        border-radius: 0.625rem;
+        box-shadow: 6px 11px 41px -28px #a99de7;
+    }
+    .card-body {
+        flex: 1 1 auto;
+        padding: 1.25rem;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+    .col-lg-6{
+        position: relative;
+        width: 100%;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+
+    }
+
+    .mb-1, .my-1 {
+        margin-bottom: 0.25rem !important;
+    }
+    .data{
+        height:100%;
+        width:48%;
+        float:left;
+        margin-right: 15px;
+        margin-left: 15px;
+
+    }
+    .event{
+        height:100%;
+        width:49%;
+        float:left;
+
+    }
+
+    .table-bordered {
+        border: 1px solid #dee2e6;
+    }
+    .table-bordered thead th {
+        border-bottom-width: 1px;
+    }
+    .table-bordered td {
+        border: 1px solid #dee2e6;
+    }
+    .table td, .table th {
+        border-color: #f3f3f3;
+    }
+
+    .table td {
+        line-height: 1.2;
+        vertical-align: middle;
+        padding: 0.75rem;
+    }
+    .table-info, .table-info > th, .table-info > td {
+        background-color: #cddaff;
+    }
+    .table thead th {
+        border-bottom: none;
+        border-top: none;
+        vertical-align: middle;
+        color: #76838f;
+    }
+    .table-bordered th, .table-bordered td {
+        border: 1px solid #dee2e6;
+    }
+    .table {
+        width: 100%;
+        margin-bottom: 1rem;
+        background-color: transparent;
+    }
+    .tr {
+        display: table-row;
+        vertical-align: inherit;
+        border-color: inherit;
+    }
+    .table {
+        border-collapse: collapse;
+    }
+
+    .letter-color{
+        color: #76838f;
+    }
+    .text-left{
+        float:left;
+    }
+
+    </style>
+</head>
+<body>
+<div class="card invoice" id="invoice">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3>5f46021742</h3>
+            </div>
+        </div>
+        <div class="row lineSpace1">
+            <div class="data">
+                <div><h3>To</h3></div>
+                <div><h3 class=" font-weight-bold">vendor companysdfsdfsdf</h3></div>
+                <div class="pt-1 fontSpace letter-color">
+                    <div>uijedhfsiudfwej, jsdqiuweqweui</div>
+                    <div>comfort hall</div>
+                    <div>saint philip</div>
+                    <div>antigua and barbuda,784512</div>
+                    <div>vencompany@gmail.com</div>
+                </div>
+            </div>
+
+            <div class="event">
+                <div><h3 class="text-right">From</h3></div>
+                <div><h3 class="text-right font-weight-bold">vendor nickname</h3></div>
+                <div class="pt-1 fontSpace text-right letter-color">
+                    <div>kjsdhfisduewr, dfgfdgjeterui</div>
+                    <div>argandekhi-pain</div>
+                    <div>kabol</div>
+                    <div>afghanistan,784512</div>
+                    <div>vendornick@gmail.com</div>
+                </div>
+            </div>
+        </div>
+        <div class="row lineSpace fontSpace tableSpace">
+            <table class="table table-bordered ">
+                <thead>
+                <tr>
+                    <th width="5%"class="">Id</th>
+                    <th width="40%" class="">PRODUCT</th>
+                    <th width="10%" class="text-right">QNT</th>
+                    <th width="5%" class="text-right">PRICE</th>
+                    <th width="5%" class="text-right">AMOUNT</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let invoiceProduct of invoice && invoice.invoice && invoice.invoice.invoiceProducts">
+
+                    <td class="letter-color text-center">340</td>
+                    <td class="">
+                        <div class="letter-color text-center">
+                            sadqweqwe</div>
+                    </td>
+                    <td class="text-right letter-color">1</td>
+                    <td class="text-right letter-color"><i class="fa fa-usd" aria-hidden="true"></i>$323232</td>
+                    <td class="text-right letter-color"><i class="fa fa-usd" aria-hidden="true"></i>$323232</td>
+                </tr>
+                <tr class="text-right letter-color">
+                    <td colspan="4" >SubTotal</td>
+                    <td><i class="fa fa-usd" aria-hidden="true"></i>$323232</td>
+                </tr>
+                <tr class="table-dark text-right">
+                    <td colspan="4">GST Amount</td>
+                    <td><i class="fa fa-usd" aria-hidden="true"></i>$58181.8</td>
+                </tr>
+                <tr class="table-info text-right">
+                    <td colspan="4">Total</td>
+                    <td><i class="fa fa-usd" aria-hidden="true"></i>$381414</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+﻿<admin-root id="consumerTicket">
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" name="consumerTicketForm" [formGroup]="consumerTicketForm" #f="ngForm" (ngSubmit)="f.form.valid && updateConsumerTicket(f)" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{ 'consumerTicket.form.details' | translate }}</h4>
+
+               <div class="row">
+                   <div class="col-lg-3">
+                       <div class="lineSpace2">{{ 'consumerTicket.form.ticketId' | translate }} <i class="fa fa-hashtag" aria-hidden="true"></i></div>
+                       <div class="lineSpace2">{{ 'consumerTicket.form.product' | translate }} : </div>
+                       <div class="lineSpace2">{{ 'consumerTicket.form.subject' | translate }} : </div>
+                       <div class="lineSpace2">{{ 'consumerTicket.form.entryDate' | translate }} :</div>
+                       <div class="lineSpace2">{{ 'consumerTicket.form.description' | translate }} : </div>
+                   </div>
+                   <div class="col-lg-9">
+                       <div class="lineSpace2">{{consumerTicket.ticketId}}</div>
+                       <div class="lineSpace2">{{consumerTicket.consumerProduct ? consumerTicket.consumerProduct.deviceId:''}}-{{consumerTicket.consumerProduct && consumerTicket.consumerProduct.consumerProductType  ? consumerTicket.consumerProduct.consumerProductType.name:''}}</div>
+                       <div class="lineSpace2">{{consumerTicket.subject}}</div>
+                       <div class="lineSpace2" >{{consumerTicket.entryDate}}</div>
+                       <div class="note-editor lineSpace2">
+                           <textarea id="form-field-30" class="form-control" placeholder="{{ 'consumerTicket.placeholder.description' | translate }}" name="description" formControlName="description"></textarea>
+                       </div>
+                   </div>
+               </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div *ngIf="consumerTicket.status == 'Open'">
+                    <div class="form-row">
+                        <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !consumerTicketForm.get('solution').valid, 'has-success': f.submitted && consumerTicketForm.get('solution').valid}">
+                            <form-control-label [text]="'consumerTicket.form.solution'" [required]="true"></form-control-label>
+                                <textarea  id="form-field-21" class="form-control h-150px"  rows="6"   placeholder="{{ 'consumerTicket.placeholder.solution' | translate }}" name="solution" formControlName="solution"></textarea>
+                            <form-validate [form]="f" [fieldName]="'solution'" [field]="consumerTicketForm.get('solution')" [messages]="CONSUMER_TICKET_VALIDATOR"></form-validate>
+                        </div>
+                        <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !consumerTicketForm.get('status').valid, 'has-success': f.submitted && consumerTicketForm.get('status').valid}">
+                            <form-control-label [text]="'consumerTicket.form.status'" [required]="true"></form-control-label>
+                            <div  class="clip-select">
+                                <select  id="statusSelect" name="status" class="select2"  formControlName="status">
+                                    <option value="0">Select Status</option>
+                                    <option *ngFor="let detail of statuses" [value]="detail.id">{{detail.name}}</option>
+                                </select>
+                                <form-validate [form]="f" [fieldName]="'status'" [field]="consumerTicketForm.get('status')" [messages]="CONSUMER_TICKET_VALIDATOR"></form-validate>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div *ngIf="consumerTicket.status == 'Closed'">
+                    <div class="form-row">
+
+                        <div class="form-group col-md-12">
+                            {{'consumerTicket.form.status' | translate}}:{{consumerTicket.status}}
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            {{'consumerTicket.form.solution' | translate}}:{{consumerTicket.solution}}
+                        </div>
+                        <form-validate [form]="f" [fieldName]="'entryDate'" [field]="consumerTicketForm.get('entryDate')" [messages]="CONSUMER_TICKET_VALIDATOR"></form-validate>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button  type="submit" *ngIf="consumerTicket.status == 'Open'" class="btn btn-wide btn-info pull-right saveSpace">{{'consumerTicket.form.update' | translate}}</button>
+                <button type="button" (click)="list(consumerTicket);" class="btn mb-1 btn-outline-danger pull-right">{{'consumerTicket.form.cancel' | translate}}</button>
+            </div>
+        </div>
+    </form>
+</admin-root>

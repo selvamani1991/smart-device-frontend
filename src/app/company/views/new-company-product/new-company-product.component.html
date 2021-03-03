@@ -1,0 +1,45 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+        <div class="card" id="company">
+            <div class="card-body">
+                <h3 class="card-title">New {{client.companyNickName?client.companyNickName:('clientDashboard.form.company' | translate )}} {{client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}}</h3>
+                <product-list-header (pageSizeChanged)="changePageSize($event)" (search)="searchNewCompanyProduct($event)"></product-list-header>
+                <div class="table-responsive">
+                    <div *ngIf="companyProducts.length>0">
+                        <table class="table table-striped table-hover padding-top-20">
+                            <thead>
+                                <tr>
+                                    <th>{{ 'company.companyProduct.logo' | translate }}</th>
+                                    <th>{{client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}} Name</th>
+                                    <th>{{ 'company.companyProduct.description' | translate }}</th>
+                                    <th>{{ 'company.companyProduct.dispatchedDate' | translate }}</th>
+                                    <th>{{ 'company.companyProduct.status' | translate }}</th>
+                                    <th width="10%">{{ 'company.companyProduct.invoice' | translate }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let companyProduct of companyProducts">
+                                    <td>
+                                        <div class="image-top-detail" *ngIf="companyProduct.product.id && companyProduct.product.logo">
+                                            <img src="{{companyProduct.product.logo}}"  class="list-logo-list">
+                                        </div>
+                                        <div class="top-default-image-list" *ngIf="companyProduct.product.id && !companyProduct.product.logo">
+                                            <i class="fa fa-cube user-icon-image lineSpace2 show-machine"></i>
+                                        </div>
+                                    </td>
+                                    <td>{{companyProduct.product.name}}</td>
+                                    <td class="content-head">{{ (companyProduct.product.description.length>45)? (companyProduct.product.description | slice:0:45)+'...':(companyProduct.product.description) }}</td>
+                                    <td>{{companyProduct.dispatchedDate}}</td>
+                                    <td>{{companyProduct.status}}</td>
+                                    <td><i class="fa fa-eye color-muted m-r-5 cursor-position" (click)="showInvoice(companyProduct);"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="companyProducts.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                    </div>
+                </div>
+                <div *ngIf="companyProducts.length==0"><div class="dataSpace text-center"><b>{{ 'company.list.noData' | translate }}</b></div>
+                </div>
+            </div>
+        </div>
+</admin-root>

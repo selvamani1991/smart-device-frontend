@@ -1,0 +1,80 @@
+﻿<div class="modal fade " id="qrModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"> Qr Code</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row" id="chart-pop-up-modal">
+                    <div class="col-md-5" *ngIf="client.qrCode">
+                        <img src="{{product.qrCode}}" class="upload-qr"/>
+                    </div>
+                    <div class="col-md-7 lineSpace">
+                        <table class="table">
+                            <tbody>
+
+                            <tr>
+                                <td><b>{{client.productNickName}} Name:</b></td>
+                                <td>{{product.name}}</td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Device ID:</b></td>
+                                <td>{{product.deviceId}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Imie ID:</b></td>
+                                <td>{{product.imieId}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Board ID:</b></td>
+                                <td>{{product.board.boardId}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Asset ID:</b></td>
+                                <td>{{product.machine.machineId}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>BLE MAC ADDRESS:</b></td>
+                                <td>{{product.url}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>{{client.productTypeNickName}} Name:</b></td>
+                                <td> {{product.productType? product.productType.name:''}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>{{client.productTypeNickName}} Id:</b></td>
+                                <td> {{product.productType? product.productType.alias:''}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Model Name:</b></td>
+                                <td> {{product.productType? product.productType.modelNo:''}}</td>
+                            </tr>
+
+                            <tr *ngIf="client">
+                                <td><b>Client Name:</b></td>
+                                <td> {{client.name}}</td>
+                            </tr>
+                            <tr *ngIf="client">
+                                <td><b>Client Id:</b></td>
+                                <td> {{client.alias}}</td>
+                            </tr>
+
+                            <tr *ngIf="client">
+                                <td><b>App Url:</b></td>
+                                <td> {{client.appUrl}}</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" (click)="show(product);" class="btn mb-1 btn-outline-danger pull-right" data-dismiss="modal">{{'product.form.cancel' | translate}}</button>
+                <a href="{{product.qrCode}}"><button type="button" class="btn btn-wide btn-info pull-right saveSpace">{{'product.form.print'| translate}}</button></a>
+            </div>
+        </div>
+    </div>
+</div>

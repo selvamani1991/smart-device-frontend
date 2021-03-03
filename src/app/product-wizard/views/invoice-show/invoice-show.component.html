@@ -1,0 +1,80 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+        <div class="card"  id="invoice">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>{{invoice && invoice.invoice? invoice.invoice.invoiceId:''}}</h3>
+                    </div>
+                    <div class="col-lg-6 pull-right fontSpace">
+                        <button  class="btn btn-wide btn-info pull-right" (click)="printVendor();">{{'invoice.form.printInvoice' | translate}}</button>
+                    </div>
+                </div>
+                <div class="row lineSpace1">
+                    <div class="col-lg-6">
+                        <div><h3>{{'invoice.form.to' | translate}}</h3></div>
+                        <div><h3 class="font-weight-bold">{{invoice.target? invoice.target.name:''}}</h3></div>
+                        <div class="pt-1 fontSpace">
+                            <div>{{invoice.target && invoice.target.address? invoice.target.address.street:''}}, {{invoice.target && invoice.target.address? invoice.target.address.houseNumber:''}}</div>
+                            <div>{{invoice.target && invoice.target.address && invoice.target.address.city? invoice.target.address.city.name:''}}</div>
+                            <div>{{invoice.target && invoice.target.address && invoice.target.address.city? invoice.target.address.city.region.name:''}}</div>
+                            <div>{{invoice.target && invoice.target.address && invoice.target.address.city? invoice.target.address.city.country.name:''}},{{invoice.target && invoice.target.address? invoice.target.address.zipCode:''}}</div>
+                            <div>{{invoice.target && invoice.target.admin? invoice.target.admin.email:''}}</div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div><h3 class="text-right">{{'invoice.form.from' | translate}}</h3></div>
+                        <div><h3 class="text-right font-weight-bold">{{invoice.source? invoice.source.name:''}}</h3></div>
+                        <div class="pt-1 fontSpace text-right">
+                            <div>{{invoice.source && invoice.source.address? invoice.source.address.street:''}}, {{invoice.source && invoice.source.address? invoice.source.address.houseNumber:''}}</div>
+                            <div>{{invoice.source && invoice.source.address && invoice.source.address.city? invoice.source.address.city.name:''}}</div>
+                            <div>{{invoice.source && invoice.source.address && invoice.source.address.city? invoice.source.address.city.region.name:''}}</div>
+                            <div>{{invoice.source && invoice.source.address && invoice.source.address.city? invoice.source.address.city.country.name:''}},{{invoice.source && invoice.source.address? invoice.source.address.zipCode:''}}</div>
+                            <div>{{invoice.source && invoice.source.admin? invoice.source.admin.email:''}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row lineSpace fontSpace tableSpace">
+                    <table class="table table-bordered ">
+                        <thead>
+                        <tr>
+                            <th width="5%">{{'invoice.form.id' | translate}}</th>
+                            <th width="40%">{{'invoice.form.product' | translate}}</th>
+                            <th width="10%" class="text-right">{{'invoice.form.qnt' | translate}}</th>
+                            <th width="5%" class="text-right">{{'invoice.form.price' | translate}}</th>
+                            <th width="5%" class="text-right">{{'invoice.form.amount' | translate}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let invoiceProduct of  invoice && invoice.invoice && invoice.invoice.invoiceProducts">
+
+                            <td>{{invoiceProduct.product.id}}</td>
+                            <td>
+                                <div>{{invoiceProduct.product.name}}</div>
+                            </td>
+                            <td class="text-right">1</td>
+                            <td class="text-right"><i class="fa fa-usd" aria-hidden="true"></i>{{invoiceProduct.price}}</td>
+                            <td class="text-right"><i class="fa fa-usd" aria-hidden="true"></i>{{invoiceProduct.price}}</td>
+                        </tr>
+                        <tr class="text-right">
+                            <td colspan="4" >Subtotal</td>
+                            <td><i class="fa fa-usd" aria-hidden="true"></i>{{invoice && invoice.invoice? invoice.invoice.amount:''}}</td>
+                        </tr>
+                        <tr class="table-dark text-right">
+                            <td colspan="4">Gst Amount</td>
+                            <td><i class="fa fa-usd" aria-hidden="true"></i>{{invoice && invoice.invoice? invoice.invoice.gstamount:''}}</td>
+                        </tr>
+                        <tr class="table-info text-right">
+                            <td colspan="4">Total</td>
+                            <td><i class="fa fa-usd" aria-hidden="true"></i>{{invoice && invoice.invoice? invoice.invoice.totalAmount:''}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+</admin-root>
+

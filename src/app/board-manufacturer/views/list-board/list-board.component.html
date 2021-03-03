@@ -1,0 +1,46 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{'board.form.title' | translate}}</h4>
+                <product-list-header (pageSizeChanged)="changePageSize($event)" (search)="searchBoard($event)"></product-list-header>
+                <div class="table-responsive">
+                    <div  *ngIf="boards.length>0">
+                        <table class="table table-striped table-hover padding-top-20">
+                            <thead>
+                            <tr>
+                                <th>{{'board.form.logo' | translate}}</th>
+                                <th>{{ 'board.form.boardId' | translate }}</th>
+                                <th>{{ 'board.form.name' | translate }}</th>
+                                <th>{{ 'board.form.description' | translate }}</th>
+                                <th>{{client && client.productTypeNickName?client.productTypeNickName:('clientDashboard.form.productType' | translate )}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let board of boards">
+                                <td>
+                                    <div class="image-top-detail" *ngIf="board.id && board.logo">
+                                        <img src="{{board.logo}}"  class="list-logo-list">
+                                    </div>
+                                    <div class="top-default-image-list" *ngIf="board.id && !board.logo">
+                                        <i class="fa fa-object-group user-icon-image-board lineSpace2" ></i>
+                                    </div>
+                                </td>
+                                <td>{{board.boardId}}</td>
+                                <td>{{board.name}}</td>
+                                <td class="content-head">{{ (board.description.length>45)? (board.description | slice:0:45)+'...':(board.description) }}</td>
+                                <td>{{board.productType.name}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="boards.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                    </div>
+                </div>
+                <div *ngIf="boards.length==0">
+                    <div class="dataSpace text-center">
+                        <b>{{ 'board.list.notAvailable' | translate }}</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+</admin-root>

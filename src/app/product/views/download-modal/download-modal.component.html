@@ -1,0 +1,19 @@
+﻿<div class="modal fade" id="downloadDataModal"  aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{'product.form.downloadLink'| translate}}</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="excels-icon"><img alt="" src="assets/images/excelIcon.png" class="pop-up-excel"></div>
+                </div>
+
+                <div class="col-md-12 pop-up-button">
+                    <a class="btn btn-primary btn-default text-center"   (click)="closePopUp();" href="{{productDataReport}}">{{'product.form.download'| translate}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+{
+  "form": {
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password"
+  },
+  "placeholder":{
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email Address",
+    "confirmPassword": "Confirm Password",
+    "password": "Password"
+
+  },
+  "error": {
+    "firstName": "Please enter first name.",
+    "lastName": "Please enter last name.",
+    "username": "Please enter username.",
+    "email": "Please enter email.",
+    "confirmPassword": "Please confirm password.",
+    "sameConfirmPassword": "Please enter both same password",
+    "password": "Please enter password.",
+    "mustAgree": "Please select agree checkbox .",
+    "emailUsed": "Email already used.",
+    "emailValid": "Invalid email address"
+  }
+}

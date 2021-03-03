@@ -1,0 +1,128 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <h3 class="card-title">{{'resources.form.errorData' | translate}}</h3>
+            </div>
+            <form class="form-horizontal" name="resourcesForm" [formGroup]="resourcesForm" #f="ngForm" (ngSubmit)="f.form.valid && loadErrorResponse()" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+                <div class="row">
+                    <div class="form-group col-md-3" [ngClass]="{ 'has-error': f.submitted && !resourcesForm.get('productType').valid, 'has-success': f.submitted && resourcesForm.get('productType').valid}">
+                        <label class="control-label">{{ replaceText('report.form.productType' | translate) }} <span class="symbol required">*</span></label>
+                        <span class="clip-select">
+                            <select  name="productType"  id="productType"  class="select2" formControlName="productType">
+                                <option value="">Select {{ replaceText('report.form.productType' | translate) }}</option>
+                                <option *ngFor="let productType of productTypes" [value]="productType.alias">{{productType.name}}</option>
+                            </select>
+                            <form-validate [form]="f" [fieldName]="'productType'" [field]="resourcesForm.get('productType')" [entity]="client.productTypeNickName" [messages]="RESOURCES_VALIDATOR"></form-validate>
+
+                        </span>
+                    </div>
+                    <div class="form-group col-md-3" [ngClass]="{ 'has-error': f.submitted && !resourcesForm.get('zone').valid, 'has-success': f.submitted && resourcesForm.get('zone').valid}">
+                        <form-control-label [text]="'report.form.zone'" [required]="false"></form-control-label>
+                        <span class="clip-select">
+                            <select  name="zone"  id="zone"  class="select2" formControlName="zone">
+                                <option value="0">Select {{ 'report.form.zone' | translate }}</option>
+                                <option *ngFor="let zone of zones" [value]="zone.alias">{{zone.name}}</option>
+                            </select>
+                        </span>
+                    </div>
+
+                    <div class="form-group col-lg-3 " [ngClass]="{ 'has-error': f.submitted && !resourcesForm.get('company').valid, 'has-success': f.submitted && resourcesForm.get('company').valid}">
+                        <label class="control-label">{{ replaceText('report.form.company' | translate) }}</label>
+                        <span class="clip-select">
+                            <select  name="company"  id="company"  class="select2" formControlName="company">
+                                <option value="0">Select {{ replaceText('report.form.company' | translate) }}</option>
+                                <option *ngFor="let company of companies" [value]="company.alias">{{company.name}}</option>
+                            </select>
+                        </span>
+                    </div>
+
+                    <div class="form-group col-lg-3 " [ngClass]="{ 'has-error': f.submitted && !resourcesForm.get('companyBuilding').valid, 'has-success': f.submitted && resourcesForm.get('companyBuilding').valid}">
+                        <label class="control-label">{{ replaceText('report.form.companyBuilding' | translate) }}</label>
+                        <span class="clip-select">
+                            <select  name="companyBuilding"  id="companyBuilding"  class="select2" formControlName="companyBuilding">
+                                <option value="0">Select {{ replaceText('report.form.companyBuilding' | translate) }}</option>
+                                <option *ngFor="let companyBuilding of companyBuildings" [value]="companyBuilding.alias">{{companyBuilding.name}}</option>
+                            </select>
+                        </span>
+                    </div>
+
+                </div>
+                <div class="row">
+
+                    <div class="form-group col-md-4 " [ngClass]="{ 'has-error': f.submitted && !resourcesForm.get('product').valid, 'has-success': f.submitted && resourcesForm.get('product').valid}">
+                        <label class="control-label">{{ replaceText('report.form.product' | translate) }} </label>
+                        <span class="clip-select">
+                            <select  name="product"  id="productSelect2"  class="select2" formControlName="product">
+                                <option value="0">Select {{ replaceText('report.form.product' | translate) }}</option>
+                                <option *ngFor="let clientCompanyProduct of clientCompanyProducts" [value]="clientCompanyProduct.product.alias">{{clientCompanyProduct.product.name}}({{clientCompanyProduct.product.deviceId}})</option>
+                            </select>
+                        </span>
+
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <form-control-label [text]="'report.form.startDate'" [required]="false"></form-control-label>
+                        <div class="input-group">
+                            <input type="text" placeholder="{{ 'report.placeholder.startDate' | translate }}" class="form-control" name="startDate" formControlName="startDate" autocomplete="off" id="startDate">
+                            <span class="input-group-append" >
+                            <span class="input-group-text">
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                            </span>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <form-control-label [text]="'report.form.endDate'" [required]="false"></form-control-label>
+                        <div class="input-group">
+                            <input type="text" placeholder="{{ 'report.placeholder.endDate' | translate }}" class="form-control" name="endDate" formControlName="endDate" autocomplete="off" id="endDate">
+                            <span class="input-group-append" >
+                                <span class="input-group-text">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group col-md-2  col-xs-12 load-btn">
+                        <button class="btn btn-primary btn-default pull-left load-data-button" type="submit" [disabled] = "!selectedProduct" >{{ 'resources.form.loadData' | translate }}</button>
+                    </div>
+                </div>
+                <pagination-header (pageSizeChanged)="changePageSize($event)"></pagination-header>
+                <div *ngIf="!products.length==0">
+                    <table class="table table-striped table-hover padding-top-20">
+                        <thead>
+                        <tr>
+                            <th>{{'telemetricData.form.processDate' | translate}}</th>
+                            <th>{{ 'product.form.errorCode' | translate }}</th>
+                            <th>{{ 'product.form.name' | translate }}</th>
+                            <th><b>{{ 'product.form.description' | translate }}</b></th>
+                            <th><b>{{ 'product.form.severity' | translate }}</b></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let product of products">
+                            <td>{{product.processTime}}</td>
+                            <td>{{product.errorCode}}</td>
+                            <td>{{product.deviceError.name}}</td>
+                            <td>{{product.deviceError.description}}</td>
+                            <td>{{product.deviceError.severity}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="products.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+
+                </div>
+
+                <div *ngIf="products.length==0">
+                    <div class="dataSpace text-center">
+                        <b>{{'product.form.data' | translate}}</b>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</admin-root>
+
+

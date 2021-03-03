@@ -1,0 +1,6 @@
+<!-- start: Form Control Label -->
+    <div *ngIf="form.submitted && field._parent.invalid && field.errors" class="error text-small block">
+      <div *ngIf="field.errors.required">{{ message.required | translate }} {{entity}} </div>
+    </div>
+    <!--<form-verify-label [check]="form.submitted && field.valid"></form-verify-label>-->
+<!-- end: Form Control Label -->

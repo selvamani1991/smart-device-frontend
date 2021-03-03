@@ -1,0 +1,59 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{'manufacturer.form.title' | translate}}</h3>
+            <list-header (pageSizeChanged)="changePageSize($event)" (search)="searchManufacturer($event)" (addNewEvent)="addManufacturer($event)"></list-header>
+            <div class="table-responsive">
+                <div *ngIf="manufacturers.length>0">
+                    <table class="table table-striped table-hover padding-top-20">
+                        <thead>
+                            <tr>
+                                <th width="5%">{{'manufacturer.form.logo' | translate}}</th>
+                                <th>{{ 'manufacturer.form.name' | translate }}</th>
+                                <th>{{ 'manufacturer.form.contactPersonName' | translate }}</th>
+                                <th>{{ 'manufacturer.form.contactPhoneNumber' | translate }}</th>
+                                <th width="15%">{{ 'manufacturer.form.email' | translate }}</th>
+                                <th>{{ 'manufacturer.form.designation' | translate }}</th>
+                                <th width="10%">{{ 'manufacturer.form.status' | translate }}</th>
+                                <th width="15%">{{ 'manufacturer.form.action' | translate }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let manufacturer of manufacturers">
+                                <td>
+                                    <div class="image-top-detail" *ngIf="manufacturer.id && manufacturer.logo">
+                                        <img src="{{manufacturer.logo}}"  class="list-logo-list">
+                                    </div>
+                                    <div class="top-default-image-list" *ngIf="manufacturer.id && !manufacturer.logo">
+                                        <i class="fa fa-industry user-icon-image py-2 show-machine"></i>
+                                    </div>
+                                </td>
+                                <td>{{manufacturer.name}}</td>
+                                <td>{{manufacturer.admin.firstName}}</td>
+                                <td>{{manufacturer.admin.phoneNo}}</td>
+                                <td class="content-head">{{manufacturer.admin.email}}</td>
+                                <td>{{manufacturer.admin.designation}}</td>
+                                <td>
+                                    <button class="btn btn-success btn-xs" (click)="changeStatus(manufacturer,false)" *ngIf="manufacturer.active && manufacturer.name!=client.name">{{ 'manufacturer.list.enabled' | translate }}</button>
+                                    <button class="btn btn-success btn-xs" *ngIf="manufacturer.name==client.name">{{ 'manufacturer.list.enabled' | translate }}</button>
+                                    <button class="btn btn-danger btn-xs" (click)="changeStatus(manufacturer,true)" *ngIf="!manufacturer.active && manufacturer.name!=client.name">{{ 'manufacturer.list.disabled' | translate }}</button>
+                                </td>
+                                <td>
+                                    <i class="fa fa-eye color-muted m-r-5 cursor-position" (click)="show(manufacturer);"></i>
+                                    <i class="fa fa-pencil color-muted m-r-5 show-machine cursor-position" data-toggle="tooltip" title="Edit" *ngIf="manufacturer.name!=client.name" (click)="edit(manufacturer);"></i>
+                                    <i class="fa fa-close color-danger show-machine cursor-position" data-toggle="tooltip" title="Delete" *ngIf="manufacturer.name!=client.name" (click)="markDeleted(manufacturer);"></i>
+                                    <i class="fa fa-lock color-muted show-machine cursor-position" data-toggle="tooltip" title="ChangePassword" *ngIf="manufacturer.name!=client.name" (click)=" changePassword(manufacturer);"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="manufacturers.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                </div>
+            </div>
+            <div *ngIf="manufacturers.length==0">
+                <div class="dataSpace text-center"><b>{{ 'manufacturer.list.noData' | translate }}</b></div>
+            </div>
+        </div>
+    </div>
+</admin-root>

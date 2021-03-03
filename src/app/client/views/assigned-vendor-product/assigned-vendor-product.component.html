@@ -1,0 +1,55 @@
+<admin-root >
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card" id="vendor">
+        <div class="card-body">
+            <h3 class="card-title">{{client.vendorNickName?client.vendorNickName:('clientDashboard.form.vendor' | translate )}} {{client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}}</h3>
+            <product-list-header (pageSizeChanged)="changePageSize($event)" (search)="searchAssignedVendorProduct($event)" (addNewEvent)="addVendor($event)"></product-list-header>
+            <div class="table-responsive">
+                <div *ngIf="vendorProducts.length>0">
+                <table class="table table-striped table-hover padding-top-20">
+                    <thead>
+                        <tr>
+                            <th width="10%">{{ 'vendor.vendorProduct.logo' | translate }}</th>
+                            <th>{{client.vendorNickName?client.vendorNickName:('clientDashboard.form.vendor' | translate )}} Name</th>
+                            <th>{{client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}} Name</th>
+                            <th>{{ 'vendor.vendorProduct.modelNo' | translate }}</th>
+                            <th>{{ 'vendor.vendorProduct.dispatchedDate' | translate }}</th>
+                            <th width="10%">{{ 'vendor.vendorProduct.status' | translate }}</th>
+                            <th width="10%;" *ngIf="currentUser.userType=='vendorAdmin'">{{ 'vendor.vendorProduct.dispatch' | translate }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="amount3" *ngFor="let vendorProduct of vendorProducts" style="cursor:pointer;">
+                            <td>
+                                <div class="image-top-detail" *ngIf="vendorProduct.product.id && vendorProduct.product.logo">
+                                    <img src="{{vendorProduct.product.logo}}"  class="list-logo-list">
+                                </div>
+                                <div class="top-default-image-list" *ngIf="vendorProduct.product.id && !vendorProduct.product.logo">
+                                    <i class="fa fa-cube user-icon-image lineSpace2 show-machine"></i>
+                                </div>
+                            </td>
+                            <td>{{vendorProduct.vendor.name}}</td>
+                            <td>{{vendorProduct.product.name}}</td>
+                            <td>{{vendorProduct.product.productType.modelNo}}</td>
+                            <td>{{vendorProduct.dispatchedDate}}</td>
+                            <td>{{vendorProduct.status}}</td>
+                            <td *ngIf="currentUser.userType=='vendorAdmin'">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">{{ 'vendor.vendorProduct.dispatch' | translate }}</button>
+                                <div class="dropdown-menu" x-placement="bottom-start">
+                                    <a class="dropdown-item" data-toggle="modal" (click)="dispatchProduct(vendorProduct)" data-target="#distributorTypeModal">{{ 'vendor.vendorProduct.assignToDistributor' | translate }}</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="vendorProducts.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                </div>
+            </div>
+            <div *ngIf="vendorProducts.length==0">
+                <div class="dataSpace text-center">
+                    <b>{{ 'vendor.form.displayed' | translate }}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</admin-root>

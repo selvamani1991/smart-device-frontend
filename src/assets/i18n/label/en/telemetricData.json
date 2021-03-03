@@ -1,0 +1,62 @@
+{
+  "list": {
+    "name": "Name",
+    "pageLink": "Telemetric Data List",
+    "pageTitle": "Telemetric Data List",
+    "pageDesc": "Listing all Telemetric Data",
+    "state": "State",
+    "city": "Telemetric Data",
+    "zip": "Zip",
+    "active": "Active",
+    "status": "Status",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "noData": "Data is not available"
+  },
+  "form": {
+    "title": "Telemetric Data Management",
+    "all": "All",
+    "name": "Name",
+    "att1": "Att-1",
+    "att2": "Att-2",
+    "att3": "Att-3",
+    "att4": "Att-4",
+    "att5": "Att-5",
+    "att6": "Att-6",
+    "att7": "Att-7",
+    "att8": "Att-8",
+    "att9": "Att-9",
+    "att10": "Att-10",
+    "att11": "Att-11",
+    "att12": "Att-12",
+    "att13": "Att-13",
+    "att14": "Att-14",
+    "att15": "Att-15",
+    "status": "Status",
+    "action": "Action",
+    "id": "Device ID",
+    "logo": "Logo",
+    "save":"Save",
+    "cancel": "Cancel",
+    "data": "Data is not available",
+    "telemetricData": "Telemetric Data",
+    "code": "Code",
+    "temperature": "Temperature",
+    "latitude": "Latitude",
+    "longitude": "Longitude",
+    "image": "Image",
+    "humidity": "Humidity",
+    "entryDate": "Entry Date",
+    "processDate": "Process Date"
+  },
+  
+  "error": {
+    "minName": "Minimum 2 Characters required",
+    "duplicateEmail": "Email already Exist"
+  },
+  
+  "placeholder": {
+    "name": "Enter Name",
+    "description": "Enter Description"
+  }
+}

@@ -1,0 +1,24 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+        <div class="row" id="machineProductType">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Machine {{client.productTypeNickName?client.productTypeNickName:('clientDashboard.form.productType' | translate )}}</h3>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <form-control-label [text]="'machine.machineProductType.name'" [required]="false"></form-control-label>
+                                <div class="col-md-12">{{machineProductType.productType?machineProductType.productType.name:""}}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <form-control-label [text]="'machine.machineProductType.description'" [required]="false"></form-control-label>
+                                <div class="col-md-12">{{machineProductType.productType?machineProductType.productType.description:""}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</admin-root>

@@ -1,0 +1,260 @@
+﻿<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" name="vendorForm" [formGroup]="vendorForm" #f="ngForm" (ngSubmit)="validatePassword(f) && validateForm(f) && f.form.valid && createVendor(f)" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+        <div id="vendor">
+
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{client.vendorNickName?client.vendorNickName:('clientDashboard.form.vendor' | translate )}} Detail</h4>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <div class=""  [ngClass]="{ 'has-error': f.submitted && !vendorForm.get('name').valid, 'has-success': f.submitted && vendorForm.get('name').valid}">
+                            <form-control-label [text]="'vendor.form.name'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control input-default" placeholder="{{ 'vendor.placeholder.name' | translate }}" class="form-control" name="name" formControlName="name">
+                            <form-validate [form]="f" [fieldName]="'name'" [field]="vendorForm.get('name')" [messages]="VENDOR_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <div class="" [ngClass]="{ 'has-error': f.submitted && !vendorForm.get('description').valid, 'has-success': f.submitted && vendorForm.get('description').valid}">
+                            <form-control-label [text]="'vendor.form.description'" [required]="true"></form-control-label>
+                            <div class="note-editor">
+                                <textarea id="form-field-22" class="form-control"  placeholder="{{ 'vendor.placeholder.description' | translate }}" name="description" formControlName="description"></textarea>
+                            </div>
+                            <form-validate [form]="f" [fieldName]="'description'" [field]="vendorForm.get('description')" [messages]="VENDOR_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !vendorForm.get('zoneId').valid, 'has-success': f.submitted && vendorForm.get('zoneId').valid}">
+                        <form-control-label [text]="'vendor.form.zone'" [required]="true"></form-control-label>
+                        <span class="clip-select">
+                            <select  name="zoneId"  id="zoneSelect"  class="select2" formControlName="zoneId">
+                                <option value="">Select {{ 'vendor.form.zone' | translate }}</option>
+                                <option *ngFor="let zoneItem of zones" [value]="zoneItem.id">{{zoneItem.name}}</option>
+                            </select>
+                            <form-validate [form]="f" [fieldName]="'zoneId'" [field]="vendorForm.get('zoneId')" [messages]="VENDOR_VALIDATOR"></form-validate>
+                        </span>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <div class=""  [ngClass]="{ 'has-error': f.submitted && !vendorForm.get('emailNotification').valid, 'has-success': f.submitted && vendorForm.get('emailNotification').valid}">
+                            <form-control-label [text]="'vendor.form.emailNotification'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control input-default" placeholder="{{ 'vendor.placeholder.emailNotification' | translate }}" class="form-control" name="emailNotification" formControlName="emailNotification">
+                            <form-validate [form]="f" [fieldName]="'emailNotification'" [field]="vendorForm.get('emailNotification')" [messages]="VENDOR_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+
+            <div class="card-body">
+                <div [formGroup]="addressForm">
+                <h4 class="card-title">{{ 'vendor.form.address' | translate }}</h4>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <div class="" [ngClass]="{ 'has-error': f.submitted && !addressForm.get('houseNumber').valid, 'has-success': f.submitted && addressForm.get('houseNumber').valid}">
+                            <form-control-label [text]="'vendor.form.houseNumber'" [required]="true"></form-control-label>
+                            <input type="text" placeholder="{{ 'vendor.placeholder.houseNumber' | translate }}" class="form-control" name="houseNumber" formControlName="houseNumber"/>
+                            <form-validate [form]="f" [fieldName]="'houseNumber'" [field]="addressForm.get('houseNumber')" [messages]="ADDRESS_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <div class="" [ngClass]="{ 'has-error': f.submitted && !addressForm.get('street').valid, 'has-success': f.submitted && addressForm.get('street').valid}">
+                            <form-control-label [text]="'vendor.form.street'" [required]="true"></form-control-label>
+                            <input type="text" placeholder="{{ 'vendor.placeholder.street' | translate }}" class="form-control" name="street" formControlName="street"/>
+                            <form-validate [form]="f" [fieldName]="'street'" [field]="addressForm.get('street')" [messages]="ADDRESS_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !addressForm.get('landMark').valid, 'has-success': f.submitted && addressForm.get('landMark').valid}">
+                        <form-control-label [text]="'vendor.form.landMark'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'vendor.placeholder.landMark' | translate }}" class="form-control" name="landMark" formControlName="landMark"/>
+                        <form-validate [form]="f" [fieldName]="'landMark'" [field]="addressForm.get('landMark')" [messages]="ADDRESS_VALIDATOR"></form-validate>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <div class="" [ngClass]="{ 'has-error': f.submitted && !addressForm.get('city').valid, 'has-success': f.submitted && addressForm.get('city').valid}">
+                            <form-control-label [text]="'vendor.form.city'" [required]="true"></form-control-label>
+                            <input type="text" placeholder="{{ 'vendor.placeholder.city' | translate }}" class="form-control" name="city" autocomplete="off"  formControlName="city" (keyup)="searchCity($event)" />
+                            <ul class="city-list" id="citySelect">
+                                <li *ngFor="let city of cities" [value]="city.id" (click)="setCity(city)">
+                                    {{city.name}}, {{city.region?city.region.name:''}}, {{city.country?city.country.name:''}}
+                                </li>
+                            </ul>
+                            <form-validate [form]="f" [fieldName]="'city'" [field]="addressForm.get('city')" [messages]="ADDRESS_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="" [ngClass]="{ 'has-error': f.submitted && !addressForm.get('region').valid, 'has-success': f.submitted && addressForm.get('region').valid}">
+                            <form-control-label [text]="'vendor.form.region'" [required]="true"></form-control-label>
+                            <input type="text" placeholder="{{ 'vendor.placeholder.region' | translate }}" class="form-control" name="region" formControlName="region" readonly/>
+                            <form-validate [form]="f" [fieldName]="'region'" [field]="addressForm.get('region')" [messages]="ADDRESS_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="" [ngClass]="{ 'has-error': f.submitted && !addressForm.get('country').valid, 'has-success': f.submitted && addressForm.get('country').valid}">
+                            <form-control-label [text]="'vendor.form.country'" [required]="true"></form-control-label>
+                            <input type="text" placeholder="{{ 'vendor.placeholder.country' | translate }}" class="form-control" name="country" formControlName="country" readonly/>
+                            <form-validate [form]="f" [fieldName]="'country'" [field]="addressForm.get('country')" [messages]="ADDRESS_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <div class="" [ngClass]="{ 'has-error': f.submitted && !addressForm.get('zipCode').valid, 'has-success': f.submitted && addressForm.get('zipCode').valid}">
+                            <form-control-label [text]="'vendor.form.zipCode'" [required]="true"></form-control-label>
+                            <input type="text" placeholder="{{ 'vendor.placeholder.zipCode' | translate }}" class="form-control" name="zipCode" formControlName="zipCode"/>
+                            <form-validate [form]="f" [fieldName]="'zipCode'" [field]="addressForm.get('zipCode')" [messages]="ADDRESS_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="form-group form-check mb-3 distributor-checkbox">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" name="sameAddress" formControlName="sameAddress" value="isSameAddress" (click)="selectCorporateAddress();">Same Address
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body" [formGroup]="cAddressForm">
+                <h3 class="card-title">{{ 'client.form.corporateAddress' | translate }}</h3>
+                <div class="row">
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !cAddressForm.get('houseNumber').valid, 'has-success': f.submitted && cAddressForm.get('houseNumber').valid}">
+                        <form-control-label [text]="'vendor.form.houseNumber'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'vendor.placeholder.houseNumber' | translate }}" class="form-control" name="houseNumber" formControlName="houseNumber"/>
+                        <form-validate [form]="f" [fieldName]="'houseNumber'" [field]="cAddressForm.get('houseNumber')" [messages]="ADDRESS_VALIDATOR"></form-validate>
+                    </div>
+
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !cAddressForm.get('street').valid, 'has-success': f.submitted && cAddressForm.get('street').valid}">
+                        <form-control-label [text]="'vendor.form.street'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'vendor.placeholder.street' | translate }}" class="form-control" name="street" formControlName="street"/>
+                        <form-validate [form]="f" [fieldName]="'street'" [field]="cAddressForm.get('street')" [messages]="ADDRESS_VALIDATOR"></form-validate>
+                    </div>
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !cAddressForm.get('landMark').valid, 'has-success': f.submitted && cAddressForm.get('landMark').valid}">
+                        <form-control-label [text]="'vendor.form.landMark'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'vendor.placeholder.landMark' | translate }}" class="form-control" name="landMark" formControlName="landMark"/>
+                        <form-validate [form]="f" [fieldName]="'landMark'" [field]="cAddressForm.get('landMark')" [messages]="ADDRESS_VALIDATOR"></form-validate>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <div class="" [ngClass]="{ 'has-error': f.submitted && !cAddressForm.get('city').valid, 'has-success': f.submitted && cAddressForm.get('city').valid}">
+                            <form-control-label [text]="'vendor.form.city'" [required]="true"></form-control-label>
+                            <input type="text" placeholder="{{ 'vendor.placeholder.city' | translate }}" autocomplete="off" class="form-control" name="city" formControlName="city" (keyup)="searchCorporateCity($event)"/>
+                            <ul class="city-list" id="corporateCitySelect">
+                                <li *ngFor="let city of cities"  (click)="setCorporateCity(city)">
+                                    {{city.name}}, {{city.region?city.region.name:''}}, {{city.country?city.country.name:''}}
+                                </li>
+                            </ul>
+                            <form-validate [form]="f" [fieldName]="'city'" [field]="cAddressForm.get('city')" [messages]="ADDRESS_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="" [ngClass]="{ 'has-error': f.submitted && !cAddressForm.get('region').valid, 'has-success': f.submitted && cAddressForm.get('region').valid}">
+                            <form-control-label [text]="'vendor.form.region'" [required]="true"></form-control-label>
+                            <input type="text" placeholder="{{ 'vendor.placeholder.region' | translate }}" class="form-control" name="region" formControlName="region" readonly/>
+                            <form-validate [form]="f" [fieldName]="'region'" [field]="cAddressForm.get('region')" [messages]="ADDRESS_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="" [ngClass]="{ 'has-error': f.submitted && !cAddressForm.get('country').valid, 'has-success': f.submitted && cAddressForm.get('country').valid}">
+                            <form-control-label [text]="'vendor.form.country'" [required]="true"></form-control-label>
+                            <input type="text" placeholder="{{ 'vendor.placeholder.country' | translate }}" class="form-control" name="country" formControlName="country" readonly/>
+                            <form-validate [form]="f" [fieldName]="'country'" [field]="cAddressForm.get('country')" [messages]="ADDRESS_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !cAddressForm.get('zipCode').valid, 'has-success': f.submitted && cAddressForm.get('zipCode').valid}">
+                        <form-control-label [text]="'vendor.form.zipCode'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'vendor.placeholder.zipCode' | translate }}" class="form-control" name="zipCode" formControlName="zipCode" />
+                        <form-validate [form]="f" [fieldName]="'zipCode'" [field]="cAddressForm.get('zipCode')" [messages]="ADDRESS_VALIDATOR"></form-validate>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body" [formGroup]="adminForm">
+                <h4 class="card-title">{{ 'vendor.form.contact' | translate }}</h4>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="" [ngClass]="{ 'has-error': f.submitted && !adminForm.get('firstName').valid, 'has-success': f.submitted && adminForm.get('firstName').valid}">
+                            <form-control-label [text]="'vendor.form.firstName'" [required]="true"></form-control-label>
+                            <input type="text" placeholder="{{ 'vendor.placeholder.firstName' | translate }}" class="form-control" name="firstName" formControlName="firstName"/>
+                            <form-validate [form]="f" [fieldName]="'firstName'" [field]="adminForm.get('firstName')" [messages]="ADMIN_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="" [ngClass]="{ 'has-error': f.submitted && !adminForm.get('lastName').valid, 'has-success': f.submitted && adminForm.get('lastName').valid}">
+                            <form-control-label [text]="'vendor.form.lastName'" [required]="true"></form-control-label>
+                            <input type="text" placeholder="{{ 'vendor.placeholder.lastName' | translate }}" class="form-control" name="lastName" formControlName="lastName"/>
+                            <form-validate [form]="f" [fieldName]="'lastName'" [field]="adminForm.get('lastName')" [messages]="ADMIN_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="" [ngClass]="{ 'has-error': f.submitted && !adminForm.get('email').valid, 'has-success': f.submitted && adminForm.get('email').valid}">
+                            <form-control-label [text]="'vendor.form.email'" [required]="true"></form-control-label>
+                            <input type="text" placeholder="{{ 'vendor.placeholder.email' | translate }}" class="form-control" name="email" formControlName="email"/>
+                            <form-validate [form]="f" [fieldName]="'email'" [field]="adminForm.get('email')" [messages]="ADMIN_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6" [ngClass]="{ 'has-error': f.submitted && !adminForm.get('designation').valid, 'has-success': f.submitted && adminForm.get('designation').valid}">
+                        <form-control-label [text]="'vendor.form.designation'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'vendor.placeholder.designation' | translate }}" class="form-control" name="designation" formControlName="designation"/>
+                        <form-validate [form]="f" [fieldName]="'designation'" [field]="adminForm.get('designation')" [messages]="ADMIN_VALIDATOR"></form-validate>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="" [ngClass]="{ 'has-error': f.submitted && !adminForm.get('phoneNo').valid, 'has-success': f.submitted && adminForm.get('phoneNo').valid}">
+                            <form-control-label [text]="'vendor.form.phoneNo'" [required]="true"></form-control-label>
+                            <input type="number" placeholder="{{ 'vendor.placeholder.phoneNo' | translate }}" class="form-control" name="phoneNo" formControlName="phoneNo"/>
+                            <form-validate [form]="f" [fieldName]="'phoneNo'" [field]="adminForm.get('phoneNo')" [messages]="ADMIN_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6" [ngClass]="{ 'has-error': f.submitted && !adminForm.get('landLineNo').valid, 'has-success': f.submitted && adminForm.get('landLineNo').valid}">
+                        <form-control-label [text]="'vendor.form.landLineNo'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'vendor.placeholder.landLineNo' | translate }}" class="form-control" name="landLineNo" formControlName="landLineNo"/>
+                        <form-validate [form]="f" [fieldName]="'landLineNo'" [field]="adminForm.get('landLineNo')" [messages]="ADMIN_VALIDATOR"></form-validate>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6" [ngClass]="{ 'has-error': f.submitted && !adminForm.get('password').valid, 'has-success': f.submitted && adminForm.get('password').valid}">
+                        <form-control-label [text]="'vendor.form.password'" [required]="true"></form-control-label>
+                        <input type="password" placeholder="{{ 'vendor.placeholder.password' | translate }}" class="form-control" name="password" formControlName="password"/>
+                        <form-validate [form]="f" [fieldName]="'password'" [field]="adminForm.get('password')" [messages]="ADMIN_VALIDATOR"></form-validate>
+
+                    </div>
+                    <div class="col-md-6" [ngClass]="{ 'has-error': f.submitted && !adminForm.get('confirmPassword').valid, 'has-success': f.submitted && adminForm.get('confirmPassword').valid}">
+                        <form-control-label [text]="'vendor.form.confirmPassword'" [required]="true"></form-control-label>
+                        <input type="password" placeholder="{{ 'vendor.placeholder.confirmPassword' | translate }}" class="form-control" name="confirmPassword" formControlName="confirmPassword"/>
+                        <form-validate [form]="f" [fieldName]="'confirmPassword'" [field]="adminForm.get('confirmPassword')" [messages]="ADMIN_VALIDATOR"></form-validate>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">{{'vendor.form.save' | translate}}</button>
+                <button type="button" (click)="list(vendor);" class="btn mb-1 btn-outline-danger pull-right">{{'vendor.form.cancel' | translate}}</button>
+            </div>
+        </div>
+        </div>
+    </form>
+</admin-root>

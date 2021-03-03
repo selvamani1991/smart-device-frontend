@@ -1,0 +1,71 @@
+{
+  "list": {
+    "name": "Name",
+    "pageLink": " Room Type List",
+    "notAvailable": "Data is not available",
+    "pageTitle": "list",
+    "pageDesc": "Listing all  Room Type",
+    "state": "State",
+    "RoomType": "Room Type",
+    "zip": "Zip",
+    "active": "Active",
+    "status": "Status",
+    "disabled": "Disabled",
+    "enabled": "Enabled",
+    "noData": "Data is not available"
+  },
+  "create": {
+    "formTitle": "Room Type creation form",
+    "formDesc": "Room Type creation form",
+    "pageLink": "Create Room Type",
+    "pageTitle": "Create",
+    "pageDesc": "creating a new Room Type"
+  },
+  "edit": {
+    "formTitle": " Room Type Update form",
+    "formDesc": "Room Type update form",
+    "pageLink": "Edit Room Type",
+    "pageTitle": "Edit a Room Type",
+    "pageDesc": "Editing a Existing Room Type"
+  },
+
+  "show": {
+    "formTitle": " Room Type Show",
+    "formDesc": " Room Type Show form",
+    "pageLink": "Show Room Type",
+    "pageTitle": "Show a Room Type",
+    "pageDesc": "Showing a Existing  Room Type"
+  },
+  
+  "form": {
+    "all": "All",
+    "add": "Add Room Type",
+    "details": "Room Type Details",
+    "name": "Name",
+    "description": "Description",
+    "status": "Status",
+    "id": "Id",
+    "logo": "Logo",
+    "action": "Action",
+    "verified": "Verified",
+    "title": "Room Type Management",
+    "data": "Data is not available In Table",
+    "save": "Save",
+    "cancel": "Cancel"
+  },
+  "error": {
+    "name": "Please enter name",
+    "namePattern": "Please enter valid room type name",
+    "duplicate": "Room Type already exist",
+    "description": "Please enter description",
+    "minName": "Minimum length should be of 2 characters",
+    "minDescription": "Minimum length should be of 3 characters",
+    "minDuration": "Minimum length should be of 3 characters",
+    "invalidPattern": "Invalid file format ! (Only JPEG,JPG,PNG files are allowed)"
+  },
+  "placeholder": {
+    "name": " Enter Name",
+    "description": "Enter Description"
+  }
+
+}

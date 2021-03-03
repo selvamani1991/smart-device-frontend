@@ -1,0 +1,85 @@
+<div class="row">
+    <div class="col-lg-3 col-sm-6 col-md-4">
+        <div class="card gradient-1 card-top">
+            <div class="card-body cursor">
+
+                <h6 class="card-title text-white client-card-title  card-new-title ">{{ 'clientDashboard.form.customers' | translate }}</h6>
+                <div class="d-inline-block">
+                    <h4 class="text-white">{{ dashboardDetail.companyCount + dashboardDetail.vendorCount }}</h4>
+
+                <span class="float-right display-5 opacity-5"><img alt="" src="assets/images/talkio_icons/customer.svg" width="50" height="50" class="icon1"> </span>
+                </div>
+
+                <div (click)="companyList(company);" class="talkio_margintop10">
+                <h6 class="card-title text-white card-new-title"> {{ client && client.companyNickName?client.companyNickName:('clientDashboard.form.company' | translate )}} <span class="float-right text-white">{{dashboardDetail.companyCount}}</span> </h6>
+                </div>
+                <div (click)="vendorList(vendor);" *ngIf="client.distributorSupported">
+                <h6 class="card-title text-white card-new-title "> {{ client && client.vendorNickName?client.vendorNickName:('clientDashboard.form.vendor' | translate )}} <span class="float-right text-white">{{dashboardDetail.vendorCount}}</span> </h6>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-3 col-sm-6 col-md-4">
+        <div class="card gradient-2 card-top">
+            <div class="card-body cursor" (click)="productList(product);">
+                <div class="total-card">
+                    <h6 class="card-title text-white client-card-title card-new-title ">Total {{ client && client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}}</h6>
+                    <div class="d-inline-block">
+                        <h4 class="text-white">{{ client.productCount}}</h4>
+                    </div>
+                </div>
+                <div class="image-card-size">
+                    <span class="display-5 opacity-5"><img alt="" src="assets/images/talkio_icons/manufacturer.svg" width="50" height="50" class="icon1"></span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-sm-6 col-md-4">
+        <div class="card gradient-3 card-top">
+            <div class="card-body cursor" (click)="revenueProduct();">
+                <div class="total-card">
+                    <h6 class="card-title text-white client-card-title card-new-title ">{{ 'clientDashboard.form.customerRevenue' | translate }}</h6>
+                    <div class="d-inline-block">
+                        <h4 class="text-white">INR {{revenueSum()}}</h4>
+                    </div>
+                </div>
+                <div class="image-card-size">
+                    <span class="float-right display-5 opacity-5"> <img alt="" src="assets/images/talkio_icons/money2.svg" width="50" height="50" class="icon1">  </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-sm-6 col-md-4">
+        <div class="card gradient-4 card-top">
+            <div class="card-body cursor" (click)="productList(product);">
+                <div class="total-device-card">
+                    <div class="total-card">
+                        <h6 class="card-title text-white client-card-title card-new-title">{{ 'clientDashboard.form.customerSatisfaction' | translate }}</h6>
+                        <div class="d-inline-block">
+                            <h4 class="text-white">99%</h4>
+                        </div>
+                    </div>
+                    <div class="image-card-size">
+                        <span class="float-right display-5 opacity-5 "><img alt=""  src="assets/images/talkio_icons/resource.svg" width="50" height="50" class="icon1"></span>
+                    </div>
+                </div>
+
+                    <div class="delete-images">
+                        <h6 class="card-title text-white card-new-title">{{client && client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}} Health</h6>
+                    </div>
+                    <div class="delete-image">
+                        <h4 class="card-title text-white card-new-titles">{{ 'clientDashboard.form.active' | translate }} <span class="product-active-status">{{ productStatus && productStatus.activeCount}}</span> </h4>
+                    </div>
+                    <div class="delete-image">
+                        <h4 class="card-title text-white card-new-titles ">{{ 'clientDashboard.form.inActive' | translate }} <span class="product-inactive-status">{{ productStatus && productStatus.inActiveCount}}</span> </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

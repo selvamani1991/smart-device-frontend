@@ -1,0 +1,176 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" name="distributorForm" [formGroup]="distributorForm">
+        <div id="distributor">
+
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{client.distributorNickName?client.distributorNickName:('clientDashboard.form.distributor' | translate )}} Detail</h4>
+                <div class="form-row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <form-control-label [text]="'distributor.form.name'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="name" formControlName="name" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'distributor.form.description'" [required]="true"></form-control-label>
+                            <div class="note-editor">
+                                <textarea placeholder="{{distributor.description}}" class="form-control" name="description" readonly></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'distributor.form.emailNotification'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="emailNotification" formControlName="emailNotification" readonly/>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4 show-icon-top">
+                        <div class="delete-image cursor-pointer" style="cursor:pointer;" *ngIf="distributor.id && distributor.logo"><i class="fa fa-close color-danger cross-size cursor-pointer" data-toggle="tooltip" title="Delete" (click)="markDeleted(distributor);"></i></div>
+                        <div class="company-image-size" *ngIf="distributor.id && distributor.logo"><img src="{{distributor.logo}}"  class="upload-image"/></div>
+                        <div class="company-image-size" *ngIf="!distributor.logo"><i class="fa fa-object-ungroup distributor-show-icon" ></i></div>
+                        <div class="row mt-3 ml-3">
+                            <div class="choose_file">
+                                <button type="button" class="btn btn-default upload-button">Choose Image</button>
+                                <input name="file" type="file" class="form-control" accept="image/*"  (change)="onFileChange($event)"/>
+                            </div>
+                            <div class="file-detail" *ngIf="files && distributor.id && distributor.logo">{{files.name}}</div>
+                            <div class="file-detail"><span *ngIf="files && distributor.id && distributor.logo">{{ files.size/1024 | number:'1.0-0'}} </span> KB</div>
+                        </div>
+                        <div class="has-error error" *ngIf="formatError">{{'distributor.error.invalidPattern' | translate}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" [formGroup]="addressForm">
+            <div class="card-body">
+                <h4 class="card-title">{{ 'distributor.form.address' | translate }}</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'distributor.form.houseNumber'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="houseNumber" formControlName="houseNumber" readonly/>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'distributor.form.street'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="street" formControlName="street" readonly/>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'distributor.form.landMark'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="landMark" formControlName="landMark" readonly/>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'distributor.form.city'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="city" formControlName="city" readonly/>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <form-control-label [text]="'distributor.form.region'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="region" formControlName="region" readonly/>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <form-control-label [text]="'distributor.form.country'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="country" formControlName="country" readonly/>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'distributor.form.zipCode'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="zipCode" formControlName="zipCode" readonly/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card" [formGroup]="cAddressForm">
+            <div class="card-body">
+                <h4 class="card-title">{{ 'client.form.corporateAddress' | translate }}</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'distributor.form.houseNumber'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="houseNumber" formControlName="houseNumber" readonly/>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'distributor.form.street'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="street" formControlName="street" readonly/>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'distributor.form.landMark'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="landMark" formControlName="landMark" readonly/>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'distributor.form.city'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="city" formControlName="city" readonly/>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <form-control-label [text]="'distributor.form.region'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="region" formControlName="region" readonly/>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <form-control-label [text]="'distributor.form.country'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="country" formControlName="country" readonly/>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'distributor.form.zipCode'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="zipCode" formControlName="zipCode" readonly/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" [formGroup]="adminForm">
+            <div class="card-body">
+                <h4 class="card-title">{{ 'distributor.form.contact' | translate }}</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <form-control-label [text]="'distributor.form.firstName'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="firstName" formControlName="firstName" readonly/>
+                    </div>
+                    <div class="form-group col-md-6"><form-control-label [text]="'distributor.form.lastName'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="lastName" formControlName="lastName" readonly/>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'distributor.form.email'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="email" formControlName="email" readonly/>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'distributor.form.phoneNo'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="phoneNo" formControlName="phoneNo" readonly/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'distributor.form.designation'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="designation" formControlName="designation" readonly/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'distributor.form.landLineNo'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="landLineNo" formControlName="landLineNo" readonly/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </form>
+</admin-root>

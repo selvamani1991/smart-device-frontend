@@ -1,0 +1,52 @@
+﻿<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{'featureCategory.form.allFeatureCategory' | translate}} </h3>
+            <list-header (pageSizeChanged)="changePageSize($event)" (addNewEvent)="addNew(featureCategory)"></list-header>
+            <div class="table-responsive">
+                <!--<div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer">-->
+                    <div *ngIf="featureCategories.length>0">
+                        <table class="table table-striped table-hover padding-top-20">
+                            <thead>
+                            <tr>
+                                <th>{{ 'featureCategory.form.logo' | translate }}</th>
+                                <th>{{ 'featureCategory.form.name' | translate }}</th>
+                                <th>{{ 'featureCategory.form.description' | translate }}</th>
+                                <th>{{ 'featureCategory.form.status' | translate }}</th>
+                                <th width="10%">{{ 'featureCategory.form.action' | translate }}</th>
+                            </tr>
+                            </thead>
+                            <tbody >
+                            <tr *ngFor="let featureCategory of featureCategories">
+                                <td class="userSize"><i class="fa fa-user"></i></td>
+                                <td>{{featureCategory.name}}</td>
+                                <td>{{featureCategory.description}}</td>
+                                <td>
+                                    <!--<button class="btn btn-success btn-xs" *ngIf="featureCategory.isActive">{{ 'featureCategory.form.enabled' | translate }}</button>-->
+                                    <!--<button class="btn btn-danger btn-xs" *ngIf="!featureCategory.isActive">{{ 'featureCategory.form.disabled' | translate }}</button>-->
+                                    <button class="btn btn-success btn-xs" (click)="changeStatus(featureCategory,false)" *ngIf="featureCategory.active">{{ 'featureCategory.list.enabled' | translate }}</button>
+                                    <button class="btn btn-danger btn-xs" (click)="changeStatus(featureCategory,true)" *ngIf="!featureCategory.active">{{ 'featureCategory.list.disabled' | translate }}</button>
+
+                                </td>
+                                <td>
+                                    <i class="fa fa-eye color-muted m-r-5 cursor-position" (click)="show(featureCategory);" style="cursor:pointer;"></i>
+
+                                    <i class="fa fa-pencil color-muted m-r-5 show-machine cursor-position" (click)="edit(featureCategory);" style="cursor:pointer;"></i>
+                                    <i class="fa fa-close color-danger show-machine cursor-position" (click)="markDeleted(featureCategory)" style="cursor:pointer;"></i>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="featureCategories.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                    </div>
+                <!--</div>-->
+            </div>
+            <div *ngIf="featureCategories.length==0">
+                <div class="dataSpace text-center">
+                    <b>{{ 'featureCategory.list.notAvailable' | translate }}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</admin-root>

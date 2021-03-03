@@ -1,0 +1,53 @@
+<div class="card card-widget" id="dashboard">
+    <div class="card-header top-header-size">
+        <h5 class="talkio_whitecolor"> Overall {{ client && client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}}
+            Status</h5>
+    </div>
+    <div class="card-body clientBody">
+        <div class="companyBuilding" *ngIf="topProductTypes.length > 0">
+            <h2 class="mt-4">{{totalProduct()}}</h2>
+            <span>Total {{ client && client.productNickName?client.productNickName:('clientDashboard.form.product' | translate ) }}</span>
+
+            <div class="top-productType" *ngIf="topProductTypes.length > 0">
+                <div class="mt-4">
+                    <h4>{{topProductTypes && topProductTypes[0].count?topProductTypes[0].count:0}}</h4>
+                    <h6>{{topProductTypes && topProductTypes[0].name}}
+                        <span class="pull-right">{{ topProductTypes[0].count/totalProduct()| percent:'2.0-2' }}</span>
+                    </h6>
+                    <div class="progress mb-3" style="height: 7px">
+                        <div class="progress-bar bg-primary"
+                             [style.width]="topProductTypes[0].count/totalProduct() | percent:'2.0-2'"
+                             role="progressbar"><span class="sr-only">{{ topProductTypes[0].count/totalProduct() | percent:'2.0-2' }}Active</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="top-productType" *ngIf="topProductTypes.length > 1">
+                <div class="mt-4">
+                    <h4>{{topProductTypes && topProductTypes[1].count?topProductTypes[1].count:0}}</h4>
+                    <h6>{{topProductTypes && topProductTypes[1].name}} <span  class="pull-right">{{ topProductTypes[1].count/totalProduct() | percent:'2.0-2' }}</span>
+                    </h6>
+                    <div class="progress mb-3" style="height: 7px">
+                        <div class="progress-bar bg-success"
+                             [style.width]="topProductTypes[1].count/totalProduct() | percent:'2.0-2'"
+                             role="progressbar"><span class="sr-only">{{ topProductTypes[1].count/totalProduct() | percent:'2.0-2' }}Active</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="top-productType" *ngIf="topProductTypes.length > 2">
+                <div class="mt-4">
+                    <h4>{{topProductTypes && topProductTypes[2].count?topProductTypes[2].count:0}}</h4>
+                    <h6>{{topProductTypes && topProductTypes[2].name}} <span  class="pull-right">{{ topProductTypes[2].count/totalProduct() | percent:'2.0-2' }}</span>
+                    </h6>
+                    <div class="progress mb-3" style="height: 7px">
+                        <div class="progress-bar bg-warning"
+                             [style.width]="topProductTypes[2].count/totalProduct() | percent:'2.0-2'"
+                             role="progressbar"><span  class="sr-only">{{ topProductTypes[2].count/totalProduct() | percent:'2.0-2' }}Active</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="pagination-section" id="projects">
+    <div class="page-size-show pull-left" ng-show="totalSize>0">
+        <span>Showing {{ totalSize >0 ? (currentPage-1)*pageSize+1 : 0}} to {{(currentPage-1)*pageSize+itemSize > totalSize ? totalSize : (currentPage-1)*pageSize+itemSize}} from {{totalSize}} entries</span>
+    </div>
+    <div class="page-list pull-right" *ngIf="totalSize>0">
+        <ul class="pagination">
+            <li class="page-item"><a (click)="previousPage();"  class="page-link">{{ 'page.list.previous' | translate }}</a></li>
+            <li *ngFor="let page of getNumber()" [ngClass]="{'active': currentPage == page }" class="page-item"><a (click)="getPage(page);" class="page-link">{{page}}</a></li>
+            <li class="page-item"><a (click)="nextPage();" class="page-link">{{ 'page.list.next' | translate }}</a></li>
+        </ul>
+    </div>
+</div>

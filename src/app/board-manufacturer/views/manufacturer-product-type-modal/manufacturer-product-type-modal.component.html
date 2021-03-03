@@ -1,0 +1,76 @@
+﻿<div class="modal fade" id="manufacturerProductTypeModal"  aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="boardManufacturer">
+            <form class="form-horizontal" [formGroup]="manufacturerProductForm" #f="ngForm" (ngSubmit)="f.form.valid && submitMachine(f)" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+                <div class="modal-header">
+                    <h5 class="modal-title">Product Details</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <span class="userSize2"><i class="fa fa-user"></i></span>
+                        </div>
+                        <div class="col-md-8">
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <td><b>{{ 'boardManufacturer.form.productName' | translate }}</b></td>
+
+                                    <td>{{product.name}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{ 'boardManufacturer.form.description' | translate }}</b></td>
+                                    <td> {{product.description}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="paid">
+                                        <b>{{ 'boardManufacturer.form.deviceId' | translate }}</b>
+                                    </td>
+                                    <td class="paid"> {{product.id}}</td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"  [ngClass]="{ 'has-error': f.submitted && !manufacturerProductForm.get('manufacturer').valid, 'has-success': f.submitted && manufacturerProductForm.get('manufacturer').valid}">
+                            <form-control-label [text]="'boardManufacturer.form.manufacturer'" [required]="true"></form-control-label>
+                            <span class="clip-select">
+                                <select id="form-field-select-5" id="manufacturer-product-type-select" name="manufacturer" class="form-control" formControlName="manufacturer">
+                                    <option value="0">Select {{ 'boardManufacturer.form.manufacturer' | translate }}</option>
+                                    <option *ngFor="let manufacturer of manufacturers" [value]="manufacturer.id">{{manufacturer.name}}</option>
+                                </select>
+                            <span class="error text-small block" *ngIf="f.submitted && !manufacturerProductForm.get('manufacturer').valid">{{ 'boardManufacturer.error.manufacturer' | translate }}</span>
+                            <span class="success text-small" *ngIf="f.submitted && manufacturerProductForm.get('manufacturer').valid">{{ 'boardManufacturer.form.verified' | translate }}</span></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !manufacturerProductForm.get('dispatchDate').valid, 'has-success': f.submitted && manufacturerProductForm.get('dispatchDate').valid}">
+                            <form-control-label [text]="'boardManufacturer.form.dispatchDate'" [required]="true"></form-control-label>
+                            <div class="input-group">
+                                <input type="text" placeholder="{{ 'boardManufacturer.placeholder.dispatchDate' | translate }}" class="form-control" name="dispatchDate" formControlName="dispatchDate" autocomplete="off" id="dispatchDate">
+                                <span class="input-group-append">
+                                    <span class="input-group-text">
+                                          <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </span>
+                                </span>
+                            </div>
+                            <label *ngIf="f.submitted && manufacturerProductForm.get('dispatchDate').hasError('required')">{{'boardManufacturer.error.dispatchDate' | translate}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">{{'boardManufacturer.form.submit' | translate}}</button>
+                            <button type="button" class="btn mb-1 btn-outline-danger pull-right" data-dismiss="modal">{{'boardManufacturer.form.cancel' | translate}}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

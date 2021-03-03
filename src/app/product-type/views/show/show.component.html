@@ -1,0 +1,126 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" name="productTypeForm" [formGroup]="productTypeForm">
+        <div class="card" id="productType">
+            <div class="card-body">
+                <h4 class="card-title">{{client.productTypeNickName?client.productTypeNickName:('clientDashboard.form.productType' | translate )}} Detail</h4>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="form-group">
+                            <form-control-label [text]="'productType.form.name'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="name" formControlName="name" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'productType.form.description'" [required]="true"></form-control-label>
+                            <div class="note-editor">
+                                <textarea id="form-field-22" class="form-control" name="description" formControlName="description" readonly> </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'productType.form.productCategory'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="productCategory" formControlName="productCategory" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'productType.form.modelNo'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="modelNo" formControlName="modelNo" readonly/>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 show-icon-top">
+                        <div class="delete-image" style="cursor:pointer;" *ngIf="productType.id && productType.logo"><i class="fa fa-close color-danger cross-size" data-toggle="tooltip" title="Delete" (click)="markDeleted(productType);"></i></div>
+                        <div class="company-image-size" *ngIf="productType.id && productType.logo"><img src="{{productType.logo}}"  class="upload-image"/></div>
+                        <div class="company-image-size" *ngIf="!productType.logo"><i class="fa fa-cubes show-icon ml-3" ></i></div>
+                        <div class="row mt-3 ml-3">
+                            <div class="choose_file">
+                                <button type="button" class="btn btn-default upload-button">{{ 'product.form.chooseImage' | translate }}</button>
+                                <input name="file" type="file" class="form-control" accept="image/*" (change)="onFileChange($event) && processFile()"/>
+                            </div>
+                            <div class="file-detail" *ngIf="files && productType.id && productType.logo">{{files.name}}</div>
+                            <div class="file-detail"><span *ngIf="files && productType.id && productType.logo">{{ files.size/1024 | number:'1.0-0'}} </span> KB</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{ 'productType.form.apiKey' | translate }}</h4>
+                <p class="text-muted"><code></code></p>
+                <div id="accordion-one" class="accordion">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"><i class="fa" aria-hidden="true"></i> Api Key</h5>
+                        </div>
+                        <div id="collapseOne" class="collapse" data-parent="#accordion-one" style="">
+                            <div class="card-body">{{ productType.apiKey?productType.apiKey:""}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body" *ngFor="let component of productType.components">
+                <h4 class="card-title">{{ 'productType.form.componentDetail' | translate }}</h4>
+                <div class="component-details">
+                    <div class="row">
+                        <div class="col-md-3 component-image">
+                            <img src="{{component.logo}}" *ngIf="component.id && component.logo" class="upload-comp-image"/>
+                            <span class="component-image"><i class="fa fa-cubes" style="margin-left:40px;" *ngIf="!component.logo"></i></span>
+                            <div class="row component-upload-button">
+                                <div class="choose_file">
+                                    <button type="button" class="btn btn-default upload-button">Choose Image</button>
+                                    <input name="file" type="file" class="form-control" accept="image/*" (change)="onFileChangeComponent($event,component) && uploadComponentImage(component)"/>
+                                </div>
+                            </div>
+                            <div class="component-file-detail" *ngIf="component.componentFiles">{{component.componentFiles ? component.componentFiles.name:''}}</div>
+                            <div class="component-file-detail"><span *ngIf="component.componentFiles">{{component.componentFiles.size/1024 | number:'1.0-0'}} </span>KB </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="component-size">
+                                {{component.name}}
+                            </div>
+                            <div class="component-size">
+                                {{component.code}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row table-border mt-3" >
+                        <h3 class="card-title">{{ 'productType.form.attributes' | translate }}</h3>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover padding-top-20">
+                                <thead>
+                                    <tr>
+                                        <th>{{ 'productType.form.name' | translate }} </th>
+                                        <th>{{ 'productType.form.code' | translate }}</th>
+                                        <th>{{ 'productType.form.sequence' | translate }}</th>
+                                        <th>{{ 'productType.form.valueDefault' | translate }}</th>
+                                        <th>{{ 'productType.form.valueMax' | translate }}</th>
+                                        <th>{{ 'productType.form.valueMin' | translate }}</th>
+                                        <th>{{ 'productType.form.valueSequence' | translate }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let attribute of component.attributes" class="{{attribute.deleted ? 'deleted' : ''}}">
+                                        <td>{{attribute.name}}</td>
+                                        <td>{{attribute.code}}</td>
+                                        <td>{{attribute.sequence}}</td>
+                                        <td>{{attribute.valueDefault}}</td>
+                                        <td>{{attribute.valueMax}}</td>
+                                        <td>{{attribute.valueMin}}</td>
+                                        <td>{{attribute.sequence}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</admin-root>
+
+
+
+
+

@@ -1,0 +1,79 @@
+{
+  "list": {
+    "pageLink": "Role Management",
+    "pageTitle": "Welcome to Role Management",
+    "pageDesc": "Listing all roles",
+    "notAvailable": "Data is not available",
+    "name": "Name",
+    "description": "Description",
+    "roleManagement": "Role Management",
+    "disabled":"Disabled",
+    "enabled": "Enabled"
+
+  },
+  "show": {
+    "formTitle": "Role creation form",
+    "formDesc": "Role creation form",
+    "pageLink": "Show Role",
+    "pageTitle": "Show a Role",
+    "pageDesc": "Showing a existing Role"
+  },
+  "create": {
+    "formTitle": "Role creation form",
+    "formDesc": "Role creation form",
+    "pageLink": "Create Role",
+    "pageTitle": "Create a Role",
+    "pageDesc": "creating a new Role"
+  },
+  "edit": {
+    "formTitle": " Role Update form",
+    "formDesc": "Role update form",
+    "pageLink": "Edit ",
+    "pageTitle": "Edit a Role",
+    "pageDesc": "Editing a Existing Role"
+  },
+  "assign": {
+    "formTitle": "Role Assign form",
+    "formDesc": "Role Assign form",
+    "pageLink": "Assign Role",
+    "pageTitle`": "Assign feature for Role",
+    "pageDesc": "Assign feature for a existing Role",
+    "addFeature": "Assign Feature",
+    "feature": "Feature",
+    "create": "Create,",
+    "create1": "Create",
+    "list": "List/View",
+    "update": "Update,",
+    "update1": "Update",
+    "delete": "Delete,",
+    "delete1": "Delete",
+    "execute": "Execute",
+    "permission": "Permission",
+    "crud": "Crud",
+    "notAvailable": "Feature not available for this category"
+  },
+  "form": {
+    "name": "Name",
+    "description": "Description",
+    "verified": "Verified !",
+    "roleDetails": "Role Details",
+    "roleAssignment": "Role Feature Assignment",
+    "title": "Title",
+    "action": "Action",
+    "cancel": "Cancel",
+    "save": "Save",
+    "details": "Role Details",
+    "logo": "Logo",
+    "status": "Status"
+
+  },
+  "error": {
+    "name": "Please enter name.",
+    "duplicate": "Role is already Exist.",
+    "description": "Please enter description."
+  },
+  "placeholder": {
+    "name": "Enter role name",
+    "description": "Enter role description"
+  }
+}

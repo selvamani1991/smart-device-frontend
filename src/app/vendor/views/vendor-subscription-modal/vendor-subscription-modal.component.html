@@ -1,0 +1,56 @@
+﻿<div class="modal" id="vendorSubscriptionModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form class="form-horizontal" [formGroup]="vendorSubscriptionForm" #f="ngForm" (ngSubmit)="validateForm(f) && f.form.valid  && createVendor(f)" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+                <div class="modal-header">
+                    <h4 class="card-title">{{client.vendorNickName?client.vendorNickName:('clientDashboard.form.vendor' | translate )}} Subscription</h4>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !vendorSubscriptionForm.get('subscription').valid, 'has-success': f.submitted && vendorSubscriptionForm.get('subscription').valid}">
+                            <form-control-label [text]="'vendor.subscriptionList.subscription'" [required]="true"></form-control-label>
+                            <span class="clip-select">
+                                <select  name="subscription" id="subscriptionSelectVendor" class="select2"  formControlName="subscription">
+                                    <option value="0">{{ 'vendor.subscriptionList.selectSubscription' | translate }}</option>
+                                    <option *ngFor="let subscriptionItem of subscriptions" [value]="subscriptionItem.id">{{subscriptionItem.name}}</option>
+                                </select>
+                                <form-validate [form]="f" [fieldName]="'subscription'" [field]="vendorSubscriptionForm.get('subscription')" [messages]="VENDOR_SUBSCRIPTION_VALIDATOR"></form-validate>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !vendorSubscriptionForm.get('startDate').valid, 'has-success': f.submitted && vendorSubscriptionForm.get('startDate').valid}">
+                            <form-control-label [text]="'vendor.subscriptionList.startDate'" [required]="true"></form-control-label>
+                            <div class="input-group">
+                                <input type="text" placeholder="{{ 'vendor.placeholder.startDate' | translate }}" class="form-control" name="startDate" formControlName="startDate" autocomplete="off" id="vendorSubscriptionStartDate">
+                                <span class="input-group-append" >
+                                    <span class="input-group-text">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </span>
+                                </span>
+                            </div>
+                            <form-validate [form]="f" [fieldName]="'startDate'" [field]="vendorSubscriptionForm.get('startDate')" [messages]="VENDOR_SUBSCRIPTION_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group form-check mb-3 distributor-checkbox">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" name="active" formControlName="active" value="">Active
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">{{ 'vendor.subscriptionList.submit' | translate }}</button>
+                            <button type="button" class="btn mb-1 btn-outline-danger pull-right" data-dismiss="modal">{{ 'vendor.subscriptionList.cancel' | translate }}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

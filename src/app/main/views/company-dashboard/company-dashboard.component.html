@@ -1,0 +1,35 @@
+
+<CompanyCardDashboard [dashboardDetail]="dashboardDetail" [client]="client" *ngIf="client.id"></CompanyCardDashboard>
+<div class="row">
+    <div class="col-lg-6 col-sm-6">
+<CompanyTopCustomer  [company]="company" [client]="client" *ngIf="client.id"></CompanyTopCustomer>
+    </div>
+    <div class="col-lg-6 col-sm-6">
+       <CompanyTopProduct [client]="client" *ngIf="client.id"></CompanyTopProduct>
+    </div>
+    <div class="col-lg-12" *ngIf="productTypes.length>0">
+        <CompanyTotalProductInstalled [client]="client" [company]="company"  [companyBuildings]="companyBuildings" *ngIf="client.id"></CompanyTotalProductInstalled>
+    </div>
+
+    <div class="col-lg-12" *ngIf="productTypes.length>0">
+        <CompanyTotalHealth [client]="client" [productTypes]="productTypes" [companyBuildings]="companyBuildings" *ngIf="client.id"></CompanyTotalHealth>
+    </div>
+
+    <div class="col-lg-12" *ngIf="productTypes.length>0">
+        <CompanyTotalRevenue [client]="client" [company]="company" [companyBuildings]="companyBuildings" *ngIf="client.id"></CompanyTotalRevenue>
+    </div>
+
+    <div class="col-lg-12" *ngIf="productTypes.length>0">
+        <CompanyTotalUsage [client]="client" [company]="company" [companyBuildings]="companyBuildings" *ngIf="client.id"></CompanyTotalUsage>
+    </div>
+
+    <div class="col-lg-12" *ngIf="productTypes.length>0">
+        <CompanyTotalErrorData [client]="client" [company]="company" [companyBuildings]="companyBuildings" *ngIf="client.id"></CompanyTotalErrorData>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+       <CompanyStoreLocation></CompanyStoreLocation>
+    </div>
+</div>

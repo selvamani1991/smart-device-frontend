@@ -1,0 +1,62 @@
+<admin-root>
+
+<div class="row manufacturer-icon" id="dashboard">
+    <div class="col-lg-12">
+        <div class="clientDropdown float-right">
+        <span class="clip-select">
+             <select id="productCategoryDropDown" class="select2">
+                <option value="product">Product</option>
+                <option selected="selected" value="consumerProduct">Consumer Product</option>
+            </select>
+        </span>
+        </div>
+    </div>
+</div>
+
+    <ConsumerCardDashboard [client]="client" [dashboardDetail]="dashboardDetail" [consumerProductHealth]="consumerProductHealth" [consumerTotalRevenue]="consumerTotalRevenue" [productReport]="productReport" ></ConsumerCardDashboard>
+
+    <div class="row">
+
+        <div class="col-lg-6 col-sm-6">
+            <ConsumerTopDevice [client]="client" [dashboardDetail]="dashboardDetail"></ConsumerTopDevice>
+        </div>
+
+        <div class="col-lg-6 col-sm-6">
+            <ConsumerTopRevenue [client]="client" [dashboardDetail]="dashboardDetail"></ConsumerTopRevenue>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <ConsumerOverAllProduct  [client]="client" [productTypes]="productTypes"></ConsumerOverAllProduct>
+        </div>
+        <!--<div class="col-lg-6">
+            <ConsumerHealthReport  [client]="client" [productTypes]="productTypes"></ConsumerHealthReport>
+        </div>-->
+    </div>
+
+    <!--Dummy Api need to add start-->
+
+    <div class="row">
+            <div class="col-lg-12">
+                <ConsumerTotalHealth  [client]="client" [productTypes]="productTypes" ></ConsumerTotalHealth>
+            </div>
+
+        <div class="col-lg-12">
+            <ConsumerTotalUsage  [client]="client" [productTypes]="productTypes" ></ConsumerTotalUsage>
+        </div>
+
+        <div class="col-lg-12">
+            <ConsumerTotalErrorData [zones]="zones" [client]="client" [productTypes]="productTypes" [companies]="companies"></ConsumerTotalErrorData>
+        </div>
+    </div>
+
+
+
+    <!--Dummy Api need to add end-->
+
+
+
+
+</admin-root>
+

@@ -1,0 +1,17 @@
+<div class="button-wrapper">
+    <div class="page-size-select">
+        <span >{{ 'page.list.showing' | translate }} </span>
+        <select class="list-select" [(ngModel)]="pageSizeSelect" (change)="changePageSize(pageSizeSelect)">
+            <option *ngFor="let pageSizeValue of pageSizeList" value="{{pageSizeValue}}" [selected]="pageSizeValue == pageSizeSelect">{{pageSizeValue}}</option>
+        </select>
+        <span> {{'page.list.entries_page' | translate}}</span>
+    </div>
+    <input type="text"  class="search-width" placeholder="Search.." name="query" [(ngModel)]="query" (ngModelChange)="valueChange($event)">
+    <button type="submit" class="header-search-btn"><i class="fa fa-search"></i></button>
+    <span class="asset-padding-left-report-header">    {{ 'company.form.companies' | translate }}</span>
+    <select class="list-select asset-report-select-width pull-right" [(ngModel)]="selectedCompanyId" (ngModelChange)="selectCompany($event)">
+        <option *ngFor="let companyObj of companies" value={{companyObj.id}} >
+            {{companyObj.name}}
+        </option>
+    </select>
+</div>

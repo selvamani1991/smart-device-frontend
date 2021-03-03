@@ -1,0 +1,74 @@
+﻿<div class="modal fade" id="boardManufacturerModal"  aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="client">
+            <form class="form-horizontal"  [formGroup]="boardProductTypeForm" #f="ngForm" (ngSubmit)="validateForm(f) && f.form.valid && createBoard(f)" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{ 'company.form.productTypeDetail' | translate }}</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <span class="userSize2"><i class="fa fa-user"></i></span>
+                        </div>
+                        <div class="col-md-8">
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <td><b>{{ 'client.boardManufacturer.name' | translate }}</b></td>
+                                    <td>{{productType?productType.name:''}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{ 'productType.form.modelNo' | translate }}</b></td>
+                                    <td> {{productType?productType.modelNo:''}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12"  [ngClass]="{ 'has-error': f.submitted && !boardProductTypeForm.get('boardManufacturer').valid, 'has-success': f.submitted && boardProductTypeForm.get('boardManufacturer').valid}">
+                            <form-control-label [text]="'client.form.boardManufacturer'" [required]="true"></form-control-label>
+                            <span class="clip-select">
+                                <select  name="boardManufacturer" id="board-manufacturer-select" class="select2" formControlName="boardManufacturer">
+                                    <option value="0">Select {{ 'client.form.boardManufacturer' | translate }}</option>
+                                    <option *ngFor="let boardManufacturer of boardManufacturers" [value]="boardManufacturer.id">{{boardManufacturer.name}}</option>
+                                </select>
+                                <form-validate [form]="f" [fieldName]="'boardManufacturer'" [field]="boardProductTypeForm.get('boardManufacturer')" [messages]="CLIENT_VALIDATOR"></form-validate>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !boardProductTypeForm.get('assignedDate').valid, 'has-success': f.submitted && boardProductTypeForm.get('assignedDate').valid}">
+                            <form-control-label [text]="'client.form.assignedDate'" [required]="true"></form-control-label>
+                            <div class="input-group">
+                                <input type="text" placeholder="{{ 'client.placeholder.assignedDate' | translate }}" class="form-control" name="assignedDate" formControlName="assignedDate" autocomplete="off" id="boardManufacturerDispatchedDate">
+                                <span class="input-group-append" >
+                                    <span class="input-group-text">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </span>
+                                </span>
+                            </div>
+                            <form-validate [form]="f" [fieldName]="'assignedDate'" [field]="boardProductTypeForm.get('assignedDate')" [messages]="CLIENT_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !boardProductTypeForm.get('productCount').valid, 'has-success': f.submitted && boardProductTypeForm.get('productCount').valid}">
+                            <form-control-label [text]="'client.form.productCount'" [required]="true"></form-control-label>
+                            <input type="number" class="form-control input-default" placeholder="{{ 'client.placeholder.productCount' | translate }}" class="form-control" productCount="productCount" formControlName="productCount">
+                            <form-validate [form]="f" [fieldName]="'productCount'" [field]="boardProductTypeForm.get('productCount')" [messages]="CLIENT_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">{{ 'client.form.submit' | translate }}</button>
+                            <button type="button" class="btn mb-1 btn-outline-danger pull-right" data-dismiss="modal">{{ 'client.form.cancel' | translate }}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

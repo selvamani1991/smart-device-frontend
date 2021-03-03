@@ -1,0 +1,44 @@
+﻿<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" name="mediaForm" [formGroup]="mediaForm" #f="ngForm" (ngSubmit)="f.form.valid && updateMedia()" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">{{'media.form.details' | translate}}</h3>
+                        <div class="row">
+                            <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !mediaForm.get('name').valid, 'has-success': f.submitted && mediaForm.get('name').valid}">
+                                <form-control-label [text]="'media.form.name'" [required]="true"></form-control-label>
+                                <input type="text" class="form-control input-default" placeholder="{{ 'media.placeholder.name' | translate }}" class="form-control" name="name" formControlName="name">
+                                <form-validate [form]="f" [fieldName]="'name'" [field]="mediaForm.get('name')" [messages]="MEDIA_VALIDATOR"></form-validate>
+                            </div>
+                            <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !mediaForm.get('description').valid, 'has-success': f.submitted && mediaForm.get('description').valid}">
+                                <form-control-label [text]="'media.form.description'" [required]="true"></form-control-label>
+                                <div class="note-editor">
+                                    <textarea id="form-field-22" class="form-control" placeholder="Enter description" name="description" formControlName="description"></textarea>
+                                </div>
+                                <form-validate [form]="f" [fieldName]="'description'" [field]="mediaForm.get('description')" [messages]="MEDIA_VALIDATOR"></form-validate>
+                            </div>
+                            <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !mediaForm.get('mediaType').valid, 'has-success': f.submitted && mediaForm.get('mediaType').valid}">
+                                <form-control-label [text]="'media.form.mediaType'" [required]="true"></form-control-label>
+                                <span class="clip-select">
+                                    <select  name="mediaType" id="mediaSelect" class="select2"  formControlName="mediaType">
+                                        <option value="0">Select</option>
+                                        <option *ngFor="let mediaTypeItem of mediaTypes" [value]="mediaTypeItem.id">{{mediaTypeItem.name}}</option>
+                                    </select>
+                                    <form-validate [form]="f" [fieldName]="'mediaType'" [field]="mediaForm.get('mediaType')" [messages]="MEDIA_VALIDATOR"></form-validate>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">{{'media.form.save' | translate}}</button>
+                <button type="button" (click)="list(media);" class="btn mb-1 btn-outline-danger pull-right">{{'media.form.cancel' | translate}}</button>
+            </div>
+        </div>
+    </form>
+</admin-root>

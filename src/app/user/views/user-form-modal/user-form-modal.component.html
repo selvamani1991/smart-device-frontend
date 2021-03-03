@@ -1,0 +1,86 @@
+﻿<div class="modal fade" id="userCreateModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <form class="form-horizontal" name="form" (ngSubmit)=" validate(user,f) && f.form.valid && submitForm(user,f)" #f="ngForm"novalidate>
+    <div class="modal-dialog modal-lg">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 *ngIf="!user.id"><i class="fa fa-user"></i> {{ 'user.create.pageTitle' | translate }} </h4>
+          <h4 *ngIf="user.id"><i class="fa fa-user"></i> {{ 'user.edit.pageTitle' | translate }} </h4>
+        </div>
+        <div class="modal-body">
+          <div class="popup-form">
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !firstName.valid, 'has-success': f.submitted && firstName.valid}">
+              <form-control-label [text]="'user.form.firstName'" [required]="true"></form-control-label>
+              <input type="text" placeholder="{{ 'user.placeholder.firstName' | translate }}" class="form-control" name="firstName" [(ngModel)]="user.firstName" #firstName="ngModel" required minlength="2"/>
+              <form-validate [field]="firstName" [messages]="USER_VALIDATOR"></form-validate>
+            </div>
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !lastName.valid, 'has-success': f.submitted && lastName.valid}">
+              <form-control-label [text]="'user.form.lastName'" [required]="true"></form-control-label>
+              <input type="text" placeholder="{{ 'user.placeholder.lastName' | translate }}" class="form-control" name="lastName" [(ngModel)]="user.lastName" #lastName="ngModel" required />
+              <form-validate [field]="lastName" [messages]="USER_VALIDATOR"></form-validate>
+            </div>
+            <div class="form-group" [ngClass]="{ 'has-error': (f.submitted && !email.valid), 'has-success': f.submitted && email.valid}">
+              <form-control-label [text]="'user.form.email'" [required]="true"></form-control-label>
+              <input type="text" placeholder="{{ 'user.placeholder.email' | translate }}" class="form-control" name="email" [(ngModel)]="user.email" #email="ngModel" required  pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$" />
+              <form-validate [field]="email" [messages]="USER_VALIDATOR"></form-validate>
+            </div>
+            <div class="form-group" [ngClass]="{ 'has-error': (f.submitted && !username.valid) , 'has-success': f.submitted && username.valid}">
+              <form-control-label [text]="'user.form.username'" [required]="true"></form-control-label>
+              <input type="text" placeholder="{{ 'user.placeholder.username' | translate }}" class="form-control" name="username" [(ngModel)]="user.username" #username="ngModel" required />
+              <form-validate [field]="username" [messages]="USER_VALIDATOR"></form-validate>
+            </div>
+            <div *ngIf="!user.id" class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid, 'has-success': f.submitted && password.valid}" >
+              <form-control-label [text]="'user.form.password'" [required]="true"></form-control-label>
+              <input autocomplete="false" type="password" id="password" placeholder="{{ 'user.placeholder.password' | translate }}" class="form-control" name="password" [(ngModel)]="user.password" #password="ngModel" required />
+              <form-validate [field]="password" [messages]="USER_VALIDATOR"></form-validate>
+            </div>
+            <div *ngIf="!user.id" class="form-group" [ngClass]="{'has-error': (f.submitted && !confirmPassword.valid), 'has-success': f.submitted && confirmPassword.valid}" >
+              <form-control-label [text]="'user.form.confirmPassword'" [required]="true"></form-control-label>
+              <input autocomplete="false" type="password"  placeholder="{{ 'user.placeholder.confirmPassword' | translate }}" class="form-control" name="confirmPassword" [(ngModel)]="user.confirmPassword" #confirmPassword="ngModel" required />
+              <form-validate [field]="confirmPassword" [messages]="USER_VALIDATOR" [check]="validatePassword(user,f)"></form-validate>
+            </div>
+            <div class="form-group" [ngClass]="{'has-error':f.submitted && !phoneNo.valid, 'has-success':f.submitted && phoneNo.valid}">
+              <form-control-label [text]="'user.form.phoneNo'" [required]="true"></form-control-label>
+              <input type="number" placeholder="{{ 'user.placeholder.phoneNo' | translate }}" class="form-control" name="phoneNo" [(ngModel)]="user.phoneNo" #phoneNo="ngModel" required />
+              <form-validate [field]="phoneNo" [messages]="USER_VALIDATOR"></form-validate>
+            </div>
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !userType.valid, 'has-success': f.submitted && userType.valid}">
+              <label for="form-field-select-1" class="control-label">{{ 'user.form.userType' | translate }}<span class="symbol required"></span></label>
+              <span class="clip-select">
+                  <select id="form-field-select-1" name="userType" class="form-control" [(ngModel)]="user.userType" #userType="ngModel">
+                      <option *ngFor="let userType of USER_TYPES.userTypes" [value]="userType.name">{{userType.name}}</option>
+                  </select>
+                  <span class="error text-small block" *ngIf="f.submitted && !userType.valid">{{ 'user.error.userType' | translate }}</span>
+                  <span class="success text-small" *ngIf="f.submitted && userType.valid">{{ 'user.form.verified' | translate }}</span>
+                </span>
+            </div>
+            <div class="form-group" [ngClass]="{'has-error':f.submitted && !gender.valid, 'has-success':f.submitted && gender.valid}">
+              <form-control-label [text]="'user.form.gender'" [required]="true"></form-control-label>
+              <div class="clip-radio radio-primary">
+                <input type="radio" id="wd-female" name="gender" value="female" [(ngModel)]="user.gender" #gender="ngModel" required>
+                <label for="wd-female">{{ 'user.form.female' | translate }}</label>
+                <input type="radio" id="wd-male" name="gender" value="male" [(ngModel)]="user.gender" #gender="ngModel" required>
+                <label for="wd-male">{{ 'user.form.male' | translate }}</label>
+              </div>
+              <form-validate [field]="gender" [messages]="USER_VALIDATOR"></form-validate>
+              <span class="success text-small block" *ngIf="gender.valid && user.gender == 'male'">{{ 'user.error.mr' | translate }} {{user.lastName}}!</span>
+              <span class="success text-small block" *ngIf="gender.valid && user.gender == 'female'">{{ 'user.error.mrs' | translate }} {{user.lastName}}!</span>
+            </div>
+            <div class="form-group">
+              <form-control-label [text]="'user.form.available_to_user'" [required]="true"></form-control-label>
+              <div class="checkbox clip-check check-primary">
+                <input type="checkbox" id="checkbox1" value="" name="isActive" [(ngModel)]="user.isActive" #isActive="ngModel" >
+                <label for="checkbox1">{{ 'user.form.isActive' | translate }}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn btn-default" data-dismiss="modal"><i class="fa fa-close" aria-hidden="true"></i> {{ 'page.action.cancel' | translate}}</button>
+          <button type="submit" class="btn btn btn-default" [disabled]="loading"><i class="fa fa-save" aria-hidden="true"></i> {{ buttonName | translate}}<img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/></button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

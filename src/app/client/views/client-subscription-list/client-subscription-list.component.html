@@ -1,0 +1,53 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{ 'client.subscriptionList.subscriptionList' | translate }}</h3>
+            <list-header (pageSizeChanged)="changePageSize($event)" (search)="searchClientSubscription($event)" (addNewEvent)="addClientSubscription($event)"></list-header>
+            <div class="table-responsive">
+                <div *ngIf="clientSubscriptions.length>0">
+                    <table class="table table-striped table-hover padding-top-20">
+                        <thead>
+                            <tr>
+                                <th>{{'client.subscriptionList.logo' | translate}}</th>
+                                <th>{{ 'client.subscriptionList.subscriptionName' | translate }}</th>
+                                <th>{{ 'client.subscriptionList.startDate' | translate }}</th>
+                                <th>{{ 'client.subscriptionList.endDate' | translate }}</th>
+                                <th>{{ 'client.subscriptionList.productTypeLimit' | translate }}</th>
+                                <th>{{ 'client.subscriptionList.productTypeUsed' | translate }}</th>
+                                <th>{{ 'client.subscriptionList.productLimit' | translate }}</th>
+                                <th>{{ 'client.subscriptionList.productUsed' | translate }}</th>
+                                <th width="8%">{{ 'client.subscriptionList.status' | translate }}</th>
+                                <th width="8%">{{ 'client.clientProduct.action' | translate }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let clientSubscription of clientSubscriptions">
+                                <td class="userSize"><img src="{{clientSubscription.subscription.logo}}" *ngIf="clientSubscription.subscription.id && clientSubscription.subscription.logo" class="list-logo"> <i class="fa fa-calendar" *ngIf="clientSubscription.subscription.id && !clientSubscription.subscription.logo"></i></td>
+                                <td>{{clientSubscription.subscription.name}}</td>
+                                <td>{{clientSubscription.startDate}}</td>
+                                <td>{{clientSubscription.endDate}}</td>
+                                <td>{{clientSubscription.subscription.machineTypeCount}}</td>
+                                <td>{{clientSubscription.productTypeCount}}</td>
+                                <td>{{clientSubscription.subscription.machineCount}}</td>
+                                <td>{{clientSubscription.productCount}}</td>
+                                <td>
+                                    <button class="btn btn-success btn-xs" (click)="changeStatus(clientSubscription,false)" *ngIf="clientSubscription.active">{{ 'client.list.enabled' | translate }}</button>
+                                    <button class="btn btn-danger btn-xs" (click)="changeStatus(clientSubscription,true)" *ngIf="!clientSubscription.active">{{ 'client.list.disabled' | translate }}</button>
+                                </td>
+                                <td>
+                                    <i class="fa fa-pencil color-muted m-r-5 cursor-position" (click)="edit(clientSubscription);"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="clientSubscriptions.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                </div>
+            </div>
+            <div *ngIf="clientSubscriptions.length==0">
+                <div class="dataSpace text-center"><b>{{ 'client.subscriptionList.noData' | translate }}</b></div>
+            </div>
+        </div>
+    </div>
+</admin-root>
+<client-subscription-modal [clientSubscription]="clientSubscription" (submitEvent)="reloadClientSubscription($event)"></client-subscription-modal>

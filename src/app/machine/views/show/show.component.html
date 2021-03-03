@@ -1,0 +1,46 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" name="machineForm" [formGroup]="machineForm">
+        <div class="card" id="machine">
+            <div class="card-body">
+                <h4 class="card-title">{{ 'machine.form.details' | translate }}</h4>
+                <div class="form-row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <form-control-label [text]="'machine.form.name'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="name" formControlName="name" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'machine.form.description'" [required]="true"></form-control-label>
+                            <div class="note-editor">
+                                 <textarea placeholder="{{machine.description}}" class="form-control" name="description" readonly></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'machine.form.manufacturerDate'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="manufacturerDate" formControlName="manufacturerDate" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'machine.form.machineId'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="machineId" formControlName="machineId" readonly/>
+                        </div>
+                    </div>
+                    <div class="col-md-4 show-icon-top">
+                        <div class="delete-image cursor-pointer" style="cursor:pointer;" *ngIf="machine.id && machine.logo"><i class="fa fa-close color-danger cross-size cursor-pointer" data-toggle="tooltip" title="Delete" (click)="markDeleted(machine);"></i></div>
+                        <div class="company-image-size" *ngIf="machine.id && machine.logo"><img src="{{machine.logo}}"  class="upload-image"/></div>
+                        <div class="company-image-size" *ngIf="!machine.logo"><i class="fa fa-microchip show-icon mt-3" ></i></div>
+                        <div class="row mt-3 ml-3">
+                            <div class="choose_file">
+                                <button type="button" class="btn btn-default upload-button">Choose Image</button>
+                                <input name="file" type="file" class="form-control" accept="image/*" (change)="onFileChange($event)"/>
+                            </div>
+                            <div class="file-detail" *ngIf="files && machine.id && machine.logo">{{files.name}}</div>
+                            <div class="file-detail"><span *ngIf="files && machine.id && machine.logo">{{ files.size/1024 | number:'1.0-0'}} </span> KB</div>
+                        </div>
+                        <div class="has-error error" *ngIf="formatError">{{'machine.error.invalidPattern' | translate}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</admin-root>

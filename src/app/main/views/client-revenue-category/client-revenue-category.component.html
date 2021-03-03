@@ -1,0 +1,23 @@
+<div class="card" id="dashboard">
+    <div class="card-header">
+        <h3>{{ 'clientDashboard.form.revenueCategory' | translate }}</h3>
+    </div>
+    <div class="card-body clientBody">
+        <div class="row">
+            <div class="col-lg-6"></div>
+            <div class="col-lg-6" *ngIf="currentUser.userType=='clientAdmin'">
+                <div class="clientDropdown float-right">
+                    <span class="clip-select">
+                        <select id="selectRevenueCategory" name="zone" class="select2">
+                            <option value="0">Select Zone</option>
+                                <option *ngFor="let zone of zones" [value]="zone.alias">{{zone.name}}</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <div class="new-graph-size" id="revenue_detail" ></div>
+        </div>
+    </div>
+</div>

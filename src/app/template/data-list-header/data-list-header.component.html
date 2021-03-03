@@ -1,0 +1,9 @@
+<div class="button-wrapper">
+    <div class="page-size-select data-list-page">
+        <span >{{ 'page.list.showing' | translate }} </span>
+        <select class="select2" id="data-list-header"[(ngModel)]="pageSizeSelect" (change)="changePageSize(pageSizeSelect)">
+            <option *ngFor="let pageSizeValue of pageSizeList" value="{{pageSizeValue}}" [selected]="pageSizeValue == pageSizeSelect">{{pageSizeValue}}</option>
+        </select>
+        <span> {{'page.list.entries_page' | translate}}</span>
+    </div>
+</div>

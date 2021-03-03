@@ -1,0 +1,38 @@
+
+<VendorCardDashboard [dashboardDetail]="dashboardDetail" [client]="client" *ngIf="client.id"></VendorCardDashboard>
+<div class="row">
+    <div class="col-lg-6 col-sm-6">
+       <VendorTopCompany [client]="client" *ngIf="client.id"></VendorTopCompany>
+    </div>
+    <div class="col-lg-6 col-sm-6">
+        <VendorTopDistributor [client]="client" *ngIf="client.id"></VendorTopDistributor>
+    </div>
+    <div class="col-lg-4 col-md-4">
+        <VendorAllProduct  [vendor]="vendor" [client]="client" [dashboardDetail]="dashboardDetail" *ngIf="client.id"></VendorAllProduct>
+    </div>
+
+    <div class="col-lg-4" *ngIf="productTypes.length>0">
+        <HealthReport  [productTypes]="productTypes" [vendor]="vendor" [client]="client" *ngIf="client.id"></HealthReport>
+    </div>
+
+
+    <div class="col-lg-4"  *ngIf="productTypes.length>0">
+        <VendorMachineSale [productTypes]="productTypes" [client]="client" *ngIf="client.id"></VendorMachineSale>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-8" *ngIf="productTypes.length>0">
+        <ProductSale [productTypes]="productTypes" [client]="client" *ngIf="client.id"></ProductSale>
+    </div>
+
+    <div class="col-lg-4" *ngIf="productTypes.length>0">
+       <RevenueCategory [vendor]="vendor" [productTypes]="productTypes" [client]="client" *ngIf="client.id"></RevenueCategory>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+       <VendorStoreLocation></VendorStoreLocation>
+    </div>
+</div>

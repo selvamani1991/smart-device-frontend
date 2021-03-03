@@ -1,0 +1,31 @@
+<div class="card" id="dashboard">
+    <div class="card-header ">
+        <h5 class="talkio_whitecolor">
+            {{client.distributorNickName?client.distributorNickName:('clientDashboard.form.distributor' | translate
+            )}}</h5>
+    </div>
+    <div class="card-body clientBody">
+        <div class="active-member">
+            <div class="table-responsive scroll-table">
+                <table class="table table-xs mb-0" id="talkio_table">
+                    <thead class="talkio_themecolor">
+                        <tr>
+                            <th>{{ 'vendorDashboard.form.distributorName' | translate }}</th>
+                            <th>{{ 'vendorDashboard.form.contactNumber' | translate }}</th>
+                            <th>Email Address</th>
+                            <th>{{ 'vendorDashboard.form.installMachineCount' | translate }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let topDistributor of topDistributors">
+                            <td>{{topDistributor.name}}</td>
+                            <td>{{topDistributor.admin.phoneNo}}</td>
+                            <td>{{topDistributor.admin.email}}</td>
+                            <td>{{topDistributor.productCount}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

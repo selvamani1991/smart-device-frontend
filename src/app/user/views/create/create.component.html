@@ -1,0 +1,70 @@
+﻿<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" [formGroup]="userForm" #f="ngForm" (ngSubmit)="validatePassword(f) && validateForm(f) && f.form.valid && createUser(f)" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{'user.form.details' | translate}}</h3>
+                <div class="row">
+                    <div class="col-md-12 form-group" [ngClass]="{ 'has-error': f.submitted && !userForm.get('firstName').valid, 'has-success': f.submitted && userForm.get('firstName').valid}">
+                        <form-control-label [text]="'user.form.firstName'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'user.placeholder.firstName' | translate }}" class="form-control" name="firstName" formControlName="firstName">
+                        <form-validate [fieldName]="'firstName'" [form]="f" [field]="userForm.get('firstName')" [messages]="USER_VALIDATOR"></form-validate>
+                    </div>
+                    <div class="col-md-12 form-group" [ngClass]="{ 'has-error': f.submitted && !userForm.get('lastName').valid, 'has-success': f.submitted && userForm.get('lastName').valid}">
+                        <form-control-label [text]="'user.form.lastName'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'user.placeholder.lastName' | translate }}" class="form-control" name="lastName" formControlName="lastName">
+                        <form-validate [fieldName]="'lastName'" [form]="f" [field]="userForm.get('lastName')" [messages]="USER_VALIDATOR"></form-validate>
+                    </div>
+                    <div class="col-md-12 form-group" [ngClass]="{ 'has-error': f.submitted && !userForm.get('email').valid, 'has-success': f.submitted && userForm.get('email').valid}">
+                        <form-control-label [text]="'user.form.email'" [required]="true"></form-control-label>
+                        <input type="text" (model)="myModel" (keydown)="$event.keyCode != 32 ? $event:$event.preventDefault()" placeholder="{{ 'user.placeholder.email' | translate }}" class="form-control" name="email" formControlName="email">
+                        <form-validate [fieldName]="'email'" [form]="f" [field]="userForm.get('email')" [messages]="USER_VALIDATOR"></form-validate>
+                    </div>
+                    <div class="col-md-12 form-group" [ngClass]="{ 'has-error': f.submitted && !userForm.get('phoneNo').valid, 'has-success': f.submitted && userForm.get('phoneNo').valid}">
+                        <form-control-label [text]="'user.form.phoneNo'" [required]="true"></form-control-label>
+                        <input type="number" placeholder="{{ 'user.placeholder.phoneNo' | translate }}" class="form-control" name="phoneNo" formControlName="phoneNo">
+                        <form-validate [fieldName]="'phoneNo'" [form]="f" [field]="userForm.get('phoneNo')" [messages]="USER_VALIDATOR"></form-validate>
+
+                    </div>
+                    <div class="col-md-12 form-group" [ngClass]="{ 'has-error': f.submitted && !userForm.get('designation').valid, 'has-success': f.submitted && userForm.get('designation').valid}">
+                        <form-control-label [text]="'user.form.designation'" [required]="true"></form-control-label>
+                        <input type="text"  placeholder="{{ 'user.placeholder.designation' | translate }}" class="form-control" name="designation" formControlName="designation">
+                        <form-validate [fieldName]="'designation'" [form]="f" [field]="userForm.get('designation')" [messages]="USER_VALIDATOR"></form-validate>
+                    </div>
+                    <div class="form-group form-check mb-3 distributor-checkbox" [ngClass]="{ 'has-error': f.submitted && !userForm.get('secondary').valid, 'has-success': f.submitted && userForm.get('secondary').valid}">
+                        <input type="checkbox"  placeholder="{{ 'user.placeholder.secondary' | translate }}" class="form-check-input" name="secondary" required formControlName="secondary" />
+                        <form-control-label [text]="'user.form.secondary'" [required]="true"></form-control-label>
+                        <form-validate [fieldName]="'secondary'" [form]="f" [field]="userForm.get('secondary')" [messages]="USER_VALIDATOR"></form-validate>
+                    </div>
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !userForm.get('password').valid, 'has-success': f.submitted && userForm.get('password').valid}">
+                        <form-control-label [text]="'user.form.password'" [required]="true"></form-control-label>
+                        <input autocomplete="false" type="password" (model)="myModel" (keydown)="$event.keyCode != 32 ? $event:$event.preventDefault()" id="password" placeholder="{{ 'user.placeholder.password' | translate }}" class="form-control" name="password" required formControlName="password" onkeyup="ucheck.updateUrl(this.value)"/>
+                        <form-validate [fieldName]="'password'" [form]="f" [field]="userForm.get('password')" [messages]="USER_VALIDATOR"></form-validate>
+                    </div>
+
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !userForm.get('confirmPassword').valid, 'has-success': f.submitted && userForm.get('confirmPassword').valid}">
+                        <form-control-label [text]="'user.form.confirmPassword'" [required]="true"></form-control-label>
+                        <input autocomplete="false" type="password" (model)="myModel" (keydown)="$event.keyCode != 32 ? $event:$event.preventDefault()" placeholder="{{ 'user.placeholder.confirmPassword' | translate }}" class="form-control" name="confirmPassword" required formControlName="confirmPassword" />
+                        <form-validate [fieldName]="'confirmPassword'" [form]="f" [field]="userForm.get('confirmPassword')" [messages]="USER_VALIDATOR"></form-validate>
+                    </div>
+                    <div class="col-md-12 form-group" [ngClass]="{ 'has-error': f.submitted && !userForm.get('userType').valid, 'has-success': f.submitted && userForm.get('userType').valid}">
+                        <form-control-label [text]="'user.form.userType'" [required]="true"></form-control-label>
+                        <span class="clip-select">
+                            <select name="userType" class="select2" formControlName="userType">
+                                <option value="0">Select {{ 'user.form.userType' | translate }}</option>
+                               <option *ngFor="let userTypeItem of userTypes" [value]="userTypeItem.id">{{userTypeItem.name}}</option>
+                            </select>
+                            <form-validate [fieldName]="'userType'" [form]="f" [field]="userForm.get('userType')" [messages]="USER_VALIDATOR"></form-validate>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">{{'user.form.save' | translate}}</button>
+                        <button type="button" (click)="list(user);" class="btn mb-1 btn-outline-danger pull-right">{{'user.form.cancel' | translate}}</button>
+                    </div>
+                </div>
+            </div>
+      </div>
+    </form>
+</admin-root>

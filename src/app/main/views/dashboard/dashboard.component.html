@@ -1,0 +1,22 @@
+<admin-root>
+    <div class="mt-3">
+
+        <CompanyBuildingDashboard *ngIf ="currentUser.userType==USER_TYPES.COMPANY_BUILDING_ADMIN"></CompanyBuildingDashboard>
+
+        <DistributorDashboard *ngIf ="currentUser.userType==USER_TYPES.DISTRIBUTOR_ADMIN"> </DistributorDashboard>
+
+        <CompanyDashboard *ngIf ="currentUser.userType==USER_TYPES.COMPANY_ADMIN">  </CompanyDashboard>
+
+        <BoardDashboard *ngIf ="currentUser.userType==USER_TYPES.BOARD_ADMIN"> </BoardDashboard>
+
+        <SuperAdminDashboard *ngIf ="currentUser.userType==USER_TYPES.SUPER_ADMIN"></SuperAdminDashboard>
+
+        <VendorDashboard *ngIf ="currentUser.userType==USER_TYPES.VENDOR_ADMIN"></VendorDashboard>
+
+        <ManufacturerDashboard *ngIf ="currentUser.userType==USER_TYPES.MANUFACTURER_ADMIN"></ManufacturerDashboard>
+
+        <ClientDashboard *ngIf ="currentUser.userType==USER_TYPES.CLIENT_ADMIN"></ClientDashboard>
+
+        <ZoneAdminDashboard *ngIf ="currentUser.userType==USER_TYPES.ZONE_ADMIN"></ZoneAdminDashboard>
+    </div>
+</admin-root>

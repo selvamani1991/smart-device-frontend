@@ -1,0 +1,37 @@
+{
+  "heading": {
+    "NAVIGATION": "Main Navigation",
+    "FEATURES": "Core Features",
+    "DOCUMENTATION": "Documentation"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "user": {
+      "main": "User Management",
+      "create": "Create User"
+    },
+    "permission": {
+      "main": "Permission Management"
+    },
+    "featureCategory": {
+      "main": "Feature Category Management",
+      "create": "Create Feature Category"
+    },
+    "feature": {
+      "main": "Feature Management",
+      "create": "Create Feature"
+    },
+    "role": {
+      "main": "Role Management",
+      "create": "Create Role"
+    },
+    "namaz": {
+      "main": "Namaz Management",
+      "create": "Create Namaz"
+    },
+    "namazType": {
+      "main": "Namaz Type Management",
+      "create": "Create Namaz Type"
+    }
+  }
+}

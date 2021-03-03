@@ -1,0 +1,53 @@
+{
+  "list": {
+    "pageLink": "Feature Category Management",
+    "pageTitle": "Welcome to Feature Category Management",
+    "pageDesc": "Listing all Feature Categories",
+    "notAvailable": "Data is not available",
+    "name": "Name",
+    "description": "Description"
+  },
+  "create": {
+    "formTitle": "Feature Category creation form",
+    "formDesc": "Feature Category creation form",
+    "pageLink": "Create Feature Category",
+    "pageTitle": "Create a Feature Category",
+    "pageDesc": "creating a new Feature Category"
+  },
+  "edit": {
+    "formTitle": "Feature Category Update form",
+    "formDesc": "Feature Category  form",
+    "pageLink": "Edit Feature Category",
+    "pageTitle": "Edit a Feature Category",
+    "pageDesc": "editing a existing Feature Category"
+  },
+  "form": {
+    "featureCategoryDetails": "Feature Category Details",
+    "name": "Name",
+    "description": "Description",
+    "verified": "Verified !",
+    "isActive": "Active",
+    "showInMenu": "Show in Menu",
+    "coreItem": "Core Item of System",
+    "isCore": "Core Item",
+    "deletableItem": "Deletable Item",
+    "deletable": "deletable",
+    "translation": "Translation Label",
+    "icon": "Item Icon",
+    "state": "State"
+  },
+  "error": {
+    "name": "Please enter name.",
+    "description": "Please enter description.",
+    "icon": "Please enter icon.",
+    "translation": "Please enter translation label.",
+    "state": "Please enter state."
+  },
+  "placeholder": {
+    "name": "Enter Feature Category name",
+    "description": "Enter Feature Category description",
+    "icon": "Enter feature category icon",
+    "translation": "Enter feature category translation",
+    "state": "Enter feature category state"
+  }
+}

@@ -1,0 +1,57 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card" id="projects">
+        <div class="card-body">
+            <h4 class="card-title">{{client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}} Management</h4>
+            <product-list-header (pageSizeChanged)="changePageSize($event)" (search)="searchProduct($event)"></product-list-header>
+            <div class="table-responsive">
+                <div *ngIf="products.length>0">
+                    <table class="table table-striped table-hover padding-top-20">
+                        <thead>
+                            <tr>
+                                <th>{{ 'product.form.logo' | translate }}</th>
+                                <th>{{client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}} Name</th>
+                                <th>{{ 'product.form.deviceId' | translate }}</th>
+                                <th>{{ 'product.form.imieId' | translate }}</th>
+                                <th>{{ 'product.form.manufacturerDate' | translate }}</th>
+                                <th width="10%"><b>{{ 'product.form.status' | translate }}</b></th>
+                                <th width="15%"><b>{{ 'product.form.action' | translate }}</b></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="amount3" *ngFor="let product of products">
+                                <td>
+                                    <div class="image-top-detail" *ngIf="product.id && product.logo">
+                                        <img src="{{product.logo}}"  class="list-logo-list">
+                                    </div>
+                                    <div class="top-default-image-list" *ngIf="product.id && !product.logo">
+                                        <i class="fa fa-cube user-icon-image lineSpace2 show-machine"></i>
+                                    </div>
+                                </td>
+                                <td>{{product.name}}</td>
+                                <td>{{product.deviceId}}</td>
+                                <td>{{product.imieId}}</td>
+                                <td>{{product.manufacturerDate}}</td>
+                                <td>
+                                    <button class="btn btn-success btn-xs button-gap"  *ngIf="product.live">{{ 'product.list.on' | translate }}</button>
+                                    <button class="btn btn-danger btn-xs button-gap"   *ngIf="!product.live">{{ 'product.list.off' | translate }}</button>
+                                </td>
+                                <td>
+                                    <i class="fa fa-bar-chart color-muted m-r-5 cursor-position" (click)="show(product);"></i>
+                                    <i class="fa fa-exclamation-triangle color-muted m-r-5 cursor-position show-machine" (click)="showErrorData(product);"></i>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="products.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                </div>
+            </div>
+            <div *ngIf="products.length==0">
+                <div class="dataSpace text-center">
+                    <b>{{'product.form.data' | translate}}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</admin-root>

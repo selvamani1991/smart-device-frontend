@@ -1,0 +1,34 @@
+﻿<div class="modal" id="invoiceDistributorSubscriptionModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form class="form-horizontal" [formGroup]="distributorForm" #f="ngForm" (ngSubmit)="validateForm(f) && acceptDistributor(f)" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{client.distributorNickName}} Subscription</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !distributorForm.get('distributorSubscription').valid, 'has-success': f.submitted && distributorForm.get('distributorSubscription').valid}">
+                            <form-control-label [text]="client.distributorNickName + ' ' +'Subscription'" [required]="true"></form-control-label>
+                            <span class="clip-select">
+                                <select name="distributorSubscription" id="distributorSubscriptionSelect" class="select2" formControlName="distributorSubscription">
+                                    <option value="0">Select {{client.distributorNickName}} Subscription</option>
+                                    <option *ngFor="let distributorSubscription of distributorSubscriptions" [value]="distributorSubscription.id">{{distributorSubscription.subscription.name}}</option>
+                                </select>
+                                <form-validate [form]="f" [fieldName]="'distributorSubscription'" [field]="distributorForm.get('distributorSubscription')" [messages]="INVOICE_VALIDATOR"></form-validate>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">{{ 'invoice.form.accept' | translate }}</button>
+                            <button type="button" class="btn mb-1 btn-outline-danger pull-right" data-dismiss="modal">{{ 'invoice.form.reject' | translate }}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

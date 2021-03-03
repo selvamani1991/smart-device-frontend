@@ -1,0 +1,93 @@
+<admin-root >
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+        <div class="card" id="telemetricData">
+            <form class="form-horizontal" name="telemetricForm" [formGroup]="telemetricForm" #f="ngForm" (ngSubmit)="loadTelemetricData(componentId)" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+
+            <div class="card-body">
+                <h3 class="card-title">{{'telemetricData.form.title' | translate}}</h3>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <data-list-header (pageSizeChanged)="changePageSize($event)"></data-list-header>
+                    </div>
+                    <div class="col-lg-3">
+                            <div class="form-group">
+                                <!-- <form-control-label [text]="'product.form.startDate'" [required]="false"></form-control-label>-->
+                                <div class="input-group">
+                                    <input type="text" placeholder="{{ 'report.placeholder.startDate' | translate }}" class="form-control" name="startDate" formControlName="startDate" autocomplete="off" id="teleStartDate">
+                                    <span class="input-group-append" >
+                            <span class="input-group-text">
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                            </span>
+                        </span>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <!-- <form-control-label [text]="'product.form.endDate'" [required]="false"></form-control-label>-->
+                            <div class="input-group">
+                                <input type="text" placeholder="{{ 'report.placeholder.endDate' | translate }}" class="form-control" name="endDate" formControlName="endDate" autocomplete="off" id="teleEndDate">
+                                <span class="input-group-append" >
+                            <span class="input-group-text">
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                            </span>
+                        </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2">
+                        <div  *ngIf="product && product.productType" class="clip-select">
+                            <select  name="component"  id="component"  class="select2" >
+                                <option   *ngFor="let componentObj of product.productType.components" [value]="componentObj.id">{{componentObj.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <div *ngIf="telemetricDatas.length>0">
+                        <table class="table table-striped table-hover padding-top-20">
+                            <thead>
+                                <tr *ngIf="selectedComponent">
+                                    <th>{{'telemetricData.form.processDate' | translate}}</th>
+                                    <th>{{ selectedComponent.name }}</th>
+                                    <th *ngFor="let attribute of selectedComponent.attributes">{{ attribute.name }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let telemetricData of telemetricDatas">
+                                    <td>{{telemetricData.processTime}}</td>
+                                    <td>{{telemetricData.code}}</td>
+                                    <td>{{telemetricData.att1}}</td>
+                                    <td>{{telemetricData.att2}}</td>
+                                    <td>{{telemetricData.att3}}</td>
+                                    <td>{{telemetricData.att4}}</td>
+                                    <td>{{telemetricData.att5}}</td>
+                                    <td>{{telemetricData.att6}}</td>
+                                    <td>{{telemetricData.att7}}</td>
+                                    <td>{{telemetricData.att8}}</td>
+                                    <td>{{telemetricData.att9}}</td>
+                                    <td>{{telemetricData.att10}}</td>
+                                    <td>{{telemetricData.att11}}</td>
+                                    <td>{{telemetricData.att12}}</td>
+                                    <td>{{telemetricData.att13}}</td>
+                                    <td>{{telemetricData.att14}}</td>
+                                    <td>{{telemetricData.att15}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="telemetricDatas.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                    </div>
+                </div>
+
+                <div *ngIf="telemetricDatas.length==0">
+                    <div class="dataSpace text-center">
+                        <b>{{ 'telemetricData.list.noData' | translate }}</b>
+                    </div>
+                </div>
+            </div>
+            </form>
+
+        </div>
+</admin-root>

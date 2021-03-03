@@ -1,0 +1,29 @@
+{
+  "list": {
+    "name": "Name",
+    "pageLink": "Board Manufacturer List"
+  },
+
+  "error": {
+    "state": "Please enter state",
+    "street": "Please enter street",
+    "city": "Please enter city",
+    "region": "Please enter region",
+    "country": "Please enter country",
+    "zipCode": "Please enter zip code",
+    "landMark": "Please enter landmark",
+    "landLineNo": "Please enter landline number",
+    "houseNumber": "Please enter building number",
+    "pattern": "Please enter valid zipCode number",
+    "manufacturer": "Please select manufacturer",
+    "minStreet": "Minimum length should be 3 characters",
+    "minState": "Minimum length should be 3 characters",
+    "minCountry": "Minimum length should be 3 characters",
+    "minZipCode": "Minimum length should be 5 characters",
+    "buildingPattern": "Please enter valid building number",
+    "landMarkPattern": "Please enter valid landmark",
+    "streetPattern": "Please enter valid street",
+    "dispatchDate": "Please select dispatch date"
+  }
+
+}

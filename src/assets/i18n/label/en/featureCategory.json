@@ -1,0 +1,83 @@
+{
+  "list": {
+    "pageLink": "Feature Category Management",
+    "pageTitle": "Welcome to Feature Category Management",
+    "pageDesc": "Listing all Feature Categories",
+    "notAvailable": "Data is not available",
+    "add": "Add Feature Category",
+    "enabled": "enabled",
+    "disabled": "disabled",
+    "edit": "Edit Feature Category"
+  },
+  "create": {
+    "formTitle": "Feature Category creation form",
+    "formDesc": "Feature Category creation form",
+    "pageLink": "Create Feature Category",
+    "pageTitle": "Create a Feature Category",
+    "pageDesc": "creating a new Feature Category"
+  },
+  "edit": {
+    "formTitle": "Feature Category Update form",
+    "formDesc": "Feature Category  form",
+    "pageLink": "Edit Feature Category",
+    "pageTitle": "Edit a Feature Category",
+    "pageDesc": "editing a existing Feature Category"
+  },
+  "show": {
+    "pageLink": "Feature Category Show",
+    "pageTitle": "Showing Feature Category",
+    "pageDesc": "Showing a Feature Category details",
+    "features": "Features",
+    "addFeature": "Add Feature",
+    "editFeature": "Edit Feature",
+    "crud": "CRUD Supported"
+  },
+  "form": {
+    "featureCategoryDetails": "Feature Category Details",
+    "name": "Name",
+    "logo": "Logo",
+    "description": "Description",
+    "verified": "Verified !",
+    "active": "Active",
+    "showInMenu": "Show in Menu",
+    "coreItem": "Core Item of System",
+    "isCore": "Core Item",
+    "deletableItem": "Deletable Item",
+    "deletable": "deletable",
+    "translation": "Translation Label",
+    "icon": "Item Icon",
+    "state": "State",
+    "available_to_featureCategory": "Active",
+    "add": "Create Feature Category ",
+    "cancel": "Cancel",
+    "save": "Save",
+    "status": "Status",
+    "action": "Action",
+    "disabled": "Disabled",
+    "enabled": "enabled",
+    "allFeatureCategory": "Feature Category List",
+    "noData": "No Data Displayed in Table",
+    "editFeature": "Edit Feature Category"
+  },
+  "error": {
+    "name": "Please Enter Name.",
+    "description": "Please Enter Description.",
+    "icon": "Please Enter icon.",
+    "translation": "Please Enter translation Label.",
+    "state": "Please Enter State.",
+    "namePattern": "Please Enter a valid name.",
+    "duplicate": "Feature Category name already exist",
+    "iconMin": "Minimum length should be of 2 characters",
+    "stateMin": "Minimum length should be of 2 characters",
+    "nameMin": "Minimum length should be of 2 characters",
+    "translationMin": "Minimum length should be of 2 characters",
+    "descriptionMin": "Minimum length should be of 3 characters"
+  },
+  "placeholder": {
+    "name": "Enter Feature Category name",
+    "description": "Enter Feature Category description",
+    "icon": "Enter feature category icon",
+    "translation": "Enter feature category translation",
+    "state": "Enter feature category state"
+  }
+}

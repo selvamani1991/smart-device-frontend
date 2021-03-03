@@ -1,0 +1,40 @@
+{
+  "form": {
+    "boardManufacturer": "Board Manufactures",
+    "productManufacturer": "Product Manufactures",
+    "users": "Users",
+    "revenues": "Revenues",
+    "name": "Name",
+    "startDate": "Started On",
+    "status": "Status",
+    "revenue": "Revenue",
+    "productType": "Product Type",
+    "productName": "Name",
+    "noOfRevenue": "No of Revenues",
+    "translation": "Transactions",
+    "consumer": "Consumer",
+    "client": "Client",
+    "subscription": "Subscription",
+    "subscribers": "Subscribers",
+    "noOfSubscriber": "No Of Subscriber",
+    "city": "City",
+    "clientName": "Name",
+    "clientPlace": "Place",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "address": "Address",
+    "contactNumber": "Contact Number",
+    "email": "Email",
+    "price": "Price",
+    "currency": "Currency",
+    "duration": "Duration",
+    "description": "Description",
+    "productCount": "Product Count",
+    "contact": "Contact",
+    "topSubscription": "TOP SUBSCRIPTION",
+    "topClient": "TOP CLIENT",
+    "machine": "Machine"
+  }
+
+
+}

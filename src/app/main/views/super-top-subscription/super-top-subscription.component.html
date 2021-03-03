@@ -1,0 +1,32 @@
+<div class="card" id="dashboard">
+    <div class="card-header top-header-size">
+        <h5 class="talkio_whitecolor">{{'superAdmin.form.topSubscription' | translate}}</h5>
+    </div>
+    <div class="card-body clientBody">
+                <div class="active-member">
+
+                    <div class="table-responsive scroll-table">
+                        <table class="table table-xs mb-0" id="talkio_table">
+                            <thead class="talkio_themecolor">
+                            <tr>
+                                <th>{{'superAdmin.form.name' | translate}}</th>
+                                <th>{{'superAdmin.form.price' | translate}}</th>
+                                <th>{{'superAdmin.form.currency' | translate}}</th>
+                                <th>{{'superAdmin.form.duration' | translate}}</th>
+                                <th>{{'superAdmin.form.noOfSubscriber' | translate}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let topSubscription of topSubscriptions">
+                                <td>{{topSubscription.name}}</td>
+                                <td>{{topSubscription.price}}</td>
+                                <td>{{topSubscription.currency?topSubscription.currency.name:''}}</td>
+                                <td>{{topSubscription.duration}}</td>
+                                <td>{{topSubscription.subscriberCount}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>

@@ -1,0 +1,83 @@
+﻿<admin-root id="projects">
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" name="productSubscriptionForm" [formGroup]="productSubscriptionForm" #f="ngForm" (ngSubmit)="f.form.valid &&  updateProductSubscription(f)" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">{{'productSubscription.form.details' | translate}}</h3>
+                <div class="row">
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !productSubscriptionForm.get('name').valid, 'has-success': f.submitted && productSubscriptionForm.get('name').valid}">
+                        <form-control-label [text]="'productSubscription.form.name'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control input-default" placeholder="{{ 'productSubscription.placeholder.name' | translate }}" class="form-control" name="name" formControlName="name">
+                        <form-validate [form]="f" [fieldName]="'name'" [field]="productSubscriptionForm.get('name')" [messages]="PRODUCT_SUBSCRIPTION_VALIDATOR"></form-validate>
+                    </div>
+
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !productSubscriptionForm.get('description').valid, 'has-success': f.submitted && productSubscriptionForm.get('description').valid}">
+                        <form-control-label [text]="'productSubscription.form.description'" [required]="false"></form-control-label>
+                        <div class="note-editor">
+                            <textarea id="form-field-22" class="form-control" placeholder="Enter ProductSubscription description" name="description" formControlName="description"></textarea>
+                        </div>
+                        <form-validate [form]="f" [fieldName]="'description'" [field]="productSubscriptionForm.get('description')" [messages]="PRODUCT_SUBSCRIPTION_VALIDATOR"></form-validate>
+                    </div>
+
+                    <div class="form-group col-md-6" [ngClass]="{ 'has-error': f.submitted && !productSubscriptionForm.get('price').valid, 'has-success': f.submitted && productSubscriptionForm.get('price').valid}">
+                        <form-control-label [text]="'productSubscription.form.price'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control input-default" placeholder="{{ 'productSubscription.placeholder.price' | translate }}" class="form-control" name="price" formControlName="price">
+                        <form-validate [form]="f" [fieldName]="'price'" [field]="productSubscriptionForm.get('price')" [messages]="PRODUCT_SUBSCRIPTION_VALIDATOR"></form-validate>
+                    </div>
+
+                    <div class="form-group col-md-6" [ngClass]="{ 'has-error': f.submitted && !productSubscriptionForm.get('duration').valid, 'has-success': f.submitted && productSubscriptionForm.get('duration').valid}">
+                        <form-control-label [text]="'productSubscription.form.duration'" [required]="false"></form-control-label>
+                        <div class="clip-select">
+                            <select  name="duration"  id="durationSelect2"  class="select2" formControlName="duration">
+                                <option value="0">Select {{ 'productSubscription.form.duration' | translate }}</option>
+                                <option *ngFor="let durationTime of durations" [value]="durationTime.id" >{{durationTime.name}}</option>
+                            </select>
+                            <form-validate [form]="f" [fieldName]="'duration'" [field]="productSubscriptionForm.get('duration')" [messages]="PRODUCT_SUBSCRIPTION_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6" [ngClass]="{ 'has-error': f.submitted && !productSubscriptionForm.get('machineTypeCount').valid, 'has-success': f.submitted && productSubscriptionForm.get('machineTypeCount').valid}">
+                        <form-control-label [text]="'productSubscription.form.machineTypeCount'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control input-default" placeholder="{{ 'productSubscription.placeholder.machineTypeCount' | translate }}" class="form-control" name="machineTypeCount" formControlName="machineTypeCount">
+                        <form-validate [form]="f" [fieldName]="'machineTypeCount'" [field]="productSubscriptionForm.get('machineTypeCount')" [messages]="PRODUCT_SUBSCRIPTION_VALIDATOR"></form-validate>
+                    </div>
+
+                    <div class="form-group col-md-6" [ngClass]="{ 'has-error': f.submitted && !productSubscriptionForm.get('machineCount').valid, 'has-success': f.submitted && productSubscriptionForm.get('machineCount').valid}">
+                        <form-control-label [text]="'productSubscription.form.machineCount'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control input-default" placeholder="{{ 'productSubscription.placeholder.machineCount' | translate }}" class="form-control" name="machineCount" formControlName="machineCount">
+                        <form-validate [form]="f" [fieldName]="'machineCount'" [field]="productSubscriptionForm.get('machineCount')" [messages]="PRODUCT_SUBSCRIPTION_VALIDATOR"></form-validate>
+                    </div>
+
+                    <div class="form-group col-md-6" [ngClass]="{ 'has-error': f.submitted && !productSubscriptionForm.get('maxUsages').valid, 'has-success': f.submitted && productSubscriptionForm.get('maxUsages').valid}">
+                        <form-control-label [text]="'productSubscription.form.maxUsages'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control input-default" placeholder="{{ 'productSubscription.placeholder.maxUsages' | translate }}" class="form-control" name="maxUsages" formControlName="maxUsages">
+                        <form-validate [form]="f" [fieldName]="'maxUsages'" [field]="productSubscriptionForm.get('maxUsages')" [messages]="PRODUCT_SUBSCRIPTION_VALIDATOR"></form-validate>
+                    </div>
+
+                    <div class="form-group col-md-6" [ngClass]="{ 'has-error': f.submitted && !productSubscriptionForm.get('elapsedPeriod').valid, 'has-success': f.submitted && productSubscriptionForm.get('elapsedPeriod').valid}">
+                        <form-control-label [text]="'productSubscription.form.elapsedPeriod'" [required]="false"></form-control-label>
+                        <div class="clip-select">
+                            <select  name="elapsedPeriod"  id="elapsedPeriodSelect2"  class="select2" formControlName="elapsedPeriod">
+                                <option value="0">Select {{ 'productSubscription.form.elapsedPeriod' | translate }}</option>
+                                <option *ngFor="let elapsedPeriodTime of elapsedPeriods" [value]="elapsedPeriodTime.id">{{elapsedPeriodTime.name}}</option>
+                            </select>
+                            <form-validate [form]="f" [fieldName]="'elapsedPeriod'" [field]="productSubscriptionForm.get('elapsedPeriod')" [messages]="PRODUCT_SUBSCRIPTION_VALIDATOR"></form-validate>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6" [ngClass]="{ 'has-error': f.submitted && !productSubscriptionForm.get('salesPercentage').valid, 'has-success': f.submitted && productSubscriptionForm.get('salesPercentage').valid}">
+                        <form-control-label [text]="'productSubscription.form.salesPercentage'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control input-default" placeholder="{{ 'productSubscription.placeholder.salesPercentage' | translate }}" class="form-control" name="salesPercentage" formControlName="salesPercentage">
+                        <form-validate [form]="f" [fieldName]="'salesPercentage'" [field]="productSubscriptionForm.get('salesPercentage')" [messages]="PRODUCT_SUBSCRIPTION_VALIDATOR"></form-validate>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">{{'productSubscription.form.save' | translate}}</button>
+                <button type="button" (click)="list(productSubscription);" class="btn mb-1 btn-outline-danger pull-right">{{'productSubscription.form.cancel' | translate}}</button>
+            </div>
+        </div>
+    </form>
+</admin-root>

@@ -1,0 +1,50 @@
+﻿<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" name="profileForm" [formGroup]="profileForm" #f="ngForm" (ngSubmit)="updateUser(f)" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">{{'user.form.details' | translate}}</h3>
+                <div class="row">
+                    <div class="col-md-12 form-group" [ngClass]="{ 'has-error': f.submitted && !profileForm.get('firstName').valid, 'has-success': f.submitted && profileForm.get('firstName').valid}">
+                        <form-control-label [text]="'user.form.firstName'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'user.placeholder.firstName' | translate }}" class="form-control" name="firstName" formControlName="firstName">
+                        <form-validate  [form]="f"  [fieldName]="'firstName'" [field]="profileForm.get('firstName')" [messages]="USER_VALIDATOR"></form-validate>
+                    </div>
+
+                    <div class="col-md-12 form-group" [ngClass]="{ 'has-error': f.submitted && !profileForm.get('lastName').valid, 'has-success': f.submitted && profileForm.get('lastName').valid}">
+                        <form-control-label [text]="'user.form.lastName'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'user.placeholder.lastName' | translate }}" class="form-control" name="lastName" formControlName="lastName">
+                        <form-validate  [form]="f" [fieldName]="'lastName'" [field]="profileForm.get('lastName')" [messages]="USER_VALIDATOR"></form-validate>
+                    </div>
+                    <div class="col-md-12 form-group" [ngClass]="{ 'has-error': f.submitted && !profileForm.get('email').valid, 'has-success': f.submitted && profileForm.get('email').valid}">
+                        <form-control-label [text]="'user.form.email'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'user.placeholder.email' | translate }}" class="form-control" name="email" formControlName="email" readonly/>
+                        <form-validate [form]="f" [fieldName]="'email'" [field]="profileForm.get('email')" [messages]="USER_VALIDATOR"></form-validate>
+                    </div>
+
+                    <div class="col-md-12 form-group" [ngClass]="{ 'has-error': f.submitted && !profileForm.get('phoneNo').valid, 'has-success': f.submitted && profileForm.get('phoneNo').valid}">
+                        <form-control-label [text]="'user.form.phoneNo'" [required]="true"></form-control-label>
+                        <input type="number" placeholder="{{ 'user.placeholder.phoneNo' | translate }}" class="form-control" name="phoneNo" formControlName="phoneNo">
+                        <form-validate [form]="f"  [fieldName]="'phoneNo'" [field]="profileForm.get('phoneNo')" [messages]="USER_VALIDATOR"></form-validate>
+                    </div>
+                    <div class="col-md-12 form-group" [ngClass]="{ 'has-error': f.submitted && !profileForm.get('designation').valid, 'has-success': f.submitted && profileForm.get('designation').valid}">
+                        <form-control-label [text]="'user.form.designation'" [required]="true"></form-control-label>
+                        <input type="text" placeholder="{{ 'user.placeholder.designation' | translate }}" class="form-control" name="designation" formControlName="designation">
+                        <form-validate [fieldName]="'designation'" [form]="f" [field]="profileForm.get('designation')" [messages]="USER_VALIDATOR"></form-validate>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'user.form.userType'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="userType" formControlName="userType" readonly/>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">{{'user.form.save' | translate}}</button>
+                <button type="button" (click)="list(user);" class="btn mb-1 btn-outline-danger pull-right">{{'user.form.cancel' | translate}}</button>
+            </div>
+        </div>
+    </form>
+</admin-root>

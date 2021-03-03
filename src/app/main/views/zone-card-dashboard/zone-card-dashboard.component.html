@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-lg-3 col-sm-6 col-md-4">
+        <div class="card gradient-1 client-card">
+            <div class="card-body cursor">
+                <h3 class="card-title text-white client-card-title">{{ 'clientDashboard.form.customers' | translate }}</h3>
+                <div class="d-inline-block">
+                    <h2 class="text-white">{{ dashboardDetail.companyCount + dashboardDetail.vendorCount }}</h2>
+                    <span class="float-right display-5 opacity-5"><img alt=""  src="assets/images/vendor.png" width="50" height="50" class="icon1"> </span>
+                </div>
+                <div>
+                    <h3 class="card-title text-white"> {{ client && client.companyNickName?client.companyNickName:('clientDashboard.form.company' | translate )}} <span class="float-right text-white">{{dashboardDetail.companyCount}}</span> </h3>
+                </div>
+                <div *ngIf="client.distributorSupported">
+                    <h3 class="card-title text-white"> {{ client && client.vendorNickName?client.vendorNickName:('clientDashboard.form.vendor' | translate )}} <span class="float-right text-white">{{dashboardDetail.vendorCount}}</span> </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-sm-6 col-md-4">
+        <div class="card gradient-2 client-card">
+            <div class="card-body cursor" >
+                <h3 class="card-title text-white client-card-title">{{ client && client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}}</h3>
+                <div class="d-inline-block">
+                    <h2 class="text-white">{{ (client && client.productCount > 0)?client.productCount:0}}</h2>
+                </div>
+                <span class="float-right display-5 opacity-5"><i class="fa fa-building icon1"></i></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-sm-6 col-md-4">
+        <div class="card gradient-3 client-card">
+            <div class="card-body cursor">
+                <h3 class="card-title text-white client-card-title">{{ 'clientDashboard.form.customerRevenue' | translate }}</h3>
+                <div class="d-inline-block">
+                   <!-- <h2 class="text-white">INR {{revenueSum()}}</h2>-->
+                </div>
+                <span class="float-right display-5 opacity-5"><img alt=""  src="assets/images/revenue_money.png" width="50" height="50" class="icon1"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-sm-6 col-md-4">
+        <div class="card gradient-4 client-card">
+            <div class="card-body cursor">
+                <h3 class="card-title text-white client-card-title">{{ 'clientDashboard.form.customerSatisfaction' | translate }}</h3>
+                <div class="d-inline-block">
+                    <div class="d-inline-block">
+                        <h3 class="text-white">99%</h3>
+                    </div>
+                </div>
+                <span class="float-right display-5 opacity-5"><i class="fa fa-cubes icon1"></i></span>
+                <h3 class="card-title text-white">{{ 'clientDashboard.form.productHealth' | translate }}</h3>
+                <h3 class="card-title text-white">{{ 'clientDashboard.form.active' | translate }} <span class="product-active-status">{{ productStatus && productStatus.activeCount}}</span> </h3>
+                <h3 class="card-title text-white">{{ 'clientDashboard.form.inActive' | translate }} <span class="product-inactive-status">{{ productStatus && productStatus.inActiveCount}}</span> </h3>
+            </div>
+        </div>
+    </div>
+</div>

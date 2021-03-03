@@ -1,0 +1,59 @@
+<nav id="sidebar-nav">
+    <!-- start: MAIN NAVIGATION MENU -->
+    <div class="nav-label">
+        <span>{{ "sidebar.heading.NAVIGATION" | translate }}</span>
+    </div>
+    <ul class="metismenu"  id="menu" >
+        <li *ngFor="let featureCategory of featureCategories.others" [ngClass]="{'active in': validateUrl(featureCategory.state)}" >
+            <a [routerLink]="[featureCategory.state]" *ngIf="featureCategory.features.length == 0 && currentUser.userType!='SuperAdmin'">
+                <i *ngIf="featureCategory.iconType.length != 0" class="menu-icon"
+                   [ngClass]="featureCategory.baseIcon"></i>
+                <i *ngIf="featureCategory.iconType.length == 0" class="menu-icon">
+                    <img src="assets/images/talkio_icons/{{featureCategory.baseIcon}}" class="talkio_sidebar_icon" height="24px" width="24px">
+                </i>
+                <span class="nav-text">{{ replaceText(featureCategory.translation | translate) }}</span>
+            </a>
+            <a [routerLink]="[featureCategory.state]" *ngIf="featureCategory.features.length == 0 && currentUser.userType=='SuperAdmin'">
+                <i *ngIf="featureCategory.iconType.length != 0" class="menu-icon"
+                   [ngClass]="featureCategory.baseIcon"></i>
+                <i *ngIf="featureCategory.iconType.length == 0" class="menu-icon">
+                    <img src="assets/images/talkio_icons/{{featureCategory.baseIcon}}" class="talkio_sidebar_icon" height="24px" width="24px">
+                </i>
+                <span class="nav-text talkio_sidebar_title">{{ featureCategory.translation | translate }}</span>
+            </a>
+            <a href="javascript:void(0)" *ngIf="featureCategory.features.length > 0 && currentUser.userType=='SuperAdmin'" class="has-arrow">
+                <i *ngIf="featureCategory.iconType.length != 0" class="menu-icon" [ngClass]="featureCategory.baseIcon"></i>
+                <i *ngIf="featureCategory.iconType.length == 0" class="menu-icon">
+                    <img src="assets/images/talkio_icons/{{featureCategory.baseIcon}}" class="talkio_sidebar_icon" height="24px" width="24px">
+                </i>
+                <span class="nav-text talkio_sidebar_title">{{featureCategory.translation | translate }}</span>
+            </a>
+            <a href="javascript:void(0)" *ngIf="featureCategory.features.length > 0 && currentUser.userType!='SuperAdmin'" class="has-arrow">
+                <!--                <span class="featureCategory-left">-->
+                <i *ngIf="featureCategory.iconType.length != 0" class="menu-icon"
+                   [ngClass]="featureCategory.baseIcon"></i>
+                <i *ngIf="featureCategory.iconType.length == 0" class="menu-icon">
+                    <img src="assets/images/talkio_icons/{{featureCategory.baseIcon}}" class="talkio_sidebar_icon" height="24px" width="24px">
+                </i>
+                <!--                </span>-->
+                <span class="nav-text talkio_sidebar_title">{{ replaceText(featureCategory.translation | translate)
+                    }}</span>
+            </a>
+            <ul aria-expanded="false" *ngIf="featureCategory.features.length > 0 && currentUser.userType!='SuperAdmin'" class="collapse" [ngClass]="{'in': validateUrl(featureCategory.parentUrl)}">
+                <li href-active="active" *ngFor="let feature of featureCategory.menus">
+                    <a [routerLink]="[feature.state]" [ngClass]="{'active': validateUrl(feature.state)}">
+                        <img *ngIf="feature.baseIcon.includes('.svg')" src="assets/images/talkio_icons/{{feature.baseIcon}}" class="talkio_sidebar_icon2" height="16px" width="16px"> {{ replaceText(feature.translation | translate) }}
+                    </a>
+                </li>
+            </ul>
+            <ul aria-expanded="false" *ngIf="featureCategory.features.length > 0 && currentUser.userType=='SuperAdmin'" class="collapse" [ngClass]="{'in': validateUrl(featureCategory.state)}">
+                <li href-active="active" *ngFor="let feature of featureCategory.menus">
+                    <a [routerLink]="[feature.state]" [ngClass]="{'active': validateSameUrl(featureCategory.state)}">
+                        <img *ngIf="feature.baseIcon.includes('.svg')" src="assets/images/talkio_icons/{{feature.baseIcon}}" class="talkio_sidebar_icon2" height="16px" width="16px"> {{ feature.translation | translate }}
+                    </a>
+                </li>
+            </ul>
+
+        </li>
+    </ul>
+</nav>

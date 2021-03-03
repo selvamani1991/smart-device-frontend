@@ -1,0 +1,55 @@
+﻿<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <h3 class="card-title">{{'product.form.order' | translate}}</h3>
+                <list-header (pageSizeChanged)="changePageSize($event)" (search)="searchOrder($event)" (addNewEvent)="addOrder($event)"></list-header>
+                <div  *ngIf="orderWizards.length>0">
+                    <table class="table table-striped table-hover padding-top-20">
+                        <thead>
+                        <tr>
+                            <th>{{ 'product.form.orderId' | translate }}</th>
+                            <th>{{client.productTypeNickName?client.productTypeNickName:('clientDashboard.form.productType' | translate )}}</th>
+                            <th>{{ 'product.form.boardManufacturer' | translate }}</th>
+                            <th>{{ 'product.form.machineManufacturer' | translate }}</th>
+                            <th>{{ 'product.form.orderCount' | translate }}</th>
+                            <th>{{ 'product.form.boardStatus' | translate }}</th>
+                            <th>{{ 'product.form.machineStatus' | translate }}</th>
+                            <th>{{ 'product.form.manufacturerDate' | translate }}</th>
+                            <th>{{ 'product.form.invoice' | translate }}</th>
+                            <th width="10%"><b>{{ 'product.form.dispatch' | translate }}</b></th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let orderWizard of orderWizards">
+                            <td>{{orderWizard.orderId}}</td>
+                            <td>{{orderWizard.productTypeName}}</td>
+                            <td>{{orderWizard.boardProductType.boardManufacturer?orderWizard.boardProductType.boardManufacturer.name:''}}</td>
+                            <td>{{orderWizard.machineProductType.manufacturer?orderWizard.machineProductType.manufacturer.name:''}}</td>
+                            <td>{{orderWizard.orderCount}}</td>
+                            <td>{{orderWizard.boardProductType?orderWizard.boardProductType.status:''}}</td>
+                            <td>{{orderWizard.machineProductType?orderWizard.machineProductType.status:''}}</td>
+                            <td>{{orderWizard.manufacturerDate}}</td>
+                            <td>
+                                <i class="fa fa-eye color-muted m-r-5 cursor-position" data-toggle="tooltip" title="Invoice" (click)="invoice(orderWizard);" *ngIf="orderWizard.invoiceId"></i>
+                                <i class="fa fa-pinterest-p color-muted m-r-5 show-machine cursor-position" data-toggle="tooltip" title="{{client.productNickName}}" (click)="editProductOrder(orderWizard);"></i>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary" aria-expanded="false" *ngIf="orderWizard.status=='New'">{{ 'client.clientProduct.new' | translate }}</button>
+                                <button type="button" class="btn btn-danger" aria-expanded="false" *ngIf="orderWizard.status=='Assigned'">{{ 'client.clientProduct.assigned' | translate }}</button>
+                                <button type="button" class="btn btn-success" aria-expanded="false" *ngIf="orderWizard.status=='Dispatched'">{{ 'client.clientProduct.dispatched' | translate }}</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="orderWizards.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                </div>
+            </div>
+            <div *ngIf="orderWizards.length==0">
+                <div class="dataSpace text-center"><b>{{ 'company.list.noData' | translate }}</b></div>
+            </div>
+        </div>
+    </div>
+</admin-root>

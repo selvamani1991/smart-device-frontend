@@ -1,0 +1,55 @@
+{
+  "list": {
+    "pageLink": "Feature Management",
+    "pageTitle": "Welcome to Feature Management",
+    "pageDesc": "Listing all Features",
+    "notAvailable": "Data is not available",
+    "name": "Name",
+    "description": "Description",
+    "category": "Category"
+  },
+  "create": {
+    "formTitle": "Feature creation form",
+    "formDesc": "Feature creation form",
+    "pageLink": "Create Feature",
+    "pageTitle": "Create a Feature",
+    "pageDesc": "creating a new Feature"
+  },
+  "edit": {
+    "formTitle": "Feature Update form",
+    "formDesc": "Feature update form",
+    "pageLink": "Edit Feature",
+    "pageTitle": "Edit a Feature",
+    "pageDesc": "editing a existing Feature"
+  },
+  "form": {
+    "featureDetails": "Feature Details",
+    "name": "Name",
+    "description": "Description",
+    "verified": "Verified !",
+    "category": "Feature Category",
+    "isActive": "Active",
+    "showInMenu": "Show in Menu",
+    "translation": "Translation Label",
+    "baseIcon": "Item Icon",
+    "state": "State",
+    "featureCategory": "Select Feature Category",
+    "fullCrud": "Supports Crud",
+    "isCrud": "Crud Support"
+  },
+  "error": {
+    "name": "Please enter name.",
+    "description": "Please enter description.",
+    "category": "Please select feature Category.",
+    "baseIcon": "Please enter icon.",
+    "translation": "Please enter translation label.",
+    "state": "Please enter state."
+  },
+  "placeholder": {
+    "name": "Enter Feature name",
+    "description": "Enter Feature description",
+    "icon": "Enter feature icon",
+    "translation": "Enter feature translation",
+    "state": "Enter feature state"
+  }
+}

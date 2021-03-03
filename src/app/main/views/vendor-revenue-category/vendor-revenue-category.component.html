@@ -1,0 +1,25 @@
+<div class="card" id="dashboard">
+    <div class="card-header vendorBody">
+        <div class="row">
+            <div class="col-lg-6"></div>
+            <div class="col-lg-6">
+                <div class="zoneDropdown">
+                    <span class="clip-select">
+                        <select id="vendorRevenueCategoryZone" name="zone" class="select2">
+                            <option value="0">{{ 'client.form.selectZone' | translate }}</option>
+                                <option *ngFor="let zone of zones" [value]="zone.id">{{zone.name}}</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body clientBody">
+        <div class="card-title">
+            <h3>Revenue Category</h3>
+        </div>
+        <div class="table-responsive">
+            <div class="new-graph-size" id="revenue-detail" ></div>
+        </div>
+    </div>
+</div>

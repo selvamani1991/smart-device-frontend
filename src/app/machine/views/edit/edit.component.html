@@ -1,0 +1,44 @@
+﻿﻿<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" name="machineForm" [formGroup]="machineForm" #f="ngForm" (ngSubmit)="f.form.valid && updateMachine()" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+        <div class="card" id="projects">
+            <div class="card-body">
+                <h3 class="card-title">{{'machine.form.details' | translate}}</h3>
+                <div class="row">
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !machineForm.get('description').valid, 'has-success': f.submitted && machineForm.get('description').valid}">
+                        <form-control-label [text]="'machine.form.description'" [required]="true"></form-control-label>
+                        <div class="note-editor">
+                            <textarea id="form-field-22" class="form-control" placeholder="Enter Machine description" name="description" formControlName="description"></textarea>
+                        </div>
+                        <form-validate [form]="f" [fieldName]="'description'" [field]="machineForm.get('description')" [messages]="MACHINE_VALIDATOR"></form-validate>
+                    </div>
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !machineForm.get('manufacturerDate').valid, 'has-success': f.submitted && machineForm.get('manufacturerDate').valid}">
+                        <form-control-label [text]="'machine.form.manufacturerDate'" [required]="true"></form-control-label>
+                        <div class="input-group">
+                            <input type="text" placeholder="{{ 'machine.placeholder.manufacturerDate' | translate }}" class="form-control" name="manufacturerDate" formControlName="manufacturerDate" autocomplete="off" id="manufacturerDate">
+                            <span class="input-group-append" >
+                                    <span class="input-group-text">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </span>
+                                </span>
+                        </div>
+                        <form-validate [form]="f" [fieldName]="'manufacturerDate'" [field]="machineForm.get('manufacturerDate')" [messages]="MACHINE_VALIDATOR"></form-validate>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !machineForm.get('machineId').valid, 'has-success': f.submitted && machineForm.get('machineId').valid}">
+                        <form-control-label [text]="'machine.form.machineId'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control input-default" placeholder="{{ 'machine.placeholder.machineId' | translate }}" class="form-control" name="machineId" formControlName="machineId">
+                        <form-validate [form]="f" [fieldName]="'machineId'" [field]="machineForm.get('machineId')" [messages]="MACHINE_VALIDATOR"></form-validate>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">{{'machine.form.save' | translate}}</button>
+                <button type="button" (click)="list();" class="btn mb-1 btn-outline-danger pull-right">{{'machine.form.cancel' | translate}}</button>
+            </div>
+        </div>
+    </form>
+</admin-root>

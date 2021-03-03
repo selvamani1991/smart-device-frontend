@@ -1,0 +1,53 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card" id="vendor">
+        <div class="card-body">
+            <h3 class="card-title">New {{client.vendorNickName?client.vendorNickName:('clientDashboard.form.vendor' | translate )}} {{client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}}</h3>
+            <product-list-header (pageSizeChanged)="changePageSize($event)" (search)="searchNewVendorProduct($event)"></product-list-header>
+            <div class="table-responsive">
+                <div *ngIf="vendorProducts.length>0">
+                    <table class="table table-striped table-hover padding-top-20">
+                        <thead>
+                            <tr>
+                                <th>{{ 'vendor.vendorProduct.logo' | translate }}</th>
+                                <th>{{client.vendorNickName?client.vendorNickName:('clientDashboard.form.vendor' | translate )}} Name</th>
+                                <th>{{client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}} Name</th>
+                                <th>{{ 'vendor.vendorProduct.description' | translate }}</th>
+                                <th>{{ 'vendor.vendorProduct.dispatchDate' | translate }}</th>
+                                <th width="10%">{{ 'vendor.vendorProduct.status' | translate }}</th>
+                                <th width="10%">{{ 'vendor.vendorProduct.invoice' | translate }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let vendorProduct of vendorProducts">
+                                <td>
+                                    <div class="image-top-detail" *ngIf="vendorProduct.product.id && vendorProduct.product.logo">
+                                        <img src="{{vendorProduct.product.logo}}"  class="list-logo-list">
+                                    </div>
+                                    <div class="top-default-image-list" *ngIf="vendorProduct.product.id && !vendorProduct.product.logo">
+                                        <i class="fa fa-cube user-icon-image lineSpace2 show-machine"></i>
+                                    </div>
+                                </td>
+                                <td>{{vendorProduct.vendor.name}}</td>
+                                <td>{{vendorProduct.product.name}}</td>
+                                <td class="content-head">{{ (vendorProduct.product.description.length>45)? (vendorProduct.product.description | slice:0:45)+'...':(vendorProduct.product.description) }}</td>
+                                <td>{{vendorProduct.dispatchedDate}}</td>
+                                <td>{{vendorProduct.status}}</td>
+                                <td>
+                                    <i class="fa fa-eye color-muted m-r-5 cursor-position"  (click)="showInvoice(vendorProduct);" *ngIf="vendorProduct.invoiceId"></i>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="vendorProducts.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                </div>
+            </div>
+            <div *ngIf="vendorProducts.length==0">
+                <div class="dataSpace text-center">
+                    <b>{{ 'vendor.form.displayed' | translate }}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</admin-root>

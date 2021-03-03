@@ -1,0 +1,92 @@
+{
+  "list": {
+    "name": "Name",
+    "pageLink": " Media List",
+    "notAvailable": "Data is not available",
+    "pageTitle": "list",
+    "pageDesc": "Listing all  Media",
+    "state": "State",
+    "Media": "Media",
+    "zip": "Zip",
+    "active": "Active",
+    "status": "Status",
+    "disabled": "Disabled",
+    "enabled": "Enabled",
+    "noData": "Data is not available",
+    "firmWareList": "Firmware List",
+    "firmWare": "Firmware",
+    "firmWareCreate": "Firmware Create"
+  },
+  "create": {
+    "formTitle": "Media creation form",
+    "formDesc": "Media creation form",
+    "pageLink": "Create Media",
+    "pageTitle": "Create",
+    "name": "Enter FirmWare Name",
+    "pageDesc": "creating a new Media"
+  },
+  "edit": {
+    "formTitle": " Media Update form",
+    "formDesc": "Media update form",
+    "pageLink": "Edit Media",
+    "pageTitle": "Edit a Media",
+    "pageDesc": "Editing a Existing Media"
+  },
+
+  "show": {
+    "formTitle": " Media Show",
+    "formDesc": " Media Show form",
+    "pageLink": "Show Media",
+    "pageTitle": "Show Media",
+    "pageDesc": "Showing a Existing  Media"
+  },
+  
+  "form": {
+    "all": "All",
+    "selectMediaType": "Select Media Type",
+    "mediaType": "Media Type",
+    "Media": "Cities",
+    "add": "Add Media",
+    "details": "Media Details",
+    "fotaDetails": "FirmWare Details",
+    "name": "Name",
+    "description": "Description",
+    "status": "Status",
+    "id": "Id",
+    "logo": "Logo",
+    "action": "Action",
+    "MediaId": "Media ID",
+    "MediaName": "MediaName",
+    "MediaDescription": "MediaDescription",
+    "Assign": "Assign",
+    "Accept": "Accept",
+    "verified": "Verified",
+    "title": "Media Management",
+    "data": "Data is not available In Table",
+    "save": "Save",
+    "cancel": "Cancel",
+    "active": "Active",
+    "productTypeName": "Product type",
+    "mediaName": "Media Name",
+    "fotaName": "FirmWare Name",
+    "extension": "Extension",
+    "download": "Download"
+  },
+  "error": {
+    "name": "Please enter name",
+    "namePattern": "Please enter valid name",
+    "price": "Please enter price",
+    "duplicate": "Media already exist",
+    "description": "Please enter description",
+    "mediaType": "Please select media type",
+    "file": "Please select file",
+    "minName": "Minimum length should be of 2 characters",
+    "minDescription": "Minimum length should be of 3 characters",
+    "invalidPattern": "Invalid file format ! (Only JPEG,JPG,PNG files are allowed)"
+  },
+  "placeholder": {
+    "name": " Enter Name",
+    "description": "Enter Description"
+  }
+
+}

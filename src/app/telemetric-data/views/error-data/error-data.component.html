@@ -1,0 +1,48 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">{{'errorData.form.title' | translate}}</h3>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <data-list-header (pageSizeChanged)="changePageSize($event)"></data-list-header>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <div *ngIf="errorDatas.length   >0">
+                        <table class="table table-striped table-hover padding-top-20">
+                            <thead>
+                            <tr>
+                                    <th>{{'errorData.form.logo' | translate}}</th>
+                                    <th>{{'errorData.form.processTime' | translate}}</th>
+                                    <th>{{'errorData.form.errorCode' | translate}}</th>
+                                    <th>{{'errorData.form.errorName' | translate}}</th>
+                                    <th>{{'errorData.form.errorDesc' | translate}}</th>
+                                    <th>{{'errorData.form.severity' | translate}}</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let errorData of errorDatas">
+                                    <td class="userSize"><i class="fa fa-user"></i></td>
+                                    <td>{{errorData.processTime}}</td>
+                                    <td>{{errorData.errorCode}}</td>
+                                    <td>{{errorData.deviceError.name}}</td>
+                                    <td>{{errorData.deviceError.description}}</td>
+                                    <td>{{errorData.deviceError.severity}}</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                        <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="errorDatas.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                    </div>
+                </div>
+
+                <div *ngIf="errorDatas.length==0">
+                    <div class="dataSpace text-center">
+                        <b>{{ 'errorData.list.noData' | translate }}</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+</admin-root>

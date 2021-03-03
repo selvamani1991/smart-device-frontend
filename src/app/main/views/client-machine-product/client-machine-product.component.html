@@ -1,0 +1,33 @@
+<div class="card card-widget" id="dashboard">
+        <div class="card-header">
+            <h3>Zonal Installed {{client && client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}} Report</h3>
+        </div>
+    <div class="card-body clientBody">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="clientDropdown">
+                    <span class="clip-select">
+                        <select id="selectProductTypeMachinesProducts" name="productType" class="select2" (change)="showZone();">
+                            <option value="">Select Product Type</option>
+                                <option *ngFor="let productType of productTypes" [value]="productType.alias">{{productType && productType.name}}</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-6" *ngIf="currentUser.userType=='clientAdmin'">
+                <div class="clientDropdown float-right">
+                    <span class="clip-select">
+                        <select id="selectZoneMachinesProducts" name="zone" class="select2">
+                            <option value="">Select Zone</option>
+                                <option *ngFor="let zone of zones" [value]="zone.alias">{{zone.name}}</option>
+                        </select>
+                    </span>
+
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <div class="new-graph-size" id="client_zonal_product_report"></div>
+        </div>
+    </div>
+</div>

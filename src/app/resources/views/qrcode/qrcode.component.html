@@ -1,0 +1,141 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <h3 class="card-title">{{'resources.form.qrcode' | translate}}</h3>
+            </div>
+            <form class="form-horizontal" name="resourcesForm" [formGroup]="resourcesForm" #f="ngForm" (ngSubmit)="f.form.valid && showProductdetails()" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+                <div class="row">
+                    <div class="form-group col-md-2" [ngClass]="{ 'has-error': f.submitted && !resourcesForm.get('productType').valid, 'has-success': f.submitted && resourcesForm.get('productType').valid}">
+                        <label class="control-label">{{ replaceText('report.form.productType' | translate) }} <span class="symbol required">*</span></label>
+                        <span class="clip-select">
+                            <select  name="productType"  id="productTypeSelect"  class="select2" formControlName="productType">
+                                <option value="">Select {{ replaceText('report.form.productType' | translate) }}</option>
+                                <option *ngFor="let productType of productTypes" [value]="productType.alias">{{productType.name}}</option>
+                            </select>
+                            <form-validate [form]="f" [fieldName]="'productType'" [field]="resourcesForm.get('productType')" [entity]="client.productTypeNickName" [messages]="RESOURCES_VALIDATOR"></form-validate>
+                        </span>
+                    </div>
+
+                    <div class="form-group col-md-2" [ngClass]="{ 'has-error': f.submitted && !resourcesForm.get('zone').valid, 'has-success': f.submitted && resourcesForm.get('zone').valid}">
+                        <form-control-label [text]="'report.form.zone'" [required]="false"></form-control-label>
+                        <span class="clip-select">
+                            <select  name="zone"  id="zone"  class="select2" formControlName="zone">
+                                <option value="0">Select {{ 'report.form.zone' | translate }}</option>
+                                <option *ngFor="let zone of zones" [value]="zone.alias">{{zone.name}}</option>
+                            </select>
+                        </span>
+                    </div>
+
+                    <div class="form-group col-lg-2 " [ngClass]="{ 'has-error': f.submitted && !resourcesForm.get('company').valid, 'has-success': f.submitted && resourcesForm.get('company').valid}">
+                        <label class="control-label">{{ replaceText('report.form.company' | translate) }} </label>
+                        <span class="clip-select">
+                            <select  name="company"  id="company"  class="select2" formControlName="company">
+                                <option value="0">Select {{ replaceText('report.form.company' | translate) }}</option>
+                                <option *ngFor="let company of companies" [value]="company.alias">{{company.name}}</option>
+                            </select>
+                        </span>
+                    </div>
+
+                    <div class="form-group col-lg-2 " [ngClass]="{ 'has-error': f.submitted && !resourcesForm.get('companyBuilding').valid, 'has-success': f.submitted && resourcesForm.get('companyBuilding').valid}">
+                        <label class="control-label">{{ replaceText('report.form.companyBuilding' | translate) }} </label>
+                        <span class="clip-select">
+                            <select  name="companyBuilding"  id="companyBuilding"  class="select2" formControlName="companyBuilding">
+                                <option value="0">Select {{ replaceText('report.form.companyBuilding' | translate) }}</option>
+                                <option *ngFor="let companyBuilding of companyBuildings" [value]="companyBuilding.alias">{{companyBuilding.name}}</option>
+                            </select>
+                        </span>
+                    </div>
+
+                    <div class="form-group col-md-2 " [ngClass]="{ 'has-error': f.submitted && !resourcesForm.get('product').valid, 'has-success': f.submitted && resourcesForm.get('product').valid}">
+                        <label class="control-label">{{ replaceText('report.form.product' | translate) }}</label>
+                        <span class="clip-select">
+                            <select  name="product"  id="productSelect2"  class="select2" formControlName="product">
+                                <option value="0">Select {{ replaceText('report.form.product' | translate) }}</option>
+                                <option *ngFor="let clientCompanyProduct of clientCompanyProducts" [value]="clientCompanyProduct.product.alias">{{clientCompanyProduct.product.name}}({{clientCompanyProduct.product.deviceId}})</option>
+                            </select>
+                        </span>
+                    </div>
+
+                    <div class="form-group col-md-2  col-xs-12 load-btn">
+                        <button class="btn btn-primary btn-default pull-left load-data-button" type="submit" [disabled] = "!selectedProduct" >{{ 'resources.form.loadData' | translate }}</button>
+                    </div>
+                </div>
+                <div *ngIf="showProduct">
+                    <h4 class="card-title">{{ client.productNickName }} Detail</h4>
+                    <div class="row" id="chart-pop-up-modal">
+                        <div class="col-md-5">
+                            <img src="{{selectedProduct.qrCode}}" class="upload-qr"/>
+                        </div>
+                        <div class="col-md-7 lineSpace">
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <td><b>{{ client.productNickName }}:</b></td>
+                                    <td>{{selectedProduct.name}}</td>
+                                </tr>
+
+                                <tr>
+                                    <td><b>Device ID:</b></td>
+                                    <td>{{selectedProduct.deviceId}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Imie ID:</b></td>
+                                    <td>{{selectedProduct.imieId}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Board ID:</b></td>
+                                    <td>{{selectedProduct.board.boardId}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Machine ID:</b></td>
+                                    <td>{{selectedProduct.machine.machineId}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>BLE MAC ADDRESS:</b></td>
+                                    <td>{{selectedProduct.url}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{ client.productTypeNickName }}:</b></td>
+                                    <td> {{selectedProduct.productType? selectedProduct.productType.name:''}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{ client.productNickName }} ID:</b></td>
+                                    <td> {{selectedProduct.productType? selectedProduct.productType.alias:''}}</td>
+                                </tr>
+
+                                <tr>
+                                    <td><b>Model Name:</b></td>
+                                    <td> {{selectedProduct.productType? selectedProduct.productType.modelNo:''}}</td>
+                                </tr>
+
+                                <tr *ngIf="client">
+                                    <td><b>Client Name:</b></td>
+                                    <td> {{client.name}}</td>
+                                </tr>
+                                <tr *ngIf="client">
+                                    <td><b>Client Id:</b></td>
+                                    <td> {{client.alias}}</td>
+                                </tr>
+                                <tr *ngIf="client">
+                                    <td><b>App Url:</b></td>
+                                    <td> {{client.appUrl}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="!showProduct">
+                    <div class="dataSpace text-center">
+                        <b>{{'product.form.data' | translate}}</b>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</admin-root>
+
+

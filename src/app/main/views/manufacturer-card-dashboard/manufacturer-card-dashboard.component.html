@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-lg-6 col-sm-6">
+        <div class="card gradient-1 card-top">
+            <div class="card-body cursor" (click)="showMachineList();">
+                <h3 class="card-title text-white">{{ 'manufacturerDashboard.form.machine' | translate }}</h3>
+                <div class="d-inline-block">
+                    <h2 class="text-white">{{ dashboardDetail.machineCount}}</h2>
+                </div>
+                <span class="float-right  display-5 opacity-5">  <img alt=""  src="assets/images/machine.png" width="50" height="50" class="icon1">  </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-sm-6">
+        <div class="card gradient-2 card-top">
+            <div class="card-body cursor" (click)="machineProductTypeList(productTypeList);">
+                <h3 class="card-title text-white">Machine {{ client && client.productTypeNickName?client.productTypeNickName:('clientDashboard.form.productType' | translate )}}</h3>
+                <div class="d-inline-block">
+                    <h2 class="text-white">{{ dashboardDetail.machineProductTypeCount}}</h2>
+                </div>
+                <span class="float-right  display-5 opacity-5"><i class="fa fa-cubes icon1"></i></span>
+            </div>
+        </div>
+    </div>
+</div>
+

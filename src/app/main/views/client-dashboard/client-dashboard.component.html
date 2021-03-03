@@ -1,0 +1,50 @@
+<div class="row manufacturer-icon" id="dashboard">
+    <div class="col-lg-12">
+        <div class="clientDropdown float-right">
+        <span class="clip-select">
+            <select id="productCategoryDropDown" name="productCategory" class="select2">
+                    <option *ngFor="let productCategoryItem of productCategories" [value]="productCategoryItem.id">{{productCategoryItem.name}}</option>
+            </select>
+        </span>
+        </div>
+    </div>
+</div>
+<ClientCardDashboard [client]="client" [dashboardDetail]="dashboardDetail" *ngIf="client.id"></ClientCardDashboard>
+    <div class="row">
+        <div class="col-lg-6" *ngIf="zones && zones.length>0">
+           <ClientTopCompany [zones]="zones" [client]="client" *ngIf="client.id"></ClientTopCompany>
+        </div>
+        <div class="col-lg-6"  *ngIf="zones.length>0 && currentUser.vendorNickName">
+            <ClientTopVendor [zones]="zones" [client]="client" *ngIf="client.id"></ClientTopVendor>
+        </div>
+        <div class="col-lg-6"  *ngIf="zones.length>0 && !currentUser.vendorNickName">
+            <ClientTopVendor [zones]="zones" [client]="client" *ngIf="client.id"></ClientTopVendor>
+        </div>
+
+        <div class="col-lg-12">
+            <ClientTotalProductInstalled [zones]="zones" [client]="client" [companies]="companies" *ngIf="client.id"></ClientTotalProductInstalled>
+        </div>
+
+        <div class="col-lg-12">
+            <ClientTotalHealth [zones]="zones"  [client]="client" [productTypes]="productTypes" [companies]="companies" *ngIf="client.id"></ClientTotalHealth>
+        </div>
+
+        <div class="col-lg-12" id="RevenueProduct">
+            <ClientTotalRevenue [zones]="zones" [client]="client" [companies]="companies" *ngIf="client.id"></ClientTotalRevenue>
+        </div>
+
+        <div class="col-lg-12">
+            <ClientTotalUsage [zones]="zones" [client]="client" [companies]="companies" *ngIf="client.id"></ClientTotalUsage>
+        </div>
+
+        <div class="col-lg-12">
+            <ClientTotalErrorData [zones]="zones" [client]="client" [companies]="companies" *ngIf="client.id"></ClientTotalErrorData>
+        </div>
+    </div>
+
+   <div class="row" *ngIf="this.client.mapSupported">
+        <div class="col-md-12">
+            <ClientStoreLocation></ClientStoreLocation>
+        </div>
+    </div>
+

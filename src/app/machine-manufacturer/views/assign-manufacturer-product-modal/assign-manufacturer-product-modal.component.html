@@ -1,0 +1,82 @@
+﻿<div class="modal fade" id="manufacturerProductModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="board">
+            <form class="form-horizontal" [formGroup]="clientProductForm" #f="ngForm" (ngSubmit)="createClientProduct()"
+                  [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{ 'manufacturer.product.productDetail' | translate }}</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <span class="userSize2"><i class="fa fa-user"></i></span>
+                        </div>
+                        <div class="col-md-8">
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <td><b>{{ 'manufacturer.product.productName' | translate }}</b></td>
+                                    <td>{{product.name}}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>{{ 'manufacturer.product.productDescription' | translate }}</b></td>
+                                    <td> {{product.description}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="paid"><b>{{ 'manufacturer.product.deviceId' | translate }}</b></td>
+                                    <td class="paid"> {{product.deviceId}}</td>
+                                </tr>
+                                <tr></tr>
+                                <tr></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"
+                             [ngClass]="{ 'has-error': f.submitted && !clientProductForm.get('client').valid, 'has-success': f.submitted && clientProductForm.get('client').valid}">
+                            <form-control-label [text]="'board.form.client'" [required]="true"></form-control-label>
+                            <span class="clip-select">
+                                <select id="form-field-select-5" name="client" class="form-control"
+                                        formControlName="client">
+                                    <option value="0">{{ 'manufacturer.form.selectClient' | translate }}</option>
+                                    <option *ngFor="let client of clients" [value]="client.id">{{client.name}}</option>
+                                </select>
+                                <span class="error text-small block"
+                                      *ngIf="f.submitted && !clientProductForm.get('client').valid">{{ 'manufacturer.error.client' | translate }}</span>
+                                <span class="success text-small"
+                                      *ngIf="f.submitted && clientProductForm.get('client').valid">{{ 'manufacturer.form.verified' | translate }}</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 mt-10">
+                            <div class="input-group">
+                                <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy">
+                                <span class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="mdi mdi-calendar-check"></i>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">{{
+                                'manufacturer.product.submit' | translate }}
+                            </button>
+                            <button type="button" class="btn mb-1 btn-outline-danger pull-right" data-dismiss="modal">{{
+                                'manufacturer.product.cancel' | translate }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

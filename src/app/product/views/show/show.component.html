@@ -1,0 +1,71 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" name="productForm" [formGroup]="productForm">
+        <div class="card" id="product">
+            <div class="card-body">
+                <h4 class="card-title">{{client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}} Detail</h4>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <form-control-label [text]="'product.form.name'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="name" formControlName="name" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'product.form.description'" [required]="true"></form-control-label>
+                            <div class="note-editor">
+                                <textarea  class="form-control"   name="description" formControlName="description" readonly></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'product.form.manufacturerDate'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="manufacturerDate" formControlName="manufacturerDate" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'product.form.imieId'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="imieId" formControlName="imieId" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'product.form.deviceId'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="deviceId" formControlName="deviceId" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'product.form.url'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="url" formControlName="url" readonly/>
+                        </div>
+                    </div>
+                    <div class="col-md-4 show-icon-top">
+                        <div *ngIf="!client.qrCode"></div>
+                        <div *ngIf="client.qrCode">
+                            <img src="{{product.qrCode}}"  class="upload-qr"/>
+                            <div class="row">
+                                <div class="choose_file">
+                                    <button type="button" class="btn btn-default upload-button"  (click)="print()">{{ 'product.form.print' | translate }} </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <div class="delete-image cursor-pointer" style="cursor:pointer;" *ngIf="product.id && product.logo"><i class="fa fa-close color-danger cross-size cursor-pointer" data-toggle="tooltip" title="Delete" (click)="markDeleted(product);"></i></div>
+                            <div class="company-image-size" *ngIf="product.id && product.logo"><img src="{{product.logo}}"  class="upload-image"/></div>
+                            <div class="company-image-size" *ngIf="!product.logo"><i class="fa fa-cube show-icon" ></i></div>
+                            <div class="row mt-3 ml-3">
+                                <div class="choose_file">
+                                    <button type="button" class="btn btn-default upload-button">{{ 'product.form.chooseImage' | translate }}</button>
+                                    <input name="file" type="file" class="form-control" accept="image/*"  (change)="onFileChange($event) && processFile()"/>
+                                </div>
+                                <div class="file-detail" *ngIf="files && product.id && product.logo">{{files.name}}</div>
+                                <div class="file-detail"><span *ngIf="files && product.id && product.logo">{{ files.size/1024 | number:'1.0-0'}} </span> KB</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</admin-root>
+<qr-modal [client]="client" [product]="product" *ngIf="client.id && product.id"></qr-modal>
+
+
+
+
+

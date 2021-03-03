@@ -1,0 +1,32 @@
+﻿<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card">
+        <div class="card-body">
+            <div class="card-title">
+                {{'featureCategory.form.featureCategoryDetails' | translate}}
+            </div>
+            <div class="row">
+                <div class="form-group col-md-2">
+                    <span class="icon1"><i class="fa fa-user"></i></span>
+                </div>
+                <div class="form-group col-md-10 userSpace" style="padding-top:50px;">
+                    <div class="pull-left">
+                        <h3 class="text-dark-medium font-medium">{{featureCategory.name}}</h3>
+                        <p>{{featureCategory.description}}</p>
+                        <div class="detail-desc" [ngClass]="{ 'active': featureCategory.active, 'disabled': !featureCategory.active}">{{featureCategory.active? "Active" : "Disabled"}}
+                        </div>
+                    </div>
+                   <!-- <div class="pull-right">
+                        <ul>
+                            <li><a (click)="edit();" style="cursor:pointer;"><i class="fa fa-pencil"></i></a></li>
+                            <li><a type="reset" class="btn btn-default" (click)="addNew();">{{'featureCategory.form.add' | translate}}</a></li>
+                        </ul>
+                    </div>-->
+                </div>
+             </div>
+    </div>
+  </div>
+  <!-- Student Details Area End Here -->
+</admin-root>
+
+

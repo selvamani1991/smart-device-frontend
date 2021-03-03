@@ -1,0 +1,43 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" name="mediaForm" [formGroup]="mediaForm">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{ 'media.form.details' | translate }}</h4>
+                <div class="form-row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <form-control-label [text]="'media.form.name'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="name" formControlName="name" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'media.form.description'" [required]="true"></form-control-label>
+                            <div class="note-editor">
+                                <textarea placeholder="{{media.description}}" class="form-control" name="description" readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 show-icon-details">
+                        <span class="show-file-icon" >
+                            <a href="{{media.path}}">
+                                <i class="fa fa-file-excel-o media-icon" *ngIf="media.id && media.extension=='xlsx'"></i>
+                                <i class="fa fa-file-pdf-o media-icon" *ngIf="media.id && media.extension=='pdf'"></i>
+                                <i class="fa fa-file-text-o media-icon" *ngIf="media.id && media.extension=='doc'"></i>
+                                <i class="fa fa-file media-icon" *ngIf="media.id && media.extension=='docx'"></i>
+                                <i class="fa fa-file-powerpoint-o media-icon" *ngIf="media.id && media.extension=='ppt'"></i>
+                                <i class="fa fa-file-video-o media-icon" *ngIf="media.id && media.extension=='mp4'"></i>
+                                <i class="fa fa-file-excel-o media-icon" *ngIf="media.id && media.extension=='xls'"></i>
+                                <i class="fa fa-file-text media-icon" *ngIf="media.id && media.extension=='txt'"></i>
+                                <i class="fa fa-file-image-o media-icon" *ngIf="media.id && media.extension=='png'"></i>
+                                <i class="fa fa-file-image-o media-icon" *ngIf="media.id && media.extension=='jpeg'"></i>
+                                <i class="fa fa-file-image-o media-icon" *ngIf="media.id && media.extension=='jpg'"></i>
+                                <span class="media-icon"> <img alt="BIN" src="/assets/images/bin.png" *ngIf="media.id && media.extension=='bin'" width="200" height="200"></span>
+                            </a>
+                        </span>
+                        <div class="has-error error" *ngIf="formatError">{{'media.error.invalidPattern' | translate}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</admin-root>

@@ -1,0 +1,80 @@
+﻿<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal"  name="productTypeForm" [formGroup]="productTypeForm" #f="ngForm" (ngSubmit)="f.form.valid && processFile()" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+        <div class="card" id="productType">
+            <div class="card-body">
+                <h4 class="card-title">{{client.productTypeNickName?client.productTypeNickName:('clientDashboard.form.productType' | translate )}} Detail</h4>
+                <div class="form-row" *ngIf="productType.id">
+                    <div class="col-md-8">
+                        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !productTypeForm.get('provider').valid, 'has-success': f.submitted && productTypeForm.get('provider').valid}">
+                            <form-control-label [text]="'productType.form.provider'" [required]="false"></form-control-label>
+                            <span class="clip-select">
+                                <select  name="provider"  id="providerSelect2"  class="select2" formControlName="provider">
+                                    <option value="">{{ 'productType.placeholder.selectProvider' | translate }}</option>
+                                    <option *ngFor="let providerItem of providers" [value]="providerItem.id">{{providerItem.name}}</option>
+                                </select>
+                            </span>
+                        </div>
+                        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !productTypeForm.get('name').valid, 'has-success': f.submitted && productTypeForm.get('name').valid}">
+                            <form-control-label [text]="'productType.form.name'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control input-default" placeholder="{{ 'productType.placeholder.name' | translate }}" class="form-control" name="name" formControlName="name">
+                            <form-validate [form]="f" [fieldName]="'name'" [field]="productTypeForm.get('name')" [messages]="PRODUCT_TYPE_VALIDATOR"></form-validate>
+                        </div>
+                        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !productTypeForm.get('modelNo').valid, 'has-success': f.submitted && productTypeForm.get('modelNo').valid}">
+                            <form-control-label [text]="'productType.form.modelNo'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control input-default" placeholder="{{ 'productType.placeholder.modelNo' | translate }}" class="form-control" name="modelNo" formControlName="modelNo">
+                            <form-validate [form]="f" [fieldName]="'modelNo'" [field]="productTypeForm.get('modelNo')" [messages]="PRODUCT_TYPE_VALIDATOR"></form-validate>
+                        </div>
+                        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !productTypeForm.get('description').valid, 'has-success': f.submitted && productTypeForm.get('description').valid}">
+                            <form-control-label [text]="'productType.form.description'" [required]="true"></form-control-label>
+                            <div class="note-editor">
+                                <textarea id="form-field-22" class="form-control" placeholder="Enter Description" name="description" formControlName="description"></textarea>
+                            </div>
+                            <form-validate [form]="f" [fieldName]="'description'" [field]="productTypeForm.get('description')" [messages]="PRODUCT_TYPE_VALIDATOR"></form-validate>
+                        </div>
+                        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !productTypeForm.get('subscriptionId').valid, 'has-success': f.submitted && productTypeForm.get('subscriptionId').valid}">
+                            <form-control-label [text]="'productType.form.subscriptionId'" [required]="true"></form-control-label>
+                            <span class="clip-select">
+                                <select  name="subscriptionId"  id="subscriptionsIdSelect2Edit"  class="select2" formControlName="subscriptionId">
+                                    <option value="">{{ 'productType.placeholder.selectSubscription' | translate }}</option>
+                                    <option *ngFor="let subscriptionItem of subscriptions" [value]="subscriptionItem.alias">{{subscriptionItem.subscription.name}}</option>
+                                </select>
+                                <form-validate [form]="f" [fieldName]="'subscriptionId'" [field]="productTypeForm.get('subscriptionId')" [messages]="PRODUCT_TYPE_VALIDATOR"></form-validate>
+                            </span>
+                        </div>
+                        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !productTypeForm.get('productCategory').valid, 'has-success': f.submitted && productTypeForm.get('productCategory').valid}">
+                            <form-control-label [text]="'productType.form.productCategory'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control input-default" placeholder="{{ 'productType.placeholder.productCategory' | translate }}" class="form-control" name="productCategory" formControlName="productCategory" readonly/>
+                            <form-validate [form]="f" [fieldName]="'productCategory'" [field]="productTypeForm.get('productCategory')" [messages]="PRODUCT_TYPE_VALIDATOR"></form-validate>
+                        </div>
+                        <div class="form-check mb-3" *ngIf="client.payment">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" name="payment" formControlName="payment" value="">{{ 'client.form.payment' | translate }}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 show-icon-top">
+                        <div class="download-product-type-excel"> <i class="fa fa-download" aria-hidden="true"></i></div>
+                        <a href="{{productType.excelUrl}}">  <button type="button" class="btn btn-default upload-button">Download Existing file</button></a>
+                        <span class="product-type-show-icon"><img alt="" src="assets/images/excelIcon.png" class="edit-excel-icon"> </span>
+                        <div class="row">
+                            <div class="choose_file">
+                                <button type="button" class="btn btn-default upload-button">{{ 'productType.form.configurationImage' | translate }}</button>
+                                <input name="file" type="file" class="form-control" accept=".xlsx,.xls" (change)="onFileChange($event)"/>
+                                <form-validate [form]="f" [fieldName]="'file'" [field]="productTypeForm.get('file')" [messages]="PRODUCT_TYPE_VALIDATOR"></form-validate>
+                            </div>
+                            <div class="file-detail" *ngIf="files">{{files.name}}</div>
+                            <div class="file-detail" *ngIf="files">{{ files.size/1024 | number:'1.0-0'}} KB</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="productType.active">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">{{'productType.form.save' | translate}}</button>
+                <button type="button" (click)="list(productType);" class="btn mb-1 btn-outline-danger pull-right">{{'productType.form.cancel' | translate}}</button>
+            </div>
+        </div>
+    </form>
+</admin-root>

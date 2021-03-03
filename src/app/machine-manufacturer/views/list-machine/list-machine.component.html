@@ -1,0 +1,46 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card" id="machine">
+        <div class="card-body">
+            <h4 class="card-title">{{'machine.form.title' | translate}}</h4>
+            <product-list-header (pageSizeChanged)="changePageSize($event)" (search)="searchMachine($event)"></product-list-header>
+            <div class="table-responsive">
+               <div *ngIf="machines.length>0">
+                   <table class="table table-striped table-hover padding-top-20">
+                        <thead>
+                            <tr>
+                                <th>{{ 'machine.form.logo' | translate }}</th>
+                                <th>{{ 'machine.form.name' | translate }}</th>
+                                <th>{{ 'machine.form.machineId' | translate }}</th>
+                                <th>{{ 'machine.form.manufacturerDate' | translate }}</th>
+                                <th>{{ client.productTypeNickName }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let machine of machines">
+                                <td>
+                                    <div class="image-top-detail" *ngIf="machine.id && machine.logo">
+                                        <img src="{{machine.logo}}"  class="list-logo-list">
+                                    </div>
+                                    <div class="top-default-image-list" *ngIf="machine.id && !machine.logo">
+                                        <i class="fa fa-microchip user-icons-chip " ></i>
+                                    </div>
+                                </td>
+                                <td>{{machine.name}}</td>
+                                <td>{{machine.machineId}}</td>
+                                <td>{{machine.manufacturerDate}}</td>
+                                <td>{{machine.productType.name}}</td>
+                            </tr>
+                        </tbody>
+                   </table>
+                   <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="machines.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                </div>
+            </div>
+           <div *ngIf="machines.length==0">
+                <div class="dataSpace text-center">
+                    <b>{{'machine.form.data' | translate}}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</admin-root>

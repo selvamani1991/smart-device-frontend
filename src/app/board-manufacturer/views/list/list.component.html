@@ -1,0 +1,61 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{'boardManufacturer.form.title' | translate}}</h4>
+                <list-header (pageSizeChanged)="changePageSize($event)" (search)="searchBoardManufacturer($event)" (addNewEvent)="addBoardManufacturer($event)"></list-header>
+                <div class="table-responsive">
+                    <div *ngIf="boardManufacturers.length>0">
+                        <table class="table table-striped table-hover padding-top-20">
+                            <thead>
+                            <tr>
+                                <th width="5%">{{ 'boardManufacturer.form.logo' | translate }}</th>
+                                <th>{{ 'boardManufacturer.form.name' | translate }}</th>
+                                <th>{{ 'boardManufacturer.form.contactPerson' | translate }}</th>
+                                <th>{{ 'boardManufacturer.form.contactNumber' | translate }}</th>
+                                <th width="15%">{{ 'boardManufacturer.form.email' | translate }}</th>
+                                <th>{{ 'boardManufacturer.form.designation' | translate }}</th>
+                                <th width="10%">{{ 'boardManufacturer.form.status' | translate }}</th>
+                                <th width="15%"><b>{{ 'boardManufacturer.form.action' | translate }}</b></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let boardManufacturer of boardManufacturers">
+                                <td>
+                                    <div class="image-top-detail" *ngIf="boardManufacturer.id && boardManufacturer.logo">
+                                        <img src="{{boardManufacturer.logo}}"  class="list-logo-list">
+                                    </div>
+                                    <div class="top-default-image-list" *ngIf="boardManufacturer.id && !boardManufacturer.logo">
+                                        <i class="fa fa-microchip user-icons-chip" ></i>
+                                    </div>
+                                </td>
+                                <td>{{boardManufacturer.name}}</td>
+                                <td>{{boardManufacturer.admin.firstName}}</td>
+                                <td>{{boardManufacturer.admin.phoneNo}}</td>
+                                <td class="content-head">{{boardManufacturer.admin.email}}</td>
+                                <td>{{boardManufacturer.admin.designation}}</td>
+                                <td>
+                                    <button class="btn btn-success btn-xs" (click)="changeStatus(boardManufacturer,false)" *ngIf="boardManufacturer.active && boardManufacturer.name!=client.name">{{ 'boardManufacturer.list.enabled' | translate }}</button>
+                                    <button class="btn btn-success btn-xs" *ngIf="boardManufacturer.name==client.name">{{ 'boardManufacturer.list.enabled' | translate }}</button>
+                                    <button class="btn btn-danger btn-xs" (click)="changeStatus(boardManufacturer,true)" *ngIf="!boardManufacturer.active && boardManufacturer.name!=client.name">{{ 'boardManufacturer.list.disabled' | translate }}</button>
+                                </td>
+                                <td>
+                                    <i class="fa fa-eye color-muted m-r-5 cursor-position" data-toggle="tooltip" title="Show" (click)="show(boardManufacturer);"></i>
+                                    <i class="fa fa-pencil color-muted m-r-5 show-machine cursor-position" data-toggle="tooltip" title="Edit" *ngIf="boardManufacturer.name!=client.name" (click)="edit(boardManufacturer);"></i>
+                                    <i class="fa fa-close color-danger show-machine cursor-position" data-toggle="tooltip" title="Delete" *ngIf="boardManufacturer.name!=client.name" (click)=" markDeleted(boardManufacturer);"></i>
+                                    <i class="fa fa-lock color-muted show-machine cursor-position" data-toggle="tooltip" title="ChangePassword" *ngIf="boardManufacturer.name!=client.name"  (click)=" changePassword(boardManufacturer);"></i>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="boardManufacturers.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                    </div>
+                </div>
+                <div *ngIf="boardManufacturers.length==0">
+                    <div class="dataSpace text-center">
+                        <b>{{'boardManufacturer.form.data' | translate}}</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+</admin-root>

@@ -1,0 +1,34 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" name="firmwareForm" [formGroup]="firmwareForm">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{ 'media.form.fotaDetails' | translate }}</h4>
+                <div class="form-row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <form-control-label [text]="'media.form.name'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="name" formControlName="name" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'media.form.description'" [required]="true"></form-control-label>
+                            <div class="note-editor">
+                                <textarea placeholder="{{media.description}}" class="form-control" name="description" readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 show-icon-details">
+                        <span class="show-file-icon">
+                            <a href="{{media.path}}">
+                                <span class="media-icon"> <img alt="BIN" src="/assets/images/bin.png" *ngIf="media.id && media.extension=='bin'" width="200" height="200"></span>
+                                <span class="media-icon"> <img alt="HEX" src="/assets/images/hex_file.png" *ngIf="media.id && media.extension=='hex'" width="200" height="200"></span>
+                                <span class="media-icon"> <img alt="MOT" src="/assets/images/mot_file.png" *ngIf="media.id && media.extension=='mot'" width="200" height="200"></span>
+                            </a>
+                        </span>
+                        <div class="has-error error" *ngIf="formatError">{{'media.error.invalidPattern' | translate}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</admin-root>

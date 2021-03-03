@@ -1,0 +1,29 @@
+<div class="card" id="dashboard">
+    <div class="card-header top-header-size">
+        <h5 class="talkio_whitecolor">{{ 'superAdmin.form.topClient' | translate }}</h5>
+    </div>
+    <div class="card-body clientBody">
+        <div class="active-member">
+            <div class="table-responsive scroll-table">
+                <table class="table table-xs mb-0" id="talkio_table">
+                    <thead class="talkio_themecolor">
+                    <tr>
+                        <th>{{ 'superAdmin.form.clientName' | translate }}</th>
+                        <th>{{ 'superAdmin.form.contact' | translate }}</th>
+                        <th>{{ 'superAdmin.form.email' | translate }}</th>
+                        <th>{{ 'superAdmin.form.productCount' | translate }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let topClient of topClients">
+                        <td>{{topClient.name}}</td>
+                        <td>{{topClient.admin.phoneNo}}</td>
+                        <td>{{topClient.admin.email}}</td>
+                        <td>{{topClient.productCount}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

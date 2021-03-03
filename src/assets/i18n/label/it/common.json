@@ -1,0 +1,26 @@
+{
+  "error": {
+    "1": "Some internal error occurred.",
+    "2": "Missing key to find entity.",
+    "3": "Invalid User credentials.",
+    "4": "User details not found.",
+    "5": "Unauthorized: Authentication key was either missing or invalid.",
+    "6": "Invalid password/login Id, password and login Id is case sensitive.",
+    "7": "Invalid email address. No such user found with matching email address.",
+    "8": "Invalid email address.",
+    "9": "Failed to reset password.",
+    "10": "Your authentication is expired , please login again.",
+    "11": "Unauthorized: User authentication failed!!",
+    "12": "Unauthorized to reset password!!",
+    "13": "Object can't be deleted!!",
+    "14": "Duplicate Object existing.",
+    "15": "Invalid Object Id/alias name is provided.",
+    "16": "Email address is already registered.",
+    "17": "User was already confirmed",
+    "18": "User is inactive or disabled, please contact admin.",
+    "19": "User token for reset password have been changed. Please try again.",
+    "20": "User token for reset password have been expired. Please try again.",
+    "21": "User token for confirmation have been expired. Please try again.",
+    "22": "Reference of object is available in another object , Hence we can not delete them."
+  }
+}

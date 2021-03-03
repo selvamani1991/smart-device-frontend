@@ -1,0 +1,28 @@
+{
+
+  "form": {
+    "manufacturerName": "Manufacturer",
+    "product": "Total Product",
+    "revenue": "Revenue",
+    "transaction": "Transaction",
+    "startDate": "Start Date",
+    "status": "Status",
+    "productName": "Name",
+    "productModel": "Model",
+    "productCountry": "Country",
+    "noOfProduct": "No Of Product",
+    "storeLocation": "Store Location",
+    "topManufacturer": "Top Manufacturers",
+    "productType": "Manufacturers Product Type",
+    "machine": "Machine",
+    "machineProductType": "Machine Product Type",
+    "location": "Location",
+    "contactNumber": "Contact Number",
+    "email": "Email Address"
+
+  },
+  "placeholder": {
+    "name": "Enter name",
+    "description": "Enter description"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "list": {
+    "name": "Name",
+    "pageLink": " Resources List",
+    "notAvailable": "Data is not available",
+    "pageTitle": "list",
+    "pageDesc": "Listing all  Resources",
+    "state": "State",
+    "Resources": "Resources",
+    "zip": "Zip",
+    "active": "Active",
+    "status": "Status",
+    "disabled": "Disabled",
+    "enabled": "Enabled",
+    "media": "Media",
+    "fota": "Fota",
+    "qrCode": "Qr Code",
+    "errorData": "Error Data",
+    "telemetricData": "Telemetric Data",
+    "noData": "Data is not available"
+  },
+
+  "form": {
+    "status": "Status",
+    "id": "Id",
+    "title": "Title",
+    "machine": "Machine",
+    "media": "Media",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "distributor": "Distributor",
+    "vendor": "Vendor",
+    "category": "Category",
+    "dates": "Date",
+    "download": "Download",
+    "loadData": "Load Data",
+    "productType": "Machine Type",
+    "product": "Machine",
+    "selectProductType": "Select Machine Type",
+    "SelectCompanyBuilding": "Select Company Building",
+    "AllProductType": "All Product Type",
+    "all": "All",
+    "resources": "Resources",
+    "errorData": "ErrorData",
+    "fota": "Fota(Firmware)",
+    "qrcode": "Qr Code",
+    "telemetric": "Telemetric Data"
+
+  },
+
+  "placeholder": {
+    "company": "Please Select Company",
+    "vendor": "Please Select Vendor",
+    "companyBuilding": "Company Building",
+    "machine": "Please Select Machine",
+    "productType": "Please Select Machine Type",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "distributor": "Please Select Distributor",
+    "zone": "Please Select Zone",
+    "all": "All",
+    "category": "Please Select Category"
+
+
+  },
+  "error": {
+    "productType": "Please select product type"
+  }
+
+
+}

@@ -1,0 +1,26 @@
+    <div class="card" id="dashboard">
+        <div class="card-header">
+            <h5 class="talkio_whitecolor"> Installed
+                {{client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}}
+                Health Report</h5>
+        </div>
+        <div class="card-body clientBody">
+            <div class="row">
+                <div class="col-lg-6"></div>
+                <div class="col-lg-6">
+                    <div class="clientDropdown float-right">
+                    <span class="clip-select">
+                        <select id="selectProductTypeMachineHealthReport" name="productType" class="select2">
+                            <option value="0">Select {{client.productTypeNickName?client.productTypeNickName:('clientDashboard.form.productType' | translate )}}</option>
+                                <option *ngFor="let productType of productTypes" [value]="productType.alias">{{productType.name}}</option>
+                        </select>
+                    </span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="table-responsive">
+                <div class="new-graph-size" id="client_product_health"></div>
+            </div>
+        </div>
+        </div>

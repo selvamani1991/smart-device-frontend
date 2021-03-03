@@ -1,0 +1,267 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <h3 class="card-title"> {{client.vendorNickName?client.vendorNickName:('clientDashboard.form.vendor' | translate )}} {{client.productNickName?client.productNickName:('productNickName.form.product' | translate )}} Report</h3>
+            </div>
+            <form class="form-horizontal" name="reportForm" [formGroup]="reportForm" #f="ngForm" (ngSubmit)="validateForm(f) && showReportData()" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+                <div class="row">
+                    <div class="form-group col-md-2" [ngClass]="{ 'has-error': f.submitted && !reportForm.get('zone').valid, 'has-success': f.submitted && reportForm.get('zone').valid}">
+                        <form-control-label [text]="'report.form.zone'" [required]="false"></form-control-label>
+                        <span class="clip-select">
+                            <select  name="zone"  id="zone"  class="select2" formControlName="zone">
+                                <option value="">Select Zone</option>
+                                <option *ngFor="let zoneItem of zones" [value]="zoneItem.alias">{{zoneItem.name}}</option>
+                            </select>
+                        </span>
+                    </div>
+
+                    <div class="form-group col-md-2 " [ngClass]="{ 'has-error': f.submitted && !reportForm.get('vendor').valid, 'has-success': f.submitted && reportForm.get('vendor').valid}">
+                        <label class="control-label">{{ replaceText('report.form.vendor' | translate) }}</label>
+                        <span class="clip-select">
+                            <select  name="vendor"  id="vendor"  class="select2" formControlName="vendor">
+                                <option value="0">Select {{ replaceText('report.form.vendor' | translate) }}</option>
+                                <option *ngFor="let vendor of vendors" [value]="vendor.alias">{{vendor.name}}</option>
+                            </select>
+                        </span>
+                    </div>
+                    <div class="form-group col-md-2 " [ngClass]="{ 'has-error': f.submitted && !reportForm.get('distributor').valid, 'has-success': f.submitted && reportForm.get('distributor').valid}">
+                        <label class="control-label">{{ replaceText('report.form.distributor' | translate) }}</label>
+                        <span class="clip-select">
+                            <select  name="distributor"  id="distributor"  class="select2" formControlName="distributor">
+                                <option value="0">Select {{ replaceText('report.form.distributor' | translate) }}</option>
+                                <option *ngFor="let distributor of distributors" [value]="distributor.alias">{{distributor.name}}</option>
+                            </select>
+                        </span>
+                    </div>
+                    <div class="form-group col-md-2 " [ngClass]="{ 'has-error': f.submitted && !reportForm.get('company').valid, 'has-success': f.submitted && reportForm.get('company').valid}">
+                        <label class="control-label">{{ replaceText('report.form.company' | translate) }} </label>
+                        <span class="clip-select">
+                            <select  name="company"  id="companySelect2"  class="select2" formControlName="company">
+                                <option value="0">Select {{ replaceText('report.form.company' | translate) }}</option>
+                                <option *ngFor="let company of companies" [value]="company.alias">{{company.name}}</option>
+                            </select>
+                        </span>
+                    </div>
+                    <div class="form-group col-md-2 " [ngClass]="{ 'has-error': f.submitted && !reportForm.get('companyBuilding').valid, 'has-success': f.submitted && reportForm.get('companyBuilding').valid}">
+                        <label class="control-label">{{ replaceText('report.form.companyBuilding' | translate) }} </label>
+                        <span class="clip-select">
+                            <select  name="companyBuilding"  id="companyBuilding"  class="select2" formControlName="companyBuilding">
+                                <option value="0">Select {{ replaceText('report.form.companyBuilding' | translate) }}</option>
+                                <option *ngFor="let companyBuilding of companyBuildings" [value]="companyBuilding.alias">{{companyBuilding.name}}</option>
+                            </select>
+                        </span>
+                    </div>
+                    <div class="form-group col-md-2 " [ngClass]="{ 'has-error': f.submitted && !reportForm.get('product').valid, 'has-success': f.submitted && reportForm.get('product').valid}">
+                        <label class="control-label">{{ replaceText('report.form.product' | translate) }} <span class="symbol required">*</span></label>
+                        <span class="clip-select">
+                            <select  name="product"  id="productSelect2"  class="select2" formControlName="product">
+                                <option value="0">Select {{ replaceText('report.form.product' | translate) }}</option>
+                                <option *ngFor="let clientVendorProductItem of clientVendorProducts" [value]="clientVendorProductItem.product.alias">{{clientVendorProductItem.product.name}} ({{clientVendorProductItem.product.deviceId}})</option>
+                            </select>
+                        </span>
+                        <div *ngIf="this.selectedCompanyBuilding">
+                            <report-validate [form]="f" [fieldName]="'product'" [field]="reportForm.get('product')" [entity]="client.productNickName" [messages]="REPORT_VALIDATOR"></report-validate>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-2 " [ngClass]="{ 'has-error': f.submitted && !reportForm.get('productType').valid, 'has-success': f.submitted && reportForm.get('productType').valid}">
+                        <label class="control-label">{{ replaceText('report.form.productType' | translate) }} <span class="symbol required">*</span></label>
+                        <span class="clip-select">
+                            <select  name="productType"  id="productType"  class="select2" formControlName="productType">
+                                <option value="">Select {{ replaceText('report.form.productType' | translate) }}</option>
+                                <option *ngFor="let productType of productTypes" [value]="productType.alias">{{productType.name}}</option>
+                            </select>
+                        </span>
+                        <report-validate [form]="f" [fieldName]="'productType'" [field]="reportForm.get('productType')" [entity]="client.productTypeNickName" [messages]="REPORT_VALIDATOR"></report-validate>
+                    </div>
+                    <div class="form-group col-md-3 " [ngClass]="{ 'has-error': f.submitted && !reportForm.get('startDate').valid, 'has-success': f.submitted && reportForm.get('startDate').valid}">
+                        <form-control-label [text]="'report.form.startDate'" [required]="true"></form-control-label>
+                        <div class="input-group">
+                            <input type="text" placeholder="{{ 'report.placeholder.startDate' | translate }}" class="form-control" name="startDate" formControlName="startDate" autocomplete="off" id="startDate">
+                            <span class="input-group-append" >
+                                <span class="input-group-text">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                </span>
+                             </span>
+                        </div>
+                        <report-validate [form]="f" [fieldName]="'startDate'" [field]="reportForm.get('startDate')" [messages]="REPORT_VALIDATOR"></report-validate>
+                    </div>
+                    <div class="form-group col-md-3" [ngClass]="{ 'has-error': f.submitted && !reportForm.get('endDate').valid, 'has-success': f.submitted && reportForm.get('endDate').valid}">
+                        <form-control-label [text]="'report.form.endDate'" [required]="true"></form-control-label>
+                        <div class="input-group">
+                            <input type="text" placeholder="{{ 'report.placeholder.endDate' | translate }}" class="form-control" name="endDate" formControlName="endDate" autocomplete="off" id="endDate">
+                            <span class="input-group-append" >
+                            <span class="input-group-text">
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                            </span>
+                        </span>
+                        </div>
+                        <report-validate [form]="f" [fieldName]="'endDate'" [field]="reportForm.get('endDate')" [messages]="REPORT_VALIDATOR"></report-validate>
+                    </div>
+                    <div class="form-group col-md-2   load-btn">
+                        <button class="btn btn-primary btn-default pull-left load-data-button" type="submit" id="clientSubmit">Load Data</button>
+                    </div>
+                    <div class="form-group col-md-2   load-btn">
+                        <button class="btn btn-primary btn-default pull-right download-button"  type="button" (click)="downloadProductData(f);" id="clientDownload"> Download <span class="download-icon"><i class="fa fa-download" aria-hidden="true"></i></span> </button>
+                    </div>
+                </div>
+                <div class="report-line"></div>
+                <pagination-header (pageSizeChanged)="changePageSize($event)"></pagination-header>
+                <div class="row" *ngIf="productDatas.length > 0">
+                    <div class="form-group col-md-12 view-button">
+                        <button class="btn btn-default btn-xs grid-data-button" type="button"  (click)="showGridView();">{{ 'report.form.gridView' | translate }}</button>
+                        <button class="btn btn-default btn-xs graph-data-button" type="button" (click)="showGraphView();">{{ 'report.form.graphView' | translate }}</button>
+                    </div>
+                </div>
+                <div [hidden]="!gridView">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <table class="table table-bordered"  *ngFor="let productData of productDatas">
+                                <tbody>
+                                <tr>
+                                    <td><div class="date-report text-center">{{productData.date}}</div></td>
+
+                                    <td class="data-table-report" *ngFor="let component of getComponents(productData,1)">
+                                        <div class="report"> {{component.name}} </div>
+                                        <div class="report">{{component.name == '' ? '' : productData['component'+component.sequence]}}</div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td rowspan="4" (click)="showDataGraph(productData)" class="data-table-image"> <div id="chart-{{productData.longDate}}"></div></td>
+                                    <td class="data-table-report report-data-color" *ngFor="let component of getComponents(productData,2)">
+                                        <div class="report"> {{component.name}} </div>
+                                        <div class="report">{{component.name == '' ? '' : productData['component'+component.sequence]}}</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="data-table-report report-data-color" *ngFor="let component of getComponents(productData,3)">
+                                        <div class="report"> {{component.name}} </div>
+                                        <div class="report">{{component.name == '' ? '' : productData['component'+component.sequence]}}</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="data-table-report report-data-color" *ngFor="let component of getComponents(productData,4)">
+                                        <div class="report"> {{component.name}} </div>
+                                        <div class="report">{{component.name == '' ? '' : productData['component'+component.sequence]}}</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="data-table-report report-data-color" *ngFor="let component of getComponents(productData,5)">
+                                        <div class="report"> {{component.name}} </div>
+                                        <div class="report">{{component.name == '' ? '' : productData['component'+component.sequence]}}</div>
+                                    </td>
+                                </tr>
+                                <!--<tr>
+                                    <td class="report-data-color"><div class="date-report text-center">{{productData.date}}</div></td>
+                                    <td class="data-table-report report-data-color"><div class="report"> {{getComponentData(productData,1)}} </div>
+                                        <div class="report" *ngIf="getComponentData(productData,1)!= ''">
+                                            {{productData.component1}}</div></td>
+                                    <td class="report-data-color"><div class="report"> {{getComponentData(productData,2)}} </div>
+                                        <div class="report" *ngIf="getComponentData(productData,2)!= ''">
+                                            {{productData.component2}}</div></td>
+                                    <td class="report-data-color"><div class="report"> {{getComponentData(productData,3)}} </div>
+                                        <div class="report" *ngIf="getComponentData(productData,3)!= ''">
+                                            {{productData.component3}}</div></td>
+                                    <td class="report-data-color"><div class="report"> {{getComponentData(productData,4)}} </div>
+                                        <div class="report" *ngIf="getComponentData(productData,4)!= ''">
+                                            {{productData.component4}}</div></td>
+                                    <td class="report-data-color"><div class="report"> {{getComponentData(productData,5)}} </div>
+                                        <div class="report" *ngIf="getComponentData(productData,5)!= ''">
+                                            {{productData.component5}}</div></td>
+                                </tr>-->
+                               <!--<tr>
+                                    <td rowspan="4" (click)="showDataGraph(productData)" class="data-table-image report-data-color"> <div id="chart-{{productData.longDate}}"></div></td>
+                                    <td class="report-data-color"><div class="report"> {{getComponentData(productData,6)}} </div>
+                                        <div class="report" *ngIf="getComponentData(productData,6)!= ''">
+                                            {{productData.component6}}</div></td>
+                                    <td class="report-data-color"><div class="report"> {{getComponentData(productData,7)}} </div>
+                                        <div class="report" *ngIf="getComponentData(productData,7)!= ''">
+                                            {{productData.component7}}</div></td>
+                                    <td class="report-data-color"><div class="report"> {{getComponentData(productData,8)}} </div>
+                                        <div class="report" *ngIf="getComponentData(productData,8)!= ''">
+                                            {{productData.component8}}</div></td>
+                                    <td class="report-data-color"><div class="report"> {{getComponentData(productData,9)}} </div>
+                                        <div class="report" *ngIf="getComponentData(productData,9)!= ''">
+                                            {{productData.component9}}</div></td>
+                                    <td class="report-data-color"><div class="report"> {{getComponentData(productData,10)}} </div>
+                                        <div class="report" *ngIf="getComponentData(productData,10)!= ''">
+                                            {{productData.component10}}</div></td>
+                                </tr>-->
+                               <!--<tr>
+                                    <td class="report-data-color"><div class="report"> {{getComponentData(productData,11)}} </div>
+                                        <div class="report" *ngIf="getComponentData(productData,11)!= ''">
+                                            {{productData.component11}}</div></td>
+                                    <td class="report-data-color"><div class="report"> {{getComponentData(productData,12)}} </div>
+                                        <div class="report" *ngIf="getComponentData(productData,12)!= ''">
+                                            {{productData.component12}}</div></td>
+                                    <td class="report-data-color"><div class="report"> {{getComponentData(productData,13)}} </div>
+                                        <div class="report" *ngIf="getComponentData(productData,13)!= ''">
+                                            {{productData.component13}}</div></td>
+                                    <td class="report-data-color"><div class="report"> {{getComponentData(productData,14)}} </div>
+                                        <div class="report" *ngIf="getComponentData(productData,14)!= ''">
+                                            {{productData.component14}}</div></td>
+                                    <td class="report-data-color"><div class="report"> {{getComponentData(productData,15)}} </div>
+                                        <div class="report" *ngIf="getComponentData(productData,15)!= ''">
+                                            {{productData.component15}}</div></td>
+                                </tr>-->
+                                <!--<tr>
+                                    <td class="data-table-report report-data-color"><div class="report"> {{getComponentData(productData,16)}} </div>
+                                        <div class="report" *ngIf="getComponentData(productData,16)!= ''">
+                                            {{productData.component16}}</div></td>
+                                    <td class="data-table-report report-data-color"><div class="report"> {{getComponentData(productData,17)}} </div>
+                                        <div class="report" *ngIf="getComponentData(productData,17)!= ''">
+                                            {{productData.component17}}</div></td>
+                                    <td class="data-table-report report-data-color"><div class="report"> {{getComponentData(productData,18)}} </div>
+                                        <div class="report" *ngIf="getComponentData(productData,18)!= ''">
+                                            {{productData.component18}}</div></td>
+                                    <td class="data-table-report report-data-color"><div class="report"> {{getComponentData(productData,19)}} </div>
+                                        <div class="report" *ngIf="getComponentData(productData,19)!= ''">
+                                            {{productData.component19}}</div></td>
+                                    <td class="data-table-report report-data-color"><div class="report"> {{getComponentData(productData,20)}} </div>
+                                        <div class="report" *ngIf="getComponentData(productData,20)!= ''">
+                                            {{productData.component20}}</div></td>
+                                </tr>-->
+                                <!--<tr>
+                                    <td class="data-table-report report-data-color"><div class="report"> {{getComponentData(productData,21)}} </div>
+                                        <div class="report" *ngIf="getComponentData(productData,21)!= ''">
+                                            {{productData.component21}}</div></td>
+                                    <td class="data-table-report report-data-color"><div class="report"> {{getComponentData(productData,22)}} </div>
+                                        <div class="report" *ngIf="getComponentData(productData,22)!= ''">
+                                            {{productData.component22}}</div></td>
+                                    <td class="data-table-report report-data-color"><div class="report"> {{getComponentData(productData,23)}} </div>
+                                        <div class="report" *ngIf="getComponentData(productData,23)!= ''">
+                                            {{productData.component23}}</div></td>
+                                    <td class="data-table-report report-data-color"><div class="report"> {{getComponentData(productData,24)}} </div>
+                                        <div class="report" *ngIf="getComponentData(productData,24)!= ''">
+                                            {{productData.component24}}</div></td>
+                                    <td class="data-table-report report-data-color"><div class="report"> {{getComponentData(productData,25)}} </div>
+                                        <div class="report" *ngIf="getComponentData(productData,25)!= ''">
+                                            {{productData.component25}}</div></td>
+                                </tr>-->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="productDatas.length==0">
+                    <div class="dataSpace text-center">
+                        <b>{{'product.form.data' | translate}}</b>
+                    </div>
+                </div>
+                <div [hidden]="!graphView">
+                    <div id="bar-column" style="width: 100%;height:500px;"></div>
+                </div>
+                <div  *ngIf="productDatas.length > 0">
+                    <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="productDatas.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                </div>
+            </form>
+        </div>
+    </div>
+</admin-root>
+<graph-modal [productData]="selectedProductData" [product]="product"></graph-modal>
+<download-modal [productDataReport]="productDataReport" ></download-modal>
+

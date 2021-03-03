@@ -1,0 +1,47 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{client.distributorNickName?client.distributorNickName:('clientDashboard.form.distributor' | translate )}} Subscription List</h3>
+            <list-header (pageSizeChanged)="changePageSize($event)" (search)="searchDistributorSubscription($event)" (addNewEvent)="addDistributorSubscription($event)"></list-header>
+            <div class="table-responsive">
+                <div *ngIf="distributorSubscriptions.length>0">
+                    <table class="table table-striped table-hover padding-top-20">
+                        <thead>
+                            <tr>
+                                <th>{{'distributor.subscriptionList.logo' | translate}}</th>
+                                <th>{{ 'distributor.subscriptionList.name' | translate }}</th>
+                                <th>{{ 'distributor.subscriptionList.description' | translate }}</th>
+                                <th>{{ 'distributor.subscriptionList.startDate' | translate }}</th>
+                                <th>{{ 'distributor.subscriptionList.endDate' | translate }}</th>
+                                <th>{{ 'distributor.subscriptionList.status' | translate }}</th>
+                                <th>{{ 'distributor.distributorProduct.action' | translate }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let distributorSubscription of distributorSubscriptions">
+                                <td class="userSize"><img src="{{distributorSubscription.subscription.logo}}" *ngIf="distributorSubscription.subscription.id && distributorSubscription.subscription.logo" class="list-logo"> <i class="fa fa-calendar" *ngIf="distributorSubscription.subscription.id && !distributorSubscription.subscription.logo"></i></td>
+                                <td>{{distributorSubscription.subscription.name}}</td>
+                                <td>{{distributorSubscription.subscription.description}}</td>
+                                <td>{{distributorSubscription.startDate}}</td>
+                                <td>{{distributorSubscription.endDate}}</td>
+                                <td>
+                                    <button class="btn btn-success btn-xs" (click)="changeStatus(distributorSubscription,false)" *ngIf="distributorSubscription.active">{{ 'distributor.list.enabled' | translate }}</button>
+                                    <button class="btn btn-danger btn-xs" (click)="changeStatus(distributorSubscription,true)" *ngIf="!distributorSubscription.active">{{ 'distributor.list.disabled' | translate }}</button>
+                                </td>
+                                <td>
+                                    <i class="fa fa-pencil color-muted m-r-5 cursor-position" (click)="edit(distributorSubscription);"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="distributorSubscriptions.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                </div>
+            </div>
+            <div *ngIf="distributorSubscriptions.length==0">
+                <div class="dataSpace text-center"><b>{{ 'distributor.subscriptionList.noData' | translate }}</b></div>
+            </div>
+        </div>
+    </div>
+</admin-root>
+<distributor-subscription-modal [distributorSubscription]="distributorSubscription" [client]="client" (submitEvent)="reloadDistributorSubscription($event)"></distributor-subscription-modal>

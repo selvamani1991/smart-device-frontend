@@ -1,0 +1,94 @@
+<div class="row">
+    <div class="col-lg-3 col-sm-6 col-md-4">
+        <div class="card gradient-1 client-card">
+            <div class="card-body cursor" (click)="consumerList();">
+                
+                <h3 class="card-title text-white client-card-title" >CUSTOMER</h3>
+                <div class="d-inline-block">
+                   <!-- <h2 class="text-white">{{ dashboardDetail.companyCount + dashboardDetail.vendorCount }}</h2>-->
+                    <h2 class="text-white">{{ dashboardDetail.consumerCount }}</h2>
+
+                <span class="float-right display-5 opacity-5"><img alt=""  src="assets/images/vendor.png" width="50" height="50" class="icon1"> </span>
+                </div>
+                
+                <!--<div (click)="companyList(company);">
+                <h3 class="card-title text-white"> Consumer-1 <span class="float-right text-white">Peter</span> </h3>
+                </div>-->
+                <!--<div (click)="vendorList(vendor);" *ngIf="client.distributorSupported">
+                <h3 class="card-title text-white"> Consumer-2 <span class="float-right text-white">John</span> </h3>
+                </div>-->
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-3 col-sm-6 col-md-4">
+        <div class="card gradient-2 client-card">
+            <div class="card-body cursor" (click)="productList(product);">
+                <h3 class="card-title text-white client-card-title">DEVICE</h3>
+                <div class="d-inline-block">
+                    <h2 class="text-white">{{ dashboardDetail.consumerProductCount }}</h2>
+                </div>
+                <span class="float-right display-5 opacity-5"><i class="fa fa-building icon1"></i></span>
+
+                <!--<h2 class="text-white">132</h2>-->
+
+                <!--<h3 class="card-title text-white">Model 1 <span class="number-of-model">1000</span> </h3>
+                <h3 class="card-title text-white">Model 2 <span class="number-of-model">2000</span> </h3>
+                <h3 class="card-title text-white">Model 3 <span class="number-of-model">3000</span> </h3>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-sm-6 col-md-4">
+        <div class="card gradient-3 client-card">
+            <div class="card-body cursor" (click)="assignedCompanyProduct(client);">
+                <h3 class="card-title text-white client-card-title">{{ 'clientDashboard.form.customerRevenue' | translate }}</h3>
+                <div class="d-inline-block">
+                    <h2 class="text-white">INR {{revenueSum()}}</h2>
+                </div>
+                <span class="float-right  display-5 opacity-5"><img alt=""  src="assets/images/revenue_money.png" width="50" height="50" class="icon1"></span>
+
+               <!-- <h2 class="text-white">$8541</h2>-->
+                <!--<h3 class="card-title text-white">Customer 1 <span class="number-of-model">$7622</span> </h3>
+                <h3 class="card-title text-white">Customer 2 <span class="number-of-model">$9008</span> </h3>
+                <h3 class="card-title text-white">Customer 3 <span class="number-of-model">$6688</span> </h3>-->
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="col-lg-3 col-sm-6 col-md-4">
+        <div class="card gradient-4 client-card">
+            <div class="card-body cursor" (click)="productList(product);">
+                <h3 class="card-title text-white client-card-title">{{client.productNickName}} Health</h3>
+                <div class="d-inline-block">
+                    <div class="d-inline-block">
+                        <!--<h3 class="text-white">99%</h3>-->
+                    </div>
+                </div>
+                <span class="float-right display-5 opacity-5"><i class="fa fa-cubes icon1"></i></span>
+
+               <!-- <h3 class="card-title text-white">{{ 'clientDashboard.form.productHealth' | translate }}</h3>-->
+
+                <div class="active-inactive">
+                    <h3 class="card-title text-white">{{ 'clientDashboard.form.active' | translate }} <span class="product-active-status">{{ consumerProductHealth.activeCount}}</span> </h3>
+                    <h3 class="card-title text-white">{{ 'clientDashboard.form.inActive' | translate }} <span class="product-inactive-status">{{ consumerProductHealth.inActiveCount}}</span> </h3>
+                </div>
+
+                <!--<div class="row pro-sales">
+                    <div class="sold-product">{{  dashboardDetail.liveProductCount }}</div> <span class="total-product">/</span>
+                    <div class="total-product">{{ dashboardDetail.assignedProductCount + dashboardDetail.newProductCount }} </div>
+                </div>
+
+                <div class="row pro-sales">
+                    <div class="text-sold">{{ 'clientDashboard.form.on' | translate }}</div> <span class="text-product-sales">/</span>
+                    <div class="text-total">{{ 'clientDashboard.form.total' | translate }}</div>
+                </div>-->
+            </div>
+
+        </div>
+    </div>
+</div>

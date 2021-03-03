@@ -1,0 +1,55 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">Assigned {{client.companyNickName?client.companyNickName:('clientDashboard.form.company' | translate )}} {{client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}}</h3>
+            <product-list-header (pageSizeChanged)="changePageSize($event)" (search)="searchAssignedCompanyProduct($event)" (addNewEvent)="addCompany($event)"></product-list-header>
+            <div class="table-responsive">
+                <div  *ngIf="companyProducts.length>0">
+                    <table class="table table-striped table-hover padding-top-20">
+                        <thead>
+                            <tr>
+                                <th>{{ 'company.companyProduct.logo' | translate }}</th>
+                                <th>{{client.companyNickName?client.companyNickName:('clientDashboard.form.company' | translate )}}  Name</th>
+                                <th>{{client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}} Name</th>
+                                <th width="20%">{{ 'company.companyProduct.description' | translate }}</th>
+                                <th>{{ 'company.companyProduct.dispatchedDate' | translate }}</th>
+                                <th>{{ 'company.companyProduct.status' | translate }}</th>
+                                <th width="10%">{{ 'distributor.form.telemetricData' | translate }}</th>
+                                <th width="10%" *ngIf="currentUser.userType=='companyAdmin'">{{ 'company.companyProduct.action' | translate }}</th>
+                            </tr>
+                        </thead>
+                        <tbody >
+                            <tr class="amount3" *ngFor="let companyProduct of companyProducts" style="cursor:pointer;">
+                                <td>
+                                    <div class="image-top-detail" *ngIf="companyProduct.product.id && companyProduct.product.logo">
+                                        <img src="{{companyProduct.product.logo}}"  class="list-logo-list">
+                                    </div>
+                                    <div class="top-default-image-list" *ngIf="companyProduct.product.id && !companyProduct.product.logo">
+                                        <i class="fa fa-cube user-icon-image lineSpace2 show-machine"></i>
+                                    </div>
+                                </td>
+                                <td>{{companyProduct.company.name}}</td>
+                                <td>{{companyProduct.product.name}}</td>
+                                <td class="content-head">{{ (companyProduct.product.description.length>45)? (companyProduct.product.description | slice:0:45)+'...':(companyProduct.product.description) }}</td>
+                                <td>{{companyProduct.dispatchedDate}}</td>
+                                <td>{{companyProduct.status}}</td>
+                                <td class="telemtric-icon"><i class="fa fa-bar-chart" (click)="show(companyProduct.product);"></i>
+                                    <i class="fa fa-exclamation-triangle error-data-icon" (click)="showErrorData(companyProduct.product);"></i></td>
+                                <td *ngIf="currentUser.userType=='companyAdmin'">
+                                    <div class="bootstrap-modal">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" (click)="dispatchProduct(companyProduct)"   data-target="#companyBuildingModal">{{ 'distributor.form.dispatch' | translate }}</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="companyProducts.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                </div>
+            </div>
+            <div *ngIf="companyProducts.length==0">
+                <div class="dataSpace text-center"><b>{{ 'company.list.noData' | translate }}</b></div>
+            </div>
+        </div>
+    </div>
+</admin-root>

@@ -1,0 +1,110 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <h3 class="card-title">{{'resources.form.media' | translate}}</h3>
+            </div>
+            <form class="form-horizontal" name="resourcesForm" [formGroup]="resourcesForm" #f="ngForm" (ngSubmit)="f.form.valid && loadMediaResponse()" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+                <div class="row">
+                    <div class="form-group col-md-2" [ngClass]="{ 'has-error': f.submitted && !resourcesForm.get('productType').valid, 'has-success': f.submitted && resourcesForm.get('productType').valid}">
+                        <label class="control-label">{{ replaceText('report.form.productType' | translate) }} <span class="symbol required">*</span></label>
+                        <span class="clip-select">
+                            <select  name="productType"  id="productTypeSelect"  class="select2" formControlName="productType">
+                                <option value="">Select {{ replaceText('report.form.productType' | translate) }}</option>
+                                <option *ngFor="let productType of productTypes" [value]="productType.alias">{{productType.name}}</option>
+                            </select>
+                            <form-validate [form]="f" [fieldName]="'productType'" [field]="resourcesForm.get('productType')" [entity]="client.productTypeNickName" [messages]="RESOURCES_VALIDATOR"></form-validate>
+                        </span>
+                    </div>
+
+                    <div class="form-group col-md-2" [ngClass]="{ 'has-error': f.submitted && !resourcesForm.get('zone').valid, 'has-success': f.submitted && resourcesForm.get('zone').valid}">
+                        <form-control-label [text]="'report.form.zone'" [required]="false"></form-control-label>
+                        <span class="clip-select">
+                            <select  name="zone"  id="zone"  class="select2" formControlName="zone">
+                                <option value="0">Select {{ 'report.form.zone' | translate }}</option>
+                                <option *ngFor="let zone of zones" [value]="zone.alias">{{zone.name}}</option>
+                            </select>
+                        </span>
+                    </div>
+
+                    <div class="form-group col-lg-2 " [ngClass]="{ 'has-error': f.submitted && !resourcesForm.get('company').valid, 'has-success': f.submitted && resourcesForm.get('company').valid}">
+                        <label class="control-label">{{ replaceText('report.form.company' | translate) }}</label>
+                        <span class="clip-select">
+                            <select  name="company"  id="company"  class="select2" formControlName="company">
+                                <option value="0">Select {{ replaceText('report.form.company' | translate) }}</option>
+                                <option *ngFor="let company of companies" [value]="company.alias">{{company.name}}</option>
+                            </select>
+                        </span>
+                    </div>
+
+                    <div class="form-group col-lg-2 " [ngClass]="{ 'has-error': f.submitted && !resourcesForm.get('companyBuilding').valid, 'has-success': f.submitted && resourcesForm.get('companyBuilding').valid}">
+                        <label class="control-label">{{ replaceText('report.form.companyBuilding' | translate) }}</label>
+                        <span class="clip-select">
+                            <select  name="companyBuilding"  id="companyBuilding"  class="select2" formControlName="companyBuilding">
+                                <option value="0">Select {{ replaceText('report.form.companyBuilding' | translate) }}</option>
+                                <option *ngFor="let companyBuilding of companyBuildings" [value]="companyBuilding.alias">{{companyBuilding.name}}</option>
+                            </select>
+                        </span>
+                    </div>
+
+                    <div class="form-group col-md-2 " [ngClass]="{ 'has-error': f.submitted && !resourcesForm.get('product').valid, 'has-success': f.submitted && resourcesForm.get('product').valid}">
+                        <label class="control-label">{{ replaceText('report.form.product' | translate) }}</label>
+                        <span class="clip-select">
+                            <select  name="product"  id="productSelect2"  class="select2" formControlName="product">
+                                <option value="0">Select {{ replaceText('report.form.product' | translate) }}</option>
+                                <option *ngFor="let clientCompanyProduct of clientCompanyProducts" [value]="clientCompanyProduct.product.alias">{{clientCompanyProduct.product.name}}({{clientCompanyProduct.product.deviceId}})</option>
+                            </select>
+                        </span>
+                    </div>
+
+                    <div class="form-group col-md-2  col-xs-12 load-btn">
+                        <button class="btn btn-primary btn-default pull-left load-data-button" type="submit" [disabled] = "!selectedProduct" >{{ 'resources.form.loadData' | translate }}</button>
+                    </div>
+                </div>
+            </form>
+            <pagination-header (pageSizeChanged)="changePageSize($event)"></pagination-header>
+            <div *ngIf="!medias.length==0">
+                <table class="table table-striped table-hover padding-top-20">
+                    <thead>
+                        <tr>
+                            <th>{{ client.productTypeNickName }}</th>
+                            <th>{{ 'media.form.mediaName' | translate }}</th>
+                            <th>{{ 'media.form.extension' | translate }}</th>
+                            <th>{{ 'media.form.download' | translate }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let media of medias">
+                            <td>{{media.productType.name}}</td>
+                            <td>{{media.name}}</td>
+                            <td>{{media.extension}}</td>
+                            <td><a href="{{media.path}}">
+                                <i class="fa fa-file-excel-o media-icon" *ngIf="media.id && media.extension=='xlsx'"></i>
+                                <i class="fa fa-file-pdf-o media-icon" *ngIf="media.id && media.extension=='pdf'"></i>
+                                <i class="fa fa-file-text-o media-icon" *ngIf="media.id && media.extension=='doc'"></i>
+                                <i class="fa fa-file media-icon" *ngIf="media.id && media.extension=='docx'"></i>
+                                <i class="fa fa-file-powerpoint-o media-icon" *ngIf="media.id && media.extension=='ppt'"></i>
+                                <i class="fa fa-file-video-o media-icon" *ngIf="media.id && media.extension=='mp4'"></i>
+                                <i class="fa fa-file-excel-o media-icon" *ngIf="media.id && media.extension=='xls'"></i>
+                                <i class="fa fa-file-text media-icon" *ngIf="media.id && media.extension=='txt'"></i>
+                                <span class="media-icon"> <img alt="BIN" src="/assets/images/bin.png" *ngIf="media.id && media.extension=='bin'" width="40" height="40"></span>
+                            </a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="medias.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+
+            </div>
+
+            <div *ngIf="medias.length==0">
+                <div class="dataSpace text-center">
+                    <b>{{'product.form.data' | translate}}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</admin-root>
+
+

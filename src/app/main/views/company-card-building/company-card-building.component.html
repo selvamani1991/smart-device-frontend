@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-lg-6 col-sm-6">
+        <div class="card gradient-1 card-top">
+            <div class="card-body cursor"  (click)="newCompanyBuildingProduct(companyBuildingProduct);">
+                <div class="total-card">
+                    <div class="d-inline-block">
+                        <h3 class="card-title text-white client-card-title  card-new-title">New
+                            {{client.companyBuildingNickName?client.companyBuildingNickName:('clientDashboard.form.companyBuilding' | translate )}} {{client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}}</h3>
+                        <h2 class="text-white">{{  dashboardDetail.newCompanyBuildingProductCount }}</h2>
+                    </div>
+                </div>
+                <div class="image-card-size">
+                    <span class="float-right display-5 opacity-5"><img alt="" src="assets/images/talkio_icons/product.svg" width="50" height="50" class="icon1"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-sm-6">
+        <div class="card gradient-4 card-top">
+            <div class="card-body cursor" (click)="allCompanyBuildingProduct(companyBuildingProduct);">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h3 class="card-title text-white client-card-title  card-new-title">{{client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}} Health</h3>
+                    </div>
+                    <div class="col-lg-4">
+                        <span class="float-right display-5 opacity-5"><img alt=""  src="assets/images/product_health_new.png" width="50" height="50" class="icon1" style="margin:0px;"></span>
+                    </div>
+                </div>
+                <h4 class="card-title text-white mt-3 new-customer-title client-card-title  card-new-title">{{
+                    'companyBuildingDashboard.form.active' | translate }}
+                    <span class="product-active-status">{{dashboardDetail.liveProductCount}}</span> </h4>
+                    <h4 class="card-title text-white client-card-title  card-new-title">{{ 'companyBuildingDashboard.form.inActive' | translate }} <span
+                        class="product-inactive-status">0</span> </h4>
+            </div>
+        </div>
+    </div>
+</div>

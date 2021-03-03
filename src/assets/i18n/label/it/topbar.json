@@ -1,0 +1,19 @@
+{
+  "messages": {
+    "MAIN": "Messages",
+    "HEADER": "Unread messages",
+    "SEEALL": "See All"
+  },
+  "activities": {
+    "MAIN": "Activities",
+    "HEADER": "You have new notifications",
+    "SEEALL": "See All"
+  },
+  "user": {
+    "PROFILE": "My Profile",
+    "CALENDAR": "My Calendar",
+    "MESSAGES": "My Messages",
+    "LOCKSCREEN": "Lock Screen",
+    "LOGOUT": "Log Out"
+  }
+}

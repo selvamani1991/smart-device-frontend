@@ -1,0 +1,45 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{'consumerSubscription.list.consumerSubscriptionDetails' | translate}}</h3>
+
+            <product-list-header (pageSizeChanged)="changePageSize($event)" (search)="searchConsumerSubscriptionList($event)" (addNewEvent)="addConsumerSubscription($event)"></product-list-header>
+
+            <div class="table-responsive">
+                <div *ngIf="consumerSubscriptions.length>0">
+                    <table class="table table-striped table-hover padding-top-20">
+                        <thead>
+                        <tr>
+                            <th width="10%">{{ 'consumerSubscription.list.logo' | translate }}</th>
+                            <th>{{ 'consumerSubscription.list.name' | translate }}</th>
+                            <th>{{ 'consumerSubscription.list.description' | translate }}</th>
+                            <th>{{ 'consumerSubscription.list.price' | translate }}</th>
+                            <th>{{ 'consumerSubscription.list.duration' | translate }}</th>
+                            <th>{{ 'consumerSubscription.list.startDate' | translate }}</th>
+                            <th>{{ 'consumerSubscription.list.endDate' | translate }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let consumerSubscription of consumerSubscriptions">
+                            <td class="userSize"><img src="{{consumerSubscription.avatar}}" *ngIf="consumerSubscription.id && consumerSubscription.avatar" class="list-logo"> <i class="fa fa-user" *ngIf="consumerSubscription.id && !consumerSubscription.avatar"></i></td>
+                            <td>{{consumerSubscription.amsubscription.name}}</td>
+                            <td>{{consumerSubscription.amsubscription.description}}</td>
+                            <td>{{consumerSubscription.amsubscription.price}}</td>
+                            <td>{{consumerSubscription.amsubscription.duration}}</td>
+                            <td>{{consumerSubscription.startDate}}</td>
+                            <td>{{consumerSubscription.endDate}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="consumerSubscriptions.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                </div>
+            </div>
+            <div *ngIf="consumerSubscriptions.length==0">
+                <div class="dataSpace text-center">
+                    <b>{{ 'consumer.list.noData' | translate }}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</admin-root>

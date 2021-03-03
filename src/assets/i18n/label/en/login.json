@@ -1,0 +1,27 @@
+{
+  "error": {
+    "username": "Please enter username",
+    "password": "Please enter password",
+    "otp": "Please enter OTP",
+    "confirmPassword": "Please enter confirm password"
+  },
+  "form": {
+    "myProfile": "My Profile",
+    "home": "Home",
+    "name": "Name",
+    "email": "Email",
+    "street": "Street",
+    "phoneNo": "Phone Number",
+    "idNo": "ID No",
+    "dateOfBirth": "Date Of Birth",
+    "gender": "Gender",
+    "religion": "Religion",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "upload": "Upload Image",
+    "about": "About Me",
+    "detail": "My Profile Details",
+    "username": "Username",
+    "designation": "Designation"
+  }
+}

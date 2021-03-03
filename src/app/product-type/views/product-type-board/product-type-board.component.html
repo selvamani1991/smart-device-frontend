@@ -1,0 +1,59 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card" id="productType">
+        <div class="card-body">
+            <h3 class="card-title">{{'productType.form.boardManufacturer' | translate}}</h3>
+            <list-header (pageSizeChanged)="changePageSize($event)" (search)="searchProductTypeBoard($event)" (addNewEvent)="dispatchProductType()" *ngIf="productType.active"></list-header>
+            <product-list-header (pageSizeChanged)="changePageSize($event)" (search)="searchProductTypeBoard($event)" *ngIf="!productType.active"></product-list-header>
+            <div class="table-responsive">
+                <div *ngIf="boardProductTypes.length>0">
+                    <table class="table table-striped table-hover padding-top-20">
+                        <thead>
+                            <tr>
+                                <th>{{'productType.form.logo' | translate}}</th>
+                                <th>Order ID</th>
+                                <th>{{ client.productTypeNickName }}</th>
+                                <th>{{ 'productType.form.modelNo' | translate }}</th>
+                                <th>{{ 'productType.form.boardCount' | translate }}</th>
+                                <th>{{ 'productType.form.completeCount' | translate }}</th>
+                                <th>{{ 'productType.form.assignedDate' | translate }}</th>
+                                <th width="20%">{{ 'productType.form.status' | translate }}</th>
+                                <th>{{ 'productType.form.boardList' | translate }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let boardProductType of boardProductTypes">
+                                <td>
+                                    <div class="image-top-detail" *ngIf="boardProductType.id && boardProductType.logo">
+                                        <img src="{{productType.logo}}"  class="list-logo-list">
+                                    </div>
+                                    <div class="top-default-image-list" *ngIf="boardProductType.id && !boardProductType.logo">
+                                        <i class="fa fa-cubes user-icon-image py-2 px-xl-1" ></i>
+                                    </div>
+                                </td>
+                                <td>{{boardProductType.orderId}}</td>
+                                <td>{{boardProductType.productType.name}}</td>
+                                <td>{{boardProductType.productType.modelNo}}</td>
+                                <td>{{boardProductType.productCount}}</td>
+                                <td>{{boardProductType.boardCreatedCount}}</td>
+                                <td>{{boardProductType.assignedDate}}</td>
+                                <td>{{boardProductType.status}}</td>
+                                <td>
+                                    <i class="fa fa-object-group color-muted m-r-5 show-machine cursor-position" data-toggle="tooltip" title="Board" (click)="showBoard(boardProductType);"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="boardProductTypes.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                </div>
+            </div>
+            <div *ngIf="boardProductTypes.length==0">
+                <div class="dataSpace text-center">
+                    <b>{{ 'productType.list.noData' | translate }}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</admin-root>
+<board-manufacturer-modal [productType]="selectedProductType" (submitEvent)="reloadProductType($event)"></board-manufacturer-modal>

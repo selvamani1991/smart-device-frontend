@@ -1,0 +1,38 @@
+
+<router-outlet></router-outlet>
+
+    <div class="card error-form mb-0">
+        <div class="card-body pt-5">
+            <div class="error-number text-azure text-center">
+            <h1><b class="text-blue" style="font-size:72px;color: blue;">404</b></h1>
+        </div>
+        <h2 class="text-center" style="font-size:16px">Oops! You are stuck at 404</h2>
+        <p class="text-center"style="font-size: 14px;">
+            Unfortunately the page you were looking for could not be found.
+            <br>
+            It may be temporarily unavailable, moved or no longer exist.
+            <br>
+            Check the URL you entered for any mistakes and try again.
+            <br>
+            <br>
+            <a href="/" class="btn btn-red btn-return"> <button class="btn btn-danger" [routerLink]="'/admin-dashboard'"  style="font-size:15px;"> Return home</button></a>
+            <br>
+            <br>
+            Still no luck?
+            <br>
+            Search for whatever is missing, or take a look around the rest of our site.
+        </p>
+            <form>
+                <div class="row">
+                    <div class="col-md-9">
+                        <input class="form-control" name="Keyboard" placeholder="Keyword..." type="text" style="border:0;background-color: #dee2e6; font-size:16px">
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-secondary" style="border: 0;background-color: #dee2e6;height:46px;width:140px;font-size:16px" type="button">Search</button>
+
+                    </div>
+                </div>
+            </form>
+
+    </div>
+</div>

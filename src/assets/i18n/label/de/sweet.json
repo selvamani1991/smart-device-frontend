@@ -1,0 +1,22 @@
+{
+  "alert":{
+    "created": " Created!",
+    "created_msg": "Your data successfully created!",
+    "updated": " Updated!",
+    "updated_msg": "Your data successfully updated!",
+    "deleted": " Deleted!",
+    "deleted_msg": "Your data has been deleted.",
+    "oops": "Oops!!!",
+    "error_msg": "Your action is unsuccessful, due to some server error.",
+    "sure": "Are you sure?",
+    "delete_confirm": "You will not be able to recover this data!",
+    "yes_delete": "Yes, delete it!",
+    "no_delete": "No, cancel please!",
+    "cancelled": "Cancelled",
+    "cancelled_msg": "Your data is safe :)",
+    "success": "success",
+    "error": "error",
+    "warning": "warning"
+
+  }
+}

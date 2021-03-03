@@ -1,0 +1,78 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" name="zoneForm" [formGroup]="zoneForm" #f="ngForm">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">{{ 'zone.show.zoneDetail' | translate }}</h3>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <form-control-label [text]="'zone.form.name'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="name" formControlName="name" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'zone.form.description'" [required]="true"></form-control-label>
+                            <div class="note-editor">
+                                <textarea id="form-field-22" class="form-control" name="description" formControlName="description" readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4 show-icon-top">
+                        <div class="delete-image" style="cursor:pointer;" *ngIf="zone.id && zone.logo"><i class="fa fa-close color-danger cross-size cursor-pointer" data-toggle="tooltip" title="Delete" (click)="markDeleted(zone);"></i></div>
+                        <div class="company-image-size" *ngIf="zone.id && zone.logo"><img src="{{zone.logo}}"  class="upload-image"/></div>
+                        <div class="company-image-size" *ngIf="!zone.logo"><i class="fa fa-user-circle-o show-icon" ></i></div>
+                        <div class="row mt-3 ml-3">
+                            <div class="choose_file">
+                                <button type="button" class="btn btn-default upload-button">Choose Image</button>
+                                <input name="file" type="file" class="form-control" accept="image/*"  (change)="onFileChange($event)"/>
+                            </div>
+                            <div class="file-detail" *ngIf="files && zone.id && zone.logo">{{files.name}}</div>
+                            <div class="file-detail"><span *ngIf="files && zone.id && zone.logo">{{ files.size/1024 | number:'1.0-0'}} </span> KB</div>
+                        </div>
+                        <div class="has-error error" *ngIf="formatError">{{'zone.error.invalidPattern' | translate}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="card">
+            <div class="card-body">
+                <h3 class="card-title">{{ 'zone.show.contactDetails' | translate }}</h3>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <form-control-label [text]="'zone.form.firstName'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="firstName" formControlName="firstName" readonly/>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <form-control-label [text]="'zone.form.lastName'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="lastName" formControlName="lastName" readonly/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'zone.form.email'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="email" formControlName="email" readonly/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'zone.form.phoneNo'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="phoneNo" formControlName="phoneNo" readonly/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'zone.form.designation'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="designation" formControlName="designation" readonly/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <form-control-label [text]="'zone.form.landLineNo'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control" name="landLineNo" formControlName="landLineNo" readonly/>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+    </form>
+</admin-root>

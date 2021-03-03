@@ -1,0 +1,37 @@
+﻿<admin-root id="city">
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" [formGroup]="cityForm" #f="ngForm" (ngSubmit)="f.form.valid && updateCity()" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{ 'city.form.detail' | translate }}</h4>
+                <div class="row">
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !cityForm.get('name').valid, 'has-success': f.submitted && cityForm.get('name').valid}">
+                        <form-control-label [text]="'city.form.name'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control input-default" placeholder="{{ 'city.placeholder.name' | translate }}" class="form-control" name="name" formControlName="name">
+                        <form-validate [form]="f" [fieldName]="'name'" [field]="cityForm.get('name')" [messages]="CITY_VALIDATOR"></form-validate>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !cityForm.get('state').valid, 'has-success': f.submitted && cityForm.get('state').valid}">
+                        <form-control-label [text]="'city.form.state'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control input-default" placeholder="{{ 'city.placeholder.state' | translate }}" class="form-control" name="state" formControlName="state">
+                        <form-validate [form]="f" [fieldName]="'state'" [field]="cityForm.get('state')" [messages]="CITY_VALIDATOR"></form-validate>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !cityForm.get('country').valid, 'has-success': f.submitted && cityForm.get('country').valid}">
+                        <form-control-label [text]="'city.form.country'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control input-default" placeholder="{{ 'city.placeholder.country' | translate }}" class="form-control" name="country" formControlName="country">
+                        <form-validate [form]="f" [fieldName]="'country'" [field]="cityForm.get('country')" [messages]="CITY_VALIDATOR"></form-validate>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">{{'city.form.save' | translate}}</button>
+                <button type="button" (click)="list(city);" class="btn mb-1 btn-outline-danger pull-right">{{'city.form.cancel' | translate}}</button>
+            </div>
+        </div>
+    </form>
+</admin-root>

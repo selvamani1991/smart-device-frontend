@@ -1,0 +1,44 @@
+<admin-root >
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card" id="client">
+        <div class="card-body">
+            <h3 class="card-title">{{ 'client.newProductTypeList.newProductType' | translate }}</h3>
+            <list-header (pageSizeChanged)="changePageSize($event)" (search)="searchClient($event)" (addNewEvent)="addClient($event)"></list-header>
+            <div class="table-responsive">
+                <div *ngIf="productTypes.length>0">
+                    <table class="table table-striped table-hover padding-top-20">
+                        <thead>
+                            <tr>
+                                <th>{{ 'productType.form.name' | translate }}</th>
+                                <th>{{ 'productType.form.description' | translate }}</th>
+                                <th>{{ 'productType.form.dispatchedDate' | translate }}</th>
+                                <th>{{ 'productType.form.status' | translate }}</th>
+                                <th width="10%">{{ 'productType.form.dispatch' | translate }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let productType of productTypes">
+                                <td>{{productType.name}}</td>
+                                <td>{{productType.description}}</td>
+                                <td>{{productType.dispatchedDate}}</td>
+                                <td>{{productType.status}}</td>
+                                <td>
+                                    <div class="bootstrap-modal">
+                                        <button type="button" class="btn btn-primary" (click)="dispatchProductType(productType)" data-toggle="modal" data-target="#boardManufacturerModal">{{ 'productType.form.dispatch' | translate }}</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="productTypes.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                </div>
+            </div>
+            <div *ngIf="productTypes.length==0">
+                <div class="dataSpace text-center">
+                    <b>{{ 'productTypes.list.noData' | translate }}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</admin-root>
+<board-manufacturer-modal [productType]="selectedBoardManufacturer" (submitEvent)="reloadRoles($event)"></board-manufacturer-modal>

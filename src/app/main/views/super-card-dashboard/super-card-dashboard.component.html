@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-lg-3 col-sm-6">
+        <div class="card gradient-1 card-top">
+            <div class="card-body cursor" (click)="consumerList()">
+                <h6 class="card-title  text-white card-new-title">{{'superAdmin.form.consumer' | translate}}</h6>
+                <div class="d-inline-block">
+                    <h4 class="text-white">{{dashboardDetail.consumerCount}}</h4>
+                </div>
+                <h4 class="card-title text-white">&nbsp;</h4>
+                <span class="float-right display-5 opacity-5">
+                    <img alt="" src="assets/images/talkio_icons/consumer.svg" width="50" height="50" class="icon1">
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="card gradient-2 card-top">
+            <div class="card-body cursor" (click)="clientList()">
+                <h6 class="card-title text-white card-new-title">{{'superAdmin.form.client' | translate}}</h6>
+                <div class="d-inline-block">
+                    <h4 class="text-white">{{dashboardDetail.clientCount}}</h4>
+                </div>
+                <h4 class="card-title text-white">&nbsp;</h4>
+                <span class="float-right display-5 opacity-5">
+                    <img alt=""  src="assets/images/talkio_icons/customer.svg" width="50" height="50" class="icon1">
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="card gradient-3 card-top">
+            <div class="card-body cursor" (click)="subscriptionList()">
+                <h6 class="card-title text-white card-new-title">{{'superAdmin.form.subscription' | translate}}</h6>
+                <div class="d-inline-block">
+                    <h4 class="text-white">{{dashboardDetail.subscriptionCount}}</h4>
+                </div>
+                <h6 class="card-title text-white card-new-title">{{'superAdmin.form.subscribers' | translate}}</h6>
+                <div class="d-inline-block">
+                    <h4 class="text-white">{{dashboardDetail.subscriberCount ?  dashboardDetail.subscriberCount : 0}}</h4>
+                </div>
+                <span class="float-right display-5 opacity-5"> <img alt=""  src="assets/images/talkio_icons/subscription.svg" width="50" height="50" class="icon1">  </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="card gradient-4 card-top">
+            <div class="card-body cursor" (click)="subscriptionList()">
+                <h6 class="card-title text-white card-new-title">Revenue</h6>
+                <div class="d-inline-block">
+                    <h4 class="text-white">{{dashboardDetail.revenue ?  dashboardDetail.revenue : 0}} INR</h4>
+                </div>
+                <h4 class="card-title text-white card-new-title">&nbsp;</h4>
+                <span class="float-right display-5 opacity-5">
+                    <img alt=""  src="assets/images/talkio_icons/money2.svg" width="50" height="50" class="icon1">
+                    <!--<img alt=""  src="assets/images/talkio_icons/money.svg" width="50" height="50" class="icon1">-->
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

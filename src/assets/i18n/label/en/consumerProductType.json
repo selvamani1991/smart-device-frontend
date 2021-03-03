@@ -1,0 +1,97 @@
+{
+  "list": {
+    "name": "Name",
+    "pageLink": " Consumer Product Type List",
+    "notAvailable": "Data is not available",
+    "pageTitle": "list",
+    "pageDesc": "Listing all  Consumer Product Type",
+    "state": "State",
+    "consumerProductType": "Consumer Product Type",
+    "active": "Active",
+    "status": "Status",
+    "disabled": "Disabled",
+    "enabled": "Enabled",
+    "noData": "Data is not available",
+    "logo": "Logo",
+    "description": "Description",
+    "productInstruction": "Product Instruction"
+  },
+
+  "create": {
+    "formTitle": "Consumer Product Type creation form",
+    "formDesc": "Consumer Product Type creation form",
+    "pageLink": "Create",
+    "pageTitle": "Create",
+    "pageDesc": "creating a new Consumer Product Type"
+  },
+
+  "edit": {
+    "formTitle": " Consumer Product Type Update form",
+    "formDesc": "Consumer Product Type update form",
+    "pageLink": "Edit ",
+    "pageTitle": "Edit a Consumer Product Type",
+    "pageDesc": "Editing a Existing Consumer Product Type"
+  },
+
+  "show": {
+    "formTitle": "Consumer Product Type Show",
+    "formDesc": "Consumer Product Type Show form",
+    "pageLink": "Show",
+    "pageTitle": "Show a Consumer Product Type",
+    "pageDesc": "Showing a Existing Consumer Product Type"
+  },
+
+  "form": {
+    "all": "All",
+    "add": "Add Consumer Product Type",
+    "details": "Consumer Product Type Details",
+    "name": "Name",
+    "description": "Description",
+    "status": "Status",
+    "id": "Id",
+    "contact": "Contact Details",
+    "detail": "Basic Details",
+    "houseNumber": "House Number",
+    "logo": "Logo",
+    "action": "Action",
+    "consumerProductTypeId": "Consumer Product Type ID",
+    "consumerProductTypeName": "Consumer Product Type Name",
+    "consumerProductTypeDescription": "Consumer Product Type Description",
+    "verified": "Verified",
+    "title": "Consumer Product Type Management",
+    "data": "Data is not available In Table",
+    "save": "Save",
+    "cancel": "Cancel",
+    "productInstruction": "Product Instruction",
+    "attributes": "Attributes",
+    "attributeName": "Name",
+    "code": "Code",
+    "attributeType": "Attribute Type",
+    "attributeMinValue": "Min Value",
+    "attributeMaxValue": "Max Value",
+    "defaultValue": "Default Value"
+  },
+
+  "error": {
+    "name": "Please Enter Product Type Name",
+    "productInstruction": "Please Enter Product Instruction",
+    "duplicate": "Product Type Name Already Exist",
+    "description": "Please Enter Description",
+    "phoneNo": "Please Enter Phone Number",
+    "minName": "Minimum 2 Characters required",
+    "minProductInstruction": "Minimum 3 Characters required",
+    "minDescription": "Minimum 3 Characters required",
+    "invalidPattern": "Invalid File Format ! (Only JPEG,JPG,PNG files are allowed)",
+    "nameDuplicate": "Name already exist"
+  },
+
+  "placeholder": {
+    "name": " Enter Name",
+    "description": "Enter Description",
+    "attributeName": "Attribute Name ",
+    "code": "Code ",
+    "attributeMinValue": "Min Value",
+    "attributeMaxValue": "Max Value",
+    "defaultValue": "Default Value"
+  }
+}

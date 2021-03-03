@@ -1,0 +1,46 @@
+﻿<admin-root id="consumerTicket">
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" name="consumerTicketForm" [formGroup]="consumerTicketForm" #f="ngForm" (ngSubmit)="f.form.valid && createConsumerTicket(f)" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ 'consumerTicket.form.details' | translate }}</h4>
+                        <div class="form-row">
+
+                            <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !consumerTicketForm.get('issueType').valid, 'has-success': f.submitted && consumerTicketForm.get('issueType').valid}">
+                                <form-control-label [text]="'consumerTicket.form.issueType'" [required]="true"></form-control-label>
+                                <span class="clip-select">
+                                <select  name="issueType" class="select2"  formControlName="issueType">
+                                    <option value="">Select Issue Type</option>
+                                    <option *ngFor="let issueType of issueTypes" [value]="issueType.id">{{issueType.name}}</option>
+                                </select>
+                                <form-validate [form]="f" [fieldName]="'issueType'" [field]="consumerTicketForm.get('issueType')" [messages]="CONSUMER_TICKET_VALIDATOR"></form-validate>
+                            </span>
+                            </div>
+                            
+                            <div class="form-group col-md-12">
+                                <div class=""  [ngClass]="{ 'has-error': f.submitted && !consumerTicketForm.get('subject').valid, 'has-success': f.submitted && consumerTicketForm.get('subject').valid}">
+                                    <form-control-label [text]="'consumerTicket.form.subject'" [required]="true"></form-control-label>
+                                    <input type="text" class="form-control input-default" placeholder="{{ 'consumerTicket.placeholder.subject' | translate }}" class="form-control" name="subject" formControlName="subject">
+                                    <form-validate [form]="f" [fieldName]="'subject'" [field]="consumerTicketForm.get('subject')" [messages]="CONSUMER_TICKET_VALIDATOR"></form-validate>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="" [ngClass]="{ 'has-error': f.submitted && !consumerTicketForm.get('description').valid, 'has-success': f.submitted && consumerTicketForm.get('description').valid}">
+                                    <form-control-label [text]="'consumerTicket.form.description'" [required]="true"></form-control-label>
+                                    <div class="note-editor">
+                                        <textarea id="form-field-22" class="form-control"  placeholder="{{ 'consumerTicket.placeholder.description' | translate }}" name="description" formControlName="description"></textarea>
+                                    </div>
+                                    <form-validate [form]="f" [fieldName]="'description'" [field]="consumerTicketForm.get('description')" [messages]="CONSUMER_TICKET_VALIDATOR"></form-validate>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">{{'consumerTicket.form.save' | translate}}</button>
+                <button type="button" (click)="list(consumerTicket);" class="btn mb-1 btn-outline-danger pull-right">{{'consumerTicket.form.cancel' | translate}}</button>
+            </div>
+        </div>
+    </form>
+</admin-root>

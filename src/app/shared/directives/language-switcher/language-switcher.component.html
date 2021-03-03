@@ -1,0 +1,11 @@
+﻿<a class="dropdown-toggle log-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<i class="flag-icon {{ language.selected.code }}" ></i><span>&nbsp;{{language.selected.name}}</span> </a>
+<div class="drop-down dropdown-language animated fadeIn  dropdown-menu">
+    <div class="dropdown-content-body">
+        <ul role="menu">
+            <li *ngFor=" let lang of language.available">
+            <a (click)="language.set(lang.localeId)" href="javascript:void(0)" class="menu-toggler"> <i class="flag-icon {{lang.code}}" ></i><span>&nbsp;{{lang.name}}</span> </a>
+            </li>
+        </ul>
+    </div>
+</div>

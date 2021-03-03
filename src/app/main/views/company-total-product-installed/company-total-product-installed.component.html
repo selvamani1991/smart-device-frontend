@@ -1,0 +1,66 @@
+<div class="card" id="dashboard">
+    <div class="card-header top-header-size">
+        <!--<h3>{{client && client.productTypeNickName?client.productTypeNickName:('clientDashboard.form.productType' | translate )}} Revenue</h3>-->
+        <h5 class="talkio_whitecolor">Over All {{client &&
+            client.productNickName?client.productNickName:('clientDashboard.form.product' | translate )}} Installed</h5>
+    </div>
+    <div class="card-body clientBody" [hidden]="productTypes.length==0">
+        <div class="row" >
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="client-total-product">
+                    <span class="clip-select drop">
+                        <select id="select2ProductTypeInstalledProductCompany" name="productType" class="select2">
+                                <option value="">Select {{client.productTypeNickName?client.productTypeNickName:('clientDashboard.form.productType' | translate )}}</option>
+                                <option *ngFor="let productType of productTypes" [value]="productType.alias">{{productType && productType.name}}</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+
+
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="client-total-product" >
+                    <span class="clip-select drop">
+                        <select id="selectCompanyBuildingInstalledProductCompany" name="companyBuilding" class="select2">
+                            <option value="">Select {{client.companyBuildingNickName?client.companyBuildingNickName:('clientDashboard.form.companyBuilding' | translate )}}</option>
+                                <option *ngFor="let companyBuilding of companyBuildings" [value]="companyBuilding.alias">{{companyBuilding.name}}</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-sm-6"></div>
+            <div class="col-lg-2 col-md-4 col-sm-6" *ngIf="currentUser.userType=='companyAdmin'"></div>
+            <div class="col-lg-2 col-md-4 col-sm-6" *ngIf="currentUser.userType=='zoneAdmin'"></div>
+
+
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="input-group">
+                    <input type="text" placeholder="{{ 'client.placeholder.selectStartDate' | translate }}"  autocomplete="off" id="startDateInstalledProductCompany" class="calendar-dashboard">
+                    <span class="input-group-append calendar-box-dashboard" >
+                        <span class="input-group-text">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="input-group">
+                    <input type="text" placeholder="{{ 'client.placeholder.selectEndDate' | translate }}"  autocomplete="off" id="endDateInstalledProductCompany" class="calendar-dashboard">
+                    <span class="input-group-append calendar-box-dashboard" >
+                        <span class="input-group-text">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="bar-one" id="installed-product-company"></div>
+    </div>
+    <div class="foot-product-type" [hidden]="productTypes.length>0">
+        No  Product Type Found  !!!
+    </div>
+</div>

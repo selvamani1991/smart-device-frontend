@@ -1,0 +1,53 @@
+﻿<admin-root id="projects">
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" [formGroup]="consumerSubscriptionForm" #f="ngForm" (ngSubmit)="f.form.valid && createConsumerSubscription(f)" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">{{'consumerSubscription.form.details' | translate}}</h3>
+                <div class="row">
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !consumerSubscriptionForm.get('name').valid, 'has-success': f.submitted && consumerSubscriptionForm.get('name').valid}">
+                        <form-control-label [text]="'consumerSubscription.form.name'" [required]="true"></form-control-label>
+                        <input type="text" class="form-control input-default" placeholder="{{ 'consumerSubscription.placeholder.name' | translate }}" class="form-control" name="name" formControlName="name">
+                        <form-validate [form]="f" [fieldName]="'name'" [field]="consumerSubscriptionForm.get('name')" [messages]="CONSUMER_SUBSCRIPTION_VALIDATOR"></form-validate>
+                    </div>
+
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !consumerSubscriptionForm.get('description').valid, 'has-success': f.submitted && consumerSubscriptionForm.get('description').valid}">
+                        <form-control-label [text]="'consumerSubscription.form.description'" [required]="false"></form-control-label>
+                        <div class="note-editor">
+                            <textarea id="form-field-22" class="form-control" placeholder="Enter description" name="description" formControlName="description"></textarea>
+                        </div>
+                        <form-validate [form]="f" [fieldName]="'description'" [field]="consumerSubscriptionForm.get('description')" [messages]="CONSUMER_SUBSCRIPTION_VALIDATOR"></form-validate>
+                    </div>
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !consumerSubscriptionForm.get('price').valid, 'has-success': f.submitted && consumerSubscriptionForm.get('price').valid}">
+                        <form-control-label [text]="'consumerSubscription.form.price'" [required]="true"></form-control-label>
+                        <input type="number" class="form-control input-default" placeholder="{{ 'consumerSubscription.placeholder.price' | translate }}" class="form-control" name="price" formControlName="price">
+                        <form-validate [form]="f" [fieldName]="'price'" [field]="consumerSubscriptionForm.get('price')" [messages]="CONSUMER_SUBSCRIPTION_VALIDATOR"></form-validate>
+                    </div>
+                        <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !consumerSubscriptionForm.get('duration').valid, 'has-success': f.submitted && consumerSubscriptionForm.get('duration').valid}">
+                            <form-control-label [text]="'subscription.form.duration'" [required]="true"></form-control-label>
+                            <div class="clip-select">
+                                <select  name="duration"  id="durationSelect2"  class="select2" formControlName="duration">
+                                    <option value="">Select Duration</option>
+                                    <option *ngFor="let durationItem of durations" [value]="durationItem.id">{{durationItem.name}}</option>
+                                </select>
+                                <form-validate [form]="f" [fieldName]="'duration'" [field]="consumerSubscriptionForm.get('duration')" [messages]="CONSUMER_SUBSCRIPTION_VALIDATOR"></form-validate>
+                            </div>
+                        </div>
+
+                    <div class="form-group col-md-12" [ngClass]="{ 'has-error': f.submitted && !consumerSubscriptionForm.get('deviceCount').valid, 'has-success': f.submitted && consumerSubscriptionForm.get('deviceCount').valid}">
+                        <form-control-label [text]="'consumerSubscription.form.deviceCount'" [required]="true"></form-control-label>
+                        <input type="number" class="form-control input-default" placeholder="{{ 'consumerSubscription.placeholder.deviceCount' | translate }}" class="form-control" name="deviceCount" formControlName="deviceCount">
+                        <form-validate [form]="f" [fieldName]="'deviceCount'" [field]="consumerSubscriptionForm.get('deviceCount')" [messages]="CONSUMER_SUBSCRIPTION_VALIDATOR"></form-validate>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">{{'consumerSubscription.form.save' | translate}}</button>
+                <button type="button" (click)="list(consumerSubscription);" class="btn mb-1 btn-outline-danger pull-right">{{'consumerSubscription.form.cancel' | translate}}</button>
+            </div>
+        </div>
+    </form>
+</admin-root>

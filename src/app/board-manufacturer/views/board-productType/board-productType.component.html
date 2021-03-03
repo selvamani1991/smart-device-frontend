@@ -1,0 +1,56 @@
+<admin-root >
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <div class="card" id="client">
+        <div class="card-body">
+            <h3 class="card-title">Board {{client.productTypeNickName?client.productTypeNickName:('clientDashboard.form.productType' | translate )}}</h3>
+            <product-list-header (pageSizeChanged)="changePageSize($event)" (search)="searchBoardProductType($event)" (addNewEvent)="addClient($event)"></product-list-header>
+            <div class="table-responsive">
+                <div *ngIf="boardProductTypes.length>0">
+                    <table class="table table-striped table-hover padding-top-20">
+                        <thead>
+                            <tr>
+                                <th width="10%">{{ 'client.boardProductType.logo' | translate }}</th>
+                                <th>{{client.productTypeNickName?client.productTypeNickName:('clientDashboard.form.productType' | translate )}}</th>
+                                <th>{{ 'client.boardProductType.orderId' | translate }}</th>
+                                <th>{{ 'client.boardProductType.modelNo' | translate }}</th>
+                                <th>{{ 'client.boardProductType.assigned' | translate }}/{{ 'client.boardProductType.totalOrder' | translate }}</th>
+                                <th>{{ 'client.boardProductType.assignedDate' | translate }}</th>
+                                <th>{{ 'client.boardProductType.boardComplete' | translate }}</th>
+                                <th>{{ 'client.boardProductType.status' | translate }}</th>
+                                <th width="10%">{{ 'client.boardProductType.action' | translate }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let boardProductType of boardProductTypes">
+                                <td>
+                                    <div class="image-top-detail" *ngIf="boardProductType.productType.id && boardProductType.productType.logo">
+                                        <img src="{{boardProductType.productType.logo}}"  class="list-logo-list">
+                                    </div>
+                                    <div class="top-default-image-list" *ngIf="boardProductType.productType.id && !boardProductType.productType.logo">
+                                        <i class="fa fa-cube user-icon-image lineSpace2 show-machine"></i>
+                                    </div>
+                                </td>
+                                <td>{{boardProductType.productType.name}}</td>
+                                <td>{{boardProductType.orderId}}</td>
+                                <td>{{boardProductType.productType.modelNo}}</td>
+                                <td class="px-5">{{boardProductType.completeCount}}/{{boardProductType.productCount}}</td>
+                                <td>{{boardProductType.assignedDate}}</td>
+                                <td class="px-5">{{boardProductType.boardCreatedCount}}</td>
+                                <td>{{boardProductType.status}}</td>
+                                <td><i class="fa fa-eye color-muted m-r-5" data-toggle="tooltip" title="Show" (click)="show(boardProductType);" style="cursor:pointer;"></i>
+                                    <img alt="Board" src="/assets/images/board.svg" class="show-machine cursor-position icons-sizes show-type" data-toggle="tooltip" title="Board" (click)="showBoard(boardProductType);">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pagination [totalSize]="totalSize" [currentPage]="currentPage" [pageSize]="pageSize" [itemSize]="boardProductTypes.length" [totalPages]="totalPages" (pageChanged)="changePage($event)"></pagination>
+                </div>
+            </div>
+            <div *ngIf="boardProductTypes.length==0">
+                <div class="dataSpace text-center">
+                    <b>{{ 'client.list.noData' | translate }}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</admin-root>

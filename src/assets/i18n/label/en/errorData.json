@@ -1,0 +1,41 @@
+{
+  "list": {
+    "name": "Name",
+    "pageLink": "ErrorData List",
+    "pageTitle": "ErrorData List",
+    "pageDesc": "Listing all ErrorData",
+    "active": "Active",
+    "status": "Status",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "noData": "Data is not available"
+  },
+  "form": {
+    "title": "ErrorData Management",
+    "all": "All",
+    "errorCode": "Error Code",
+    "errorName": "Error Name",
+    "errorDesc": "Error Description",
+    "productMapping": "Product Mapping",
+    "severity": "Severity",
+    "latitude": "Latitude",
+    "longitude": "Longitude",
+    "logo": "Logo",
+    "save":"Save",
+    "cancel": "Cancel",
+    "data": "Data is not available",
+    "status": "Status",
+    "processTime": "Process Time"
+  },
+  
+  "error": {
+    "minName": "Minimum 2 Characters required",
+    "duplicateEmail": "Email already Exist"
+  },
+  
+  "placeholder": {
+    "name": "Enter Name",
+    "description": "Enter Description"
+
+  }
+}

@@ -1,0 +1,44 @@
+<admin-root id="city">
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" name="cityForm" [formGroup]="cityForm">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{ 'city.form.detail' | translate }}</h4>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <form-control-label [text]="'city.form.name'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="name" formControlName="name" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'city.form.state'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="state" formControlName="state" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'city.form.country'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="country" formControlName="country" readonly/>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 show-icon-top">
+                        <img src="{{city.logo}}" *ngIf="city.id && city.logo" class="upload-image"/>
+                        <span class="city-show-icon"><i class="fa fa-map-marker" *ngIf="!city.logo"></i></span>
+                        <div class="row">
+                            <div class="choose_file">
+                                <button type="button" class="btn btn-default upload-button">Choose Image</button>
+                                <input  name="file" type="file" class="form-control" accept="image/*" (change)="onFileChange($event)"/>
+                            </div>
+                            <div class="file-detail" *ngIf="files">{{files.name}}</div>
+                            <div class="file-detail" *ngIf="files">{{ files.size/1024 | number:'1.0-0'}} KB</div>
+                        </div>
+                        <div class="has-error error" *ngIf="formatError">{{'city.error.invalidPattern' | translate}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</admin-root>
+
+
+
+
+

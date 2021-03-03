@@ -1,0 +1,81 @@
+﻿<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+<form class="form-horizontal" name="productTypeForm" [formGroup]="productTypeForm" #f="ngForm" (ngSubmit)="f.form.valid && createOrderWizard(f)" [ngClass]="{ 'form-unsubmitted': !f.submitted}">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">{{client.productTypeNickName?client.productTypeNickName:('clientDashboard.form.productType' | translate )}} Detail</h4>
+            <div class="form-row">
+                <div class="col-md-6 form-group" [ngClass]="{ 'has-error': f.submitted && !productTypeForm.get('productTypeId').valid, 'has-success': f.submitted && productTypeForm.get('productTypeId').valid}">
+                    <label class="control-label">{{ replaceText('report.form.productType' | translate) }} <span class="symbol required">*</span></label>
+                    <span class="clip-select">
+                        <select  name="productTypeId"  id="productTypeID"  class="select2" formControlName="productTypeId">
+                            <option value="">Select {{ client.productTypeNickName }}</option>
+                            <option *ngFor="let productType of productTypes" [value]="productType.alias">{{productType.name}}</option>
+                        </select>
+                        <form-validate [form]="f" [fieldName]="'productTypeId'" [field]="productTypeForm.get('productTypeId')" [entity]="client.productTypeNickName" [messages]="PRODUCT_WIZARD_VALIDATOR"></form-validate>
+                    </span>
+                </div>
+
+                <div class="col-md-6 form-group" [ngClass]="{ 'has-error': f.submitted && !productTypeForm.get('boardManufacturerId').valid, 'has-success': f.submitted && productTypeForm.get('boardManufacturerId').valid}">
+                    <form-control-label [text]="'product.form.boardManufacturerId'" [required]="true"></form-control-label>
+                    <span class="clip-select">
+                        <select  name="boardManufacturerId"  id="boardManufacturerID"  class="select2" formControlName="boardManufacturerId">
+                            <option value="">Select {{ 'product.placeholder.boardManufacturer' | translate }}</option>
+                            <option *ngFor="let boardManufacturer of boardManufacturers" [value]="boardManufacturer.alias">{{boardManufacturer.name}}</option>
+                        </select>
+                        <form-validate [form]="f" [fieldName]="'boardManufacturerId'" [field]="productTypeForm.get('boardManufacturerId')" [messages]="PRODUCT_WIZARD_VALIDATOR"></form-validate>
+                    </span>
+                </div>
+                <div class="col-md-4 form-group" [ngClass]="{ 'has-error': f.submitted && !productTypeForm.get('machineManufacturerId').valid, 'has-success': f.submitted && productTypeForm.get('machineManufacturerId').valid}">
+                    <form-control-label [text]="'product.form.machineManufacturerId'" [required]="true"></form-control-label>
+                    <span class="clip-select">
+                        <select  name="machineManufacturerId"  id="machineManufacturersID"  class="select2" formControlName="machineManufacturerId">
+                            <option value="">{{ 'product.placeholder.machineManufacturer' | translate }}</option>
+                            <option *ngFor="let machineManufacturer of machineManufacturers" [value]="machineManufacturer.alias">{{machineManufacturer.name}}</option>
+                        </select>
+                        <form-validate [form]="f" [fieldName]="'machineManufacturerId'" [field]="productTypeForm.get('machineManufacturerId')" [messages]="PRODUCT_WIZARD_VALIDATOR"></form-validate>
+                    </span>
+                </div>
+                <div class="form-group col-md-4" [ngClass]="{ 'has-error': f.submitted && !productTypeForm.get('orderCount').valid, 'has-success': f.submitted && productTypeForm.get('orderCount').valid}">
+                    <form-control-label [text]="'product.form.orderCount'" [required]="true"></form-control-label>
+                    <input type="text" class="form-control input-default" placeholder="{{ 'product.placeholder.orderCount' | translate }}" class="form-control" name="orderCount" formControlName="orderCount">
+                    <form-validate [form]="f" [fieldName]="'orderCount'" [field]="productTypeForm.get('orderCount')" [messages]="PRODUCT_WIZARD_VALIDATOR"></form-validate>
+                </div>
+                <div class="form-group col-md-4" [ngClass]="{ 'has-error': f.submitted && !productTypeForm.get('manufacturerDate').valid, 'has-success': f.submitted && productTypeForm.get('manufacturerDate').valid}">
+                    <form-control-label [text]="'product.form.manufacturerDate'" [required]="true"></form-control-label>
+                    <div class="input-group">
+                        <input type="text" placeholder="{{ 'product.placeholder.manufacturerDate' | translate }}" class="form-control" name="manufacturerDate" formControlName="manufacturerDate" autocomplete="off" id="manufacturerDate">
+                        <span class="input-group-append" >
+                            <span class="input-group-text">
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                            </span>
+                        </span>
+                    </div>
+                    <form-validate [form]="f" [fieldName]="'manufacturerDate'" [field]="productTypeForm.get('manufacturerDate')" [messages]="PRODUCT_WIZARD_VALIDATOR"></form-validate>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="radio clip-radio radio-primary">
+                        <input type="radio" id="wd-existing-invoice" name="installation" value="postInstallation" formControlName="installation" required>
+                        <span class="invoiceDetail"> <label for="wd-existing-invoice">{{ 'product.form.postInstallation' | translate }}</label> </span>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="radio clip-radio radio-primary">
+                        <input type="radio" id="wd-new-invoice" name="installation" value="preInstallation" formControlName="installation"  required>
+                        <span class="invoiceDetail"> <label for="wd-new-invoice">{{ 'product.form.preInstallation' | translate }}</label> </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-wide btn-info pull-right saveSpace">{{'product.form.save' | translate}}</button>
+            <button type="button" (click)="list();" class="btn mb-1 btn-outline-danger pull-right">{{'productType.form.cancel' | translate}}</button>
+        </div>
+    </div>
+</form>
+</admin-root>

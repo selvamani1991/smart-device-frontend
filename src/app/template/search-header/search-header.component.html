@@ -1,0 +1,16 @@
+<div class="button-wrapper">
+    <div class="page-size-select">
+        <span >{{ 'page.list.showing' | translate }} </span>
+        <select class="list-select" [(ngModel)]="pageSizeSelect" (change)="changePageSize(pageSizeSelect)">
+            <option *ngFor="let pageSizeValue of pageSizeList" value="{{pageSizeValue}}" [selected]="pageSizeValue == pageSizeSelect">{{pageSizeValue}}</option>
+        </select>
+        <span> {{'page.list.entries_page' | translate}}</span>
+    </div>
+    <input type="text"  class="search-header-width" placeholder="Search.." name="query" [(ngModel)]="query" (ngModelChange)="valueChange($event)">
+    <button type="submit" class="header-search-btn"><i class="fa fa-search"></i></button>
+    <input type='text' readonly  class="search-header-date-width" placeholder="Select From Date"  name="startDate" [(ngModel)]="date.startDate"   ngbDatepicker #d1="ngbDatepicker">
+    <button type="submit" class="header-search-btn"><i class="glyphicon glyphicon-calendar" (click)="d1.toggle()"></i></button>
+    <input type='text' readonly  class="search-header-date-width" placeholder="Select To Date"  name="endDate" [(ngModel)]="date.endDate"  ngbDatepicker #d2="ngbDatepicker">
+    <button type="submit" class="header-search-btn"><i class="glyphicon glyphicon-calendar" (click)="d2.toggle()"></i></button>
+    <button type="button" class="header-search-btn search-date-button" (click)="dateSearch($event)">{{ 'page.list.searchDate' | translate }}</button>
+</div>

@@ -1,0 +1,55 @@
+<admin-root>
+    <page-title [setting]="setting" [steps]="steps"></page-title>
+    <form class="form-horizontal" name="boardForm" [formGroup]="boardForm">
+        <div class="card" id="board">
+            <div class="card-body">
+                <h4 class="card-title">{{ 'board.form.details' | translate }}</h4>
+                <div class="form-row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <form-control-label [text]="'board.form.name'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="name" formControlName="name" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'board.form.description'" [required]="true"></form-control-label>
+                            <div class="note-editor">
+                                <textarea placeholder="{{board.description}}" class="form-control" name="description" readonly></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'board.form.manufacturerDate'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="manufacturerDate" formControlName="manufacturerDate" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'board.form.boardId'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="boardId" formControlName="boardId" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'board.form.imieId'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="imieId" formControlName="imieId" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <form-control-label [text]="'board.form.deviceId'" [required]="true"></form-control-label>
+                            <input type="text" class="form-control" name="deviceId" formControlName="deviceId" readonly/>
+                        </div>
+                    </div>
+                    <div class="col-md-4 show-icon-top">
+                        <div class="delete-image cursor-pointer" style="cursor:pointer;" *ngIf="board.id && board.logo"><i class="fa fa-close color-danger cross-size cursor-pointer" data-toggle="tooltip" title="Delete" (click)="markDeleted(board);"></i></div>
+
+                        <div class="company-image-size" *ngIf="board.id && board.logo"><img src="{{board.logo}}"  class="upload-image"/></div>
+                        <div class="company-image-size" *ngIf="!board.logo"><i class="fa fa-object-group show-icon" ></i></div>
+                        <div class="row mt-3 ml-3">
+                            <div class="choose_file">
+                                <button type="button" class="btn btn-default upload-button">Choose Image</button>
+                                <input name="file" type="file" class="form-control" accept="image/*" (change)="onFileChange($event)" />
+                            </div>
+                            <div class="file-detail" *ngIf="files && board.id && board.logo">{{files.name}}</div>
+                            <div class="file-detail"><span *ngIf="files && board.id && board.logo">{{ files.size/1024 | number:'1.0-0'}} </span> KB</div>
+                        </div>
+                        <div class="has-error error" *ngIf="formatError">{{'board.error.invalidPattern' | translate}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</admin-root>

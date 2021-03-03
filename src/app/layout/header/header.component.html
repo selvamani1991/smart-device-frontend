@@ -1,0 +1,17 @@
+<header *ngIf="!currentUser || !isAdmin">
+    <div class="header-wrapper">
+        <div class="header-left"><a [routerLink]="[APP_CONSTANTS.URL.HOME]"><img src="{{CONFIG.IMAGE_URL}}/MAVK_logo.bmp" alt="{{CONFIG.APP_NAME}}" width="100"/></a></div>
+
+        <div class="header-right">
+            <div class="header_right_top">
+                <ul class="top-nav-menu">
+                    <li class="link contact"><a  href="mailto:{{CONFIG.CONTACT_EMAIL}}"><i class="fa fa-envelope" ></i> {{CONFIG.CONTACT_EMAIL}}</a></li>
+                    <li class="seperator contact" *ngIf="!currentUser"></li>
+                    <li class="link contact"><i class="fa fa-phone" ></i> {{CONFIG.CONTACT_PHONE}}</li>
+                    <li class="seperator contact" *ngIf="!currentUser"></li>
+                    <li class="link" *ngIf="!currentUser"> <a [routerLink]="[AUTH_CONSTANTS.URL.LOGIN]" >{{ 'header.menu.login' | translate }}</a>  </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
