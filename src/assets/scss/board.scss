@@ -1,0 +1,67 @@
+#board{
+   .file-upload-border{
+          padding-top: 20px;
+            height: 243px;
+            width: 90%;
+            margin: 0 auto;
+
+       }
+      .class
+      {
+           height: 100%;
+           width: 100%;
+           margin: 0 auto;
+           padding-top: 10px;
+           border: 1px solid black;
+       }
+   .icon-style{
+       font-size: 50px;
+       padding-top: 50px;
+       }
+
+    .deduction{
+        width:140px;
+        float:right;
+    }
+    .deduction1{
+        width:160px;
+        float:right;
+    }
+
+    .listed{
+        width:80%;
+        margin:0 auto;
+    }
+    .paid{
+        border:0px;
+    }
+
+    .data1{
+        border:1px solid Black;
+        padding:20px;
+    }
+    .data2{
+        height:234px;
+    }
+    .data3{
+        height:275px;
+    }
+
+    .circle1{
+        height:30px;
+        width:30px;
+        border-radius:20px;
+        border:1px solid #cacdd0;
+        padding-top:5px;
+        padding-left:8px;
+        background-color:#e9edef;
+
+    }
+    .size2{
+        height:45px;
+        width:60px;
+    }
+    .mt-10{
+        margin-top:10px;
+    }
+}

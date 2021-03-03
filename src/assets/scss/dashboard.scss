@@ -1,0 +1,125 @@
+#dashboard{
+    .list-container{
+        padding:0 !important;
+        margin: 0 !important;
+    }
+    .content-title{
+    text-align: center;
+    margin-top:10px;
+    line-height: 50px!important;
+    font-size: 30px!important;
+    font-weight: 400!important;
+    }
+    .content-description{
+        text-align: center;
+        font-weight: bold;
+    }
+    .list-box-wrapper{
+        padding:5px;
+    }
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+    .col-lg-3 {
+        flex: 0 0 25%;
+        max-width: 25%;
+
+    }
+    .content-container{
+        background-color: #F3F3F9;
+    }
+   .container-fluid{
+            margin-top: 20px;
+    }
+    .card {
+        margin-bottom: 30px;
+        border: 0px;
+        border-radius: 0.625rem;
+        box-shadow: 6px 11px 41px -28px #a99de7;
+        background-color: white;
+    }
+    .gradient-1{
+            background-image: linear-gradient(230deg, #759bff, #843cf6);
+    }
+    .gradient-2{
+            background-image: linear-gradient(230deg, #fc5286, #fbaaa2);
+    }
+    .gradient-3{
+            background-image: linear-gradient(230deg, #ffc480, #ff763b);
+    }
+    .gradient-4{
+        background-image: linear-gradient(230deg, #0e4cfd, #6a8eff);
+    }
+
+    .card .card-body {
+         padding: 1.88rem 1.81rem;
+    }
+    .card-title {
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 18px;
+     }
+    .datamaps-subunits{
+        width:150%;
+    }
+    .icon1{
+        font-size:40px;
+        color: #ccc7c7;
+        padding-top:46px;
+        float:right;
+    }
+    .progress1{
+          padding-top:30px;
+    }
+    .btn-primary{
+         background-color: #2e49b9;
+         border-color:#2e49b9;
+         padding-top:-100px;
+
+    }
+   .select2-selection {
+       height:24px !important;
+       font-size:12px !important;
+   }
+
+   .select2-selection__rendered{
+       line-height:24px !important;
+   }
+
+   .select2-selection__arrow{
+       height:24px !important;
+       right:8px !important;
+   }
+
+    .clientBody{
+        padding-top:5px;
+    }
+    .zonesDropdown{
+        width:130px;
+    }
+
+
+
+}
+
+clienttotalusage{
+     #dashboard {
+        .select2-selection{
+            height:auto !important;
+            min-height:24px !important;
+        }
+     }
+}
+
+clienttotalerrordata{
+    #dashboard{
+        .select2-selection{
+            height:auto !important;
+            min-height:24px !important;
+        }
+    }
+
+}
